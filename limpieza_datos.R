@@ -26,7 +26,7 @@ write_parquet(data, sink = paste0(wd, "df_named.parquet"))
 df<-read_parquet(paste0(wd, "df_named.parquet"))
 
 
-df<-df %>% 
+df1<-df %>% 
   transmute(
     start=StartDate,
     end=EndDate,
@@ -255,7 +255,7 @@ df<-df %>%
     pct_alumnos_desfavorecidos_1_cc = `time_21_Click Count...204`,
     pct_alumnos_desfavorecidos_1 = `21.%desfavorecidos_1`,
     
-    rankingfin_fc = `time_inst_rankingfin_First Click`, # Esto no sé lo que es, entiendo que el ranking de políticas, pero por si acaso lo dejo así
+    rankingfin_fc = `time_inst_rankingfin_First Click`, # Check Esto no sé lo que es, entiendo que el ranking de políticas, pero por si acaso lo dejo así
     rankingfin_lc = `time_inst_rankingfin_Last Click`,
     rankingfin_ps = `time_inst_rankingfin_Page Submit`,
     rankingfin_cc = `time_inst_rankingfin_Click Count`,
@@ -849,7 +849,7 @@ df<-left_join(df, dfcentrocp1, by=c("cp"="centro")) %>%
   mutate(cp=ifelse(!is.na(cp_correcto), cp_correcto, cp)) %>% 
   select(-cp_correcto)
 
-df1<-df %>% 
+df<-df %>% 
   mutate(cp=ifelse(cp=="Quintanar del rey", "16220", 
                    ifelse(cp=="Tomelloso", "13700", 
                           ifelse(str_detect(cp, "13580"), "13850", 
@@ -861,6 +861,17 @@ df1<-df %>%
                                                                     ifelse(str_detect(cp, "02694"), "02694", 
                                                                            ifelse(cp=="020001160", "02640", 
                                                                                   ifelse(cp=="02.006", "02006", cp))))))))))))
+
+table(nchar(df$cp)!=5) # Sólo 84 de los 3683 han respondido cps que no se corresponden con un cp de verdad
+
+df<-df %>% 
+  mutate(cp_imputado=ifelse(
+    (nchar(cp)!=5 | grepl("[A-Za-z]",cp) ) & substr(cp_auto,1,2) %in% c("02", "13", "16", "19", "45"),
+    cp_auto, 
+    ifelse((nchar(cp)!=5 | grepl("[A-Za-z]",cp) ) & !(substr(cp_auto,1,2) %in% c("02", "13", "16", "19", "45")),
+           NA, cp))) # Creo la variable cp_imputado aunque sea para un grupo minoritario
+
+
 
 # Exploraciones tontas
 
