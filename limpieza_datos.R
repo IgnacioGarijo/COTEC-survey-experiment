@@ -26,7 +26,7 @@ write_parquet(data, sink = paste0(wd, "df_named.parquet"))
 df<-read_parquet(paste0(wd, "df_named.parquet"))
 
 
-df1<-df %>% 
+df<-df %>% 
   transmute(
     start=StartDate,
     end=EndDate,
@@ -53,8 +53,8 @@ df1<-df %>%
     resolution= info_Resolution, 
     p0_fc=`time_T0.1_First Click`, 
     p0_lc=`time_T0.1_Last Click`, 
-    p0_s=`time_T0.1_Page Submit`,
-    p0_nc= `time_T0.1_Click Count`,
+    p0_ps=`time_T0.1_Page Submit`,
+    p0_cc= `time_T0.1_Click Count`,
     intro= Intro,
     browser_182= Q182_Browser, 
     version_182=Q182_Version, 
@@ -62,9 +62,9 @@ df1<-df %>%
     resolution_182=Q182_Resolution,
     primaria_fc=`time_1aPrimaria_First Click`,
     primaria_lc=`time_1aPrimaria_Last Click`,
-    primaria_s= `time_1aPrimaria_Page Submit`, 
-    primaria_nc= `time_1aPrimaria_Click Count`,
-    primaria= ifelse(`1Primaria/Secundaria`=="E. Primaria", 1, 0),
+    primaria_ps= `time_1aPrimaria_Page Submit`, 
+    primaria_cc= `time_1aPrimaria_Click Count`,
+    primaria= factor(ifelse(`1Primaria/Secundaria`=="E. Primaria", 1, 0)),
     infantil= `1a Primaria_1`,
     primaria_1 = `1a Primaria_2`,
     primaria_2 = `1a Primaria_3`,
@@ -113,11 +113,12 @@ df1<-df %>%
     centrosprevios_cc = `time_4_Click Count`,
     centrosprevios = ifelse(`4.CentrosPrevios`>30, NA,`4.CentrosPrevios`) , # Check 30 son demasiados no?
     
-    genero_fc = `time_5_First Click`,
-    genero_lc = `time_5_Last Click`,
-    genero_ps = `time_5_Page Submit`,
-    genero_cc = `time_5_Click Count`,
-    genero = `5. Género`, # check, habría que dar un valor a cada respuesta pero no sé qué significa cada número
+    female_fc = `time_5_First Click`,
+    female_lc = `time_5_Last Click`,
+    female_ps = `time_5_Page Submit`,
+    female_cc = `time_5_Click Count`,
+    female = factor(ifelse(`5. Género`== "Mujer", 1, 
+                    ifelse(`5. Género` == "Hombre", 0, NA))), # check, habría que dar un valor a cada respuesta pero no sé qué significa cada número
     
     edad_fc = `time_6_First Click`,
     edad_lc = `time_6_Last Click`,
@@ -129,7 +130,7 @@ df1<-df %>%
     tutor_lc = `time_7_Last Click`,
     tutor_ps = `time_7_Page Submit`,
     tutor_cc = `time_7_Click Count`,
-    tutor = `7. Tutor`,
+    tutor = factor(ifelse(`7. Tutor`=="Sí", 1, 0)),
     
     tutor_curso_fc = `time_8a1_First Click`,
     tutor_curso_lc = `time_8a1_Last Click`,
@@ -178,14 +179,14 @@ df1<-df %>%
     enseñanzas_centro_lc = `time_11_Last Click`,
     enseñanzas_centro_ps = `time_11_Page Submit`,
     enseñanzas_centro_cc = `time_11_Click Count`,
-    enseñanzas_centro_infantil= `11.EnseñanzasCentro_1`,
-    enseñanzas_centro_primaria= `11.EnseñanzasCentro_2`,
-    enseñanzas_centro_eso= `11.EnseñanzasCentro_3`,
-    enseñanzas_centro_bach= `11.EnseñanzasCentro_4`,
-    enseñanzas_centro_fpbasico= `11.EnseñanzasCentro_5`,
-    enseñanzas_centro_fpmedio= `11.EnseñanzasCentro_6`,
-    enseñanzas_centro_fpsuperior= `11.EnseñanzasCentro_7`,
-    enseñanzas_centro_otro= `11.EnseñanzasCentro_8`,
+    enseñanzas_centro_infantil= factor(ifelse(`11.EnseñanzasCentro_1`=="Educación Infantil", 1, 0)),
+    enseñanzas_centro_primaria= factor(ifelse(`11.EnseñanzasCentro_2`=="Educación Primaria", 1,0)),
+    enseñanzas_centro_eso= factor(ifelse(`11.EnseñanzasCentro_3`=="Educación Secundaria Obligatoria", 1, 0)),
+    enseñanzas_centro_bach= factor(ifelse(`11.EnseñanzasCentro_4`=="Bachillerato",1,0)),
+    enseñanzas_centro_fpbasico= factor(ifelse(`11.EnseñanzasCentro_5`=="Ciclos Formativos Grado Básico",1,0)),
+    enseñanzas_centro_fpmedio= factor(ifelse(`11.EnseñanzasCentro_6`=="Ciclos Formativos Grado Medio",1,0)),
+    enseñanzas_centro_fpsuperior= factor(ifelse(`11.EnseñanzasCentro_7`=="Ciclos Formativos Grado Superior",1,0)),
+    enseñanzas_centro_otro= factor(ifelse(`11.EnseñanzasCentro_8`=="Otro", 1, 0)),
     enseñanzas_centro_txt= `11.EnseñanzasCentro_8_TEXT`,
    
     
@@ -217,31 +218,31 @@ df1<-df %>%
     horas_sustitucion_mes_lc = `time_15_Last Click`,
     horas_sustitucion_mes_ps = `time_15_Page Submit`,
     horas_sustitucion_mes_cc = `time_15_Click Count`,
-    horas_sustitucion_mes = `15. Horas Guardia`,
+    horas_sustitucion_mes = `15. Horas Guardia`, #Check aquí no sé desde dónde capar, más de 40hr de sustitución me parece extraño
     
     pct_absentismo_injustificado_fc = `time_16_First Click`,
     pct_absentismo_injustificado_lc = `time_16_Last Click`,
     pct_absentismo_injustificado_ps = `time_16_Page Submit`,
     pct_absentismo_injustificado_cc = `time_16_Click Count`,
-    pct_absentismo_injustificado = `16.Absentistas`,
+    pct_absentismo_injustificado = `16.Absentistas`,# Check aquí igual no me atrevo a definir dónde capar, hay 9 personas que dicen 80% y 12 que dicen 60%, lo que me parece imposible pero por otro lado me extraña que coincidan...
     
     alumnos_conflictivos_fc = `time_17_First Click`,
     alumnos_conflictivos_lc = `time_17_Last Click`,
     alumnos_conflictivos_ps = `time_17_Page Submit`,
     alumnos_conflictivos_cc = `time_17_Click Count`,
-    alumnos_conflictivos = `17. Conflictivos`, #Check capamos aquí? Hay 8 que dicen 100...
+    alumnos_conflictivos = `17. Conflictivos`, #Check capamos aquí? Hay 8 que dicen 100... Pero pueden ser gruñones
     
     programas_vulnerabilidad_fc = `time_18_First Click`,
     programas_vulnerabilidad_lc = `time_18_Last Click`,
     programas_vulnerabilidad_ps = `time_18_Page Submit`,
     programas_vulnerabilidad_cc = `time_18_Click Count`,
-    programas_vulnerabilidad = ifelse(`18. Programas`=="Sí", 1, 0), # check ifelse 
+    programas_vulnerabilidad = factor(ifelse(`18. Programas`=="Sí", 1, 0)), # check ifelse 
     
     directora_fc = `time_19_First Click`,
     directora_lc = `time_19_Last Click`,
     directora_ps = `time_19_Page Submit`,
     directora_cc = `time_19_Click Count`,
-    directora = ifelse(`19. Género Director`=="Mujer", 1, 0),
+    directora = factor(ifelse(`19. Género Director`=="Mujer", 1, 0)),
     
      exp_director_fc = `time_20_First Click...196`, #CHECK importante que tanto para la 20 como para la 21 se han generado dos variables de tiempo para cada cosa y no coinciden, por ejemplo: `time_21_First Click...201`, `time_21_First Click...664`. Entiendo que las primeras son para la experiencia director y las segundas para porcentaje de culpa de profesores etc.(también pregunta 20)
      exp_director_lc = `time_20_Last Click...197`,
@@ -389,7 +390,7 @@ df1<-df %>%
     alumno_3_5_lc = `time_grupo3.5_Last Click`,  
     alumno_3_5_ps = `time_grupo3.5_Page Submit`,  
     alumno_3_5_cc = `time_grupo3.5_Click Count`,  
-    alumno_3_5 = `Grupo 5_1`,  # IMPORTANTE QUE LA 3_5 ESTÁ GUARDADA COMO 5
+    alumno_3_5 = `Grupo 5_1`,  # CHECK IMPORTANTE QUE LA 3_5 ESTÁ GUARDADA COMO 5
     
     alumno_3_6_fc = `time_grupo3.6_First Click`,
     alumno_3_6_lc = `time_grupo3.6_Last Click`,
@@ -715,22 +716,22 @@ df1<-df %>%
     impacto_centro_lc = `time_19_0a10_Last Click`,
     impacto_centro_sp = `time_19_0a10_Page Submit`,
     impacto_centro_cc = `time_19_0a10_Click Count`,
-    impacto_centro_estudiantes = `19.impacto_centro_1`,
-    impacto_centro_pasar_sin_competencias = `19.impacto_centro_2`,
-    impacto_centro_preparados_nivel_sig = `19.impacto_centro_3`,
-    impacto_centro_demasiados_recursos_repetidores = `19.impacto_centro_4`,
-    impacto_centro_recursos_repetidores_ineficaces = `19.impacto_centro_5`,
+    impacto_centro_estudiantes = as.numeric(`19.impacto_centro_1`),
+    impacto_centro_pasar_sin_competencias = as.numeric(`19.impacto_centro_2`),
+    impacto_centro_preparados_nivel_sig = as.numeric(`19.impacto_centro_3`),
+    impacto_centro_demasiados_recursos_repetidores = as.numeric(`19.impacto_centro_4`),
+    impacto_centro_recursos_repetidores_ineficaces = as.numeric(`19.impacto_centro_5`),
     # Variables con _DO_ excluidas
     
     impacto_region_fc = `time_19_0a10_First Click`,
     impacto_region_lc = `time_19_0a10_Last Click`,
     impacto_region_sp = `time_19_0a10_Page Submit`,
     impacto_region_cc = `time_19_0a10_Click Count`,
-    impacto_region_estudiantes = `19.impacto_region_1`,
-    impacto_region_pasar_sin_competencias = `19.impacto_region_2`,
-    impacto_region_preparados_nivel_sig = `19.impacto_region_3`,
-    impacto_region_demasiados_recursos_repetidores = `19.impacto_region_4`,
-    impacto_region_recursos_repetidores_ineficaces = `19.impacto_region_5`,
+    impacto_region_estudiantes = as.numeric(`19.impacto_region_1`),
+    impacto_region_pasar_sin_competencias = as.numeric(`19.impacto_region_2`),
+    impacto_region_preparados_nivel_sig = as.numeric(`19.impacto_region_3`),
+    impacto_region_demasiados_recursos_repetidores = as.numeric(`19.impacto_region_4`),
+    impacto_region_recursos_repetidores_ineficaces = as.numeric(`19.impacto_region_5`),
     # Variables con _DO_ excluidas
     
     porcentaje_culpa_fc = `time_20_First Click...652`, #Check importante el 652, 653, etc. para estas y las de empatía
@@ -756,7 +757,7 @@ df1<-df %>%
     meritocracia_lc = `time_22_Last Click`,
     meritocracia_sp = `time_22_Page Submit`,
     meritocracia_cc = `time_22_Click Count`,
-    meritocracia = `22.Meritocracia`,
+    meritocracia = as.numeric(`22.Meritocracia`),
     
     tl_centro_fc = `time_23_First Click`,
     tl_centro_lc = `time_23_Last Click`,
@@ -786,8 +787,8 @@ df1<-df %>%
     prohibir_sustituir_lc = `time_24_Last Click`,
     prohibir_sustituir_sp = `time_24_Page Submit`,
     prohibir_sustituir_cc = `time_24_Click Count`,
-    prohibir_repeticion = `24aProhibirRepetició`,
-    sustituir_eso = `24b.Sustituir ESO`,
+    prohibir_repeticion = as.numeric(`24aProhibirRepetició`),
+    sustituir_eso = as.numeric(`24b.Sustituir ESO`),
     
     tasa_repeticion_fc = `time_25_First Click`,
     tasa_repeticion_lc = `time_25_Last Click`,
