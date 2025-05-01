@@ -7,9 +7,12 @@ library(arrow)
 wd<- "C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Datos y codigo/"
 setwd(wd)
 dataname<-paste0(wd,"Cotec_+SaveTheChildren_29+de+abril+de+2025_13.51.xlsx")
+dataparquet<-paste0(wd, "df_named.parquet")
 dfmapa<-esp_get_ccaa(moveCAN = T)
 dfcentrocp<- read_excel("listado_centros.xls")
 
+
+if (!file.exists(dataparquet)){
 # Leer las primeras dos filas del archivo (si solo interesa obtener la cabecera y quizás otra fila)
 full_data <- read_excel(dataname, n_max = 1)
 # Leer el resto de los datos a partir de la segunda fila (omitimos la cabecera)
@@ -18,6 +21,7 @@ data <- read_excel(dataname, skip = 2, col_names = F)
 colnames(data) <- colnames(full_data)
 
 write_parquet(data, sink = paste0(wd, "df_named.parquet"))
+}
 
 df<-read_parquet(paste0(wd, "df_named.parquet"))
 
@@ -845,7 +849,18 @@ df<-left_join(df, dfcentrocp1, by=c("cp"="centro")) %>%
   mutate(cp=ifelse(!is.na(cp_correcto), cp_correcto, cp)) %>% 
   select(-cp_correcto)
 
-
+df1<-df %>% 
+  mutate(cp=ifelse(cp=="Quintanar del rey", "16220", 
+                   ifelse(cp=="Tomelloso", "13700", 
+                          ifelse(str_detect(cp, "13580"), "13850", 
+                                 ifelse(cp=="45003358C", "45694",
+                                        ifelse(str_detect(cp,"19210"), "19210", 
+                                               ifelse(str_detect(cp,"45000448"), "45180", 
+                                                      ifelse(cp=="19004 Y 19208", "19004",
+                                                             ifelse(cp=="13.500", "13500", 
+                                                                    ifelse(str_detect(cp, "02694"), "02694", 
+                                                                           ifelse(cp=="020001160", "02640", 
+                                                                                  ifelse(cp=="02.006", "02006", cp))))))))))))
 
 # Exploraciones tontas
 
