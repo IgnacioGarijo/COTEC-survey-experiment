@@ -43,6 +43,7 @@ Estudiante de Doctorado de Ciencia de Datos
   + ¿Es siempre peor cuantas más características negativas se tenga?
   + ¿Qué características son más importantes para provocar la repetición?
   + ¿Cambian los patrones de repetición dependiendo de la política preferida?
+  + ¿Le cuesta más a los profesores suspender a algunos tipos de alumnos?
 </div>
 :::
 :::
@@ -161,14 +162,34 @@ Estudiante de Doctorado de Ciencia de Datos
 :::{layout="[[1,1]]"}
 
 :::{.column}
+
+::: {.panel-tabset}
+
+### Las políticas
 ::: {.callout}
 <div style="font-size: 1.3em;">
 
-- Los alumnos que suspenden y tienen carencia de habilidades matemáticas y/o lingüísticas  llegan a la probabilidad máxima de repetición
-- Como ya se podía observar, el número de suspensos es más importante que las carencias en matemáticas y/o lengua para los profesores.
-  + Un alumno con varios suspensos pero sin carencias pasa de tener una probabilidad de suspenso de 43.9% a 81.2%
-  + Sin embargo, un alumno sin suspensos pero con carencias matemáticas y lingüísticas pasa de un 18.2% de probabilidad de repetir a un 81.2%
+<ul style="list-style-type: lower-alpha;">
+  <li>Se cambien los criterios de promoción en la Junta de Evaluación: unanimidad para hacer repetir, voto secreto y anónimo. (9.6%).</li>
+  <li>Todo el profesorado del centro recibe formación adaptada y acompañamiento docente en metodologías didácticas inclusivas y gestión de aula multinivel. (36.1%).</li>
+  <li>El alumno recibirá refuerzo educativo en un grupo pequeño el próximo curso (en grupo pequeño, un profesor de apoyo, dentro o fuera del aula). (54.3%).</li>
+</ul>
+
 </div>
+:::
+
+### Conclusiones
+
+::: {.callout}
+<div style="font-size: 1.3em;">
+
+- Los profesores que piensan que se deberían cambiar los criterios de promoción son los más duros.
+- Sin embargo, los profesores que consideran que la mejor idea sería formar a los profesores son los que menos suspenden.
+- Las diferencias no son muy grandes pero sí significativas.
+</div>
+
+:::
+
 
 :::
 :::
@@ -185,15 +206,29 @@ Estudiante de Doctorado de Ciencia de Datos
 :::{layout="[[0.7,1.3]]"}
 
 :::{.column}
+
+:::{.panel-tabset}
+### Formación
 ::: {.callout}
 <div style="font-size: 1.3em;">
 
-- Los alumnos que suspenden y tienen carencia de habilidades matemáticas y/o lingüísticas  llegan a la probabilidad máxima de repetición
-- Como ya se podía observar, el número de suspensos es más importante que las carencias en matemáticas y/o lengua para los profesores.
-  + Un alumno con varios suspensos pero sin carencias pasa de tener una probabilidad de suspenso de 43.9% a 81.2%
-  + Sin embargo, un alumno sin suspensos pero con carencias matemáticas y lingüísticas pasa de un 18.2% de probabilidad de repetir a un 81.2%
+- Los profesores que creen que la mejor solución es formar a los profesores creen menos en la importancia de los suspensos como factor relevante para la repetición, aunque le dan mucha importancia a las carencias en habilidades matemáticas y lingüísticas.
 </div>
+:::
 
+### Refuerzo
+::: {.callout}
+<div style="font-size: 1.3em;">
+- Los profesores que consideran que habría que aportar refuerzo a los alumnos también le dan importancia a los suspensos, y más importancia al absentismo que sus compañeros. Por otro lado, son los que menos importancia le dan al origen del alumno.
+</div>
+:::
+
+### Criterios
+::: {.callout}
+<div style="font-size: 1.3em;">
+- Los profesores que consideran que habría que ajustar los criterios de promoción son los que más suspenden, aunque sean la minoría. Para ellos, los suspensos y las carencias en habilidades matemáticas y lingüísticas son clave.
+</div>
+:::
 :::
 :::
 
@@ -206,3 +241,50 @@ Estudiante de Doctorado de Ciencia de Datos
 
 
 :::
+
+## Los suspensos son la característica más importante para determinar si un alumno suspende
+
+:::{layout="[[1,1]]"}
+
+:::{.column}
+
+::: {.panel-tabset}
+
+### Machine learning
+::: {.callout}
+<div style="font-size: 1.3em;">
+- El modelo de Machine Learning llamado Random Forest se basa en árboles de decisión para predecir la respuesta más probable de un profesor dadas las características del alumno.
+- Este modelo, alimentado con nuestra base de datos, nos explica cuáles son las características más determinantes a la hora de tomar decisiones para los profesores. 
+- En este caso, como cabía esperar, los suspensos y las carencias en habilidades clave destacan, aunque el absentismo o las expulsiones son también relevantes. 
+- Por otro lado, las características socioeconómicas como el origen o el género del alumno no son tan importantes.
+</div>
+
+:::
+
+### Tiempos de suspenso
+
+::: {.callout}
+<div style="font-size: 1.3em;">
+
+- Utilizamos otro modelo para ver qué características influyen más a la hora de suspender a un alumno.
+- Observamos que, de media, los suspensos reducen la decisión en 6.3 segundos, por lo que facilitan al profesor la decisión de hacer repetir. 
+- Las expulsiones y las absenciones, por otro lado, aumentan el tiempo de toma de decisiones de manera significativa (3.4 y 4.4 segundos respectivamente). 
+- El género, origen y las carencias no son determinantes para explicar el tiempo que toma a un profesor la decisión de suspenso
+</div>
+
+:::
+
+
+:::
+
+:::
+
+
+::: {.column}
+![](graficos/random_forest.jpeg){width="60%"}
+:::
+
+:::
+
+
+
