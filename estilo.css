@@ -1,0 +1,245 @@
+/* Definición de variables de color */
+:root {
+  --burgundy-dark: #430416;
+  --burgundy-medium: #5A171F;
+  --burgundy: #83082A;
+  --crimson: #D00D43;
+  --cabaret: #D46271;
+  --wewak: #E397A0;
+  --black: #525050;
+  --eclipse: #404040;
+  --dim-gray: #646363;  
+  --manatee: #88888A;
+  --dark-gray: #A9A9A9;
+  --gainsboro: #D9D9D9;
+  --white: #FFFFFF;
+  --blue-dark: #00205b;
+  --blue-accent: #011552;
+  --blue-light: #537d90;
+  --grey-loyola: #a29cb8;
+  --mygreen: #537d90;
+}
+
+/* Estilos base */
+.reveal {
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  color: var(--eclipse);
+}
+
+
+/* Títulos con menos espacio */
+.reveal h1 {
+  color: var(--mygreen);
+  font-size: 1.5em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  margin: 0 0 0.3em 0;
+  padding-bottom: 0.2em;
+  border-bottom: 2px solid var(--mygreen);
+}
+
+.reveal h2 {
+  color: var(--blue-accent);
+  font-weight: 500;
+  margin: 0 0 0.3em 0;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid var(--mygreen);
+}
+
+.reveal h3 {
+  color: var(--blue-dark);
+  font-size: .8em;
+  font-weight: 500;
+  margin: 0.2em 0;
+  text-transform: uppercase !important;
+}
+
+/* Contenido más compacto */
+.reveal table {
+  margin: 0.2em 0;
+  font-size: 0.9em;
+}
+
+.reveal table th,
+.reveal table td {
+  padding: 0.2em 0.6em;
+}
+
+.reveal ul,
+.reveal ol {
+  margin: 0.2em 0;
+  padding-left: 1.2em;
+  line-height: 1.3;
+}
+
+.reveal .callout {
+  margin: 0.0em 0;
+  padding: 0.0em 0.0em;
+}
+
+.callout::before {
+  content: "Hola" !important;
+}
+
+
+/* Panel-tabset más compacto */
+.reveal .panel-tabset {
+  margin-top: 0.2em;
+}
+
+.reveal .panel-tabset .nav-tabs {
+  font-size: 0.5em;
+  margin-bottom: 0.2em;
+}
+
+
+/* Ajustes de layout */
+.reveal .slide-content {
+  margin-top: 0.3em;
+  padding-top: 0.3em;
+}
+
+/* Imágenes */
+.reveal img {
+  margin: 0.2em 0;
+  max-height: 40vh;
+}
+
+/* Espaciado de secciones */
+.reveal section {
+  padding: 0.2em;
+}
+
+/* Elementos flotantes */
+ .reveal .progress {
+  bottom: 0;
+}
+
+/* Pie de página */
+.reveal .footer {
+  border-top: 2px solid var(--blue-accent); /* Line on top */
+  padding-top: 0.5em; /* Space between line and text */
+  font-size: 0.6em; /* Footer font size */
+  text-align: center; /* Center the footer text */
+  color: var(--grey-loyola); /* Footer text color */
+  position: relative;
+  right: 0%;
+}
+
+
+.reveal .footer::after {
+  content: ""; /* Required for the pseudo-element */
+  display: block; /* Keep the image independent */
+  position: absolute; /* Position relative to the footer */
+  top: 70%; /* Align vertically */
+  right:80vw ; /* Align to the right of the footer */
+  transform: translateY(-50%); /* Center the image vertically */
+  background-image: url("svg/logo2.png"); /* Add your image path here */
+  background-size: contain; /* Ensures the image scales proportionally */
+  background-repeat: no-repeat; /* Prevent tiling */
+  width: 30px; /* Adjust image width */
+  height: 30px; /* Adjust image height */
+  margin-right: 1em; /* Space between the image and the edge */
+}
+
+/* Números en el pie de página */
+
+.reveal .slide-number {
+  color: var(--eclipse);
+}
+
+
+/* Ajustes específicos para r-stack */
+.reveal .r-stack {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Ajustes para fragmentos */
+.reveal .fragment {
+  margin-top: 0;
+}
+
+/* Ajustes para layouts en columnas */
+.reveal [layout] {
+  margin-top: 0.2em;
+  gap: 0.5em;
+}
+
+.reveal .columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reveal .column {
+  flex: 1;
+  padding: 0 0.3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.reveal .column img {
+  max-height: 80%;
+  max-width: 100%;
+}
+
+.reveal .column .caption {
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+
+.callout[data-appearance="default"]::before {
+  content: "" !important;
+}
+/* También podemos asegurarnos cubriendo todos los casos */
+.callout::before {
+  content: "" !important;
+}
+
+/* Estilo base para todos los callouts */
+.callout {
+  border-radius: 2px !important;
+  margin: 0.4rem 0 !important;
+  padding: 0.4rem 1rem !important;
+  border-left-width: 2px !important;
+  background-color: transparent !important;
+  border-color: var(--blue-light) !important;
+  border-left-color: var(--blue-dark) !important;
+}
+
+/* Eliminar el 'none' y otros textos no deseados */
+.callout::before,
+.callout-header:empty,
+.callout[data-appearance]::before,
+.callout .callout-header::before {
+  content: "" !important;
+  display: "" !important;
+}
+
+/* Ajustar espaciado cuando no hay título */
+.callout:not(:has(.callout-header)) {
+  padding: 0.0rem 0.2rem !important;
+}
+
+/* Estilos para el título cuando existe */
+.callout-header:not(:empty) {
+  font-weight: 600 !important;
+  margin-bottom: 0.3rem !important;
+  font-size: 1.1em !important;
+}
+
+/* Estilos para el contenido */
+.callout-body p {
+  margin: 0 !important;
+  line-height: 1.5 !important;
+}
+
+
+
+

@@ -874,6 +874,8 @@ df<-df %>%
 
 
 
+write_parquet(df, paste0(wd, "cleandata.parquet"))
+
 # Exploraciones tontas
 
 

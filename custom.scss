@@ -1,0 +1,455 @@
+/*-- scss:defaults --*/
+// Colores base
+$burgundy-dark: #83082A;
+$burgundy-light: #9b0834;
+$burgundy-accent: #83082A;
+$cream: #FFFFFF;
+$text-dark: #2C1810;
+$background-light: #FFFFFF;
+$pink: #eec1c6;
+$eclipse: #404040;
+$light-grey: #cccdcf;
+$blue-dark: #00205b;
+$blue-accent: #011552;
+$blue-light: #537d90;
+$grey-loyola: #a29cb8;
+
+// Variables derivadas
+$primary: $blue-dark;
+$body-bg: $background-light;
+$body-color: $text-dark;
+$headings-color: $blue-dark;
+$link-color: $blue-accent;
+
+// Tipografía
+$font-family-sans-serif: 'Century Gothic', sans-serif;
+$headings-font-family: $font-family-sans-serif;
+$font-size-base: 1.1rem;
+$line-height-base: 1.7;
+
+/*-- scss:rules --*/
+
+// Estilo base
+body {
+    background-color: $body-bg;
+    color: $body-color;
+    font-family: $font-family-sans-serif;
+    line-height: $line-height-base;
+}
+
+// Encabezados con estilo moderno
+h1, h2, h3, h4, h5, h6 {
+    font-family: $headings-font-family;
+    color: $headings-color;
+    letter-spacing: -0.02em;
+    font-weight:bold !important;
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+}
+
+h1 {
+    border-bottom: 3px solid rgba($blue-dark, 0.1);
+    padding-bottom: 0.5rem;
+    font-size: 2rem !important;
+
+}
+
+h2 {
+    font-size: 2rem;
+    color:$blue-light;
+    border-bottom: 3px solid $blue-dark !important;
+}
+
+h3 {
+    color: $blue-light !important;
+    margin-top: 1em !important;
+    text-transform: uppercase;
+    font-weight: normal !important;
+    text-align: center !important;
+}
+
+
+
+ // Bullet points del color airef
+
+ li::marker {
+    color: $primary;
+  }
+
+// Links elegantes
+a {
+    color: $link-color;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+    
+    &:hover {
+        color: lighten($blue-accent, 15%);
+        border-bottom-color: currentColor;
+    }
+}
+
+// Tablas refinadas
+table {
+    width: 100%;
+    margin: 2em 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    
+    thead {
+        background: linear-gradient(45deg, $blue-dark, lighten($blue-dark, 5%));
+        color: $cream;
+        
+        th {
+            padding: 1em;
+            font-weight: 600;
+            border: none;
+        }
+    }
+    
+    tbody {
+        tr {
+            &:nth-child(even) {
+                background-color: rgba($blue-dark, 0.02);
+            }
+            
+            &:hover {
+                background-color: rgba($blue-dark, 0.04);
+            }
+        }
+        
+        td {
+            padding: 1em;
+            border-bottom: 1px solid rgba($blue-dark, 0.1);
+        }
+    }
+}
+
+// Código con estilo
+pre {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5em;
+    margin: 1.5em 0;
+    border: 1px solid rgba($blue-dark, 0.1);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+code {
+    color: $blue-dark;
+    background: rgba($blue-dark, 0.05);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+}
+
+// Panel-tabset moderno
+.panel-tabset {
+    margin: 2em 0;
+    border-color: $blue-light !important;
+
+    
+    .nav-tabs {
+        border-bottom: 2px solid rgba($blue-dark, 0.1);
+        gap: 0;
+        
+        .nav-item {
+            margin-bottom: 0;
+        }
+        
+        .nav-link {
+            border: none;
+            color: $text-dark;
+            padding: 0;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            
+            &.active {
+                color: $blue-dark;
+                border-bottom: 2px solid $blue-dark;
+            }
+            
+            &:hover:not(.active) {
+                color: lighten($blue-dark, 20%);
+                border-bottom: 2px solid lighten($blue-dark, 20%);
+            }
+        }
+    }
+    
+    .tab-content {
+        padding: 0;
+        border-color: $blue-light !important;
+    }
+}
+
+@media (min-width: 30em) {
+    .panel-tabset [role=tab][aria-selected=true] {
+      border: 1px solid $blue-light; /* tu azul deseado */
+      border-bottom-color: #fff; /* mantiene integración con fondo */
+    }
+  }
+
+  .panel-tabset [role=tablist] {
+    border-bottom: 1px solid $blue-light;
+  }
+// Callouts elegantes
+div.callout {
+    margin: 2em 0;
+    padding: 1.5em;
+    border-left: 4px solid $blue-dark;
+    background-color: rgba($blue-dark, 0.02);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    
+    .callout-title {
+        color: $blue-dark;
+        font-weight: 600;
+        margin-bottom: 0.5em;
+    }
+}
+
+// TOC refinado
+#TOC {
+    border-left: 1px solid rgba($blue-dark, 0.1);
+    padding-left: 1.5em;
+    
+    .nav {
+        a {
+            color: $text-dark;
+            padding: 0.4em 0;
+            font-size: 0.9em;
+            
+            &:hover {
+                color: $blue-dark;
+                text-decoration: none;
+            }
+            
+            &.active {
+                color: $blue-dark;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+
+// Figuras y imágenes
+figure {
+    margin: 2em 0;
+    
+    img {
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    figcaption {
+        margin-top: 0.8em;
+        color: lighten($text-dark, 20%);
+        font-size: 0.9em;
+        text-align: center;
+    }
+}
+
+// TIPOS DE DIAPOSITIVA
+
+.diapositiva-titulo {
+    background-image: linear-gradient(to bottom,  $background-light 40%, $light-grey 0%);
+    background-color: transparent;
+    padding-top: 20vh  !important;
+    color: $blue-dark;
+    text-align: center;
+    height: 30%;
+    font-weight: bold !important;
+  }
+
+   .diapositiva-titulo h1 {
+    font-size: 2em !important;
+    background:none !important; /* Remove background from h1 */
+    position: relative !important;
+    top: 15vh !important;
+    margin: 0 !important;
+    padding: 0 !important; /* Quitar relleno si aplica */
+    letter-spacing: 0 !important;
+    font-weight: 0 !important;
+    border: none !important; /* Asegurar que no haya bordes */
+    box-shadow: none !important; /* Remover posibles sombras */
+  }
+
+  .reveal .slide-number > a[href*='diapositiva-titulo'] {
+    display: none;
+  }
+  
+.reveal .slides section.diapositiva-titulo + .slide-number {
+    display: none !important;
+  }
+
+.diapositiva-titulo-seccion {
+    background-color: $light-grey !important;
+
+}
+
+.diapositiva-titulo-seccion h1{
+    font-size: 2em !important;
+    color: $headings-color !important;
+    font-weight: normal !important;
+    padding-bottom:2cm !important;
+}
+
+@media print {
+    .reveal .slides section.diapositiva-titulo-seccion + .slide-footer {
+      display: none !important;
+    }
+  }
+  
+
+.reveal .slides section.diapositiva-titulo-seccion + .slide-number {
+    display: none !important;
+  }
+
+.diapositiva-imagenes{
+    margin-top: 1em !important;
+}
+
+
+  .diapositiva-imagenes h2 {
+    margin-bottom: 2vh !important;
+}
+
+.diapositiva-imagenes h3 {
+    color: $blue-light !important;
+    margin-top: 1em !important;
+    text-transform: uppercase;
+    font-weight: normal !important;
+}
+
+.diapositiva-imagenes h4 { /* Para texto arriba de las imágenes (en caja pero sin centrar)*/
+    display: block !important;
+    border: 2px solid $primary !important;
+    color: $text-dark !important;
+    font-weight: normal !important;
+    width: 100% !important; /* Ajusta el ancho para dejar espacio en los lados */
+    box-sizing: border-box !important;
+    padding: 2px;
+}
+
+.diapositiva-imagenes h5 { /* Para texto debajo de las imágenes (centrado y en caja) */
+    display: block !important;
+    border: 2px solid $primary !important;
+    font-weight: normal !important;
+    width: 100% !important; /* Ajusta el ancho para dejar espacio en los lados */
+    box-sizing: border-box !important;
+    margin: 0 auto !important; /* Centra el elemento dentro del contenedor */
+    padding: 2px;
+text-align: center !important;
+color: $text-dark !important;
+}
+
+.diapositiva-imagenes ul {
+    display: block !important;
+    border: 2px solid $primary !important;
+    font-weight: normal !important;
+    width: 100% !important; /* Ajusta el ancho para dejar espacio en los lados */
+    box-sizing: border-box !important;
+    margin: 0 auto !important; /* Centra el elemento dentro del contenedor */
+    padding: -2 px
+}
+
+
+.imglogoslide1 {
+    width:60% !important;
+    height:auto !important;
+    position: relative !important;
+    z-index: 1 !important;
+    top: -10em !important;
+}
+
+.caption {
+    color: #A9A9A9;
+    font-size: $font-size-base*.8;
+}
+
+img {
+    align-content:center !important;
+    max-width: 100% !important;
+    max-height: 80% !important;
+}
+
+.diapositiva-columnas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Asegura espacio entre columnas */
+  position: relative; /* Necesario para posicionar la flecha */
+}
+
+.columncaja1, .columncaja2 {
+  gap: 1em !important;
+ padding: 2em !important;
+}
+
+.columncaja1 p, .columncaja2 p {
+  line-height: 1.5 !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  width: 80%;
+  padding: 1em !important;
+  border-radius: 0.5em !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  margin-bottom: 1em !important;
+  text-align: left !important;
+}
+
+/* Estilo específico para las cajas */
+.columncaja1 p {
+  background-color: $blue-dark !important;
+  color: white !important;
+}
+
+.columncaja2 p {
+  background-color: $light-grey !important;
+  color: $eclipse !important;
+}
+
+section.diapositiva-columnas.present::after {
+    content: "";
+    position: absolute;
+    top: 50%; /* Centrado verticalmente */
+    left: 47%; /* Centrado horizontalmente */
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-top: 100px solid transparent; /* Borde superior del triángulo */
+    border-bottom: 100px solid transparent; /* Borde inferior del triángulo */
+    border-left: 50px solid $grey-loyola; /* Color del triángulo */
+    z-index: 10; /* Asegurar que esté encima */
+}
+
+iframe {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.panel-tabset li a {
+    color: $blue-light !important; /* Cambia $blue-light por el color adecuado */
+    text-transform: uppercase;
+    font-weight: normal !important;
+    text-decoration: none; /* Para eliminar subrayado, si lo hubiera */
+    font-size: .85em !important;
+}
+
+.quarto-layout-cell > p > strong {
+    color: $blue-light !important;
+    margin-top: 1em !important;
+    text-transform: uppercase;
+    font-weight: normal !important;
+}
+.svg-container {
+    width: 150vh !important;
+    height: 90vh !important;
+}
+.main-svg {
+    width: 150vh!important;
+    height: 90vh !important;
+}
