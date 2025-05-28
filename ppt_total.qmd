@@ -11,6 +11,7 @@ format:
     embed-resources: true
     footer: |
       <span style="font-size: 0.7em; color: #537d90;">Spending Review 2022-2026. Fase I: Mutualismo Administrativo</span>
+output-file: index.html
 ---
 
 # Determinantes de la repetición escolar {.diapositiva-titulo style="background: none; " data-menu-title="Titulo"}
