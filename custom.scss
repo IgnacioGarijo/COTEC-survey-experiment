@@ -58,6 +58,7 @@ h2 {
     font-size: 2rem;
     color:$blue-light;
     border-bottom: 3px solid $blue-dark !important;
+    margin-bottom: 1em !important; /* ¡esto añade el espacio! */
 }
 
 h3 {

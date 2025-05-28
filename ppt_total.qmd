@@ -10,7 +10,7 @@ format:
     css: estilo.css
     embed-resources: true
     footer: |
-      <span style="font-size: 0.7em; color: #537d90;">Spending Review 2022-2026. Fase I: Mutualismo Administrativo</span>
+      <span style="font-size: 0.7em; color: #537d90;">Informe COTEC: determinantes de la repetición escolar</span>
 output-file: index.html
 ---
 

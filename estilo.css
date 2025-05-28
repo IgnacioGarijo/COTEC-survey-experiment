@@ -45,9 +45,9 @@
   color: var(--blue-accent);
   font-weight: 500;
   margin: 0 0 0.3em 0;
-  padding-bottom: 0.2em;
-  border-bottom: 1px solid var(--mygreen);
+
 }
+
 
 .reveal h3 {
   color: var(--blue-dark);
@@ -112,6 +112,7 @@
 .reveal section {
   padding: 0.2em;
 }
+
 
 /* Elementos flotantes */
  .reveal .progress {
