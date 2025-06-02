@@ -9,282 +9,403 @@ format:
     incremental: false
     css: estilo.css
     embed-resources: true
+    controls: true
     footer: |
       <span style="font-size: 0.7em; color: #537d90;">Informe COTEC: determinantes de la repetición escolar</span>
 output-file: index.html
+editor: 
+  markdown: 
+    wrap: sentence
 ---
 
-# Determinantes de la repetición escolar {.diapositiva-titulo style="background: none; " data-menu-title="Titulo"}
- 
-<img src="svg/logo.png" class="imglogoslide1" />
- 
-Universidad Loyola Andalucía
+# Determinantes de la repetición escolar {.diapositiva-titulo style="background: none;" data-menu-title="Titulo"}
 
-21 de mayo de 2025
+<img src="svg/logolargo.png" class="imglogoslide1"/>
 
-::: {style="text-align: right; margin-top: 1em; margin-bottom: 1em"}
-Ignacio Garijo Campos
+::: {style="text-align: center; margin-top: 1em; margin-bottom: 1em"}
+::: {layout="[[1,1]]"}
+::: column
+Antonio Alfonso, Loyola
 
-Estudiante de Doctorado de Ciencia de Datos
+Pablo Brañas, Loyola
+
+María Castro, Complutense
+
+Ignacio Garijo, Loyola
+
+Diego Jorrat, Loyola
+:::
+
+::: column
+Iria Mata, COTEC
+
+Anxo Sánchez, Carlos III
+
+Ainara Zubillaga, COTEC
+
+Michelle K. Quintero, Save The Children
+
+Alfonso Echazarra
+:::
+:::
 :::
 
 ## El experimento
 
+::: {layout="[[1,1]]"}
+::: column
+::: callout
+::: {style="font-size: 1.3em;"}
+-   Se realiza un experimento "survey experiment" con profesores de Castilla La Mancha, que responden si suspenderían o no a alumnos hipotéticos
+-   Para ello, se basan en 6 atributos de dos opciones (con influencia en la repetición según la literatura académica).
+-   También se pregunta a los profesores por posibles políticas preferidas para ayudar a solucionar esta situación
+-   Con esto, respondemos a las preguntas:
+    -   ¿Son estos atributos determinantes para que el profesor decida si el alumno repite o no?
+    -   ¿Es siempre peor cuantos más atributos negativos se tenga?
+    -   ¿Qué atributos son más importantes para provocar la repetición?
+    -   ¿Cambian los patrones de repetición dependiendo de la política preferida?
+    -   ¿Le cuesta más a los profesores suspender a algunos tipos de alumnos?
+:::
+:::
+:::
+
+::: column
+| Variable                                                             | Opción 1 | Opción 2 |
+|:------------------------------------------------|:----------:|:----------:|
+| **Género**                                                           |  Hombre  |  Mujer   |
+| **Situación familiar**                                               |    Sí    |    No    |
+| **Suspensos en 3 o más asignaturas**                                 |    Sí    |    No    |
+| **Carencia de habilidades matemáticas y/o lingüísticas**             |    Sí    |    No    |
+| **Ha cometido una infracción grave o muy grave o ha sido expulsado** |    Sí    |    No    |
+| **Falta frecuente a clase sin justificación**                        |    Sí    |    No    |
+:::
+:::
+
+## La muestra final
+
+```{r}
+
+knitr::kable(readRDS("graficos/tabla_resumen.rds"), digits=2)
+```
+
+## El número de atributos afecta a la decisión de repetición
+
+::: panel-tabset
+### El efecto de poseer al menos un atributo negativo
 
 ::: {layout="[[1,1]]"}
-::: {.column}
-::: {.callout}
-<div style="font-size: 1.3em;">
-- Se realiza un experimento "survey experiment" con profesores de Castilla La Mancha, que responden si suspenderían o no a alumnos hipotéticos
-- Para ello, se basan en 6 características de dos opciones (con influencia en la repetición según la literatura académica).
-- También se pregunta a los profesores por posibles políticas preferidas para ayudar a solucionar esta situación
-- Con esto, respondemos a las preguntas:
-  + ¿Son estas características determinantes para que el profesor decida si el alumno repite o no?
-  + ¿Es siempre peor cuantas más características negativas se tenga?
-  + ¿Qué características son más importantes para provocar la repetición?
-  + ¿Cambian los patrones de repetición dependiendo de la política preferida?
-  + ¿Le cuesta más a los profesores suspender a algunos tipos de alumnos?
-</div>
+::: column
+::: callout
+::: {style="font-size: 1.3em;"}
+-   Tener al menos un atributo negativo aumenta la probabilidad de suspenso desde un 3.4% hasta casi un 50%.
+:::
 :::
 :::
 
-::: {.column}
-
-| Variable                                                                   | Opción 1 | Opción 2 |
-|:--------------------------------------------------------------------------|:--------:|:--------:|
-| **Género**                                                                | Hombre   | Mujer    |
-| **Migrante**                                                              | Sí       | No       |
-| **Suspensos en 3 o más asignaturas**                                      | Sí       | No       |
-| **Carencia de habilidades matemáticas y/o lingüísticas**                  | Sí       | No       |
-| **Ha cometido una infracción grave o muy grave o ha sido expulsado**      | Sí       | No       |
-| **Falta frecuente a clase sin justificación**                              | Sí       | No       |
-
-:::
-:::
-
-
-## El número de características afecta a la decisión de repetición
-
-::: {.panel-tabset}
-### El efecto de poseer una característica
-::: {layout="[[1,1]]"}
-
-:::{.column}
-:::{.callout}
-<div style="font-size: 1.3em;">
-- Tener al menos un condicionante aumenta la probabilidad de suspenso desde un 3.4% hasta casi un 50%. 
-</div>
-
-:::
-:::
-::: {.column}
-
+::: column
 ![](graficos/algunovsninguno.jpeg){width="60%"}
 :::
 :::
 
-### El efecto de cada característica adicional
+### El efecto de cada atributo negativo adicional
 
 ::: {layout="[[1,1]]"}
-
-::: {.column}
-::: {.callout}
-<div style="font-size: 1.3em;">
-- Cuantas más características típicas de la repetición, mayor probabilidad de que el profesor suspenda al alumno
-- Esta relación es constante, es decir, la diferencia en tasa de repetición de alumnos con 2 o 3 características es la misma que la diferencia entre alumnos de 4 y 5 características. 
-- Sin embargo, la sexta característica no aumenta la probabilidad de repetición con respecto a la quinta. Es decir, 5 características son suficientes para que el alumno repita con un 85% de probabilidad.
-</div>
-
+::: column
+::: callout
+::: {style="font-size: 1.3em;"}
+-   Cuantos más atributos típicos de la repetición, mayor probabilidad de que el profesor suspenda al alumno
+-   Un 3.4% de los profesores suspenden al alumno pese a no tener atributos negativos (boycott al experimento), mientras que un 15% de las tarjetas no son suspensas aunque tengan todos los atributos negativos (profesores que no creen en la repetición)
+-   Sin embargo, el sexto atributo negativo no aumenta la probabilidad de repetición con respecto al quinto. Es decir, 5 atributos son suficientes para que el alumno repita con un 85% de probabilidad.
+:::
 :::
 :::
 
-
-::: {.column}
+::: column
 ![](graficos/monotonia.jpeg){width="60%"}
-
 :::
-:::
-
-:::
-
-## Los suspensos determinan la repetición para los profesores 
-
-:::{layout="[[1,1]]"}
-
-:::{.column}
-::: {.callout}
-<div style="font-size: 1.3em;">
-
-- Las características socioeconómicas (género, origen) no hacen que los profesores hagan suspender mucho más a los niños
-- Las características académicas son más importantes, especialmente que el alumno tenga 3 o más suspensos
-- Sorprendemente, esto es más importante para los profesores que la falta de habilidades lingüísticas y matemáticas del alumno
-- Las características relacionadas con el comportamiento (absentismo o expulsión) son también importantes, pero en menor medida
-</div>
-
 :::
 :::
 
+## Los suspensos determinan la repetición para los profesores
 
-::: {.column}
+::: {layout="[[1,1]]"}
+::: column
+::: callout
+::: {style="font-size: 1.3em;"}
+-   Los atributos socioeconómicas (género, situación familiar) no hacen que los profesores hagan suspender mucho más a los niños
+-   Los atributos académicos son más importantes, especialmente que el alumno tenga 3 o más suspensos
+-   Esto es más importante para los profesores que la falta de competencias lingüísticas y matemáticas del alumno
+-   Los atributos relacionadas con el comportamiento (absentismo o disruptivo) son también importantes, pero en menor medida
+:::
+:::
+:::
+
+::: column
 ![](graficos/unfallo.jpeg){width="60%"}
 :::
-
 :::
-## Las interacciones entre características también son importantes
 
-:::{layout="[[1,1]]"}
+## Las interacciones entre atributos también son importantes
 
-:::{.column}
-::: {.callout}
-<div style="font-size: 1.3em;">
-
-- Los alumnos que suspenden y tienen carencia de habilidades matemáticas y/o lingüísticas  llegan prácticamente a la probabilidad máxima de repetición
-- Como ya se podía observar, el número de suspensos es más importante que las carencias en matemáticas y/o lengua para los profesores.
-  + Un alumno con varios suspensos pero sin carencias pasa de tener una probabilidad de suspenso de 43.9% a 81.2%
-  + Sin embargo, un alumno sin suspensos pero con carencias matemáticas y lingüísticas pasa de un 18.2% de probabilidad de repetir a un 81.2%
-</div>
-
+::: {layout="[[1,1]]"}
+::: column
+::: callout
+::: {style="font-size: 1.3em;"}
+-   Los alumnos que suspenden y tienen carencia de competencias matemáticas y/o lingüísticas llegan prácticamente a la probabilidad máxima de repetición
+-   Como ya se podía observar, el número de suspensos es más importante que la falta de competencias en matemáticas y/o lengua para los profesores.
+    -   Un alumno con varios suspensos con competencias pasa de tener una probabilidad de suspenso de 43.9% a 81.2% sin las competencias.
+    -   Sin embargo, un alumno sin suspensos pero con falta de competencias matemáticas y lingüísticas pasa de un 18.2% de probabilidad de repetir a un 81.2% si tiene suspensos.
+:::
 :::
 :::
 
-
-::: {.column}
+::: column
 ![](graficos/interacciondosfallos.jpeg){width="60%"}
-:::
 
+::: {style="font-size: 1em; color: grey"}
+Categoría base: niña sin condicionantes
+:::
+:::
 :::
 
 ## Las políticas preferidas también son un buen indicativo de si el profesor es más dado a la repetición
-::: {.panel-tabset}
 
+::: panel-tabset
 ### Las políticas preferidas
 
-:::{layout="[[1,1]]"}
-
-:::{.column}
-
-::: {.panel-tabset}
-
-### Las políticas
-::: {.callout}
-<div style="font-size: 1.3em;">
-
+::: {layout="[[1,1]]"}
+::: column
+::: callout
+::: {style="font-size: 1.3em;"}
 <ul style="list-style-type: lower-alpha;">
-  <li>Se cambien los criterios de promoción en la Junta de Evaluación: unanimidad para hacer repetir, voto secreto y anónimo. (9.6%).</li>
-  <li>Todo el profesorado del centro recibe formación adaptada y acompañamiento docente en metodologías didácticas inclusivas y gestión de aula multinivel. (36.1%).</li>
-  <li>El alumno recibirá refuerzo educativo en un grupo pequeño el próximo curso (en grupo pequeño, un profesor de apoyo, dentro o fuera del aula). (54.3%).</li>
+
+<li>Se cambien los criterios de promoción en la Junta de Evaluación: unanimidad para hacer repetir, voto secreto y anónimo.
+(9.6%).</li>
+
+<li>Todo el profesorado del centro recibe formación adaptada y acompañamiento docente en metodologías didácticas inclusivas y gestión de aula multinivel.
+(36.1%).</li>
+
+<li>El alumno recibirá refuerzo educativo en un grupo pequeño el próximo curso (en grupo pequeño, un profesor de apoyo, dentro o fuera del aula).
+(54.3%).</li>
+
 </ul>
-
-</div>
 :::
-
-### Conclusiones
-
-::: {.callout}
-<div style="font-size: 1.3em;">
-
-- Los profesores que piensan que se deberían cambiar los criterios de promoción son los más duros.
-- Sin embargo, los profesores que consideran que la mejor idea sería formar a los profesores son los que menos suspenden.
-- Las diferencias no son muy grandes pero sí significativas.
-</div>
-
-:::
-
-
 :::
 :::
 
+::: column
+![](graficos/piechart.jpeg){width="60%"}
+:::
+:::
 
-::: {.column}
+### Decisiones por política
+
+::: {layout="[[1,1]]"}
+::: column
+::: callout
+::: {style="font-size: 1.3em;"}
+-   Los profesores que piensan que se deberían cambiar los criterios de promoción son los más duros.
+-   Sin embargo, los profesores que consideran que la mejor idea sería formar a los profesores son los que menos suspenden.
+-   Las diferencias no son muy grandes pero sí significativas.
+:::
+:::
+:::
+
+::: column
 ![](graficos/politica_preferida.jpeg){width="60%"}
 :::
-
 :::
 
-### La importancia de las características para cada tipo de profesor
+### Decisiones por atributo y tipo de profesor
 
-:::{layout="[[0.7,1.3]]"}
-
-:::{.column}
-
-:::{.panel-tabset}
+::: {layout="[[0.7,1.3]]"}
+::: column
+::: panel-tabset
 ### Formación
-::: {.callout}
-<div style="font-size: 1.3em;">
 
-- Los profesores que creen que la mejor solución es formar a los profesores creen menos en la importancia de los suspensos como factor relevante para la repetición, aunque le dan mucha importancia a las carencias en habilidades matemáticas y lingüísticas.
-</div>
+::: callout
+::: {style="font-size: 1.3em;"}
+-   Los profesores que creen que la mejor solución es formar a los profesores creen menos en la importancia de los suspensos como factor relevante para la repetición, aunque le dan mucha importancia a la falta de competencias matemáticas y lingüísticas.
+:::
 :::
 
 ### Refuerzo
-::: {.callout}
-<div style="font-size: 1.3em;">
-- Los profesores que consideran que habría que aportar refuerzo a los alumnos también le dan importancia a los suspensos, y más importancia al absentismo que sus compañeros. Por otro lado, son los que menos importancia le dan al origen del alumno.
-</div>
+
+::: callout
+::: {style="font-size: 1.3em;"}
+-   Los profesores que consideran que habría que aportar refuerzo a los alumnos también le dan importancia a los suspensos, y más importancia al absentismo que sus compañeros. Por otro lado, son los que menos importancia le dan a la situación familiar del alumno.
+:::
 :::
 
 ### Criterios
-::: {.callout}
-<div style="font-size: 1.3em;">
-- Los profesores que consideran que habría que ajustar los criterios de promoción son los que más suspenden, aunque sean la minoría. Para ellos, los suspensos y las carencias en habilidades matemáticas y lingüísticas son clave.
-</div>
+
+::: callout
+::: {style="font-size: 1.3em;"}
+-   Los profesores que consideran que habría que ajustar los criterios de promoción son los que más suspenden, aunque sean la minoría. Para ellos, los suspensos y la falta de competencias matemáticas y lingüísticas son clave.
+:::
 :::
 :::
 :::
 
-
-::: {.column}
+::: column
 ![](graficos/penalizacion1fallo_gustospolitica.jpeg){width="60%"}
 :::
-
 :::
-
-
 :::
 
 ## Los suspensos son la característica más importante para determinar si un alumno suspende
 
-:::{layout="[[1,1]]"}
-
-:::{.column}
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Machine learning
-::: {.callout}
-<div style="font-size: 1.3em;">
-- El modelo de Machine Learning llamado Random Forest se basa en árboles de decisión para predecir la respuesta más probable de un profesor dadas las características del alumno.
-- Este modelo, alimentado con nuestra base de datos, nos explica cuáles son las características más determinantes a la hora de tomar decisiones para los profesores. 
-- En este caso, como cabía esperar, los suspensos y las carencias en habilidades clave destacan, aunque el absentismo o las expulsiones son también relevantes. 
-- Por otro lado, las características socioeconómicas como el origen o el género del alumno no son tan importantes.
-</div>
 
+::: {layout="[[1,1]]"}
+::: column
+::: callout
+::: {style="font-size: 1.3em;"}
+-   El modelo de Machine Learning llamado Random Forest se basa en árboles de decisión para predecir la respuesta más probable de un profesor dadas las características del alumno.
+-   Este modelo, alimentado con nuestra base de datos, nos explica cuáles son los atributos más determinantes a la hora de tomar decisiones para los profesores.
+-   En este caso, como cabía esperar, los suspensos y la falta de competencias clave destacan, aunque el absentismo o ser disruptivo son también relevantes.
+-   Por otro lado, los atributos socioeconómicas como la situación familiar o el género del alumno no son tan importantes.
+:::
+:::
+:::
+
+::: column
+![](graficos/random_forest.jpeg){width="60%"}
+:::
 :::
 
 ### Tiempos de suspenso
 
-::: {.callout}
+::: {layout="[[1,1]]"}
+::: column
+::: callout
+::: {style="font-size: 1.3em;"}
+-   Utilizamos un modelo supervisado para ver qué atributos influyen más a la hora de suspender a un alumno.
+-   Observamos que, de media, los suspensos reducen la decisión en 6.3 segundos, por lo que facilitan al profesor la decisión de hacer repetir.
+-   Ser disruptivo y las absenciones, por otro lado, aumentan el tiempo de toma de decisiones de manera significativa (3.4 y 4.4 segundos respectivamente).
+-   El género, la situación familiar y la falta de competencias no son determinantes para explicar el tiempo que toma a un profesor la decisión de suspenso
+:::
+:::
+:::
+
+::: column
+![](graficos/coefplot.jpeg){width="60%"}
+:::
+:::
+:::
+
+## ¿Qué le parecería prohibir la repetición de curso por ley?
+
+
+:::{layout="[[1,1]]"}
+
+:::{.column}
+
+### A favor
+
+::: callout
 <div style="font-size: 1.3em;">
-
-- Utilizamos otro modelo para ver qué características influyen más a la hora de suspender a un alumno.
-- Observamos que, de media, los suspensos reducen la decisión en 6.3 segundos, por lo que facilitan al profesor la decisión de hacer repetir. 
-- Las expulsiones y las absenciones, por otro lado, aumentan el tiempo de toma de decisiones de manera significativa (3.4 y 4.4 segundos respectivamente). 
-- El género, origen y las carencias no son determinantes para explicar el tiempo que toma a un profesor la decisión de suspenso
+- **Fomentar alternativas más eficaces:** 6.2%. Prefieren invertir en recursos, apoyos personalizados y programas alternativos antes que permitir la repetición.
+- **Necesidad de madurez personal:** 4.2%. Consideran que algunos alumnos necesitan tiempo para madurar, pero no siempre debe implicar repetir.
+- **Evitar efectos negativos sobre el alumno:** 3.6%. Señalan posibles consecuencias emocionales, sociales o motivacionales de repetir curso.
+- **Repetición solo en casos excepcionales:** 1.2%. Defienden que se use solo como medida extrema, tras valorar bien cada caso.
+- **Importancia del enfoque competencial:** 0.2%. Valoran que el aprendizaje de competencias debe pesar más que el número de asignaturas suspensas.
 </div>
+:::
+:::
 
+
+
+:::{.column}
+
+### En contra
+
+::: callout
+<div style="font-size: 1.3em;">
+-   **Garantizar adquisición de competencias:** 23.7%. Argumentan que no se debe pasar de curso sin dominar los contenidos o competencias básicas.
+-   **Repetir como oportunidad de mejora:** 11.7%. Ven la repetición como una herramienta útil para reforzar conocimientos y mejorar confianza.
+-   **Diferencias individuales en maduración:** 8.3%. Destacan que cada alumno tiene un ritmo madurativo distinto y repetir puede ayudar.
+-   **Valoración individualizada:** 2.3%. Señalan que las decisiones deben tomarse caso por caso, no con reglas generales.
+-   **Crítica a enfoque estadístico:** 0.3%. Acusan a las políticas de estar centradas en maquillar cifras más que en el aprendizaje real.
+-   **Impacto negativo en el aula:** 0.1%. Mencionan que alumnos no preparados retrasan o afectan al resto del grupo.
+</div>
+:::
 :::
 
 
 :::
 
-:::
+## ¿Qué le parecería eliminar el Certificado de Escolaridad (título de finalización de la ESO) y sustituirlo por un informe de competencias del alumnado?
 
+::: {layout="[[1,1]]"}
 
 ::: {.column}
-![](graficos/random_forest.jpeg){width="60%"}
+
+### A favor
+
+::: {.callout style="font-size: 1.3em;"}
+
+- **Reconoce fortalezas y debilidades específicas del alumno (orientación personalizada):** Permite mostrar capacidades reales, identificar áreas a mejorar y orientar al alumno en su futuro. 19.1%. Ejemplo: "El informe permite ver sus puntos fuertes y débiles y encaminarse hacia un lado u otro."
+- **Mejor reflejo del aprendizaje actual que un título general:** Sostienen que el informe es más útil que un certificado genérico que no detalla logros reales. 11.3%. Ejemplo: "El certificado no refleja lo que sabe hacer el alumno."
+- **Atiende mejor a la diversidad y características del alumnado:** Beneficia a estudiantes con dificultades específicas o perfiles no tradicionales. 7.8%. Ejemplo: "No todo el alumnado es capaz de conseguir el certificado, hay que tener en cuenta sus características personales y sociales."
+- **Promueve una evaluación más justa y centrada en competencias reales:** Defienden que es más coherente con el enfoque educativo por competencias. 6.2%. Ejemplo: "La valoración de competencias es más importante en la sociedad actual."
+
+:::
+:::
+
+::: {.column}
+
+### En contra
+
+::: {.callout style="font-size: 1.3em;"}
+
+- **Postura ambigua o indiferente:** 1.9%. Respuestas como "NS/NC", "me da igual" o dudas sobre el impacto real del cambio.
+- **Resta importancia al tipo de documento:** 1.4%. Consideran que cambiar el nombre o formato del documento no afecta significativamente al alumnado.
+- **Crítica a cambios burocráticos innecesarios:** 0.9%. Ven el informe como otra forma de burocracia sin impacto real en el aprendizaje.
+- **Perjudica la motivación y cultura del esfuerzo:** 0.9%. Argumentan que sin un título oficial que sirva como meta, se reduce la motivación para esforzarse.
+- **Rechazo por ser una medida no probada:** 0.2%. Desconfían del cambio por falta de experiencia o evidencias claras.
+- **Defensa del valor del certificado actual:** 0.2%. Ven el certificado como una garantía de nivel que no debe eliminarse.
+
+:::
 :::
 
 :::
 
 
 
+## Anexo: primaria vs. secundaria
+
+::: panel-tabset
+### UN FALLO
+
+::: {layout="[[1,1]]"}
+::: column
+### PRIMARIA
+
+![](graficos/unfalloprimaria.jpeg){width="60%"}
+:::
+
+::: column
+### SECUNDARIA
+
+![](graficos/unfallosecundaria.jpeg){width="60%"}
+:::
+:::
+
+### INTERACCIÓN
+
+::: {layout="[[1,1]]"}
+### Primaria
+
+::: column
+![](graficos/interacciondosfallosprimaria.jpeg){width="60%"}
+:::
+
+### SECUNDARIA
+
+::: column
+![](graficos/interacciondosfallossecundaria.jpeg){width="60%"}
+:::
+:::
+:::

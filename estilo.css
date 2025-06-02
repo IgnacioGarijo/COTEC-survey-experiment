@@ -138,7 +138,7 @@
   top: 70%; /* Align vertically */
   right:80vw ; /* Align to the right of the footer */
   transform: translateY(-50%); /* Center the image vertically */
-  background-image: url("svg/logo2.png"); /* Add your image path here */
+  background-image: url("svg/logochico1.png"); /* Add your image path here */
   background-size: contain; /* Ensures the image scales proportionally */
   background-repeat: no-repeat; /* Prevent tiling */
   width: 30px; /* Adjust image width */
