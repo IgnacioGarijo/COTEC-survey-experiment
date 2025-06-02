@@ -93,7 +93,7 @@ knitr::kable(readRDS("graficos/tabla_resumen.rds"), digits=2)
 ::: panel-tabset
 ### El efecto de poseer al menos un atributo negativo
 
-::: {layout="[[1,1]]"}
+::: {layout="[[1,1.5]]"}
 ::: column
 ::: callout
 ::: {style="font-size: 1.3em;"}
@@ -109,7 +109,7 @@ knitr::kable(readRDS("graficos/tabla_resumen.rds"), digits=2)
 
 ### El efecto de cada atributo negativo adicional
 
-::: {layout="[[1,1]]"}
+::: {layout="[[1,1.5]]"}
 ::: column
 ::: callout
 ::: {style="font-size: 1.3em;"}
@@ -173,7 +173,7 @@ Categoría base: niña sin condicionantes
 ::: panel-tabset
 ### Las políticas preferidas
 
-::: {layout="[[1,1.5]]"}
+::: {layout="[[1,1.6]]"}
 ::: column
 ::: callout
 ::: {style="font-size: 1.3em;"}
@@ -258,7 +258,7 @@ Categoría base: niña sin condicionantes
 ::: panel-tabset
 ### Machine learning
 
-::: {layout="[[1,1]]"}
+::: {layout="[[1,1.5]]"}
 ::: column
 ::: callout
 ::: {style="font-size: 1.3em;"}
@@ -277,7 +277,7 @@ Categoría base: niña sin condicionantes
 
 ### Tiempos de suspenso
 
-::: {layout="[[1,1]]"}
+::: {layout="[[1,1.5]]"}
 ::: column
 ::: callout
 ::: {style="font-size: 1.3em;"}
@@ -344,13 +344,13 @@ Categoría base: niña sin condicionantes
 
 ### A favor
 
-::: {.callout style="font-size: 1.3em;"}
-
-- **Reconoce fortalezas y debilidades específicas del alumno (orientación personalizada):** Permite mostrar capacidades reales, identificar áreas a mejorar y orientar al alumno en su futuro. 19.1%. Ejemplo: "El informe permite ver sus puntos fuertes y débiles y encaminarse hacia un lado u otro."
-- **Mejor reflejo del aprendizaje actual que un título general:** Sostienen que el informe es más útil que un certificado genérico que no detalla logros reales. 11.3%. Ejemplo: "El certificado no refleja lo que sabe hacer el alumno."
-- **Atiende mejor a la diversidad y características del alumnado:** Beneficia a estudiantes con dificultades específicas o perfiles no tradicionales. 7.8%. Ejemplo: "No todo el alumnado es capaz de conseguir el certificado, hay que tener en cuenta sus características personales y sociales."
-- **Promueve una evaluación más justa y centrada en competencias reales:** Defienden que es más coherente con el enfoque educativo por competencias. 6.2%. Ejemplo: "La valoración de competencias es más importante en la sociedad actual."
-
+::: {.callout}
+<div style="font-size: 1.3em;">
+- **Reconoce fortalezas y debilidades específicas del alumno (orientación personalizada):** 19.1%. Permite mostrar capacidades reales, identificar áreas a mejorar y orientar al alumno en su futuro.  
+- **Mejor reflejo del aprendizaje actual que un título general:** 11.3%.Sostienen que el informe es más útil que un certificado genérico que no detalla logros reales. 
+- **Atiende mejor a la diversidad y características del alumnado:** 7.8%. Beneficia a estudiantes con dificultades específicas o perfiles no tradicionales.
+- **Promueve una evaluación más justa y centrada en competencias reales:** 6.2%. Defienden que es más coherente con el enfoque educativo por competencias. 
+</div>
 :::
 :::
 
@@ -358,15 +358,15 @@ Categoría base: niña sin condicionantes
 
 ### En contra
 
-::: {.callout style="font-size: 1.3em;"}
-
+::: {.callout}
+<div style="font-size: 1.2em;">
 - **Postura ambigua o indiferente:** 1.9%. Respuestas como "NS/NC", "me da igual" o dudas sobre el impacto real del cambio.
 - **Resta importancia al tipo de documento:** 1.4%. Consideran que cambiar el nombre o formato del documento no afecta significativamente al alumnado.
 - **Crítica a cambios burocráticos innecesarios:** 0.9%. Ven el informe como otra forma de burocracia sin impacto real en el aprendizaje.
 - **Perjudica la motivación y cultura del esfuerzo:** 0.9%. Argumentan que sin un título oficial que sirva como meta, se reduce la motivación para esforzarse.
 - **Rechazo por ser una medida no probada:** 0.2%. Desconfían del cambio por falta de experiencia o evidencias claras.
 - **Defensa del valor del certificado actual:** 0.2%. Ven el certificado como una garantía de nivel que no debe eliminarse.
-
+</div>
 :::
 :::
 

@@ -211,7 +211,7 @@ gg <- df2 %>%
   guides(fill = "none")
 
 
-ggsave(gg, filename=paste0(salidas, "unfallo",".jpeg"), width=7)
+ggsave(gg, filename=paste0(salidas, "unfallo",".jpeg"), width=7, height=5)
 
 # GEOM_TILE INTERACCIÓN DOS FALLOS
 
@@ -259,7 +259,7 @@ gg<-df3%>%
   scale_fill_gradient(low=paleta[5], high=paleta[1])+
   guides(fill="none")
   
-ggsave(gg, filename=paste0(salidas, "interacciondosfallos",".jpeg"), width=7)
+ggsave(gg, filename=paste0(salidas, "interacciondosfallos",".jpeg"), width=7, height = 5)
 
 
 #### GUSTOS EN POLÍTICA
@@ -285,7 +285,7 @@ gg<-df2 %>%
   scale_fill_manual(values = c(paleta[1], paleta[3], paleta[4]))+
   guides(fill="none")
 
-ggsave(gg, filename=paste0(salidas, "piechart.jpeg"), width=6)
+ggsave(gg, filename=paste0(salidas, "piechart.jpeg"), width=7)
 
 
 # GUSTOS EN POLÍTICA DECISIONES
@@ -347,7 +347,7 @@ gg<-df2 %>%
 
 
 
-ggsave(gg, filename=paste0(salidas, "penalizacion1fallo_gustospolitica",".jpeg"), width=7)
+ggsave(gg, filename=paste0(salidas, "penalizacion1fallo_gustospolitica",".jpeg"), width=7, height=5)
 
 
 
@@ -540,7 +540,7 @@ df2 %>%
     scale_fill_gradient(low=paleta[5], high=paleta[1])+
     guides(fill="none")
   
-  ggsave(gg, filename=paste0(salidas, "interacciondosfallos",titulo,".jpeg"), width=7)
+  ggsave(gg, filename=paste0(salidas, "interacciondosfallos",titulo,".jpeg"), width=7, height = 5)
   }
   
   ## 1 FALLO PRIMARIA/SECUNDARIA
@@ -593,13 +593,13 @@ df2 %>%
       color = "grey85",
       fontface = "bold"
     ) +
-    scale_y_continuous(labels = label_percent()) +
+    scale_y_continuous(labels = label_percent(), limits = c(0,.6)) +
     scale_fill_manual(values = c(paleta[3], paleta[4])) +
     scale_color_identity() +  # Esto usa los colores tal cual están en la variable
     guides(fill = "none")
   
   
-  ggsave(gg, filename=paste0(salidas, "unfallo", titulo,".jpeg"), width=7)
+  ggsave(gg, filename=paste0(salidas, "unfallo", titulo,".jpeg"), width=7, height=5)
   
   }
   
@@ -608,7 +608,7 @@ df2 %>%
  mujeres<- sum(df$female==1, na.rm=T)/sum(!is.na(df$female))
  hombres<- sum(df$female==0, na.rm=T)/sum(!is.na(df$female))
  
- municipios<-n_distinct(df$cp) # total 919
+ municipios<-n_distinct(df$cp)/919 # total 919
  
  prof_mun<- df %>% group_by(cp) %>% summarise(valor=n()) %>% ungroup() %>% summarise(mean(valor))
  prof_mun<- prof_mun$`mean(valor)`
@@ -639,7 +639,7 @@ df2 %>%
      mujeres*100, 
      hombres*100, 
      municipios, 
-     prof_mun, 
+     prof_mun*100, 
      edad, 
      primaria*100, 
      secundaria*100, 
