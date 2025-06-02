@@ -128,7 +128,7 @@ knitr::kable(readRDS("graficos/tabla_resumen.rds"), digits=2)
 
 ## Los suspensos determinan la repetición para los profesores
 
-::: {layout="[[1,1]]"}
+::: {layout="[[1,1.5]]"}
 ::: column
 ::: callout
 ::: {style="font-size: 1.3em;"}
@@ -147,7 +147,7 @@ knitr::kable(readRDS("graficos/tabla_resumen.rds"), digits=2)
 
 ## Las interacciones entre atributos también son importantes
 
-::: {layout="[[1,1]]"}
+::: {layout="[[0.8,1.4]]"}
 ::: column
 ::: callout
 ::: {style="font-size: 1.3em;"}
@@ -173,7 +173,7 @@ Categoría base: niña sin condicionantes
 ::: panel-tabset
 ### Las políticas preferidas
 
-::: {layout="[[1,1]]"}
+::: {layout="[[1,1.5]]"}
 ::: column
 ::: callout
 ::: {style="font-size: 1.3em;"}
@@ -200,7 +200,7 @@ Categoría base: niña sin condicionantes
 
 ### Decisiones por política
 
-::: {layout="[[1,1]]"}
+::: {layout="[[1,1.3]]"}
 ::: column
 ::: callout
 ::: {style="font-size: 1.3em;"}
@@ -380,14 +380,16 @@ Categoría base: niña sin condicionantes
 ### UN FALLO
 
 ::: {layout="[[1,1]]"}
-::: column
+
 ### PRIMARIA
+::: column
+
 
 ![](graficos/unfalloprimaria.jpeg){width="60%"}
 :::
 
-::: column
 ### SECUNDARIA
+::: column
 
 ![](graficos/unfallosecundaria.jpeg){width="60%"}
 :::
