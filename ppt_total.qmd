@@ -25,25 +25,25 @@ editor:
 ::: {style="text-align: center; margin-top: 1em; margin-bottom: 1em"}
 ::: {layout="[[1,1]]"}
 ::: column
-Antonio Alfonso, Loyola
+Antonio Alfonso
 
-Pablo Brañas, Loyola
+Pablo Brañas
 
-María Castro, Complutense
+María Castro
 
-Ignacio Garijo, Loyola
+Ignacio Garijo
 
-Diego Jorrat, Loyola
+Diego Jorrat
 :::
 
 ::: column
-Iria Mata, COTEC
+Iria Mata
 
-Anxo Sánchez, Carlos III
+Anxo Sánchez
 
-Ainara Zubillaga, COTEC
+Ainara Zubillaga
 
-Michelle K. Quintero, Save The Children
+Michelle K. Quintero
 
 Alfonso Echazarra
 :::
