@@ -608,10 +608,13 @@ df2 %>%
  mujeres<- sum(df$female==1, na.rm=T)/sum(!is.na(df$female))
  hombres<- sum(df$female==0, na.rm=T)/sum(!is.na(df$female))
  
- municipios<-n_distinct(df$cp)/919 # total 919
+ municipios<-paste0(n_distinct(df$cp), " (919)") # total 919
  
  prof_mun<- df %>% group_by(cp) %>% summarise(valor=n()) %>% ungroup() %>% summarise(mean(valor))
  prof_mun<- prof_mun$`mean(valor)`
+ 
+ prof_mun2<- df %>% group_by(cp) %>% summarise(valor=n()) %>% ungroup() %>% summarise(median(valor))
+ prof_mun2<- prof_mun2$`median(valor)`
  
  edad<-mean(df$edad, na.rm=T)
  
@@ -622,30 +625,36 @@ df2 %>%
  privada<- sum(df$titularidad=="Privada", na.rm=T)/sum(!is.na(df$titularidad))
  concertada<- sum(df$titularidad=="Concertada", na.rm=T)/sum(!is.na(df$titularidad))
  
+ n<- n_distinct(df2$id)
+ 
  tabla_resumen <- tibble(
    Métrica = c(
      "Porcentaje mujeres", 
      "Porcentaje hombres", 
      "Total municipios", 
      "Profesores por municipio (media)", 
+     "Profesores por municipio (mediana)",
      "Edad media", 
      "Porcentaje primaria", 
      "Porcentaje secundaria", 
      "Porcentaje titularidad pública", 
      "Porcentaje titularidad privada", 
-     "Porcentaje titularidad concertada"
+     "Porcentaje titularidad concertada", 
+     "n muestral"
    ),
    Valor = c(
-     mujeres*100, 
-     hombres*100, 
-     municipios, 
-     prof_mun*100, 
-     edad, 
-     primaria*100, 
-     secundaria*100, 
-     publico*100, 
-     privada*100, 
-     concertada*100
+     round(mujeres*100,2),
+     round(hombres*100,2),
+     municipios,
+     round(prof_mun,2),
+     prof_mun2,
+     round(edad,2), 
+     round(primaria*100,2), 
+     round(secundaria*100,2), 
+     round(publico*100,2), 
+     round(privada*100,2), 
+     round(concertada*100,2),
+     n
    )
  )
  
