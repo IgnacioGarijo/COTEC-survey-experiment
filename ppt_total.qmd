@@ -163,7 +163,7 @@ knitr::kable(readRDS("graficos/tabla_resumen.rds"), digits=2)
 ![](graficos/interacciondosfallos.jpeg){width="60%"}
 
 ::: {style="font-size: 1em; color: grey"}
-Categoría base: niña sin condicionantes
+Categoría base: niña sin atributos negativos
 :::
 :::
 :::
