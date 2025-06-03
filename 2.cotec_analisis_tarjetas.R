@@ -132,7 +132,7 @@ df2<-df2 %>% filter(!alumno %in% c("alumno_1_1", "alumno_2_1"))
 
 gg<-df2 %>% 
   mutate(suma %in% c(0,6)) %>% 
-  group_by(alumno=ifelse(suma==0, "Sin\ncondicionantes", "Con\ncondicionantes")) %>%
+  group_by(alumno=ifelse(suma==0, "Sin\natributos", "Con\natributos")) %>%
   summarise(ratio=sum(repite)/n()) %>% 
   ggplot(aes(alumno, ratio))+
   geom_col(fill=paleta[3])+
