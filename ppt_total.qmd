@@ -132,7 +132,7 @@ knitr::kable(readRDS("graficos/tabla_resumen.rds"), digits=2)
 ::: column
 ::: callout
 ::: {style="font-size: 1.3em;"}
--   Los atributos socioeconómicas (género, situación familiar) no hacen que los profesores hagan suspender mucho más a los niños
+-   Los atributos socioeconómicas (género, situación familiar) no hacen que los profesores hagan suspender mucho más a los alumnos
 -   Los atributos académicos son más importantes, especialmente que el alumno tenga 3 o más suspensos
 -   Esto es más importante para los profesores que la falta de competencias lingüísticas y matemáticas del alumno
 -   Los atributos relacionadas con el comportamiento (absentismo o disruptivo) son también importantes, pero en menor medida
