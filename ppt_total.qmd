@@ -9,6 +9,7 @@ format:
     incremental: false
     css: estilo.css
     embed-resources: true
+    transition: slide 
     controls: true
     footer: |
       <span style="font-size: 0.7em; color: #537d90;">Informe COTEC: determinantes de la repetición escolar</span>

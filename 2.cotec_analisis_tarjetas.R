@@ -93,7 +93,7 @@ vector_expulsion<- c("alumno_1_3", "alumno_1_6", "alumno_1_7", "alumno_1_8",
                      "alumno_8_5", "alumno_8_6", "alumno_8_8")
 
 
-df1<-df[,c("id", "orden_pref_criterios_promo", "orden_pref_formacion_prof", "orden_pref_refuerzo", "politica", "treatment", "primaria","female", "cp", "edad", "titularidad", namelist_ps)]
+df1<-df[,c("id", "orden_pref_criterios_promo", "orden_pref_formacion_prof", "orden_pref_refuerzo", "politica", "treatment","meritocracia", "primaria","female", "cp", "edad", "titularidad", namelist_ps)]
 
 df2<-df1 %>% 
   select(-ends_with("_ps")) %>% 
