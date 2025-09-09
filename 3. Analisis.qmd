@@ -1,13 +1,27 @@
+---
+title: "3. Analisis"
+format: html
+code-fold: true
+code-summary: "Mostrar código"
+editor: visual
+---
+
+
+
+```{r}
 source("C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/0. main.R")
 
 df<-read_parquet("cleandata.parquet")
 
 
-#### HARSHNESS MEASURES ####
-############################
+```
+
+
+# HARSHNESS MEASURES
 
 ## NUMBER OF REPETITIONS
 
+```{r}
 namelist<- setdiff(namelist, c("alumno_1_1", "alumno_2_1")) # Eliminar los alumnos de los ejemplos
 
 df1<-df[c("id",namelist)]
@@ -19,8 +33,13 @@ dfnrep<-df1 %>%
   mutate(value=ifelse(value=="repite", 1, 0)) %>% 
   summarise(ha=mean(value, na.rm=T)) %>% 
   ungroup()
+```
+
+
 
 ## AVERAGE DEVIATION
+
+```{r}
 
 df2<-df1 %>% 
   pivot_longer(all_of(namelist)) %>% 
@@ -35,9 +54,11 @@ dfad <-df2 %>%
   mutate(diferencia= value-tasa_rep) %>% 
   group_by(id) %>% 
   summarise(hb=mean(diferencia, na.rm=T))
+```
 
 ## DEVIATION WITH RESPECT TO PREDICTED PROBABILITY
 
+```{r}
 
 df2<-df1 %>% 
   pivot_longer(all_of(namelist), names_to="alumno", values_to="repite") %>% 
@@ -64,10 +85,11 @@ dfdm<-df2 %>%
   mutate(diferencia=repite-preds) %>% 
   group_by(id) %>% 
   summarise(hc=mean(diferencia, na.rm=T))
-
+```
 
 ## DEVIATION WITH RESPECT TO PREDICTED PROBABILITY IN COMPLETE MODEL
 
+```{r}
 
 df2<-df1 %>% 
   pivot_longer(all_of(namelist), names_to="alumno", values_to="repite") %>% 
@@ -97,8 +119,12 @@ dfdm_comp<-df2 %>%
   mutate(diferencia=repite-preds_compl) %>% 
   group_by(id) %>% 
   summarise(hd=mean(diferencia, na.rm=T))
+```
+
 
 ## Unión 
+
+```{r}
 
 df3<-inner_join(dfad, dfdm)
 df3<-inner_join(df3, dfnrep)
@@ -114,15 +140,14 @@ dfanalisis %>%
   summarise(value=mean(value, na.rm=T)) %>% 
   ungroup() %>% 
   ggplot(aes(edad, value, color=name))+
-  geom_point()+
-  geom_line()
+  geom_point()
+  
+```
+  
+  
+# CHARACTERIZING THE TEACHERS 
 
-
-#### CHARACTERIZING THE TEACHERS ####
-#####################################
-
-# nivel, experiencia, antiguedad3, female, edad, titularidad, sitlabpub, grupos_docencia, impacto_centro_estudiantes/impacto_region_estudiantes, empatia, meritocracia
-
+```{r}
 dfanalisis <-dfanalisis %>% 
   mutate(indefinido= ifelse(sitlabpub %in% c("Contratada/o laboral indefinido", "Funcionaria/o con destino definitivo"), "indefinido", "temporal"), 
          impacto_estudiantes= ifelse(is.na(impacto_centro_estudiantes), impacto_region_estudiantes, impacto_centro_estudiantes), 
@@ -140,7 +165,26 @@ dfanalisis <-dfanalisis %>%
 set.seed(123)
 
 modelo_rf <- ranger(
-  formula = hb ~ nivel + experiencia + antiguedad3 + female + edad +
+  formula = hc ~ nivel + experiencia + antiguedad3 + female + edad +
+    titularidad + indefinido + grupos_docencia + impacto_estudiantes +
+    empatia ,
+  data = dfanalisis,
+  importance = "permutation",  # mejor que "impurity" en regresión
+  num.trees = 1000,
+  mtry = 3,        # número de variables candidatas en cada split
+  min.node.size = 5, # tamaño mínimo de nodo terminal
+  respect.unordered.factors = TRUE
+)
+
+df_importancia <- data.frame(
+  variable = names(modelo_rf$variable.importance),
+  importancia = modelo_rf$variable.importance
+) %>%
+  arrange(desc(importancia))
+
+
+modelo_rf2 <- ranger(
+  formula = hc ~ nivel + experiencia + antiguedad3 + female + edad +
     titularidad + indefinido + grupos_docencia + impacto_estudiantes +
     empatia + meritocracia,
   data = dfanalisis,
@@ -151,15 +195,46 @@ modelo_rf <- ranger(
   respect.unordered.factors = TRUE
 )
 
-modelo_rf$variable.importance
+df_importancia2 <- data.frame(
+  variable = names(modelo_rf2$variable.importance),
+  importancia2 = modelo_rf2$variable.importance
+) %>%
+  arrange(desc(importancia2))
+
+dfimportancia<-full_join(df_importancia, df_importancia2) %>% 
+  pivot_longer(cols = c("importancia", "importancia2"))
+
+dfimportancia %>% 
+ggplot(aes(x = reorder(variable, value), y = value, fill=name)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  labs(
+    title = "Importancia de variables en Random Forest",
+    x = "Variable",
+    y = "Importancia (permutación)"
+  ) +
+  theme_minimal()+
+  scale_fill_manual(values = c("steelblue", "pink"))
+```
+
+
+```{r}
 
 dfanalisis$pred_rf <- predict(modelo_rf, data = dfanalisis)$predictions
+dfanalisis$pred_rf2 <- predict(modelo_rf2, data = dfanalisis)$predictions
 
-ggplot(dfanalisis, aes(x = hb, y = pred_rf)) +
+dfanalisis %>% 
+  select("hc", "pred_rf", "pred_rf2") %>% 
+  pivot_longer(cols = c("pred_rf", "pred_rf2")) %>% 
+  ggplot(aes(x = hc, y = value, color=name)) +
   geom_point(alpha = 0.6) +
-  geom_abline(color = "red") +
   labs(x = "Observado (ha)", y = "Predicho (Random Forest)") +
-  theme_minimal()
+    scale_fill_manual(values = c("steelblue", "pink"))
+
+```
+
+```{r}
+
 
 modeloa<-lm(data=dfanalisis, formula = ha ~ nivel + experiencia + antiguedad3 + female + edad +
           titularidad + indefinido + grupos_docencia + impacto_estudiantes +
@@ -181,7 +256,9 @@ modelsummary::modelsummary(models = list(modeloa, modelob, modeloc, modelod),
                            include.adjrs = FALSE,
                            include.nobs = FALSE,
                            include.rmse = FALSE)
+```
 
+```{r}
 
 
 modeloa2<-lm(data=dfanalisis, formula = ha ~ nivel + experiencia + antiguedad3 + female + edad + 
@@ -204,22 +281,29 @@ modelsummary(models = list(modeloa2, modelob2, modeloc2, modelod2),
                            include.adjrs = FALSE,
                            include.nobs = FALSE,
                            include.rmse = FALSE)
+
+```
+
+
+```{r}
+
 dfanalisis %>% 
   group_by(edad) %>% 
-  summarise(value=mean(hb, na.rm=T)) %>% 
+  summarise(value=mean(hc, na.rm=T)) %>% 
   ggplot(aes(edad, value))+
-  geom_point()+
-  geom_line()
+  geom_point()
+```
 
 
+# HYPOTHESES
 
-#### HYPOTHESES ####
-####################
 
-#### STUDY I
+## STUDY I
 
-# H11
+### H11
 
+
+```{r}
 dfanalisis<-dfanalisis %>% 
   mutate(control=ifelse(treatment==1, 1, 0))
 
@@ -234,8 +318,17 @@ modelsummary(models = modeloh11a,
 
 
 
+```
 
-modeloh11a<- lm(data=dfanalisis, formula= ha ~ politica)
+### H12
+
+
+```{r}
+
+dfanalisis<-dfanalisis %>% 
+  mutate(control=ifelse(treatment==1, 1, 0))
+
+modeloh11a<- lm(data=dfanalisis, formula= ha ~ control)
 
 modelsummary(models = modeloh11a,
              stars=c("*"=.1, "**"=.05, "***"=.01),
@@ -244,8 +337,9 @@ modelsummary(models = modeloh11a,
              include.nobs = FALSE,
              include.rmse = FALSE)
 
-###################################3333
+```
 
+```{r}
 dfanalisis %>% 
   mutate(
     # Crear cortes
@@ -268,9 +362,9 @@ dfanalisis %>%
   geom_point()+
   geom_hline(yintercept = 25)
 
-g<-dfanalisis %>% 
+dfanalisis %>% 
   mutate(
-    x = floor(hb / 0.2) * 0.2   # redondea hacia arriba al múltiplo más cercano de 0.05
+    x = floor(hb / 0.1) * 0.1   # redondea hacia arriba al múltiplo más cercano de 0.05
   ) %>% 
   group_by(x) %>% 
   summarise(
@@ -281,13 +375,20 @@ g<-dfanalisis %>%
     .groups = "drop"
   ) %>% 
   pivot_longer(cols = c("alumnos", "familias", "profesorado", "sistema")) %>% 
-  drop_na(value) %>% 
   ggplot(aes(x, value, color = name)) +
   geom_line() +
+  geom_hline(yintercept = 25, linetype = "dashed")
+  
+
+dfanalisis %>% 
+  ggplot(aes(hb, pct_culpa_familias))+
   geom_point()+
-  geom_hline(yintercept = 25, linetype = "dashed")+
-  geom_vline(xintercept = mean(dfanalisis$hb, na.rm=T), linetype="dashed") +
-  scale_x_continuous(breaks = seq(-0.2, 0.8, by=.2))
+  geom_smooth(
+    method = "lm",
+    formula = y ~ poly(x, 2),   # polinomio de grado 2
+    se = TRUE,                  # intervalo de confianza
+    color = "red"
+  )
 
 
 dfanalisis<-dfanalisis %>% 
@@ -297,7 +398,7 @@ dfanalisis<-dfanalisis %>%
          sistema2= pct_culpa_sistema_educativo^2
   )
 
-#summary(lm(data=dfanalisis, formula= hb ~ pct_culpa_profesorado )) # si le restas 25 es diferencia con respecto a 1/4
+summary(lm(data=dfanalisis, formula= hb ~ pct_culpa_profesorado )) # si le restas 25 es diferencia con respecto a 1/4
 
 modalu<-lm(data=dfanalisis, formula =  hb ~ pct_culpa_alumnos)
 modfam<-lm(data=dfanalisis, formula = hb ~ pct_culpa_familias)
@@ -306,32 +407,18 @@ modsist<-lm(data=dfanalisis, formula = hb ~ pct_culpa_sistema_educativo)
 
 dfanalisisrec<-dfanalisis %>% drop_na(hb, pct_culpa_alumnos)
 
-dfanalisisrec$pred_alumno<-predict(modalu, newdata = dfanalisisrec)
-dfanalisisrec$pred_fam<-predict(modfam, newdata = dfanalisisrec)
-dfanalisisrec$pred_prof<-predict(modprof, newdata = dfanalisisrec)
-dfanalisisrec$pred_sist<-predict(modsist, newdata = dfanalisisrec)
+dfanalisisrec$pred_alumno<-predict(modalu)
+dfanalisisrec$pred_fam<-predict(modfam, type="response")
+dfanalisisrec$pred_prof<-predict(modprof, type="response")
+dfanalisisrec$pred_sist<-predict(modsist, type="response")
 
 dfanalisisrec %>% 
-  pivot_longer(cols = c("pred_alumno", "pred_fam", "pred_prof", "pred_sist")) %>%
-  arrange(name, hb) %>% 
+  pivot_longer(cols = c("pred_alumno", "pred_fam", "pred_prof", "pred_sist")) %>% 
   ggplot(aes(hb, value, color=name))+
   geom_line()
 
-## de quién es la culpa por harshness
 
-p<-dfanalisis %>% 
-  select(hb, pct_culpa_alumnos, pct_culpa_familias, pct_culpa_profesorado, pct_culpa_sistema_educativo) %>% 
-  pivot_longer(cols = c("pct_culpa_alumnos", "pct_culpa_familias", "pct_culpa_profesorado", "pct_culpa_sistema_educativo")) %>% 
-  ggplot(aes(hb, value, color=name))+
-  geom_smooth(se=F, method="loess", linetype="dotted")
 
-h<-dfanalisis %>% 
-  select(hb, pct_culpa_alumnos, pct_culpa_familias, pct_culpa_profesorado, pct_culpa_sistema_educativo) %>% 
-  pivot_longer(cols = c("pct_culpa_alumnos", "pct_culpa_familias", "pct_culpa_profesorado", "pct_culpa_sistema_educativo")) %>% 
-  ggplot(aes(hb, value, color=name))+
-  geom_smooth(se=F, method="lm", linetype="dotted")
-
-## Distribución de harshness
 dfanalisis %>% 
   ggplot(aes(x= hb))+
   geom_density(smooth=1)+
@@ -339,49 +426,5 @@ dfanalisis %>%
   geom_vline(xintercept = median(dfanalisis$hb, na.rm=T), color="blue")
 
 
-
-# harshness por meritocracia
-dfanalisis %>% 
-  filter(!is.na(meritocracia), meritocracia!=1) %>%
-  group_by(meritocracia) %>% 
-  summarise(value=mean(hb, na.rm=T)) %>%
-  ggplot(aes(meritocracia, value))+
-  geom_point()+
-  geom_smooth(se=F)+
-  scale_x_continuous(breaks = seq(0,10,by=1))
-
-
-## Harshness por política preferida
-
-dfanalisis %>% 
-  mutate(politica_preferida= case_when(orden_pref_criterios_promo==1 ~ "Criterios\nprom.", 
-                                     orden_pref_formacion_prof==1 ~ "Formación\nprofesores", 
-                                     orden_pref_refuerzo==1 ~ "Refuerzo")) %>% 
-  filter(!is.na(politica_preferida)) %>% 
-  group_by(politica_preferida) %>% 
-  summarise(value=mean(hb, na.rm=T)) %>% 
-  ggplot(aes(politica_preferida, value))+
-  geom_col()
-
-
-dfanalisis %>% 
-  mutate(politica_preferida= case_when(orden_pref_criterios_promo==1 ~ "Criterios\nprom.", 
-                                       orden_pref_formacion_prof==1 ~ "Formación\nprofesores", 
-                                       orden_pref_refuerzo==1 ~ "Refuerzo")) %>% 
-  filter(!is.na(politica_preferida)) %>% 
-  ggplot(aes(x=hb, color= politica_preferida))+
-  geom_density()+
-  geom_vline(aes(xintercept=0.6))+
-  geom_vline(aes(xintercept=0.4))+
-  scale_x_continuous(breaks = seq(-0.2 ,1,by=.1))
-
-## Harshness por nivel de empatía
-
-dfanalisis %>% 
-  group_by(empatia) %>% 
-  summarise(value=mean(hb)) %>% 
-  ggplot(aes(empatia, value))+
-  geom_point()+
-  geom_line()
-
+```
 

@@ -819,7 +819,7 @@ df<-df %>%
     opciones_19 = `19_opciones`,
     ano_19 = `19_año1`,
     ejemplo = Ejemplo,
-    empatia = empatía,
+    tratamiento_empatia = empatía,
     b1_end = B1_end,
     nivel = nivel,
     calibracion = Calibracion,

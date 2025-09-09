@@ -9,7 +9,8 @@ library(treemapify)
 library(knitr)
 library(kableExtra)
 library(pROC)
-
+library(ranger)
+library(modelsummary)
 
 wd<- "C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Datos y codigo/"
 github<- "C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/"
