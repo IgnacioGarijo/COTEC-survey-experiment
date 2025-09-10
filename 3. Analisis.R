@@ -203,7 +203,7 @@ modelsummary(models = list(modeloa2, modelob2, modeloc2, modelod2),
                            include.rsquared = FALSE,
                            include.adjrs = FALSE,
                            include.nobs = FALSE,
-                           include.rmse = FALSE)
+                           include.rmse = FALSE) # ESTE IMPORTANTE PRESENTAR Y EDAD CUADRÁTICA
 dfanalisis %>% 
   group_by(edad) %>% 
   summarise(value=mean(hb, na.rm=T)) %>% 
@@ -283,7 +283,7 @@ g<-dfanalisis %>%
   pivot_longer(cols = c("alumnos", "familias", "profesorado", "sistema")) %>% 
   drop_na(value) %>% 
   ggplot(aes(x, value, color = name)) +
-  geom_line() +
+  geom_line(size=1) +
   geom_point()+
   geom_hline(yintercept = 25, linetype = "dashed")+
   geom_vline(xintercept = mean(dfanalisis$hb, na.rm=T), linetype="dashed") +
@@ -315,28 +315,44 @@ dfanalisisrec %>%
   pivot_longer(cols = c("pred_alumno", "pred_fam", "pred_prof", "pred_sist")) %>%
   arrange(name, hb) %>% 
   ggplot(aes(hb, value, color=name))+
-  geom_line()
+  geom_point()
 
 ## de quién es la culpa por harshness
 
-p<-dfanalisis %>% 
+dfanalisis %>% 
   select(hb, pct_culpa_alumnos, pct_culpa_familias, pct_culpa_profesorado, pct_culpa_sistema_educativo) %>% 
   pivot_longer(cols = c("pct_culpa_alumnos", "pct_culpa_familias", "pct_culpa_profesorado", "pct_culpa_sistema_educativo")) %>% 
+  mutate(name=substr(name, 11, 200))+
   ggplot(aes(hb, value, color=name))+
-  geom_smooth(se=F, method="loess", linetype="dotted")
+  geom_smooth(se=F, size=2,method="loess", linetype="dotted")
 
-h<-dfanalisis %>% 
+dfanalisis %>% 
   select(hb, pct_culpa_alumnos, pct_culpa_familias, pct_culpa_profesorado, pct_culpa_sistema_educativo) %>% 
   pivot_longer(cols = c("pct_culpa_alumnos", "pct_culpa_familias", "pct_culpa_profesorado", "pct_culpa_sistema_educativo")) %>% 
+  mutate(name=substr(name, 11, 200)) %>% 
   ggplot(aes(hb, value, color=name))+
-  geom_smooth(se=F, method="lm", linetype="dotted")
+  geom_smooth(se=F, method="lm", size=2,linetype="dashed") #ESTE incidencia en separación a lo largo de x y 
+
+g
 
 ## Distribución de harshness
 dfanalisis %>% 
   ggplot(aes(x= hb))+
   geom_density(smooth=1)+
   geom_vline(xintercept = mean(dfanalisis$hb, na.rm=T), color="red")+
-  geom_vline(xintercept = median(dfanalisis$hb, na.rm=T), color="blue")
+  geom_vline(xintercept = median(dfanalisis$hb, na.rm=T), color="blue") #ESTE
+
+dfanalisis %>% 
+  mutate(politica_preferida= case_when(orden_pref_criterios_promo==1 ~ "Promoción", 
+                                       orden_pref_formacion_prof==1 ~ "Formación", 
+                                       orden_pref_refuerzo==1 ~ "Refuerzo")) %>% 
+  filter(!is.na(politica_preferida)) %>% 
+  ggplot(aes(x=hb, color= politica_preferida))+
+  geom_density(size=2)+
+  geom_vline(aes(xintercept=0.6))+
+  geom_vline(aes(xintercept=0.4))+
+  scale_x_continuous(breaks = seq(-0.2 ,1,by=.1)) # Forzar a que fuera bimodal, formacio promoción y refuerzo como nombres, hablar de que son grupos con distinto tamñao # ESTE
+
 
 
 
@@ -348,40 +364,142 @@ dfanalisis %>%
   ggplot(aes(meritocracia, value))+
   geom_point()+
   geom_smooth(se=F)+
+  scale_x_continuous(breaks = seq(0,10,by=1)) # Probar con 3 barras de 234, 567, 8910
+
+dfanalisis %>% 
+  filter(!is.na(meritocracia), meritocracia!=1) %>%
+  group_by(meritocracia=ifelse(meritocracia %in% c(2:4), "2-4", 
+                               ifelse(meritocracia %in% c(5:7), "3-5", 
+                                      ifelse(meritocracia %in% c(8:10), "8-10")))) %>% 
+  summarise(value=mean(hb, na.rm=T)) %>%
+  ggplot(aes(meritocracia, value))+
+  geom_col()
   scale_x_continuous(breaks = seq(0,10,by=1))
 
 
 ## Harshness por política preferida
 
 dfanalisis %>% 
-  mutate(politica_preferida= case_when(orden_pref_criterios_promo==1 ~ "Criterios\nprom.", 
-                                     orden_pref_formacion_prof==1 ~ "Formación\nprofesores", 
+  mutate(politica_preferida= case_when(orden_pref_criterios_promo==1 ~ "Promoción", 
+                                     orden_pref_formacion_prof==1 ~ "Formación", 
                                      orden_pref_refuerzo==1 ~ "Refuerzo")) %>% 
   filter(!is.na(politica_preferida)) %>% 
   group_by(politica_preferida) %>% 
-  summarise(value=mean(hb, na.rm=T)) %>% 
+  summarise(value=mean(hb, na.rm=T)- mean(dfanalisis$hb, na.rm=T), 
+            se=1.96*sd(hb, na.rm=T)/sqrt(n())) %>%
+  mutate(lower= value-se, 
+         higher=value+se) %>% 
   ggplot(aes(politica_preferida, value))+
-  geom_col()
+  geom_col()+ # Restar media
+  geom_errorbar(aes(ymin=lower, ymax=higher), width=.3, size=2) # ESTE
 
-
-dfanalisis %>% 
-  mutate(politica_preferida= case_when(orden_pref_criterios_promo==1 ~ "Criterios\nprom.", 
-                                       orden_pref_formacion_prof==1 ~ "Formación\nprofesores", 
-                                       orden_pref_refuerzo==1 ~ "Refuerzo")) %>% 
-  filter(!is.na(politica_preferida)) %>% 
-  ggplot(aes(x=hb, color= politica_preferida))+
-  geom_density()+
-  geom_vline(aes(xintercept=0.6))+
-  geom_vline(aes(xintercept=0.4))+
-  scale_x_continuous(breaks = seq(-0.2 ,1,by=.1))
 
 ## Harshness por nivel de empatía
 
 dfanalisis %>% 
   group_by(empatia) %>% 
-  summarise(value=mean(hb)) %>% 
+  summarise(value=mean(hb), 
+            se= 1.96*sd(hb, na.rm=T)/sqrt(n())) %>%
+  mutate(lower= value-se, 
+         higher=value+se) %>% 
   ggplot(aes(empatia, value))+
   geom_point()+
-  geom_line()
+  geom_line(size=2)+
+  geom_errorbar(aes(ymin=lower, ymax=higher), width=.3, size=2) # ESTE
+
+
+summary(lm)
+
+## multipregunta 21
+
+ggs<-list()
+
+for (i in c("estudiantes", "pasar_sin_competencias", "preparados_nivel_sig", "demasiados_recursos_repetidores", "recursos_repetidores_ineficaces")){
+
+  variable1<- paste0("impacto_centro_", i)
+  variable2<-paste0("impacto_region_", i)
+  
+  ggs[[i]]<-dfanalisis %>%
+  group_by(x=ifelse(!is.na(get(variable1)), get(variable1), get(variable2)), 
+           cat= ifelse(!is.na(get(variable1)), "centro", "region")) %>% 
+  summarise(value=mean(hb, na.rm=T)) %>% 
+  ggplot(aes(x, value, color=cat))+
+  geom_point()+
+  geom_line()+
+  ggtitle(i)+ 
+  theme(legend.position = "none")
+}
+
+legend_plot <- get_legend(ggs[[1]] + theme(legend.position = "right"))
+
+plot_grid(
+  plotlist = c(ggs, list(legend_plot)),
+  ncol = 2
+)
+
+# Segunda opción (todo unido)
+
+ggs2<-list()
+
+for (i in c("estudiantes", "pasar_sin_competencias", "preparados_nivel_sig", "demasiados_recursos_repetidores", "recursos_repetidores_ineficaces")){
+  
+  variable1<- paste0("impacto_centro_", i)
+  variable2<-paste0("impacto_region_", i)
+  
+  i<-ifelse(i=="demasiados_recursos_repetidores", "demasiados_recursos", i)
+  
+  ggs2[[i]]<-dfanalisis %>%
+    group_by(x=ifelse(!is.na(get(variable1)), get(variable1), get(variable2))) %>% 
+    summarise(value=mean(hb, na.rm=T),
+              se196=1.96*sd(hb, na.rm=T)/sqrt(n())) %>%
+    mutate(lower= value-se196, 
+           higher= value+se196) %>% 
+    ggplot(aes(x, value))+
+    geom_point()+
+    geom_line()+
+    geom_errorbar(aes(ymin=lower, ymax=higher))+
+    ggtitle(i)+ 
+    theme(legend.position = "none")
+}
+
+plot_grid(
+  plotlist = ggs2)
+
+
+ggs2<-list()
+
+for (i in c("estudiantes", "pasar_sin_competencias", "preparados_nivel_sig", "demasiados_recursos_repetidores", "recursos_repetidores_ineficaces")){
+  
+  variable1<- paste0("impacto_centro_", i)
+  variable2<-paste0("impacto_region_", i)
+  
+  i<-ifelse(i=="demasiados_recursos_repetidores", "demasiados_recursos", i)
+  
+  ggs2[[i]]<-dfanalisis %>%
+    group_by(
+      x = cut(
+        ifelse(!is.na(get(variable1)), get(variable1), get(variable2)),
+        breaks = c(-Inf, 3, 6, 10),   # cortes
+        labels = c("0-3", "4-6", "7-10"), 
+        right = TRUE
+      )
+    ) %>%
+    summarise(
+      value = mean(hb, na.rm = TRUE),
+      se196 = 1.96 * sd(hb, na.rm = TRUE) / sqrt(n())
+    ) %>%
+    mutate(lower = value - se196,
+           higher = value + se196) %>%
+    ggplot(aes(x, value, group = 1)) +   # group=1 para que conecte puntos
+    geom_point() +
+    geom_col() +
+    geom_errorbar(aes(ymin = lower, ymax = higher)) +
+    ggtitle(i) +
+    theme(legend.position = "none")
+  
+} # restar media 
+
+plot_grid(
+  plotlist = ggs2) # ver este con grupos
 
 
