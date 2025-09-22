@@ -373,7 +373,106 @@ Categoría base: niña sin atributos negativos
 
 :::
 
+## Severidad de los profesores
 
+::: panel-tabset
+
+### Distribución
+
+::: {layout="[[1,1]]"}
+
+### Distribución de la severidad
+::: column
+![](graficos/densidad.jpeg){width="60%"}
+
+::: {.callout}
+<div style="font-size: 1.2em;">
+- La severidad se define como la diferencia media entre las decisiones del profesor en cuestión y aquellas de los demás profesores que han evaluado la misma tarjeta 
+</div>
+:::
+:::
+
+### Por política preferida
+
+::: column
+![](graficos/densidad_politicas.jpeg){width="60%"}
+
+:::
+:::
+### Diferencia con la media por política preferida
+
+
+![](graficos/politicas_pref_harshness.jpeg){width="60%"}
+
+
+:::
+
+
+## Determinantes de la severidad
+::: panel-tabset
+
+### El modelo
+
+::: {layout="[[0.8,1.2]]"}
+
+
+::: column
+<div style="font-size: 1.2em;">
+El modelo supervisado muestra que los únicos determinantes de la severidad del profesor son: 
+
+
+- Si enseña en secundaria (+)
+- Si cree en la meritocracia (+)
+- Su edad (-)
+
+
+</div>
+
+
+:::
+
+::: column
+![](graficos/coefs.jpeg){width="60%"}
+
+
+:::
+:::
+### El caso de la meritocracia
+![](graficos/meritocracia.jpeg){width="60%"}
+
+
+:::
+
+## ¿A quién asignan la culpa del fracaso escolar los profesores?
+
+
+
+![](graficos/culpa.jpeg){width="60%"}
+
+
+## ¿Qué impacto consideran los profesores que tienen?
+
+
+::: panel-tabset
+
+### Pregunta
+
+Valora en una escala del 0 (nada de acuerdo) al 10 (totalmente de acuerdo), tu grado de acuerdo con las siguientes afirmaciones:
+
+- Mi trabajo tiene un impacto positivo en los estudiantes.
+
+- Hay estudiantes que han pasado de curso sin haber alcanzado las competencias necesarias.
+
+- Los estudiantes que pasan de curso están adecuadamente preparados para el siguiente nivel académico.
+
+- Se dedican demasiados recursos a los estudiantes repetidores.
+
+- Hagamos lo que hagamos, los recursos adicionales dedicados a los repetidores no son efectivos.
+
+### Gráfico
+![](graficos/impacto.jpeg){width="100%"}
+
+:::
 
 ## Anexo: primaria vs. secundaria
 

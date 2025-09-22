@@ -144,10 +144,10 @@ modelo_rf <- ranger(
     titularidad + indefinido + grupos_docencia + impacto_estudiantes +
     empatia + meritocracia,
   data = dfanalisis,
-  importance = "permutation",  # mejor que "impurity" en regresión
+  importance = "permutation",
   num.trees = 1000,
-  mtry = 3,        # número de variables candidatas en cada split
-  min.node.size = 5, # tamaño mínimo de nodo terminal
+  mtry = 3,
+  min.node.size = 5, 
   respect.unordered.factors = TRUE
 )
 
@@ -158,8 +158,64 @@ dfanalisis$pred_rf <- predict(modelo_rf, data = dfanalisis)$predictions
 ggplot(dfanalisis, aes(x = hb, y = pred_rf)) +
   geom_point(alpha = 0.6) +
   geom_abline(color = "red") +
-  labs(x = "Observado (ha)", y = "Predicho (Random Forest)") +
+  labs(x = "Observado (ha)", y = "Predicho (Random Forest)") 
+
+### Shap values ###
+
+library(iml)
+library(fastshap)
+library(shapviz)
+library(ggbeeswarm)
+
+variables_rf<-names(modelo_rf$variable.importance)
+
+dfshap<- dfanalisis[c(variables_rf)]
+
+shap_values<-Predictor$new(modelo_rf, data=dfshap)
+shapley<-Shapley$new(shap_values, x.interest = dfshap[1,])
+
+f<- function(object, newdata) {
+  predict(modelo_rf, data=newdata)$predictions
+}
+
+set.seed(123)
+
+shap_values<-fastshap::explain(
+  object= modelo_rf, 
+  X= dfshap, 
+  pred_wrapper=f, 
+  nsim=30, 
+  adjust=T
+)
+
+sv<-shapviz(shap_values, X=dfshap)
+
+sdf <- as.data.frame(sv$S) %>% 
+  mutate(row = row_number()) %>% 
+  pivot_longer(
+    cols = -row,
+    names_to = "variable",       # 👈 mismo nombre que en el segundo pivot
+    values_to = "shap_value"
+  ) %>% 
+  left_join(
+    as.data.frame(sv$X) %>% 
+      mutate(row = row_number()) %>% 
+      pivot_longer(
+        cols = -row,
+        names_to = "variable",
+        values_to = "feature_value",
+        values_transform = list(feature_value = as.character)  # 👈 evita conflicto de tipos
+      ),
+    by = c("row", "variable")
+  )
+
+sdf %>% 
+  ggplot(aes(x = shap_value, y = variable)) +
+  geom_quasirandom(alpha = 0.5, width=.3)+ 
+  facet_wrap(~ variable, scales = "free") +
   theme_minimal()
+
+dfanalisis$edad_quad<- dfanalisis$edad^2
 
 modeloa<-lm(data=dfanalisis, formula = ha ~ nivel + experiencia + antiguedad3 + female + edad +
           titularidad + indefinido + grupos_docencia + impacto_estudiantes +
@@ -211,7 +267,31 @@ dfanalisis %>%
   geom_point()+
   geom_line()
 
+gg<-modelob2 %>%
+  tidy(conf.int = TRUE) %>%       # estimates + IC 95%
+  filter(term != "(Intercept)") %>%  
+  mutate(sign=ifelse(conf.low<=0 & conf.high>=0, "No", "Si"), 
+         term= case_when(term == "titularidadPrivada" ~ "Privada", 
+                         term == "nivelE. Secundaria" ~ "Secundaria", 
+                         term == "indefinidotemporal" ~ "Temporal", 
+                         term== "titularidadPública" ~ "Pública",
+                         term== "female1" ~ "Mujer", 
+                         TRUE ~ term), 
+         discr= ifelse(term %in% c("meritocracia", "grupos_docencia", "experiencia", "antiguedad3", "impacto_estudiantes", "edad", "empatia"), "cont", "discr")) %>% 
+  ggplot(aes(x = reorder(term, estimate),
+             y = estimate,
+             ymin = conf.low,
+             ymax = conf.high, 
+             color=sign)) +
+  geom_pointrange() +
+  geom_hline(yintercept = 0, color="grey40", linetype="longdash")+
+  coord_flip()+
+  guides(color="none")+
+  scale_color_manual(values= c("#537d90", "#00b89f"))+
+  facet_wrap(~discr, scales="free", labeller = labeller(.default = ~""))
 
+
+ggsave(gg, file=paste0(salidas, "coefs.jpeg"), width=7, height=5)
 
 #### HYPOTHESES ####
 ####################
@@ -244,7 +324,7 @@ modelsummary(models = modeloh11a,
              include.nobs = FALSE,
              include.rmse = FALSE)
 
-###################################3333
+###################################
 
 dfanalisis %>% 
   mutate(
@@ -322,184 +402,311 @@ dfanalisisrec %>%
 dfanalisis %>% 
   select(hb, pct_culpa_alumnos, pct_culpa_familias, pct_culpa_profesorado, pct_culpa_sistema_educativo) %>% 
   pivot_longer(cols = c("pct_culpa_alumnos", "pct_culpa_familias", "pct_culpa_profesorado", "pct_culpa_sistema_educativo")) %>% 
-  mutate(name=substr(name, 11, 200))+
+  mutate(name=substr(name, 11, 200)) %>% 
   ggplot(aes(hb, value, color=name))+
   geom_smooth(se=F, size=2,method="loess", linetype="dotted")
 
-dfanalisis %>% 
+gg<- dfanalisis %>% 
   select(hb, pct_culpa_alumnos, pct_culpa_familias, pct_culpa_profesorado, pct_culpa_sistema_educativo) %>% 
   pivot_longer(cols = c("pct_culpa_alumnos", "pct_culpa_familias", "pct_culpa_profesorado", "pct_culpa_sistema_educativo")) %>% 
   mutate(name=substr(name, 11, 200)) %>% 
   ggplot(aes(hb, value, color=name))+
-  geom_smooth(se=F, method="lm", size=2,linetype="dashed") #ESTE incidencia en separación a lo largo de x y 
+  geom_smooth(se=F, method="lm", size=2,linetype="dashed") + #ESTE incidencia en separación a lo largo de x y 
+  scale_color_manual(values=c("#00b89f", "#002059", "#a29cb8","#69d3e3"))
 
-g
+ggsave(gg, file=paste0(salidas, "culpa.jpeg"), width=7, height=5)
+
 
 ## Distribución de harshness
-dfanalisis %>% 
+gg<-dfanalisis %>% 
   ggplot(aes(x= hb))+
-  geom_density(smooth=1)+
-  geom_vline(xintercept = mean(dfanalisis$hb, na.rm=T), color="red")+
-  geom_vline(xintercept = median(dfanalisis$hb, na.rm=T), color="blue") #ESTE
+  geom_density(size=1, fill= "#537d90", alpha=.2,color="#537d90")+
+  #geom_vline(xintercept = mean(dfanalisis$hb, na.rm=T), size=1, color="#00b89f")+
+  geom_vline(xintercept = median(dfanalisis$hb, na.rm=T), size=1, color="#a29cb8") #ESTE
 
-dfanalisis %>% 
+ggsave(gg, file=paste0(salidas, "densidad.jpeg"), width=7, height=5)
+
+
+gg<- 
+  dfanalisis %>% 
   mutate(politica_preferida= case_when(orden_pref_criterios_promo==1 ~ "Promoción", 
                                        orden_pref_formacion_prof==1 ~ "Formación", 
                                        orden_pref_refuerzo==1 ~ "Refuerzo")) %>% 
   filter(!is.na(politica_preferida)) %>% 
-  ggplot(aes(x=hb, color= politica_preferida))+
-  geom_density(size=2)+
-  geom_vline(aes(xintercept=0.6))+
-  geom_vline(aes(xintercept=0.4))+
-  scale_x_continuous(breaks = seq(-0.2 ,1,by=.1)) # Forzar a que fuera bimodal, formacio promoción y refuerzo como nombres, hablar de que son grupos con distinto tamñao # ESTE
+  ggplot(aes(x=hb, color= politica_preferida, fill=politica_preferida))+
+  geom_density(size=1, alpha=.07)+
+  geom_vline(aes(xintercept=0.6), linetype="longdash", color="#537d90")+
+  geom_vline(aes(xintercept=0.4),  linetype="longdash", color="#537d90" )+
+  scale_x_continuous(breaks = seq(-0.2 ,1,by=.1)) + # Forzar a que fuera bimodal, formacio promoción y refuerzo como nombres, hablar de que son grupos con distinto tamñao # ESTE
+  scale_color_manual(values = c("#002059", "#00b89f", "#a29cb8"))+
+  theme(legend.position = c(.15,.8), 
+        legend.text  = element_text(size = 12))
 
+ggsave(gg, file=paste0(salidas, "densidad_politicas.jpeg"), width=7, height=5)
 
 
 
 # harshness por meritocracia
-dfanalisis %>% 
-  filter(!is.na(meritocracia), meritocracia!=1) %>%
-  group_by(meritocracia) %>% 
-  summarise(value=mean(hb, na.rm=T)) %>%
-  ggplot(aes(meritocracia, value))+
-  geom_point()+
-  geom_smooth(se=F)+
-  scale_x_continuous(breaks = seq(0,10,by=1)) # Probar con 3 barras de 234, 567, 8910
-
-dfanalisis %>% 
+gg<-
+  dfanalisis %>% 
   filter(!is.na(meritocracia), meritocracia!=1) %>%
   group_by(meritocracia=ifelse(meritocracia %in% c(2:4), "2-4", 
                                ifelse(meritocracia %in% c(5:7), "3-5", 
-                                      ifelse(meritocracia %in% c(8:10), "8-10")))) %>% 
-  summarise(value=mean(hb, na.rm=T)) %>%
+                                      ifelse(meritocracia %in% c(8:10), "8-10", NA)))) %>% 
+  summarise(value=mean(hb, na.rm=T), 
+            n=n(), 
+            se= 1.96*sd(hb, na.rm=T)/sqrt(n)) %>%
+    mutate(low= value-se, 
+           high=value+se) %>% 
   ggplot(aes(meritocracia, value))+
-  geom_col()
-  scale_x_continuous(breaks = seq(0,10,by=1))
+  geom_col(fill="#537d90")+
+    geom_errorbar(aes(ymin=low, ymax=high), size=1, width=.2, color="#a29cb8")+
+  geom_text(color="white", aes(y=value/2,label= round(value*100, 1)))
+ 
+ggsave(gg, file=paste0(salidas, "meritocracia.jpeg"), width=7, height=5)
 
 
 ## Harshness por política preferida
 
-dfanalisis %>% 
-  mutate(politica_preferida= case_when(orden_pref_criterios_promo==1 ~ "Promoción", 
-                                     orden_pref_formacion_prof==1 ~ "Formación", 
-                                     orden_pref_refuerzo==1 ~ "Refuerzo")) %>% 
-  filter(!is.na(politica_preferida)) %>% 
-  group_by(politica_preferida) %>% 
-  summarise(value=mean(hb, na.rm=T)- mean(dfanalisis$hb, na.rm=T), 
-            se=1.96*sd(hb, na.rm=T)/sqrt(n())) %>%
-  mutate(lower= value-se, 
-         higher=value+se) %>% 
-  ggplot(aes(politica_preferida, value))+
-  geom_col()+ # Restar media
-  geom_errorbar(aes(ymin=lower, ymax=higher), width=.3, size=2) # ESTE
+mu_total <- mean(dfanalisis$hb, na.rm = TRUE)
 
+res <- dfanalisis %>%
+  mutate(
+    politica_preferida = case_when(
+      orden_pref_criterios_promo == 1 ~ "Promoción",
+      orden_pref_formacion_prof == 1 ~ "Formación",
+      orden_pref_refuerzo == 1 ~ "Refuerzo",
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  filter(!is.na(politica_preferida), !is.na(hb)) %>%
+  group_by(politica_preferida) %>%
+  do(tidy(t.test(.$hb, mu = mu_total))) %>%
+  ungroup()
+
+plotdata <- res %>%
+  mutate(
+    diff = estimate - mu_total,
+    lower = conf.low - mu_total,
+    upper = conf.high - mu_total
+  )
+
+gg<-plotdata %>% 
+ggplot(aes(x = politica_preferida, y = diff)) +
+  geom_col(fill="#537d90") +
+  geom_text(color="white", aes(y=diff/2,label= round(diff*100, 1)))+
+  #geom_errorbar(aes(ymin = lower, ymax = upper), color="#a29cb8", width = 0.2, size = 1) +
+  geom_hline(yintercept = 0, linetype = "dashed") 
+
+ggsave(gg, file=paste0(salidas, "politicas_pref_harshness.jpeg"), width=7, height=5)
 
 ## Harshness por nivel de empatía
 
 dfanalisis %>% 
   group_by(empatia) %>% 
   summarise(value=mean(hb), 
-            se= 1.96*sd(hb, na.rm=T)/sqrt(n())) %>%
+            se= 1.96*sd(hb, na.rm=T)/sqrt(n()), 
+            n()) %>%
   mutate(lower= value-se, 
          higher=value+se) %>% 
   ggplot(aes(empatia, value))+
   geom_point()+
   geom_line(size=2)+
-  geom_errorbar(aes(ymin=lower, ymax=higher), width=.3, size=2) # ESTE
+  geom_errorbar(aes(ymin=lower, ymax=higher), width=.3, size=2) 
 
-
-summary(lm)
 
 ## multipregunta 21
 
-ggs<-list()
+# ggs<-list()
+# 
+# for (i in c("estudiantes", "pasar_sin_competencias", "preparados_nivel_sig", "demasiados_recursos_repetidores", "recursos_repetidores_ineficaces")){
+# 
+#   variable1<- paste0("impacto_centro_", i)
+#   variable2<-paste0("impacto_region_", i)
+#   
+#   ggs[[i]]<-dfanalisis %>%
+#   group_by(x=ifelse(!is.na(get(variable1)), get(variable1), get(variable2)), 
+#            cat= ifelse(!is.na(get(variable1)), "centro", "region")) %>% 
+#   summarise(value=mean(hb, na.rm=T)) %>% 
+#   ggplot(aes(x, value, color=cat))+
+#   geom_point()+
+#   geom_line()+
+#   ggtitle(i)+ 
+#   theme(legend.position = "none")
+# }
+# 
+# legend_plot <- get_legend(ggs[[1]] + theme(legend.position = "right"))
+# 
+# plot_grid(
+#   plotlist = c(ggs, list(legend_plot)),
+#   ncol = 2
+# )
+# 
+# # Segunda opción (todo unido)
+# 
+# ggs2<-list()
+# 
+# for (i in c("estudiantes", "pasar_sin_competencias", "preparados_nivel_sig", "demasiados_recursos_repetidores", "recursos_repetidores_ineficaces")){
+#   
+#   variable1<- paste0("impacto_centro_", i)
+#   variable2<-paste0("impacto_region_", i)
+#   
+#   i<-ifelse(i=="demasiados_recursos_repetidores", "demasiados_recursos", i)
+#   
+#   ggs2[[i]]<-dfanalisis %>%
+#     group_by(x=ifelse(!is.na(get(variable1)), get(variable1), get(variable2))) %>% 
+#     summarise(value=mean(hb, na.rm=T),
+#               se196=1.96*sd(hb, na.rm=T)/sqrt(n())) %>%
+#     mutate(lower= value-se196, 
+#            higher= value+se196) %>% 
+#     ggplot(aes(x, value))+
+#     geom_point()+
+#     geom_line()+
+#     geom_errorbar(aes(ymin=lower, ymax=higher))+
+#     ggtitle(i)+ 
+#     theme(legend.position = "none")
+# }
+# 
+# plot_grid(
+#   plotlist = ggs2)
+# 
+# 
+# ggs2<-list()
+# 
+# for (i in c("estudiantes", "pasar_sin_competencias", "preparados_nivel_sig", "demasiados_recursos_repetidores", "recursos_repetidores_ineficaces")){
+#   
+#   variable1<- paste0("impacto_centro_", i)
+#   variable2<-paste0("impacto_region_", i)
+#   
+#   i<-ifelse(i=="demasiados_recursos_repetidores", "demasiados_recursos", i)
+#   
+#   ggs2[[i]]<-dfanalisis %>%
+#     mutate(
+#       x1= ifelse(!is.na(get(variable1)), get(variable1), get(variable2)),
+#       x = cut(
+#         x1,
+#         breaks = c(-Inf, 3, 6, 10),   # cortes
+#         labels = c("0-3", "4-6", "7-10"), 
+#         right = TRUE
+#       )
+#     ) %>%
+#     drop_na(x) %>% 
+#     group_by(x) %>% 
+#     summarise(
+#       value = mean(hb, na.rm = TRUE),
+#       se196 = 1.96 * sd(hb, na.rm = TRUE) / sqrt(n())
+#     ) %>%
+#     mutate(lower = value - se196,
+#            higher = value + se196) %>%
+#     ggplot(aes(x, value, group = 1)) +   # group=1 para que conecte puntos
+#     geom_point() +
+#     geom_col() +
+#     geom_errorbar(aes(ymin = lower, ymax = higher)) +
+#     ggtitle(i) +
+#     theme(legend.position = "none")
+#   
+# } # restar media 
+# 
+# plot_grid(
+#   plotlist = ggs2) # ver este con grupos
+# 
+# 
+# 
+# ggs2 <- list()
+# 
+# for (i in c("estudiantes", "pasar_sin_competencias", "preparados_nivel_sig",
+#             "demasiados_recursos_repetidores", "recursos_repetidores_ineficaces")) {
+#   
+#   variable1 <- paste0("impacto_centro_", i)
+#   variable2 <- paste0("impacto_region_", i)
+#   
+#   i <- ifelse(i == "demasiados_recursos_repetidores", "demasiados_recursos", i)
+#   
+#   # Construyo dataset con cortes
+#   dat <- dfanalisis %>%
+#     mutate(
+#       x1 = ifelse(!is.na(get(variable1)), get(variable1), get(variable2)),
+#       x = cut(
+#         x1,
+#         breaks = c(-Inf, 3, 6, 10),
+#         labels = c("0-3", "4-6", "7-10"),
+#         right = TRUE
+#       )
+#     ) %>%
+#     drop_na(x)
+#   
+#   # media total (baseline)
+#   total_vals <- dat$hb
+#   
+#   # test de medias por grupo vs. total
+#   stats <- dat %>%
+#     group_by(x) %>%
+#     summarise(
+#       broom::tidy(t.test(hb, total_vals)) %>%
+#         mutate(coef = estimate1 - estimate2), # diferencia de medias
+#       .groups = "drop"
+#     )
+#   
+#   ggs2[[i]] <- stats %>%
+#     mutate(
+#       lower = conf.low,
+#       higher = conf.high
+#     ) %>%
+#     ggplot(aes(x, coef, group = 1)) +
+#     geom_col(fill="#a29cb8") +
+#     #geom_point() +
+#     #geom_errorbar(aes(ymin = lower, ymax = higher)) +
+#     geom_hline(yintercept = 0, linetype = "dashed") +
+#     ggtitle(i) +
+#     theme(legend.position = "none")
+# }
+# 
+# plot_grid(plotlist = ggs2)
 
-for (i in c("estudiantes", "pasar_sin_competencias", "preparados_nivel_sig", "demasiados_recursos_repetidores", "recursos_repetidores_ineficaces")){
+data<-dfanalisis
 
-  variable1<- paste0("impacto_centro_", i)
-  variable2<-paste0("impacto_region_", i)
+variables_centro_region<-c("estudiantes", "pasar_sin_competencias", "preparados_nivel_sig",
+                           "demasiados_recursos_repetidores", "recursos_repetidores_ineficaces")
+variables_cr_corr<- c(variables_centro_region[c(1:3, 5)], "demasiados_recursos")
+
+for (i in variables_centro_region) {
   
-  ggs[[i]]<-dfanalisis %>%
-  group_by(x=ifelse(!is.na(get(variable1)), get(variable1), get(variable2)), 
-           cat= ifelse(!is.na(get(variable1)), "centro", "region")) %>% 
-  summarise(value=mean(hb, na.rm=T)) %>% 
-  ggplot(aes(x, value, color=cat))+
-  geom_point()+
-  geom_line()+
-  ggtitle(i)+ 
-  theme(legend.position = "none")
+  variable1 <- paste0("impacto_centro_", i)
+  variable2 <- paste0("impacto_region_", i)
+  
+  i <- ifelse(i == "demasiados_recursos_repetidores", "demasiados_recursos", i)
+  
+  # Construyo dataset con cortes
+  data <- data %>%
+    mutate(!!i := ifelse(!is.na(get(variable1)), get(variable1), get(variable2)))
 }
 
-legend_plot <- get_legend(ggs[[1]] + theme(legend.position = "right"))
+gg<-data %>% 
+  select(hb, variables_cr_corr) %>% 
+  pivot_longer(cols = variables_cr_corr) %>% 
+  ggplot(aes(x=value, hb, color=name))+
+  geom_smooth(se=F, method="lm")+
+  scale_color_manual(values=c("#00b89f","#537d90", "#002059", "#a47dab","#69d3e3"))
 
-plot_grid(
-  plotlist = c(ggs, list(legend_plot)),
-  ncol = 2
-)
-
-# Segunda opción (todo unido)
-
-ggs2<-list()
-
-for (i in c("estudiantes", "pasar_sin_competencias", "preparados_nivel_sig", "demasiados_recursos_repetidores", "recursos_repetidores_ineficaces")){
-  
-  variable1<- paste0("impacto_centro_", i)
-  variable2<-paste0("impacto_region_", i)
-  
-  i<-ifelse(i=="demasiados_recursos_repetidores", "demasiados_recursos", i)
-  
-  ggs2[[i]]<-dfanalisis %>%
-    group_by(x=ifelse(!is.na(get(variable1)), get(variable1), get(variable2))) %>% 
-    summarise(value=mean(hb, na.rm=T),
-              se196=1.96*sd(hb, na.rm=T)/sqrt(n())) %>%
-    mutate(lower= value-se196, 
-           higher= value+se196) %>% 
-    ggplot(aes(x, value))+
-    geom_point()+
-    geom_line()+
-    geom_errorbar(aes(ymin=lower, ymax=higher))+
-    ggtitle(i)+ 
-    theme(legend.position = "none")
-}
-
-plot_grid(
-  plotlist = ggs2)
+ggsave(gg, file=paste0(salidas, "impacto.jpeg"), width=11, height=5)
 
 
-ggs2<-list()
 
-for (i in c("estudiantes", "pasar_sin_competencias", "preparados_nivel_sig", "demasiados_recursos_repetidores", "recursos_repetidores_ineficaces")){
-  
-  variable1<- paste0("impacto_centro_", i)
-  variable2<-paste0("impacto_region_", i)
-  
-  i<-ifelse(i=="demasiados_recursos_repetidores", "demasiados_recursos", i)
-  
-  ggs2[[i]]<-dfanalisis %>%
-    group_by(
-      x = cut(
-        ifelse(!is.na(get(variable1)), get(variable1), get(variable2)),
-        breaks = c(-Inf, 3, 6, 10),   # cortes
-        labels = c("0-3", "4-6", "7-10"), 
-        right = TRUE
-      )
-    ) %>%
-    summarise(
-      value = mean(hb, na.rm = TRUE),
-      se196 = 1.96 * sd(hb, na.rm = TRUE) / sqrt(n())
-    ) %>%
-    mutate(lower = value - se196,
-           higher = value + se196) %>%
-    ggplot(aes(x, value, group = 1)) +   # group=1 para que conecte puntos
-    geom_point() +
-    geom_col() +
-    geom_errorbar(aes(ymin = lower, ymax = higher)) +
-    ggtitle(i) +
-    theme(legend.position = "none")
-  
-} # restar media 
+GGally::ggpairs(data[, c(variables_cr_corr)])
 
-plot_grid(
-  plotlist = ggs2) # ver este con grupos
+combs <- combn(variables_cr_corr, 2, simplify = FALSE)
 
+# Creamos un gráfico para cada combinación
+plots <- lapply(combs, function(vars) {
+  data %>%
+    ggplot(aes_string(x = vars[1], y = vars[2])) +
+    #geom_point(alpha = 0.5) +
+    geom_smooth(method = "lm") +
+    ggtitle(paste(vars[1], "vs", vars[2]))
+})
 
+# Mostrar todos los gráficos (en RStudio Viewer se verá uno por uno)
+plots[[1]]  # primer gráfico
+plots[[2]]  # segundo gráfico, etc.
+
+plot_grid(plotlist = plots)

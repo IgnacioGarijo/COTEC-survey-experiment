@@ -3,6 +3,11 @@ library(sf)
 library(tidyverse)
 library(readxl)
 library(arrow)
+library(iml)
+library(fastshap)
+library(shapviz)
+library(ggbeeswarm)
+library(patchwork)
 
 wd<- "C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Datos y codigo/"
 setwd(wd)
