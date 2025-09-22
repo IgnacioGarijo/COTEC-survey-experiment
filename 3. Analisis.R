@@ -162,10 +162,7 @@ ggplot(dfanalisis, aes(x = hb, y = pred_rf)) +
 
 ### Shap values ###
 
-library(iml)
-library(fastshap)
-library(shapviz)
-library(ggbeeswarm)
+
 
 variables_rf<-names(modelo_rf$variable.importance)
 
@@ -210,10 +207,65 @@ sdf <- as.data.frame(sv$S) %>%
   )
 
 sdf %>% 
-  ggplot(aes(x = shap_value, y = variable)) +
+  ggplot(aes(x = shap_value, y = variable, color=feature_value)) +
   geom_quasirandom(alpha = 0.5, width=.3)+ 
   facet_wrap(~ variable, scales = "free") +
   theme_minimal()
+
+variablescontinuas<- c("antiguedad3", "edad", "empatia", "experiencia", "grupos_docencia", "impacto_estudiantes", "meritocracia")
+
+sdf %>% 
+  filter(variable %in% variablescontinuas) %>% 
+  group_by(variable) %>% 
+  mutate(feature_value=as.numeric(feature_value),
+         feature_scaled = (as.numeric(feature_value) - min(as.numeric(feature_value), na.rm = TRUE)) /
+           (max(as.numeric(feature_value), na.rm = TRUE) - min(as.numeric(feature_value), na.rm = TRUE)), 
+         feature_scaled2= scale(as.numeric(feature_value)), 
+         feature_scaled3= percent_rank(as.numeric(feature_value))) %>% 
+  ungroup() %>%
+  ggplot(aes(y = variable, x = shap_value, color = feature_scaled)) +
+  geom_quasirandom(alpha = 0.3) +
+  scale_color_viridis_c() +
+  theme_minimal() +
+  labs(color = "Feature (scaled 0–1)")
+
+colorines<- c("0"= "blue", "1"= "pink", "Concertada"= "green",Privada="blue", "Pública"="pink", "E. Primaria"="blue", "E. Secundaria"="pink", 
+              "indefinido" ="blue", "temporal"="pink" )
+
+sdf %>% 
+  filter(variable %in% setdiff(variables_rf, variablescontinuas), !is.na(feature_value)) %>% 
+  ungroup() %>%
+  ggplot(aes(y = variable, x = shap_value, color = feature_value)) +
+  geom_quasirandom(alpha = 0.3) +
+  scale_color_manual(values = colorines)+
+  facet_wrap(~variable, scales = "free_y", ncol=1)
+
+
+
+plots <- lapply(unique(sdf$variable), function(v){
+ if (v %in% variablescontinuas) {
+   sdf %>% 
+     filter(variable ==v) %>% 
+     mutate(feature_value=as.numeric(feature_value),
+            feature_scaled= percent_rank(as.numeric(feature_value))) %>% 
+     ungroup() %>%
+     ggplot(aes(y = variable, x = shap_value, color = feature_scaled)) +
+     geom_quasirandom(alpha = 0.3) +
+     scale_color_viridis_c() +
+     labs(color = "Feature (scaled 0–1)")
+ } else {
+  
+   sdf %>% 
+    filter(variable == v, !is.na(feature_value)) %>%
+    ggplot(aes(x = shap_value, y = variable, color = feature_value)) +
+    geom_quasirandom(alpha = 0.3) +
+    scale_color_manual(values = colorines) +
+    theme(legend.position = "right")
+ }
+})
+
+wrap_plots(plots, ncol = 2)
+
 
 dfanalisis$edad_quad<- dfanalisis$edad^2
 
