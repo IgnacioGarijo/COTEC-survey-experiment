@@ -1,3 +1,7 @@
+#=============================#
+#### 1. LIBARIES AND PATHS #### 
+#=============================#
+
 library(mapSpain)
 library(sf)
 library(tidyverse)
@@ -13,11 +17,18 @@ library(ranger)
 library(modelsummary)
 library(cowplot)
 library(broom)
+library(shapviz)
+library(ggbeeswarm)
+library(iml)
 
 wd<- "C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Datos y codigo/"
 github<- "C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/"
 salidas<- paste0(github, "graficos/")
 setwd(wd)
+
+#============================#
+#### 2. THEME AND PALETTE #### 
+#============================#
 
 theme_set(theme_minimal()+
             theme(axis.text = element_text(face="bold", color="#404040"),
@@ -29,6 +40,10 @@ theme_set(theme_minimal()+
                   axis.line = element_line(color="grey50")))
 
 paleta<- c("#002059","#011552","#537d90","#a29cb8", "#69d3e3", "#a47dab", "#00b89f")
+paleta3<- c("#94e1b4", "#25998c", "#033854")
+#============================#
+#### 3. VECTORS FOR CARDS #### 
+#============================#
 
 namelist<-c()
 namelist_ps<-c()
@@ -93,3 +108,59 @@ vector_expulsion<- c("alumno_1_3", "alumno_1_6", "alumno_1_7", "alumno_1_8",
                      "alumno_6_5", "alumno_6_6", "alumno_6_8",
                      "alumno_7_5", "alumno_7_6", "alumno_7_8",
                      "alumno_8_5", "alumno_8_6", "alumno_8_8")
+
+
+
+#====================#
+#### 4. FUNCTIONS #### 
+#====================#
+
+
+make_quartile_hists <- function(data, vars) {
+  
+  out <- lapply(vars, function(v) {
+    
+    qs <- quantile(data[[v]], probs = c(0.333, .666), na.rm = TRUE)
+    xmax <- max(data[[v]], na.rm = TRUE)
+    
+    # crear variable categórica según cuantil
+    df_tmp <- data %>%
+      mutate(
+        quart_cat = cut(
+          .data[[v]],
+          breaks = c(-Inf, qs[1], qs[2], Inf),
+          labels = c("low", "mid", "high"),
+          include.lowest = TRUE
+        )
+      )
+    
+    df_tmp %>%
+      ggplot(aes(x = .data[[v]], fill = quart_cat)) +
+      geom_histogram() +
+      geom_vline(xintercept = qs, linetype = "dashed") +
+      ggtitle(paste0(v)) +
+      scale_x_continuous(
+        breaks = if (xmax <= 10) c(0:10) else seq(0, 100, by = 10)
+      ) +
+      scale_fill_manual(values = paleta3)+
+      guides(fill="none")
+  })
+  
+  names(out) <- vars
+  out
+}
+
+
+
+ntile3_label <- function(x) {
+  dplyr::case_match(
+    dplyr::ntile(x, 3),
+    1 ~ "low",
+    2 ~ "medium",
+    3 ~ "high"
+  ) |> factor(levels = c("low", "medium", "high"))
+}
+
+f<- function(object, newdata) {
+  predict(modelo_rf, data=newdata)$predictions
+}
