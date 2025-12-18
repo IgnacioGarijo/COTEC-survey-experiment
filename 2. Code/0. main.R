@@ -20,11 +20,18 @@ library(broom)
 library(shapviz)
 library(ggbeeswarm)
 library(iml)
+library(fastshap)
+library(GGally)
+library(patchwork)
 
-wd<- "C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Datos y codigo/"
-github<- "C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/"
-salidas<- paste0(github, "graficos/")
+wd<-"C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/"
 setwd(wd)
+
+output<- paste0(wd, "3. Output/")
+graficos<- paste0(output, "figures/")
+tables<- paste0(output, "tables/")
+code<- paste0(wd, "2. Code")
+data<- "C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Datos y codigo/"
 
 #============================#
 #### 2. THEME AND PALETTE #### 

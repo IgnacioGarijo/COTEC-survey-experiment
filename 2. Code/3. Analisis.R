@@ -1,12 +1,12 @@
-#=========================#
-#### 0. LOAD LIBRARIES ####
-#=========================#
+#==========================================#
+#### 0. LOAD LIBRARIES, THEMES AND DATA ####
+#==========================================#
 
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 source("0. main.R")
 
-df<-read_parquet("cleandata.parquet")
+df<-read_parquet(paste0(data,"cleandata.parquet"))
 
 #=============================#
 #### 1. HARSHNESS MEASURES ####
@@ -22,7 +22,7 @@ df1<-df[c("id",namelist)]
 
 dfnrep<-df1 %>% 
   pivot_longer(all_of(namelist)) %>%
-  drop_na(value) %>% 
+  drop_na(value) %>%  
   group_by(id) %>%
   mutate(value=ifelse(value=="repite", 1, 0)) %>% 
   summarise(ha=mean(value, na.rm=T)) %>% 
@@ -34,9 +34,10 @@ dfnrep<-df1 %>%
 
 df2<-df1 %>% 
   pivot_longer(all_of(namelist)) %>% 
+  filter(!is.na(value)) %>% 
   mutate(value=ifelse(value=="repite", 1, 0)) %>% 
   group_by(name) %>% 
-  mutate(tasa_rep=(sum(value, na.rm=T)-value)/(n()-1)  
+  mutate(tasa_rep=(sum(value, na.rm=T)-value)/(n()-1) 
             ) %>% 
   ungroup()
 
@@ -117,9 +118,24 @@ df3<-inner_join(dfad, dfdm)
 df3<-inner_join(df3, dfnrep)
 df3<-inner_join(df3, dfdm_comp)
 
-GGally::ggpairs(df3[, c("ha","hb","hc", "hd")])
+ggpairs(df3[, c("ha","hb","hc", "hd")],
+                diag = list(
+                  continuous = wrap("barDiag", bins = 20)
+                ))
+
 
 dfanalisis<- left_join(df3, df)
+
+
+
+dfanalisis %>% 
+  select(ha, hb, hc,hd) %>% 
+  pivot_longer(cols = c("ha", "hb", "hc", "hd")) %>% 
+  ggplot(aes(value))+
+  geom_histogram(bins=20, alpha=.8, fill="steelblue")+
+  geom_vline(xintercept = 0, linetype="longdash")+
+  facet_wrap(~name)
+
 
 dfanalisis %>% 
   pivot_longer(cols=c("ha", "hb", "hc", "hd")) %>% 
@@ -170,7 +186,6 @@ dfrf<- dfanalisis %>%
 
 vars<- setdiff(colnames(dfrf), "hb")
 fmla<- paste("hb ~", paste(vars, collapse = "+"))
-  
 set.seed(1)
 
 modelo_rf <- ranger(
@@ -182,6 +197,24 @@ modelo_rf <- ranger(
   min.node.size = 5, 
   respect.unordered.factors = TRUE
 )
+
+###### Error ######
+
+sd_hb <- sd(dfrf$hb)
+rmse_oob <- sqrt(modelo_rf$prediction.error)
+
+rmse_oob / sd_hb
+
+rmse_mean <- sqrt(mean((dfrf$hb - mean(dfrf$hb))^2))
+rmse_oob / rmse_mean
+
+rmse_oob / mean(dfrf$hb)
+
+yhat <- modelo_rf$predictions
+
+resid <- dfrf$hb - yhat
+summary(abs(resid))
+quantile(abs(resid), c(.5, .75, .9))
 
 ###### Variable importance ######
 
@@ -245,14 +278,15 @@ sdf<-sdf %>%
                                ifelse(feature_value %in% c("low", "0"), "Low/No", 
                                       "Medium")), levels= c("Low/No", "Medium", "High/Yes"))) %>% 
   group_by(feature_value, variable) %>% 
-  mutate(mean_feature=mean(abs(shap_value), na.rm=T))
+  mutate(mean_feature=mean(shap_value, na.rm=T))
 
 sdf<-sdf %>% 
   left_join(dfimportance, by=c("variable"="vars"))
   
 sdf %>% 
-  ggplot(aes(x = shap_value, y = fct_reorder(variable, -importance), color=feature_value)) +
-  geom_quasirandom(alpha = 0.1, width=.3)+
+  ggplot(aes(x = shap_value, y = fct_reorder(variable, importance), color=feature_value)) +
+  geom_vline(xintercept = 0, linetype="longdash")+
+  geom_quasirandom(alpha = 0.3, width=.3)+
   geom_point(aes(x=mean_feature, fill=feature_value),shape=23, stroke=1, color="black", size=3)+
   scale_color_manual(values = paleta3)+
   scale_fill_manual(values=paleta3)
@@ -342,7 +376,7 @@ gg<-modelob2 %>%
   facet_wrap(~discr, scales="free", labeller = labeller(.default = ~""))
 
 
-ggsave(gg, file=paste0(salidas, "coefs.jpeg"), width=7, height=5)
+ggsave(gg, file=paste0(graficos, "coefs.jpeg"), width=7, height=5)
 
 modelob2<-lm(data=dfrf, formula=fmla)
 
@@ -376,7 +410,7 @@ gg
 dfanalisis<-dfanalisis %>% 
   mutate(control=ifelse(treatment==1, 1, 0),
          D= case_when(treatment==1~ "Control", 
-                      treatment %in% c(2:4) ~ "Exogeneous", 
+                      treatment %in% c(2:4) ~ "Exogenous", 
                       treatment %in% c(5:7) ~ "Endogenous", 
                       treatment %in% c(8:10) ~ "Awareness"))
 
@@ -393,16 +427,32 @@ modelsummary(models = modeloh11,
 ###### H12 ######
 
 dfanalisis<-dfanalisis %>% 
-  mutate(lambda= factor(ifelse(control==1, "Control", paste0("Policy",politica))),
+  mutate(lambda= factor(ifelse(control==1, "Control", paste0("Policy ",politica))),
          lambda= relevel(lambda, ref="Control"),
          favorite = case_when(orden_pref_refuerzo == 1 ~ "reinforcement",
                               orden_pref_criterios_promo == 1 ~ "promotion_criteria",
                               orden_pref_formacion_prof == 1 ~ "training"),
          least_favorite = case_when(orden_pref_refuerzo == 3 ~ "reinforcement",
                                     orden_pref_criterios_promo == 3 ~ "promotion_criteria",
-                                    orden_pref_formacion_prof == 3 ~ "training"
-  )
-)
+                                    orden_pref_formacion_prof == 3 ~ "training"),
+         favorite_num= case_when(orden_pref_refuerzo==1~ 1, 
+                                 orden_pref_criterios_promo==1 ~2, 
+                                 orden_pref_formacion_prof==1 ~3), 
+         least_favorite_num = case_when(orden_pref_refuerzo==3~ 1, 
+                                        orden_pref_criterios_promo==3 ~2, 
+                                        orden_pref_formacion_prof==3 ~3)) 
+
+dfanalisis %>% 
+  drop_na(favorite, lambda) %>% 
+  group_by(favorite, lambda= case_when(lambda=="Policy 1" ~ "reinforcement", 
+                                       lambda=="Policy 2" ~ "promotion_criteria", 
+                                       lambda=="Policy 3" ~ "Training", 
+                                       lambda=="Control" ~ "control")) %>% 
+  summarise(value=mean(hb, na.rm=T)) %>% 
+  ggplot(aes(favorite, lambda, fill=value))+
+  geom_tile()+
+  geom_label(aes(label= percent(value, .02)), color="grey80")+
+  scale_fill_gradient(low="darkgreen", high="#83082a")
 
 modeloh12<- lm(data=dfanalisis, formula= hb ~ lambda+favorite)
 
@@ -415,21 +465,17 @@ modelsummary(models = modeloh12,
 
 ###### H13 ######
 
-dfanalisis_h13 <- dfanalisis %>%
-  mutate(favorite_num= case_when(orden_pref_refuerzo==1~ 1, 
-                                 orden_pref_criterios_promo==1 ~2, 
-                                 orden_pref_formacion_prof==1 ~3), 
-         least_favorite_num = case_when(orden_pref_refuerzo==3~ 1, 
-                                        orden_pref_criterios_promo==3 ~2, 
-                                        orden_pref_formacion_prof==3 ~3)) %>% 
-  filter(favorite_num== politica | least_favorite_num==politica | control==1) %>% 
-  mutate(assignation= case_when(favorite_num==politica ~ "favorite", 
-                                least_favorite_num==politica ~ "least-favorite", 
+dfanalisis_h13 <- dfanalisis %>% 
+  filter(favorite_num== politica | least_favorite_num==politica | control==1) %>%
+  mutate(assignation= case_when(favorite_num==politica & control==0 ~ "favorite", 
+                                least_favorite_num==politica & control==0 ~ "least-favorite", 
                                 control==1 ~ "Control"),
          assignation= relevel(factor(assignation), ref="Control"), 
          politica= factor(paste0("Policy", politica)))
   
-modelo_h13<- lm(data=dfanalisis_h13, formula= hb ~ assignation+politica)
+modelo_h13<- lm(data=dfanalisis_h13, formula= hb ~ assignation+lambda+ favorite)
+
+#CHECK: esto hay que pensarlo bien porque comparar con el grupo de control no queda muy claro, y si se debe controlar por la política preferida o por la que te ha tocado tampoco
 
 modelsummary(models = modelo_h13,
              stars=c("*"=.1, "**"=.05, "***"=.01),
@@ -441,4 +487,56 @@ modelsummary(models = modelo_h13,
 #--------------------#
 ##### B. STUDY 2 #####
 #--------------------#
+
+###### H21 ######
+
+dfanalisish2<-dfanalisis %>% 
+  filter(D %in% c("Exogenous", "Endogenous")) %>% 
+  mutate(D= relevel(factor(D), ref="Exogenous"))
+
+modelo_h21<- lm(data=dfanalisish2, formula= hb ~ D)
+
+modelsummary(models = modelo_h21,
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+###### H22 ######
+
+modelo_h22<- lm(data=dfanalisish2, formula= hb ~ D+lambda+ lambda:D+favorite)
+
+modelsummary(models = modelo_h22,
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+###### H23 ######
+
+dfanalisish23f<-dfanalisish2 %>% 
+  filter(favorite_num==politica) 
+
+modelo_h23f<- lm(data=dfanalisish23f, formula= hb ~ D+favorite)
+
+modelsummary(models = modelo_h23f,
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+dfanalisish23lf<-dfanalisish2 %>% 
+  filter(least_favorite_num==politica) 
+
+modelo_h23lf<- lm(data=dfanalisish23lf, formula= hb ~ D+favorite)
+
+modelsummary(models = modelo_h23lf,
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
 

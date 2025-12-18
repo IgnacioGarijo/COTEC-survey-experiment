@@ -1,20 +1,11 @@
-library(mapSpain)
-library(sf)
-library(tidyverse)
-library(readxl)
-library(arrow)
-library(iml)
-library(fastshap)
-library(shapviz)
-library(ggbeeswarm)
-library(patchwork)
 
-wd<- "C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Datos y codigo/"
-setwd(wd)
-dataname<-paste0(wd,"Cotec_+SaveTheChildren_29+de+abril+de+2025_13.51.xlsx")
-dataparquet<-paste0(wd, "df_named.parquet")
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+source("0. main.R")
+
+dataname<-paste0(data,"Cotec_+SaveTheChildren_29+de+abril+de+2025_13.51.xlsx")
+dataparquet<-paste0(data, "df_named.parquet")
 dfmapa<-esp_get_ccaa(moveCAN = T)
-dfcentrocp<- read_excel("listado_centros.xls")
+dfcentrocp<- read_excel(paste0(data,"listado_centros.xls"))
 
 
 if (!file.exists(dataparquet)){
@@ -25,10 +16,10 @@ data <- read_excel(dataname, skip = 2, col_names = F)
 # Asignar los nombres de columnas utilizando la cabecera obtenida
 colnames(data) <- colnames(full_data)
 
-write_parquet(data, sink = paste0(wd, "df_named.parquet"))
+write_parquet(data, sink = paste0(data, "df_named.parquet"))
 }
 
-df<-read_parquet(paste0(wd, "df_named.parquet"))
+df<-read_parquet(paste0(data, "df_named.parquet"))
 
 
 df<-df %>% 
@@ -877,9 +868,15 @@ df<-df %>%
     ifelse((nchar(cp)!=5 | grepl("[A-Za-z]",cp) ) & !(substr(cp_auto,1,2) %in% c("02", "13", "16", "19", "45")),
            NA, cp))) # Creo la variable cp_imputado aunque sea para un grupo minoritario
 
+# Eliminar los que suspenden a los que no tienen carencias
 
+df<-df %>% 
+  filter(is.na(alumno_1_1) | alumno_1_1=="pasa", 
+         is.na(alumno_2_1) | alumno_2_1=="pasa",
+         is.na(alumno_5_1) | alumno_5_1=="pasa",
+         is.na(alumno_8_1) | alumno_8_1=="pasa")
 
-write_parquet(df, paste0(wd, "cleandata.parquet"))
+write_parquet(df, paste0(data, "cleandata.parquet"))
 
 # Exploraciones tontas
 
