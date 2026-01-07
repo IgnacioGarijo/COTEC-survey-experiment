@@ -401,33 +401,17 @@ gg
 #### 3. HYPOTHESES #### 
 #=====================#
 
-#--------------------#
-##### A. STUDY 1 #####
-#--------------------#
-
-###### H11 ######
+#-----------------------------#
+##### A. PREVISUALIZATION #####
+#-----------------------------#
 
 dfanalisis<-dfanalisis %>% 
   mutate(control=ifelse(treatment==1, 1, 0),
          D= case_when(treatment==1~ "Control", 
                       treatment %in% c(2:4) ~ "Exogenous", 
                       treatment %in% c(5:7) ~ "Endogenous", 
-                      treatment %in% c(8:10) ~ "Awareness"))
-
-modeloh11<- lm(data=dfanalisis, formula= hb ~ control)
-
-modelsummary(models = modeloh11,
-             stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
-
-
-###### H12 ######
-
-dfanalisis<-dfanalisis %>% 
-  mutate(lambda= factor(ifelse(control==1, "Control", paste0("Policy ",politica))),
+                      treatment %in% c(8:10) ~ "Awareness"),
+         lambda= factor(ifelse(control==1, "Control", paste0("Policy ",politica))),
          lambda= relevel(lambda, ref="Control"),
          favorite = case_when(orden_pref_refuerzo == 1 ~ "reinforcement",
                               orden_pref_criterios_promo == 1 ~ "promotion_criteria",
@@ -449,14 +433,62 @@ dfanalisis %>%
                                        lambda=="Policy 3" ~ "Training", 
                                        lambda=="Control" ~ "control")) %>% 
   summarise(value=mean(hb, na.rm=T)) %>% 
+  mutate(color_aes=factor(ifelse(lambda=="control", 1, 0))) %>% 
   ggplot(aes(favorite, lambda, fill=value))+
   geom_tile()+
-  geom_label(aes(label= percent(value, .02)), color="grey80")+
-  scale_fill_gradient(low="darkgreen", high="#83082a")
+  geom_label(aes(label= round(value, 3), color=color_aes))+
+  scale_fill_gradient(low=paleta[3], high="#83082a")+
+  scale_color_manual(values = c("0"="grey80", "1"="yellow"))+
+  guides(fill="none", color="none")+
+  xlab("favorite policy")+
+  ylab("assigned policy")+
+  theme(axis.title = element_text())
 
+
+
+dfanalisis %>% 
+  drop_na(least_favorite, lambda) %>% 
+  group_by(least_favorite, lambda= case_when(lambda=="Policy 1" ~ "reinforcement", 
+                                       lambda=="Policy 2" ~ "promotion_criteria", 
+                                       lambda=="Policy 3" ~ "Training", 
+                                       lambda=="Control" ~ "control")) %>% 
+  summarise(value=mean(hb, na.rm=T)) %>% 
+  mutate(color_aes=factor(ifelse(lambda=="control", 1, 0))) %>% 
+  ggplot(aes(least_favorite, lambda, fill=value))+
+  geom_tile()+
+  geom_label(aes(label= round(value, 3), color=color_aes))+
+  scale_fill_gradient(low=paleta[3], high="#83082a")+
+  scale_color_manual(values = c("0"="grey80", "1"="yellow"))+
+  guides(fill="none", color="none")+
+  xlab("least favorite policy")+
+  ylab("assigned policy")+
+  theme(axis.title = element_text())
+
+
+#--------------------#
+##### A. STUDY 1 #####
+#--------------------#
+
+###### H11 ######
+
+
+modeloh11<- lm(data=dfanalisis, formula= hb ~ control)
+
+modelsummary(models = modeloh11,
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+
+###### H12 ######
+
+
+modeloh12a<- lm(data=dfanalisis, formula= hb ~ lambda)
 modeloh12<- lm(data=dfanalisis, formula= hb ~ lambda+favorite)
 
-modelsummary(models = modeloh12,
+modelsummary(models = list(modeloh12a, modeloh12),
              stars=c("*"=.1, "**"=.05, "***"=.01),
              include.rsquared = FALSE,
              include.adjrs = FALSE,
@@ -472,12 +504,14 @@ dfanalisis_h13 <- dfanalisis %>%
                                 control==1 ~ "Control"),
          assignation= relevel(factor(assignation), ref="Control"), 
          politica= factor(paste0("Policy", politica)))
-  
+
+
+modelo_h13a<- lm(data=dfanalisis_h13, formula= hb ~ assignation)
 modelo_h13<- lm(data=dfanalisis_h13, formula= hb ~ assignation+lambda+ favorite)
 
 #CHECK: esto hay que pensarlo bien porque comparar con el grupo de control no queda muy claro, y si se debe controlar por la política preferida o por la que te ha tocado tampoco
 
-modelsummary(models = modelo_h13,
+modelsummary(models = list(modelo_h13a, modelo_h13),
              stars=c("*"=.1, "**"=.05, "***"=.01),
              include.rsquared = FALSE,
              include.adjrs = FALSE,
@@ -496,7 +530,7 @@ dfanalisish2<-dfanalisis %>%
 
 modelo_h21<- lm(data=dfanalisish2, formula= hb ~ D)
 
-modelsummary(models = modelo_h21,
+modelsummary(models = modelo_h21, 
              stars=c("*"=.1, "**"=.05, "***"=.01),
              include.rsquared = FALSE,
              include.adjrs = FALSE,
