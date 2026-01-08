@@ -1,0 +1,18 @@
+# R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# renv
+renv/library/
+renv/python/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# data
+
+1. Data/raw data/
+1. Data/processed data/

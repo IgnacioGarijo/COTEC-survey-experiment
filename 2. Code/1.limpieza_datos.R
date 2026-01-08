@@ -1,11 +1,6 @@
 
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-source("0. main.R")
+source("2. Code/0. main.R")
 
-dataname<-paste0(data,"Cotec_+SaveTheChildren_29+de+abril+de+2025_13.51.xlsx")
-dataparquet<-paste0(data, "df_named.parquet")
-dfmapa<-esp_get_ccaa(moveCAN = T)
-dfcentrocp<- read_excel(paste0(data,"listado_centros.xls"))
 
 
 if (!file.exists(dataparquet)){
@@ -16,10 +11,10 @@ data <- read_excel(dataname, skip = 2, col_names = F)
 # Asignar los nombres de columnas utilizando la cabecera obtenida
 colnames(data) <- colnames(full_data)
 
-write_parquet(data, sink = paste0(data, "df_named.parquet"))
+write_parquet(data, sink = dataparquet)
 }
 
-df<-read_parquet(paste0(data, "df_named.parquet"))
+df<-read_parquet(dataparquet)
 
 
 df<-df %>% 
@@ -876,7 +871,7 @@ df<-df %>%
          is.na(alumno_5_1) | alumno_5_1=="pasa",
          is.na(alumno_8_1) | alumno_8_1=="pasa")
 
-write_parquet(df, paste0(data, "cleandata.parquet"))
+write_parquet(df, cleandata)
 
 # Exploraciones tontas
 
@@ -902,7 +897,7 @@ df1 %>%
   filter(os_group %in% c("Android", "Apple", "Windows")) %>% 
   ggplot(aes(as.factor(as.numeric(meritocracia)),ratio, fill=os_group, group=os_group)) + 
   geom_col(position="dodge")+
-  scale_y_continuous(labels=scales::label_percent())+
+  scale_y_continuous(labels=label_percent())+
   theme_light()+
   theme(axis.title = element_blank(), 
         legend.title=element_blank())+

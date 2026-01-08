@@ -1,6 +1,6 @@
-#=============================#
-#### 1. LIBARIES AND PATHS #### 
-#=============================#
+#====================#
+#### 1. LIBRARIES #### 
+#====================#
 
 library(mapSpain)
 library(sf)
@@ -24,17 +24,34 @@ library(fastshap)
 library(GGally)
 library(patchwork)
 
-wd<-"C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/"
+#====================#
+#### 2. PATHS #### 
+#====================#
+
+wd<-here::here()
 setwd(wd)
 
-output<- paste0(wd, "3. Output/")
-graficos<- paste0(output, "figures/")
-tables<- paste0(output, "tables/")
-code<- paste0(wd, "2. Code")
-data<- "C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Datos y codigo/"
+output<- file.path(wd, "3. Output/")
+graficos<- file.path(output, "figures/")
+tables<- file.path(output, "tables/")
+code<- file.path(wd, "2. Code")
+data<- file.path(wd, "1. Data")
+rawdata<- file.path(data, "raw data")
+processed_data<-file.path(data, "processed data")
+
+#------------------#
+##### 2.1 DATA #####
+#------------------#
+
+dataname<-file.path(rawdata,"Cotec_+SaveTheChildren_29+de+abril+de+2025_13.51.xlsx")
+dataparquet<-file.path(rawdata, "df_named.parquet")
+dfmapa<-esp_get_ccaa(moveCAN = T)
+dfcentrocp<- read_excel(file.path(rawdata,"listado_centros.xls"))
+cleandata<- file.path(processed_data, "cleandata.parquet")
+
 
 #============================#
-#### 2. THEME AND PALETTE #### 
+#### 3. THEME AND PALETTE #### 
 #============================#
 
 theme_set(theme_minimal()+
@@ -48,8 +65,9 @@ theme_set(theme_minimal()+
 
 paleta<- c("#002059","#011552","#537d90","#a29cb8", "#69d3e3", "#a47dab", "#00b89f")
 paleta3<- c("#94e1b4", "#25998c", "#033854")
+
 #============================#
-#### 3. VECTORS FOR CARDS #### 
+#### 4. VECTORS FOR CARDS #### 
 #============================#
 
 namelist<-c()
@@ -119,7 +137,7 @@ vector_expulsion<- c("alumno_1_3", "alumno_1_6", "alumno_1_7", "alumno_1_8",
 
 
 #====================#
-#### 4. FUNCTIONS #### 
+#### 5. FUNCTIONS #### 
 #====================#
 
 

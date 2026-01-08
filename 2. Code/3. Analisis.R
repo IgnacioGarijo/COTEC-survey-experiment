@@ -2,11 +2,9 @@
 #### 0. LOAD LIBRARIES, THEMES AND DATA ####
 #==========================================#
 
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+source("2. Code/0. main.R")
 
-source("0. main.R")
-
-df<-read_parquet(paste0(data,"cleandata.parquet"))
+df<-read_parquet(cleandata)
 
 #=============================#
 #### 1. HARSHNESS MEASURES ####
