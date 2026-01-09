@@ -572,3 +572,115 @@ modelsummary(models = modelo_h23lf,
              include.nobs = FALSE,
              include.rmse = FALSE)
 
+#--------------------#
+##### C. STUDY 3 #####
+#--------------------#
+
+###### H31 ######
+
+dfanalisish3<-dfanalisis %>% 
+  filter(D %in% c("Endogenous", "Awareness")) %>% 
+  mutate(D= relevel(factor(D), ref="Endogenous"))
+
+modelo_h31<- lm(data=dfanalisish3, formula= hb ~ D)
+
+modelsummary(models = modelo_h31, 
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+###### H32 ######
+
+modelo_h32<- lm(data=dfanalisish3, formula= hb ~ D+lambda+ lambda:D+favorite)
+
+modelsummary(models = modelo_h32,
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+
+###### H33 ######
+
+dfanalisish33f<-dfanalisish3 %>% 
+  filter(favorite_num==politica) 
+
+modelo_h33f<- lm(data=dfanalisish33f, formula= hb ~ D+favorite)
+
+modelsummary(models = modelo_h33f,
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+dfanalisish33lf<-dfanalisish3 %>% 
+  filter(least_favorite_num==politica) 
+
+modelo_h33lf<- lm(data=dfanalisish33lf, formula= hb ~ D+favorite)
+
+modelsummary(models = modelo_h33lf,
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+#--------------------------------#
+##### D. STUDY 3 ALTERNATIVE #####
+#--------------------------------#
+
+###### H3B1 ######
+
+dfanalisish3b<-dfanalisis %>% 
+  filter(D %in% c("Control", "Awareness")) %>% 
+  mutate(D= relevel(factor(D), ref="Control"))
+
+modelo_h3b1<- lm(data=dfanalisish3b, formula= hb ~ D)
+
+modelsummary(models = modelo_h3b1, 
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+
+###### H3b3 ######
+
+dfanalisish3b3f<-dfanalisish3b %>% 
+  filter(favorite_num==politica) 
+
+modelo_h3b3f<- lm(data=dfanalisish3b3f, formula= hb ~ D+favorite)
+
+modelsummary(models = modelo_h3b3f,
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+dfanalisish3b3lf<-dfanalisish3b %>% 
+  filter(least_favorite_num==politica) 
+
+modelo_h3b3lf<- lm(data=dfanalisish3b3lf, formula= hb ~ D+favorite)
+
+modelsummary(models = modelo_h3b3lf,
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+#--------------------#
+##### E. STUDY 4 #####
+#--------------------#
+
+###### H41 ######
+
+# NO SE PUEDE EN PRINCIPIO
+
+###### H42 ######
