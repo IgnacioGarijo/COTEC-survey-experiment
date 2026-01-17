@@ -1,3 +1,5 @@
+## REPETIR GRÁFICO COTEC MONOTONIA SIN LAS CARACTERÍSTICAS QUE NO GUSTAN NADA, PARA QUE LA MONOTONÍA NO SEA SIMPLEMENTE UN REFLEJO DE QUE HAY MÁS PROBABILIDADES DE QUE SALGA ALGO MALO
+
 #==========================================#
 #### 0. LOAD LIBRARIES, THEMES AND DATA ####
 #==========================================#
@@ -422,7 +424,8 @@ dfanalisis<-dfanalisis %>%
                                  orden_pref_formacion_prof==1 ~3), 
          least_favorite_num = case_when(orden_pref_refuerzo==3~ 1, 
                                         orden_pref_criterios_promo==3 ~2, 
-                                        orden_pref_formacion_prof==3 ~3)) 
+                                        orden_pref_formacion_prof==3 ~3),
+         politica=ifelse(D!="Control", politica, NA)) 
 
 dfanalisis %>% 
   drop_na(favorite, lambda) %>% 
@@ -652,7 +655,7 @@ modelsummary(models = modelo_h3b1,
 ###### H3b3 ######
 
 dfanalisish3b3f<-dfanalisish3b %>% 
-  filter(favorite_num==politica) 
+  filter(favorite_num==politica | D=="Control") 
 
 modelo_h3b3f<- lm(data=dfanalisish3b3f, formula= hb ~ D+favorite)
 
@@ -664,7 +667,7 @@ modelsummary(models = modelo_h3b3f,
              include.rmse = FALSE)
 
 dfanalisish3b3lf<-dfanalisish3b %>% 
-  filter(least_favorite_num==politica) 
+  filter(least_favorite_num==politica | D=="Control") 
 
 modelo_h3b3lf<- lm(data=dfanalisish3b3lf, formula= hb ~ D+favorite)
 
@@ -684,3 +687,96 @@ modelsummary(models = modelo_h3b3lf,
 # NO SE PUEDE EN PRINCIPIO
 
 ###### H42 ######
+
+dfanalisis42<-dfanalisis %>% 
+  filter(D == "Exogenous")
+
+dfanalisis42_list<- list()
+models_f<-list()
+models_lf<-list()
+
+for (x in 1:3){
+  dfanalisis42_list[[paste0("policy_",x)]]<-dfanalisis42 %>%
+    mutate(fav=as.numeric(favorite_num==x), 
+           least_fav= as.numeric((least_favorite_num==x)), 
+           assigned= as.numeric(politica==x))
+
+models_f[[paste0("modelo_f",x)]] <- glm(data=dfanalisis42_list[[paste0("policy_",x)]], formula = fav ~ assigned, family = "binomial") 
+models_lf[[paste0("modelo_lf",x)]]<-  glm(data=dfanalisis42_list[[paste0("policy_",x)]], formula = least_fav ~ assigned, family = "binomial") 
+
+}
+
+modelsummary(models = models_f,
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+modelsummary(models = models_lf,
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             include.rsquared = FALSE,
+             include.adjrs = FALSE,
+             include.nobs = FALSE,
+             include.rmse = FALSE)
+
+###### H43 ######
+
+dfanalisis %>% 
+  drop_na(favorite) %>% 
+  group_by(lambda, favorite) %>% 
+  summarise(valor = n(), .groups = "drop_last") %>% 
+  mutate(
+    n = sum(valor),
+    p = valor / n,
+    se = sqrt(p * (1 - p) / n),
+    z = qnorm(0.875),   # 75% IC
+    lo = p - z * se,
+    hi = p + z * se
+  ) %>% 
+  ungroup() %>%  
+  ggplot(aes(lambda, p, fill = favorite)) +
+  geom_col() +
+  geom_errorbar(
+    aes(ymin = lo, ymax = hi),
+    width = 0.15
+  ) +
+  geom_label(
+    aes(y = p / 2, label = percent(p, 1))
+  ) +
+  scale_y_continuous(labels = label_percent()) +
+  facet_wrap(~favorite, ncol = 3)
+
+
+dfanalisis %>% 
+  drop_na(least_favorite) %>% 
+  group_by(lambda, least_favorite) %>% 
+  summarise(valor = n(), .groups = "drop_last") %>% 
+  mutate(
+    n = sum(valor),
+    p = valor / n,
+    se = sqrt(p * (1 - p) / n),
+    z = qnorm(0.875),   # 75% IC
+    lo = p - z * se,
+    hi = p + z * se
+  ) %>% 
+  ungroup() %>%  
+  ggplot(aes(lambda, p, fill = least_favorite)) +
+  geom_col() +
+  geom_errorbar(
+    aes(ymin = lo, ymax = hi),
+    width = 0.15
+  ) +
+  geom_label(
+    aes(y = p / 2, label = percent(p, 1))
+  ) +
+  scale_y_continuous(labels = label_percent()) +
+  facet_wrap(~least_favorite, ncol = 3)
+
+
+dfanalisis %>% 
+  filter(D!="Control") %>% 
+  group_by(D, politica) %>% 
+  summarise(valor=n()) %>% 
+  group_by(D) %>% 
+  mutate(ratio=valor/sum(valor))
