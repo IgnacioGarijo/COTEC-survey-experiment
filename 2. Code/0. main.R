@@ -1,7 +1,7 @@
 #====================#
 #### 1. LIBRARIES #### 
 #====================#
-
+suppressMessages({
 library(mapSpain)
 library(sf)
 library(tidyverse)
@@ -23,7 +23,7 @@ library(iml)
 library(fastshap)
 library(GGally)
 library(patchwork)
-
+})
 #====================#
 #### 2. PATHS #### 
 #====================#
@@ -65,6 +65,10 @@ theme_set(theme_minimal()+
 
 paleta<- c("#002059","#011552","#537d90","#a29cb8", "#69d3e3", "#a47dab", "#00b89f")
 paleta3<- c("#94e1b4", "#25998c", "#033854")
+
+paleta_alt<- c("#9192a6", "#a3b6cd", "#809a94", "#75919a","#527677",
+               "#6782b9", "#8d6260", "#bb8a94","#f5cbb5", "#cea183"
+               )
 
 #============================#
 #### 4. VECTORS FOR CARDS #### 

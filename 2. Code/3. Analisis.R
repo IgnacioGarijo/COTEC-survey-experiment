@@ -134,7 +134,7 @@ dfanalisis %>%
   ggplot(aes(value))+
   geom_histogram(bins=20, alpha=.8, fill="steelblue")+
   geom_vline(xintercept = 0, linetype="longdash")+
-  facet_wrap(~name)
+  facet_wrap(~name) # Sacar
 
 
 dfanalisis %>% 
@@ -144,7 +144,7 @@ dfanalisis %>%
   ungroup() %>% 
   ggplot(aes(edad, value, color=name))+
   geom_point()+
-  geom_line()
+  geom_line() # Sacar
 
 #========================================#
 #### 3. CHARACTERIZATION THE TEACHERS ####
@@ -223,14 +223,14 @@ dfimportance<- data.frame(vars=names(modelo_rf$variable.importance),
 
 dfimportance %>% 
   ggplot(aes(fct_reorder(vars, importance), importance))+
-  geom_col()
+  geom_col(fill="steelblue", alpha=.85) # Sacar
 
 dfrf$pred_rf <- predict(modelo_rf, data = dfrf)$predictions
 
 dfrf %>% 
   ggplot(aes(x = hb, y = pred_rf)) +
-  geom_point(alpha = 0.6) +
-  geom_smooth(se=F, method="lm")
+  geom_point(alpha = 0.6, color="steelblue", alpha=.85) +
+  geom_smooth(se=F, method="lm", color= "grey50") # Sacar
 
 ###### Shap values ######
 
@@ -289,7 +289,7 @@ sdf %>%
   geom_quasirandom(alpha = 0.3, width=.3)+
   geom_point(aes(x=mean_feature, fill=feature_value),shape=23, stroke=1, color="black", size=3)+
   scale_color_manual(values = paleta3)+
-  scale_fill_manual(values=paleta3)
+  scale_fill_manual(values=paleta3) # Sacar
 
 ###### Distribution of continuous variables ######
 
@@ -373,7 +373,7 @@ gg<-modelob2 %>%
   coord_flip()+
   guides(color="none")+
   scale_color_manual(values= c("#537d90", "#00b89f"))+
-  facet_wrap(~discr, scales="free", labeller = labeller(.default = ~""))
+  facet_wrap(~discr, scales="free", labeller = labeller(.default = ~"")) # Sacar
 
 
 ggsave(gg, file=paste0(graficos, "coefs.jpeg"), width=7, height=5)
@@ -439,11 +439,11 @@ dfanalisis %>%
   geom_tile()+
   geom_label(aes(label= round(value, 3), color=color_aes))+
   scale_fill_gradient(low=paleta[3], high="#83082a")+
-  scale_color_manual(values = c("0"="grey80", "1"="yellow"))+
+  scale_color_manual(values = c("0"="grey80", "1"="#cea183"))+
   guides(fill="none", color="none")+
   xlab("favorite policy")+
   ylab("assigned policy")+
-  theme(axis.title = element_text())
+  theme(axis.title = element_text()) # Sacar
 
 
 
@@ -459,11 +459,11 @@ dfanalisis %>%
   geom_tile()+
   geom_label(aes(label= round(value, 3), color=color_aes))+
   scale_fill_gradient(low=paleta[3], high="#83082a")+
-  scale_color_manual(values = c("0"="grey80", "1"="yellow"))+
+  scale_color_manual(values = c("0"="grey80", "1"="#cea183"))+
   guides(fill="none", color="none")+
   xlab("least favorite policy")+
   ylab("assigned policy")+
-  theme(axis.title = element_text())
+  theme(axis.title = element_text()) # Sacar
 
 
 #--------------------#
@@ -721,6 +721,7 @@ modelsummary(models = models_lf,
              include.rmse = FALSE)
 
 ###### H43 ######
+# Esto no es así, esto debería ser la probabilidad de que te guste una según el treatment, no según el policy, si no esto es equivalente a los mapas de calor
 
 dfanalisis %>% 
   drop_na(favorite) %>% 
@@ -780,3 +781,6 @@ dfanalisis %>%
   summarise(valor=n()) %>% 
   group_by(D) %>% 
   mutate(ratio=valor/sum(valor))
+
+
+# Posibles adiciones ¿Podemos explicar cuál es la política favorita de cada profesor?
