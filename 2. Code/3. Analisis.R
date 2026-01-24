@@ -128,13 +128,16 @@ dfanalisis<- left_join(df3, df)
 
 
 
-dfanalisis %>% 
+gg<-dfanalisis %>% 
   select(ha, hb, hc,hd) %>% 
   pivot_longer(cols = c("ha", "hb", "hc", "hd")) %>% 
   ggplot(aes(value))+
-  geom_histogram(bins=20, alpha=.8, fill="steelblue")+
-  geom_vline(xintercept = 0, linetype="longdash")+
-  facet_wrap(~name) # Sacar
+  geom_histogram(bins=20, alpha=.8, fill= paleta_alt[[1]])+
+  geom_vline(xintercept = 0, linetype="longdash", color=paleta[[4]], linewidth=.6)+
+  facet_wrap(~name)+ # Sacar
+  scale_y_continuous(expand = c(0,0))
+
+ggsave(gg, filename=file.path(graficos, "histograms.jpeg"), width = 12, height = 8)
 
 
 dfanalisis %>% 
@@ -144,7 +147,7 @@ dfanalisis %>%
   ungroup() %>% 
   ggplot(aes(edad, value, color=name))+
   geom_point()+
-  geom_line() # Sacar
+  geom_line()
 
 #========================================#
 #### 3. CHARACTERIZATION THE TEACHERS ####
@@ -221,16 +224,21 @@ quantile(abs(resid), c(.5, .75, .9))
 dfimportance<- data.frame(vars=names(modelo_rf$variable.importance),
                           importance=modelo_rf$variable.importance)
 
-dfimportance %>% 
+gg<-dfimportance %>% 
   ggplot(aes(fct_reorder(vars, importance), importance))+
-  geom_col(fill="steelblue", alpha=.85) # Sacar
+  geom_col(fill=paleta_alt[[1]], alpha=.85)+ # Sacar
+  scale_y_continuous(expand=c(0,0))
+
+ggsave(gg, filename=file.path(graficos, "variable_importance.jpeg"), width = 12, height = 8)
 
 dfrf$pred_rf <- predict(modelo_rf, data = dfrf)$predictions
 
-dfrf %>% 
+gg<-dfrf %>% 
   ggplot(aes(x = hb, y = pred_rf)) +
-  geom_point(alpha = 0.6, color="steelblue", alpha=.85) +
+  geom_point(alpha = 0.6, color=paleta_alt[[1]]) +
   geom_smooth(se=F, method="lm", color= "grey50") # Sacar
+
+ggsave(gg, filename=file.path(graficos, "correlation.jpeg"), width = 12, height = 8)
 
 ###### Shap values ######
 
@@ -283,13 +291,15 @@ sdf<-sdf %>%
 sdf<-sdf %>% 
   left_join(dfimportance, by=c("variable"="vars"))
   
-sdf %>% 
+gg<-sdf %>% 
   ggplot(aes(x = shap_value, y = fct_reorder(variable, importance), color=feature_value)) +
   geom_vline(xintercept = 0, linetype="longdash")+
   geom_quasirandom(alpha = 0.3, width=.3)+
   geom_point(aes(x=mean_feature, fill=feature_value),shape=23, stroke=1, color="black", size=3)+
   scale_color_manual(values = paleta3)+
   scale_fill_manual(values=paleta3) # Sacar
+
+ggsave(gg, filename=file.path(graficos, "SHAP.jpeg"), width = 12, height = 8)
 
 ###### Distribution of continuous variables ######
 
@@ -427,7 +437,7 @@ dfanalisis<-dfanalisis %>%
                                         orden_pref_formacion_prof==3 ~3),
          politica=ifelse(D!="Control", politica, NA)) 
 
-dfanalisis %>% 
+gg<-dfanalisis %>% 
   drop_na(favorite, lambda) %>% 
   group_by(favorite, lambda= case_when(lambda=="Policy 1" ~ "reinforcement", 
                                        lambda=="Policy 2" ~ "promotion_criteria", 
@@ -438,16 +448,19 @@ dfanalisis %>%
   ggplot(aes(favorite, lambda, fill=value))+
   geom_tile()+
   geom_label(aes(label= round(value, 3), color=color_aes))+
-  scale_fill_gradient(low=paleta[3], high="#83082a")+
+  scale_fill_gradient(low=paleta_alt[2], high=paleta_alt[[3]])+
   scale_color_manual(values = c("0"="grey80", "1"="#cea183"))+
   guides(fill="none", color="none")+
   xlab("favorite policy")+
   ylab("assigned policy")+
-  theme(axis.title = element_text()) # Sacar
+  theme(axis.title = element_text())+ # Sacar
+  scale_y_discrete(expand=c(0,0))+
+  scale_x_discrete(expand=c(0,0))
+
+ggsave(gg, file=file.path(graficos, "heatmatp_fav.jpeg"), width=7, height=5)
 
 
-
-dfanalisis %>% 
+gg<-dfanalisis %>% 
   drop_na(least_favorite, lambda) %>% 
   group_by(least_favorite, lambda= case_when(lambda=="Policy 1" ~ "reinforcement", 
                                        lambda=="Policy 2" ~ "promotion_criteria", 
@@ -458,12 +471,14 @@ dfanalisis %>%
   ggplot(aes(least_favorite, lambda, fill=value))+
   geom_tile()+
   geom_label(aes(label= round(value, 3), color=color_aes))+
-  scale_fill_gradient(low=paleta[3], high="#83082a")+
+  scale_fill_gradient(low=paleta_alt[2], high=paleta_alt[[3]])+
   scale_color_manual(values = c("0"="grey80", "1"="#cea183"))+
   guides(fill="none", color="none")+
   xlab("least favorite policy")+
   ylab("assigned policy")+
   theme(axis.title = element_text()) # Sacar
+
+ggsave(gg, file=file.path(graficos, "heatmatp_leastfav.jpeg"), width=7, height=5)
 
 
 #--------------------#
@@ -725,7 +740,7 @@ modelsummary(models = models_lf,
 
 dfanalisis %>% 
   drop_na(favorite) %>% 
-  group_by(lambda, favorite) %>% 
+  group_by(D, favorite) %>% 
   summarise(valor = n(), .groups = "drop_last") %>% 
   mutate(
     n = sum(valor),
@@ -736,7 +751,7 @@ dfanalisis %>%
     hi = p + z * se
   ) %>% 
   ungroup() %>%  
-  ggplot(aes(lambda, p, fill = favorite)) +
+  ggplot(aes(D, p, fill = favorite)) +
   geom_col() +
   geom_errorbar(
     aes(ymin = lo, ymax = hi),
@@ -751,7 +766,7 @@ dfanalisis %>%
 
 dfanalisis %>% 
   drop_na(least_favorite) %>% 
-  group_by(lambda, least_favorite) %>% 
+  group_by(D, least_favorite) %>% 
   summarise(valor = n(), .groups = "drop_last") %>% 
   mutate(
     n = sum(valor),
@@ -762,17 +777,24 @@ dfanalisis %>%
     hi = p + z * se
   ) %>% 
   ungroup() %>%  
-  ggplot(aes(lambda, p, fill = least_favorite)) +
-  geom_col() +
+  ggplot(aes(D, p, fill = least_favorite)) +
+  geom_col(alpha=.85) +
   geom_errorbar(
     aes(ymin = lo, ymax = hi),
-    width = 0.15
+    width = 0.3, 
+    color="grey40",
+    linewidth=1
   ) +
-  geom_label(
-    aes(y = p / 2, label = percent(p, 1))
+  geom_text(
+    aes(y = p / 2, label = percent(p, 1)),
+    alpha=.85, 
+    color="#faf3e3",
+    size=3
   ) +
   scale_y_continuous(labels = label_percent()) +
-  facet_wrap(~least_favorite, ncol = 3)
+  facet_wrap(~least_favorite, ncol = 3)+
+  scale_fill_manual(values=c("#153a33", "#7498ae", "#6c0e33"))+
+  guides(fill="none")
 
 
 dfanalisis %>% 
