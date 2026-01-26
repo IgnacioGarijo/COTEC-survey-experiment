@@ -135,7 +135,13 @@ gg<-dfanalisis %>%
   geom_histogram(bins=20, alpha=.8, fill= paleta_alt[[1]])+
   geom_vline(xintercept = 0, linetype="longdash", color=paleta[[4]], linewidth=.6)+
   facet_wrap(~name)+ # Sacar
-  scale_y_continuous(expand = c(0,0))
+  scale_y_continuous(expand = c(0,0))+
+  theme(
+    strip.text = element_text(
+      size = 16,       # tamaño
+      face = "bold",   # negrita
+    )
+  )
 
 ggsave(gg, filename=file.path(graficos, "histograms.jpeg"), width = 12, height = 8)
 
@@ -149,9 +155,9 @@ dfanalisis %>%
   geom_point()+
   geom_line()
 
-#========================================#
-#### 3. CHARACTERIZATION THE TEACHERS ####
-#========================================#
+#======================================#
+#### 3. CHARACTERIZING THE TEACHERS ####
+#======================================#
 
 # nivel, experiencia, antiguedad3, female, edad, titularidad, sitlabpub, grupos_docencia, impacto_centro_estudiantes/impacto_region_estudiantes, empatia, meritocracia
 
@@ -225,9 +231,10 @@ dfimportance<- data.frame(vars=names(modelo_rf$variable.importance),
                           importance=modelo_rf$variable.importance)
 
 gg<-dfimportance %>% 
-  ggplot(aes(fct_reorder(vars, importance), importance))+
+  ggplot(aes(importance,fct_reorder(vars, importance)))+
   geom_col(fill=paleta_alt[[1]], alpha=.85)+ # Sacar
-  scale_y_continuous(expand=c(0,0))
+  scale_x_continuous(expand=c(0,0))+
+  theme(text= element_text(size=18))
 
 ggsave(gg, filename=file.path(graficos, "variable_importance.jpeg"), width = 12, height = 8)
 
@@ -236,11 +243,13 @@ dfrf$pred_rf <- predict(modelo_rf, data = dfrf)$predictions
 gg<-dfrf %>% 
   ggplot(aes(x = hb, y = pred_rf)) +
   geom_point(alpha = 0.6, color=paleta_alt[[1]]) +
-  geom_smooth(se=F, method="lm", color= "grey50") # Sacar
+  geom_smooth(se=F, method="lm", color= "grey50") + # Sacar
+  theme(axis.title = element_text())+
+  ylab("Predicciones")+
+  xlab("Hb")
 
 ggsave(gg, filename=file.path(graficos, "correlation.jpeg"), width = 12, height = 8)
 
-###### Shap values ######
 
 variables_rf<-names(modelo_rf$variable.importance)
 
@@ -383,10 +392,10 @@ gg<-modelob2 %>%
   coord_flip()+
   guides(color="none")+
   scale_color_manual(values= c("#537d90", "#00b89f"))+
-  facet_wrap(~discr, scales="free", labeller = labeller(.default = ~"")) # Sacar
+  facet_wrap(~discr, scales="free", labeller = labeller(.default = ~"")) +# Sacar
+  theme(text = element_text(size=15))
 
-
-ggsave(gg, file=paste0(graficos, "coefs.jpeg"), width=7, height=5)
+ggsave(gg, file=file.path(graficos, "coefs.jpeg"), width=7, height=5)
 
 modelob2<-lm(data=dfrf, formula=fmla)
 
@@ -418,9 +427,10 @@ gg
 dfanalisis<-dfanalisis %>% 
   mutate(control=ifelse(treatment==1, 1, 0),
          D= case_when(treatment==1~ "Control", 
-                      treatment %in% c(2:4) ~ "Exogenous", 
-                      treatment %in% c(5:7) ~ "Endogenous", 
+                      treatment %in% c(2:4) ~ "Policy", 
+                      treatment %in% c(5:7) ~ "Revelation", 
                       treatment %in% c(8:10) ~ "Awareness"),
+         D= factor(D, levels=c("Control", "Policy", "Revelation", "Awareness")),
          lambda= factor(ifelse(control==1, "Control", paste0("Policy ",politica))),
          lambda= relevel(lambda, ref="Control"),
          favorite = case_when(orden_pref_refuerzo == 1 ~ "reinforcement",
@@ -453,7 +463,8 @@ gg<-dfanalisis %>%
   guides(fill="none", color="none")+
   xlab("favorite policy")+
   ylab("assigned policy")+
-  theme(axis.title = element_text())+ # Sacar
+  theme(axis.title = element_text(), 
+        text=element_text(size=12))+ # Sacar
   scale_y_discrete(expand=c(0,0))+
   scale_x_discrete(expand=c(0,0))
 
@@ -476,7 +487,10 @@ gg<-dfanalisis %>%
   guides(fill="none", color="none")+
   xlab("least favorite policy")+
   ylab("assigned policy")+
-  theme(axis.title = element_text()) # Sacar
+  theme(axis.title = element_text(),
+        text=element_text(size=12))+ # Sacar
+  scale_y_discrete(expand=c(0,0))+
+  scale_x_discrete(expand=c(0,0))
 
 ggsave(gg, file=file.path(graficos, "heatmatp_leastfav.jpeg"), width=7, height=5)
 
@@ -492,11 +506,9 @@ modeloh11<- lm(data=dfanalisis, formula= hb ~ control)
 
 modelsummary(models = modeloh11,
              stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
-
+             gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+             format="html",
+             output = file.path(tables, "h11.html"))
 
 ###### H12 ######
 
@@ -506,10 +518,9 @@ modeloh12<- lm(data=dfanalisis, formula= hb ~ lambda+favorite)
 
 modelsummary(models = list(modeloh12a, modeloh12),
              stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
+             gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+             format="html",
+             output = file.path(tables, "h12.html"))
 
 ###### H13 ######
 
@@ -529,10 +540,9 @@ modelo_h13<- lm(data=dfanalisis_h13, formula= hb ~ assignation+lambda+ favorite)
 
 modelsummary(models = list(modelo_h13a, modelo_h13),
              stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
+             gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+             format="html",
+             output = file.path(tables, "h13.html"))
 
 #--------------------#
 ##### B. STUDY 2 #####
@@ -541,17 +551,16 @@ modelsummary(models = list(modelo_h13a, modelo_h13),
 ###### H21 ######
 
 dfanalisish2<-dfanalisis %>% 
-  filter(D %in% c("Exogenous", "Endogenous")) %>% 
-  mutate(D= relevel(factor(D), ref="Exogenous"))
+  filter(D %in% c("Policy", "Revelation")) %>% 
+  mutate(D= relevel(factor(D), ref="Policy"))
 
 modelo_h21<- lm(data=dfanalisish2, formula= hb ~ D)
 
-modelsummary(models = modelo_h21, 
+modelsummary(models = modelo_h21,
              stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
+             gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+             format="html",
+             output = file.path(tables, "h21.html"))
 
 ###### H22 ######
 
@@ -559,10 +568,9 @@ modelo_h22<- lm(data=dfanalisish2, formula= hb ~ D+lambda+ lambda:D+favorite)
 
 modelsummary(models = modelo_h22,
              stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
+             gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+             format="html",
+             output = file.path(tables, "h22.html"))
 
 ###### H23 ######
 
@@ -571,24 +579,17 @@ dfanalisish23f<-dfanalisish2 %>%
 
 modelo_h23f<- lm(data=dfanalisish23f, formula= hb ~ D+favorite)
 
-modelsummary(models = modelo_h23f,
-             stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
 
 dfanalisish23lf<-dfanalisish2 %>% 
   filter(least_favorite_num==politica) 
 
 modelo_h23lf<- lm(data=dfanalisish23lf, formula= hb ~ D+favorite)
 
-modelsummary(models = modelo_h23lf,
+modelsummary(models = list("Favorite"=modelo_h23f, "Least\n favorite"=modelo_h23lf),
              stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
+             gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+             format="html",
+             output = file.path(tables, "h23.html"))
 
 #--------------------#
 ##### C. STUDY 3 #####
@@ -597,17 +598,16 @@ modelsummary(models = modelo_h23lf,
 ###### H31 ######
 
 dfanalisish3<-dfanalisis %>% 
-  filter(D %in% c("Endogenous", "Awareness")) %>% 
-  mutate(D= relevel(factor(D), ref="Endogenous"))
+  filter(D %in% c("Revelation", "Awareness")) %>% 
+  mutate(D= relevel(factor(D), ref="Revelation"))
 
 modelo_h31<- lm(data=dfanalisish3, formula= hb ~ D)
 
-modelsummary(models = modelo_h31, 
+modelsummary(models = modelo_h31,
              stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
+             gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+             format="html",
+             output = file.path(tables, "h31.html"))
 
 ###### H32 ######
 
@@ -615,10 +615,9 @@ modelo_h32<- lm(data=dfanalisish3, formula= hb ~ D+lambda+ lambda:D+favorite)
 
 modelsummary(models = modelo_h32,
              stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
+             gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+             format="html",
+             output = file.path(tables, "h32.html"))
 
 
 ###### H33 ######
@@ -628,24 +627,17 @@ dfanalisish33f<-dfanalisish3 %>%
 
 modelo_h33f<- lm(data=dfanalisish33f, formula= hb ~ D+favorite)
 
-modelsummary(models = modelo_h33f,
-             stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
 
 dfanalisish33lf<-dfanalisish3 %>% 
   filter(least_favorite_num==politica) 
 
 modelo_h33lf<- lm(data=dfanalisish33lf, formula= hb ~ D+favorite)
 
-modelsummary(models = modelo_h33lf,
+modelsummary(models = list("Favorite"=modelo_h33f, "Least\n favorite"=modelo_h33lf),
              stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
+             gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+             format="html",
+             output = file.path(tables, "h33.html"))
 
 #--------------------------------#
 ##### D. STUDY 3 ALTERNATIVE #####
@@ -659,12 +651,11 @@ dfanalisish3b<-dfanalisis %>%
 
 modelo_h3b1<- lm(data=dfanalisish3b, formula= hb ~ D)
 
-modelsummary(models = modelo_h3b1, 
+modelsummary(models = modelo_h3b1,
              stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
+             gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+             format="html",
+             output = file.path(tables, "h31_alt.html"))
 
 
 ###### H3b3 ######
@@ -686,12 +677,11 @@ dfanalisish3b3lf<-dfanalisish3b %>%
 
 modelo_h3b3lf<- lm(data=dfanalisish3b3lf, formula= hb ~ D+favorite)
 
-modelsummary(models = modelo_h3b3lf,
+modelsummary(models = list("Favorite"=modelo_h3b3f, "Least\n favorite"=modelo_h3b3lf),
              stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
+             gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+             format="html",
+             output = file.path(tables, "h33_alt.html"))
 
 #--------------------#
 ##### E. STUDY 4 #####
@@ -704,41 +694,51 @@ modelsummary(models = modelo_h3b3lf,
 ###### H42 ######
 
 dfanalisis42<-dfanalisis %>% 
-  filter(D == "Exogenous")
+  filter(D == "Policy")
 
 dfanalisis42_list<- list()
 models_f<-list()
 models_lf<-list()
 
 for (x in 1:3){
+  if (x==1){name= "Reinforcement"}else if (x==2){name= "Promotion criteria"}else{name="Training"}
   dfanalisis42_list[[paste0("policy_",x)]]<-dfanalisis42 %>%
     mutate(fav=as.numeric(favorite_num==x), 
            least_fav= as.numeric((least_favorite_num==x)), 
            assigned= as.numeric(politica==x))
 
-models_f[[paste0("modelo_f",x)]] <- glm(data=dfanalisis42_list[[paste0("policy_",x)]], formula = fav ~ assigned, family = "binomial") 
-models_lf[[paste0("modelo_lf",x)]]<-  glm(data=dfanalisis42_list[[paste0("policy_",x)]], formula = least_fav ~ assigned, family = "binomial") 
+models_f[[paste0(name)]] <- glm(data=dfanalisis42_list[[paste0("policy_",x)]], formula = fav ~ assigned, family = "binomial") 
+models_lf[[paste0(name)]]<-  glm(data=dfanalisis42_list[[paste0("policy_",x)]], formula = least_fav ~ assigned, family = "binomial") 
 
 }
 
-modelsummary(models = models_f,
-             stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
 
-modelsummary(models = models_lf,
-             stars=c("*"=.1, "**"=.05, "***"=.01),
-             include.rsquared = FALSE,
-             include.adjrs = FALSE,
-             include.nobs = FALSE,
-             include.rmse = FALSE)
+models_all <- c(models_lf, models_f)
 
+gt_tbl <- modelsummary(
+  models = models_all,
+  stars = c("*" = .1, "**" = .05, "***" = .01),
+  gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+  output = "gt"
+)
+
+gt_tbl <- gt_tbl %>%
+  gt::tab_spanner(
+    label = "Least favorite",
+    columns = 2:(1 + length(models_lf))
+  ) %>%
+  gt::tab_spanner(
+    label = "Favorite",
+    columns = (2 + length(models_lf)):(1 + length(models_all))
+  )
+
+gt::gtsave(
+  gt_tbl,
+  file = file.path(tables, "h42.html")
+)
 ###### H43 ######
-# Esto no es así, esto debería ser la probabilidad de que te guste una según el treatment, no según el policy, si no esto es equivalente a los mapas de calor
 
-dfanalisis %>% 
+gg<-dfanalisis %>% 
   drop_na(favorite) %>% 
   group_by(D, favorite) %>% 
   summarise(valor = n(), .groups = "drop_last") %>% 
@@ -752,19 +752,29 @@ dfanalisis %>%
   ) %>% 
   ungroup() %>%  
   ggplot(aes(D, p, fill = favorite)) +
-  geom_col() +
+  geom_col(alpha=.85) +
   geom_errorbar(
     aes(ymin = lo, ymax = hi),
-    width = 0.15
+    width = 0.3, 
+    color="grey40",
+    linewidth=1
   ) +
-  geom_label(
-    aes(y = p / 2, label = percent(p, 1))
+  geom_text(
+    aes(y = p / 2, label = percent(p, 1)),
+    alpha=.85, 
+    color="#faf3e3",
+    size=7
   ) +
-  scale_y_continuous(labels = label_percent()) +
-  facet_wrap(~favorite, ncol = 3)
+  scale_y_continuous(labels = label_percent(), expand=c(0,0)) +
+  facet_wrap(~favorite, ncol = 3)+
+  scale_fill_manual(values=c("#153a33", "#7498ae", "#6c0e33"))+
+  guides(fill="none")+
+  theme(axis.text = element_text(size=18))
 
 
-dfanalisis %>% 
+ggsave(gg, filename=file.path(graficos, "h43_fav.jpeg"), width = 12, height = 8)
+
+gg<-dfanalisis %>% 
   drop_na(least_favorite) %>% 
   group_by(D, least_favorite) %>% 
   summarise(valor = n(), .groups = "drop_last") %>% 
@@ -789,13 +799,15 @@ dfanalisis %>%
     aes(y = p / 2, label = percent(p, 1)),
     alpha=.85, 
     color="#faf3e3",
-    size=3
+    size=7
   ) +
-  scale_y_continuous(labels = label_percent()) +
+  scale_y_continuous(labels = label_percent(), expand=c(0,0)) +
   facet_wrap(~least_favorite, ncol = 3)+
   scale_fill_manual(values=c("#153a33", "#7498ae", "#6c0e33"))+
-  guides(fill="none")
+  guides(fill="none")+
+  theme(axis.text = element_text(size=18))
 
+ggsave(gg, filename=file.path(graficos, "h43_lfav.jpeg"), width = 12, height = 8)
 
 dfanalisis %>% 
   filter(D!="Control") %>% 

@@ -1,0 +1,128 @@
+[
+  {
+    "objectID": "index.html#first-slide",
+    "href": "index.html#first-slide",
+    "title": "",
+    "section": "First slide",
+    "text": "First slide\n\n\n\n\n\nInforme COTEC: determinantes de la repetición escolar"
+  },
+  {
+    "objectID": "index.html#el-preregistro-consta-de-dos-partes",
+    "href": "index.html#el-preregistro-consta-de-dos-partes",
+    "title": "",
+    "section": "El preregistro consta de dos partes",
+    "text": "El preregistro consta de dos partes\n\n\n\nCaracterización\n\nSe crean medidas de harshness del profesor\nSe utilizan las preguntas socioeconómicas y de comportamiento para intentar caracterizar a los profesores más duros (Random Forest)\n\n\n\nHipótesis\n\nSe testean hipótesis sobre el comportamiento de los profesores dependiendo de sus gustos sobre las políticas y de si esos gustos con complacidos.\nSe muestran los resultados con tablas de regresiones y algún gráfico"
+  },
+  {
+    "objectID": "index.html#h11",
+    "href": "index.html#h11",
+    "title": "",
+    "section": "H11",
+    "text": "H11\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with being assigned to policies. This means that teachers assigned to the Policy Treatment are not harder than those from the Control Group.\n\n\n\\[\n\\begin{equation}\\label{eq:h11}\n    \\boldsymbol{H_j}= \\lambda_{1|1} D_1 %+\\boldsymbol{\\beta_{1|1} X_1}\n\\end{equation}\n\\] Discussion:  A negative \\(\\lambda_{1|1}\\) would mean that being exposed to the policies has a negative effect on the harshness level of the teachers."
+  },
+  {
+    "objectID": "index.html#las-medidas-de-harshness-son-similares-entre-ellas",
+    "href": "index.html#las-medidas-de-harshness-son-similares-entre-ellas",
+    "title": "",
+    "section": "Las medidas de harshness son similares entre ellas",
+    "text": "Las medidas de harshness son similares entre ellas\n\n\n\n\n\n\nHa: tasa de repetición\nHb: Media de la desviación entre la decisión del profesor y la media del resto para una tarjeta i\nHc: Media de la desviación entre la decisión del profesor y la probabilidad de suspender de una tarjeta i según un modelo logit alimentado con las características del alumno\nHd: Igual que Hc pero añadiendo las variables de primaria/secundaria y titularidad del centro"
+  },
+  {
+    "objectID": "index.html#modelo-random-forest",
+    "href": "index.html#modelo-random-forest",
+    "title": "",
+    "section": "Modelo Random Forest",
+    "text": "Modelo Random Forest\n\nModeloFitImportancia de las variablesValores SHAPLogit\n\n\n\nSe utiliza la segunda medida (hb) para el análisis, debido a que hb, hc, y hd son prácticamente iguales (correlación +0.995). Incluye las variables explicativas:\n\n\n\n\n\n\nPrimaria\nExperiencia\nAntigüedad\nEdad\nNº grupos de docencia\nAutopercepción del impacto en los estudiantes\nConfianza en la meritocracia\nEmpatía\nTitularidad colegio\nContrato\nSexo\n\n\n\n\n\n\n\nAquí medimos la correlación porque queremos saber la capacidad explicativa del modelo (fit), no su capacidad de predicción.\n\n\n\nEl modelo elige qué variables han sido más importantes para el cálculo del modelo (mide cuánto aumenta el error del modelo cuando se aleatorizan los valores de cada variable en vez de tomar los valores reales)\n\n\n\nComo los coeficientes de un logit/probit, pero observación a observación: cada punto muestra cuánto aporta cada variable a la predicción para esa observación.\nEjemplo: para la variable “age” el color del punto oscurece con la edad. El profesor más mayor es menos “duro”. Pero también tenemos el matiz de que vemos que los jóvenes (verde claro) tienen una distribución muy poco concentrada…\n\n\n\n\n\n\nSi se replicara esto con un modelo Logit, los coeficientes quedarían así:"
+  },
+  {
+    "objectID": "index.html#los-estudios",
+    "href": "index.html#los-estudios",
+    "title": "",
+    "section": "Los estudios",
+    "text": "Los estudios\nEl análisis se compone de 4 estudios:\n\nCompara grupo de control con grupo policy\nCompara grupo policy con grupo revelation\nCompara grupo revelation con grupo Awareness\nOtros"
+  },
+  {
+    "objectID": "index.html#h12",
+    "href": "index.html#h12",
+    "title": "",
+    "section": "H12",
+    "text": "H12\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with being assigned to a specific policy.\n\n\n\\[\n\\begin{equation}\\label{eq:h12}\n    \\boldsymbol{H_j} = \\boldsymbol{\\lambda_{1|2}^{\\Omega^\\prime}} \\boldsymbol{D_{\\Omega^\\prime}} + \\boldsymbol{\\gamma'_{1|2} F'} %+\\boldsymbol{\\beta_{1|2} X_1}\n\\end{equation}\n\\] Where \\(\\boldsymbol{\\lambda_{\\Omega^\\prime}}\\) is a vector of coefficients for the vector of binary variables created by the categorical variable \\(\\boldsymbol{D_{\\Omega^\\prime}} \\in [0,1,2,3]\\) depending on if the subject was assigned to the Control Group and thus no policy (\\(D_{\\Omega^\\prime}=0\\)), Policy A (\\(D_{\\Omega^\\prime}=1\\)), Policy B (\\(D_{\\Omega^\\prime}=2\\)), or C (\\(D_{\\Omega^\\prime}=3\\)). In addition, vector \\(\\boldsymbol{\\gamma' F'}\\) controls for the favorite policy of the teacher.\nDiscussion: significant coefficients would imply that teachers act differently depending on which policy they receive from the assignment, regardless if they like it or not."
+  },
+  {
+    "objectID": "index.html#h13",
+    "href": "index.html#h13",
+    "title": "",
+    "section": "H13",
+    "text": "H13\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with the alignment of teacher’s preferences and their policy assignment.\n\n\n\\[\n\\begin{equation}\\label{eq:h13}\n    \\boldsymbol{H_j}= \\boldsymbol{\\phi P} + \\boldsymbol{\\lambda_{1|3}^\\Omega} \\boldsymbol{D_\\Omega} %+\\boldsymbol{\\beta_{1|3} X_1}\n\\end{equation}\n\\]\nWhere \\(\\boldsymbol{\\phi}\\) is a vector of coefficients for the binary variables created from \\(\\boldsymbol{P} \\in [0,1,2]\\) if teacher \\(j\\) was assigned to control group (\\(P=0\\)), their favorite policy (\\(P=1\\)), or their least favorite policy (\\(P=2\\)). \\(\\boldsymbol{\\lambda_{1|3}^\\Omega}\\) is a vector of coefficients for the binary variables created by the categorical variable \\(D_\\Omega\\) which can take value 1 (Policy A), 2 (B) or 3 (C).\nDiscussion: This study will help us clarify if teachers are harder under a situation they are not keen on, or when they are forced into a policy they do not appreciate. This is discussed further in studies II and III."
+  },
+  {
+    "objectID": "index.html#h21",
+    "href": "index.html#h21",
+    "title": "",
+    "section": "H21",
+    "text": "H21\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with being asked to rank the policies before policy assignment. This means that teachers assigned to the Revelation Treatment are not harder than those from the Policy Treatment.\n\n\n\\[\n\\begin{equation}\\label{eq:h21}\n    \\boldsymbol{H_j}= \\lambda_{2|1} D_2 %+ \\boldsymbol{\\beta_{2|1} X_1}\n\\end{equation}\n\\]\nWhere \\(\\lambda_{2|2}\\) is the coefficient for treatment variable \\(D_2\\), which takes value 1 when the teacher belongs to treatment III and 0 when they belong to treatment II.\nDiscussion: a positive significant coefficient would mean that a teacher in treatment III is harder than a teacher in treatment II."
+  },
+  {
+    "objectID": "index.html#h22",
+    "href": "index.html#h22",
+    "title": "",
+    "section": "H22",
+    "text": "H22\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with being assigned to a specific policy after having ranked them.\n\n\n\\[\n\\begin{equation}\\label{eq:h22}\n    \\boldsymbol{H_j} = \\lambda_{2|2} D_2 +\\boldsymbol{\\lambda_{2|2}^\\Omega} \\boldsymbol{D_\\Omega} +  \\boldsymbol{\\lambda_{2|2}} D_2 \\boldsymbol{D_\\Omega} + \\boldsymbol{\\gamma_{2|2}' F'} %+\\boldsymbol{\\beta_{2|2} X_1}\n\\end{equation}\n\\]\nHere, the policy assignment variable (\\(\\boldsymbol{D_\\Omega}\\)) and the treatment assignment variable (\\(D_2\\)) interact with each other to study the interaction between policy and treatment random assignment.\nDiscussion: significant \\(\\lambda_{2|2}\\) coefficients could point in the direction that some policies have an effect on the harshness when presented after preferences are revealed."
+  },
+  {
+    "objectID": "index.html#h23",
+    "href": "index.html#h23",
+    "title": "",
+    "section": "H23",
+    "text": "H23\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with the alignment of teacher’s preferences and their policy assignment when teacher’s have ranked the policies before assignment.\n\n\n\\[\n\\begin{equation}\\label{eq:H23}\n    \\boldsymbol{H_j}= \\lambda_{2|3} D_2 +  \\boldsymbol{\\gamma_{2|3}' F'} %+ \\boldsymbol{\\beta_{2|3} X_1}\n\\end{equation}\n\\]\nwhere \\(\\lambda_{2|3}\\) symbolizes the coefficient for binary variable \\(D_2\\) that takes value 1 when the subject belongs to treatment III and 0 when they belong to treatment II.\nDiscussion: a positive significant coefficient \\(\\lambda_{2|3}\\) for subsample \\(n_F^{2,3}\\) would suggest that teachers are less harsh when given what they have chosen as their favorite policy. Similarly, a negative significant coefficient \\(\\lambda_{2|3}\\) for subsample \\(n_{LF}^{2,3}\\) would suggest that teachers retaliate when given a policy they have stated as their least favorite. If proven, we would call that boycott effect."
+  },
+  {
+    "objectID": "index.html#h31",
+    "href": "index.html#h31",
+    "title": "",
+    "section": "H31",
+    "text": "H31\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with acknowledging their opinion of the policy they are being assigned to.\n\n\n\\[\n\\begin{equation}\\label{eq:h31}\n    \\boldsymbol{H_j}= \\lambda_{3|1} D_3 %+ \\boldsymbol{\\beta_{3|1} X_1}\n\\end{equation}\n\\]\nDiscussion: a coefficient \\(\\lambda_{3|1}\\) significantly different than zero would convey treatment effects."
+  },
+  {
+    "objectID": "index.html#h32",
+    "href": "index.html#h32",
+    "title": "",
+    "section": "H32",
+    "text": "H32\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with being made aware of their opinions when assigning a specific policy.\n\n\n\\[\n\\begin{equation}\\label{eq:h32}\n    \\boldsymbol{H_j} = \\lambda_{3|2} D_3 +\\boldsymbol{\\lambda_{3|2}^\\Omega} \\boldsymbol{D_\\Omega} +  \\boldsymbol{\\lambda_{3|2}} D_3 \\boldsymbol{D_\\Omega} + \\boldsymbol{\\gamma'_{3|2} F'} %+\\boldsymbol{\\beta_{3|2} X_1}\n\\end{equation}\n\\]\nDiscussion: Coefficients \\(\\lambda_{3|2}\\) significantly different than zero could be possible if, for instance, the level of implication of a teacher with the policy assigned to them varies between Treatments III and IV."
+  },
+  {
+    "objectID": "index.html#h33",
+    "href": "index.html#h33",
+    "title": "",
+    "section": "H33",
+    "text": "H33\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with the alignment of teacher’s preferences and their policy assignment in a setting where they are aware of the alignment or disalignment.\n\n\n\\[\n\\begin{equation}\\label{eq:h33}\n    \\boldsymbol{H_j}= \\lambda_{3|3}^{F,LF} D_3 +  \\boldsymbol{\\gamma_{3|3}' F'} %+ \\boldsymbol{\\beta_{3|3} X_1}\n\\end{equation}\n\\]\nDiscussion: Here, a coefficient \\(\\lambda_{3|3}^F\\) (\\(\\lambda_{3|3}^{LF}\\)) significantly different than zero would mean that teachers are significantly more lenient (harsh) when assigned to a policy they like (dislike) with an explicit message for it."
+  },
+  {
+    "objectID": "index.html#h41",
+    "href": "index.html#h41",
+    "title": "",
+    "section": "H41",
+    "text": "H41\n\nHipótesisFórmulaResultados\n\n\nCurrent decisions are independent of previous decisions in the repetition task. This is a test on moral licensing, which will tell us if teacher’s compensate their previous decisions with the present ones.\n\n\n\\[\n\\begin{equation}\\label{eq:ar1}\n    \\gamma_{j,i,t}= \\rho_{t-1} \\gamma_{j,i,t-1} + \\rho_{t-2} \\gamma_{j,i,t-2}\n\\end{equation}\n\\]\nWhere \\(\\gamma_{j,i,t} =1\\) if teacher \\(j\\) fails student \\(i\\) at interaction \\(t \\in [1,8]\\), and 0 if the decision is passing the student.\n\n\nNo he sabido estimarlos al no saber el orden en el que cada profesor ha visto las tarjetas."
+  },
+  {
+    "objectID": "index.html#h42",
+    "href": "index.html#h42",
+    "title": "",
+    "section": "H42",
+    "text": "H42\n\nHipótesisFórmulaResultados\n\n\nPolicy preferences are orthogonal to policy assignment. This is a test on conformity. Here, we explore if being assigned to a policy has any impact in the later revealed preferences for treatment II.\n\n\n\\[\n\\begin{equation}\\label{eq:h42}\n    \\log\\left(\\frac{P^{\\Omega}_i}{1-P^\\Omega_i} \\right)=  \\lambda_{4|2} D_\\omega %+ \\boldsymbol{\\beta_{4|2} X_1}\n\\end{equation}\n\\]\nWhere the outcome variable is the probability of choosing a policy \\(\\Omega\\) as favorite; \\(\\lambda_{4|2}\\) is the coefficient for binary variable \\(D_\\omega\\), that takes value 1 when the subject has been assigned to the same policy \\(\\Omega\\) and 0 when they have been assigned to a different one."
+  },
+  {
+    "objectID": "index.html#h43",
+    "href": "index.html#h43",
+    "title": "",
+    "section": "H43",
+    "text": "H43\n\nHipótesisFórmulaResultados\n\n\nTreatment assignment has no effect on policy preferences. This tests if the treatments distorted teachers’ policy preferences.\n\n\nWe study if preferences are dependent on the treatment. To study this, we will show a figure with the probability of assigning a policy \\(\\Omega\\) as favorite or least favorite by treatment with their standard errors.\n\n\n\nFavoriteLeast-favorite"
+  },
+  {
+    "objectID": "index.html#extras-visualización-alternativa-alineación-preferenciasasignación",
+    "href": "index.html#extras-visualización-alternativa-alineación-preferenciasasignación",
+    "title": "",
+    "section": "Extras: Visualización alternativa alineación preferencias/asignación",
+    "text": "Extras: Visualización alternativa alineación preferencias/asignación\nLas hipótesis 3 de cada estudio analizan si la alineación de las preferencias y la asignación de la política tienen efecto en la dureza. También se puede ver de esta manera:\n\nFavoritoMenos favorito\n\n\n\n\n\n\n\n\n\n\n\nInforme COTEC: determinantes de la repetición escolar"
+  }
+]

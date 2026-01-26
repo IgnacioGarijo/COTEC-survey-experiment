@@ -62,7 +62,8 @@ theme_set(theme_minimal()+
                   panel.grid.major.y = element_line(color="grey80"),
                   panel.grid.major.x = element_blank(), 
                   panel.grid.minor = element_blank(), 
-                  axis.line = element_line(color="grey50")))
+                  axis.line = element_line(color="grey50"), 
+                  text= element_text(size=25)))
 
 paleta<- c("#002059","#011552","#537d90","#a29cb8", "#69d3e3", "#a47dab", "#00b89f")
 paleta3<- c("#94e1b4", "#25998c", "#033854")
