@@ -18,7 +18,7 @@
     "href": "index.html#h11",
     "title": "",
     "section": "H11",
-    "text": "H11\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with being assigned to policies. This means that teachers assigned to the Policy Treatment are not harder than those from the Control Group.\n\n\n\\[\n\\begin{equation}\\label{eq:h11}\n    \\boldsymbol{H_j}= \\lambda_{1|1} D_1 %+\\boldsymbol{\\beta_{1|1} X_1}\n\\end{equation}\n\\] Discussion:  A negative \\(\\lambda_{1|1}\\) would mean that being exposed to the policies has a negative effect on the harshness level of the teachers."
+    "text": "H11\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with being assigned to policies. This means that teachers assigned to the Policy Treatment are not harder than those from the Control Group.\n\n\n\\[\n\\begin{equation}\\label{eq:h11}\n    \\boldsymbol{H_j}= \\lambda_{1|1} D_1 %+\\boldsymbol{\\beta_{1|1} X_1}\n\\end{equation}\n\\] Discussion:  A negative \\(\\lambda_{1|1}\\) would mean that being exposed to the policies has a negative effect on the harshness level of the teachers.\n\n\n\n\n\nSin resultados significativos: pertenecer al grupo Policy no te hace más o menos duro con respecto al control"
   },
   {
     "objectID": "index.html#las-medidas-de-harshness-son-similares-entre-ellas",
@@ -60,7 +60,7 @@
     "href": "index.html#h21",
     "title": "",
     "section": "H21",
-    "text": "H21\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with being asked to rank the policies before policy assignment. This means that teachers assigned to the Revelation Treatment are not harder than those from the Policy Treatment.\n\n\n\\[\n\\begin{equation}\\label{eq:h21}\n    \\boldsymbol{H_j}= \\lambda_{2|1} D_2 %+ \\boldsymbol{\\beta_{2|1} X_1}\n\\end{equation}\n\\]\nWhere \\(\\lambda_{2|2}\\) is the coefficient for treatment variable \\(D_2\\), which takes value 1 when the teacher belongs to treatment III and 0 when they belong to treatment II.\nDiscussion: a positive significant coefficient would mean that a teacher in treatment III is harder than a teacher in treatment II."
+    "text": "H21\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with being asked to rank the policies before policy assignment. This means that teachers assigned to the Revelation Treatment are not harder than those from the Policy Treatment.\n\n\n\\[\n\\begin{equation}\\label{eq:h21}\n    \\boldsymbol{H_j}= \\lambda_{2|1} D_2 %+ \\boldsymbol{\\beta_{2|1} X_1}\n\\end{equation}\n\\]\nWhere \\(\\lambda_{2|2}\\) is the coefficient for treatment variable \\(D_2\\), which takes value 1 when the teacher belongs to treatment III and 0 when they belong to treatment II.\nDiscussion: a positive significant coefficient would mean that a teacher in treatment III is harder than a teacher in treatment II.\n\n\n\n\n\nSin resultados significativos: pertenecer al grupo Revelation no te hace más o menos duro con respecto al Policy"
   },
   {
     "objectID": "index.html#h22",
@@ -81,7 +81,7 @@
     "href": "index.html#h31",
     "title": "",
     "section": "H31",
-    "text": "H31\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with acknowledging their opinion of the policy they are being assigned to.\n\n\n\\[\n\\begin{equation}\\label{eq:h31}\n    \\boldsymbol{H_j}= \\lambda_{3|1} D_3 %+ \\boldsymbol{\\beta_{3|1} X_1}\n\\end{equation}\n\\]\nDiscussion: a coefficient \\(\\lambda_{3|1}\\) significantly different than zero would convey treatment effects."
+    "text": "H31\n\nHipótesisFórmulaResultados\n\n\nTeachers’ harshness is not correlated with acknowledging their opinion of the policy they are being assigned to.\n\n\n\\[\n\\begin{equation}\\label{eq:h31}\n    \\boldsymbol{H_j}= \\lambda_{3|1} D_3 %+ \\boldsymbol{\\beta_{3|1} X_1}\n\\end{equation}\n\\]\nDiscussion: a coefficient \\(\\lambda_{3|1}\\) significantly different than zero would convey treatment effects.\n\n\n\n\n\nSin resultados significativos: pertenecer al grupo Awareness no te hace más o menos duro con respecto al Revelation"
   },
   {
     "objectID": "index.html#h32",

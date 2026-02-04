@@ -198,6 +198,8 @@ $$
 
 ### Resultados
 <iframe src="`r paste0(tables_path, 'h11.html')`" width="100%" height="500" frameborder="0"></iframe>
+
+Sin resultados significativos: pertenecer al grupo Policy no te hace más o menos duro con respecto al control
 :::
 
 ## H12
@@ -276,6 +278,7 @@ Where $\lambda_{2|2}$ is the coefficient for treatment variable $D_2$, which tak
 ### Resultados
 <iframe src="`r paste0(tables_path, 'h21.html')`" width="100%" height="500" frameborder="0"></iframe>
 
+Sin resultados significativos: pertenecer al grupo Revelation no te hace más o menos duro con respecto al Policy
 :::
 
 ## H22
@@ -350,6 +353,7 @@ $$
 ### Resultados
 <iframe src="`r paste0(tables_path, 'h31.html')`" width="100%" height="500" frameborder="0"></iframe>
 
+Sin resultados significativos: pertenecer al grupo Awareness no te hace más o menos duro con respecto al Revelation
 :::
 
 ## H32

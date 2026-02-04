@@ -506,8 +506,10 @@ modeloh11<- lm(data=dfanalisis, formula= hb ~ control)
 
 modelsummary(models = modeloh11,
              stars=c("*"=.1, "**"=.05, "***"=.01),
+             coef_map = c(control= "<b>Control</b>"),
              gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
              format="html",
+             escape=F,
              output = file.path(tables, "h11.html"))
 
 ###### H12 ######
