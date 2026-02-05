@@ -91,13 +91,15 @@ ggsave(gg, file=paste0(salidas, "culpa.jpeg"), width=7, height=5)
 
 
 ## Distribución de harshness
-gg<-dfanalisis %>% 
+ gg<-
+  dfanalisis %>% 
   ggplot(aes(x= hb))+
-  geom_density(size=1, fill= "#537d90", alpha=.2,color="#537d90")+
+  geom_density(bins=16, fill= "#537d90", alpha=.8,color="#faf3e3",adjust=2)+
   #geom_vline(xintercept = mean(dfanalisis$hb, na.rm=T), size=1, color="#00b89f")+
-  geom_vline(xintercept = median(dfanalisis$hb, na.rm=T), size=1, color="#a29cb8") #ESTE
+   geom_vline(xintercept = median(dfanalisis$hb, na.rm=T), size=1, color="#a29cb8") +
+    scale_y_continuous(expand=c(0,0))
 
-ggsave(gg, file=paste0(salidas, "densidad.jpeg"), width=7, height=5)
+ggsave(gg, file=file.path(graficos, "densidad.jpeg"), width=7, height=5)
 
 
 gg<- 
@@ -107,15 +109,17 @@ gg<-
                                        orden_pref_refuerzo==1 ~ "Refuerzo")) %>% 
   filter(!is.na(politica_preferida)) %>% 
   ggplot(aes(x=hb, color= politica_preferida, fill=politica_preferida))+
-  geom_density(size=1, alpha=.07)+
-  geom_vline(aes(xintercept=0.6), linetype="longdash", color="#537d90")+
-  geom_vline(aes(xintercept=0.4),  linetype="longdash", color="#537d90" )+
-  scale_x_continuous(breaks = seq(-0.2 ,1,by=.1)) + # Forzar a que fuera bimodal, formacio promoción y refuerzo como nombres, hablar de que son grupos con distinto tamñao # ESTE
+  geom_density(size=1, alpha=.2, adjust=2)+
+  # geom_vline(aes(xintercept=0.6), linetype="longdash", color="#537d90")+
+  geom_vline(aes(xintercept=0),  linetype="longdash", color="#537d90" )+
+  scale_x_continuous(breaks = seq(-1 ,1,by=.2)) + # Forzar a que fuera bimodal, formacio promoción y refuerzo como nombres, hablar de que son grupos con distinto tamñao # ESTE
   scale_color_manual(values = c("#002059", "#00b89f", "#a29cb8"))+
+  scale_fill_manual(values = c("#002059", "#00b89f", "#a29cb8"))+
   theme(legend.position = c(.15,.8), 
-        legend.text  = element_text(size = 12))
+        legend.text  = element_text(size = 12), 
+        axis.text.y=element_blank())
 
-ggsave(gg, file=paste0(salidas, "densidad_politicas.jpeg"), width=7, height=5)
+ggsave(gg, file=file.path(graficos, "densidad_politicas.jpeg"), width=7, height=5)
 
 
 

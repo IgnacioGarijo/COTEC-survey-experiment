@@ -6,8 +6,6 @@ code-summary: "Mostrar código"
 editor: visual
 ---
 
-
-
 ```{r}
 source("C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/0. main.R")
 
@@ -15,7 +13,6 @@ df<-read_parquet("cleandata.parquet")
 
 
 ```
-
 
 # HARSHNESS MEASURES
 
@@ -34,8 +31,6 @@ dfnrep<-df1 %>%
   summarise(ha=mean(value, na.rm=T)) %>% 
   ungroup()
 ```
-
-
 
 ## AVERAGE DEVIATION
 
@@ -121,8 +116,7 @@ dfdm_comp<-df2 %>%
   summarise(hd=mean(diferencia, na.rm=T))
 ```
 
-
-## Unión 
+## Unión
 
 ```{r}
 
@@ -143,9 +137,8 @@ dfanalisis %>%
   geom_point()
   
 ```
-  
-  
-# CHARACTERIZING THE TEACHERS 
+
+# CHARACTERIZING THE TEACHERS
 
 ```{r}
 dfanalisis <-dfanalisis %>% 
@@ -217,7 +210,6 @@ ggplot(aes(x = reorder(variable, value), y = value, fill=name)) +
   scale_fill_manual(values = c("steelblue", "pink"))
 ```
 
-
 ```{r}
 
 dfanalisis$pred_rf <- predict(modelo_rf, data = dfanalisis)$predictions
@@ -284,7 +276,6 @@ modelsummary(models = list(modeloa2, modelob2, modeloc2, modelod2),
 
 ```
 
-
 ```{r}
 
 dfanalisis %>% 
@@ -294,14 +285,11 @@ dfanalisis %>%
   geom_point()
 ```
 
-
 # HYPOTHESES
-
 
 ## STUDY I
 
 ### H11
-
 
 ```{r}
 dfanalisis<-dfanalisis %>% 
@@ -321,7 +309,6 @@ modelsummary(models = modeloh11a,
 ```
 
 ### H12
-
 
 ```{r}
 
@@ -427,4 +414,3 @@ dfanalisis %>%
 
 
 ```
-
