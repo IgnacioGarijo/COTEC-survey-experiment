@@ -31,26 +31,18 @@ figures_path <- "../../3. Output/figures/"
 ::: {style="text-align: center; margin-top: 1em; margin-bottom: 1em"}
 ::: {layout="[[1,1]]"}
 ::: column
+Ignacio Garijo
+
 Antonio Alfonso
 
 Pablo Brañas
 
-María Castro
-
-Ignacio Garijo
-
-Diego Jorrat
 :::
 ::: column
-Iria Mata
+Diego Jorrat
 
 Anxo Sánchez
 
-Ainara Zubillaga
-
-Michelle K. Quintero
-
-Alfonso Echazarra
 :::
 :::
 :::
