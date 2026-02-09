@@ -8,13 +8,88 @@ library(arrow)
 library(treemapify)
 library(knitr)
 library(kableExtra)
+library(openxlsx)
 
-wd<- "C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Datos y codigo/"
+
+extract_plot_for_excel <- function(gg) {
+  
+  # detectar si alguna capa tiene stat que no sea identity
+  has_transform <- any(sapply(gg$layers, function(l) {
+    !inherits(l$stat, "StatIdentity")
+  }))
+  
+  if (!has_transform) {
+    return(data.table::as.data.table(gg$data))
+  } else {
+    built <- ggplot_build(gg)
+    layers_built <- built$data
+    out_list <- list()
+    
+    for (i in seq_along(layers_built)) {
+      df <- layers_built[[i]]
+      if (nrow(df) == 0) next
+      df$layer <- i
+      out_list[[i]] <- df
+    }
+    
+    return(data.table::rbindlist(out_list, fill = TRUE))
+  }
+}
+
+
+ggsave_excel <- function(plot,
+                         filename,
+                         width = 14.5,
+                         height = 7.25,
+                         units = "cm",
+                         guardar_grafico = TRUE,
+                         guardar_excel = TRUE,
+                         ext = ".jpg",
+                         ...) {
+  
+  # asegurar que la extensión empieza con un punto
+  if (!grepl("^\\.", ext)) ext <- paste0(".", ext)
+  
+  # construir nombres de salida
+  base <- tools::file_path_sans_ext(filename)
+  file_grafico <- paste0(base, ext)
+  file_excel <- paste0(base, ".xlsx")
+  
+  # guardar gráfico
+  if (guardar_grafico) {
+    ggplot2::ggsave(
+      filename = file_grafico,
+      plot = plot,
+      width = width,
+      height = height,
+      units = units,
+      ...
+    )
+    message("Datos guardados en SVG: ", normalizePath(file_grafico))
+  }
+  
+  # guardar datos a Excel
+  if (guardar_excel) {
+    datos <- extract_plot_for_excel(plot)
+    openxlsx::write.xlsx(datos, file_excel)
+    message("Datos guardados en Excel: ", normalizePath(file_excel))
+  }
+  
+  invisible(list(
+    grafico = if (guardar_grafico) file_grafico else NULL,
+    excel = if (guardar_excel) file_excel else NULL
+  ))
+}
+
+
+
 github<- "C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/"
-salidas<- paste0(github, "graficos/")
-setwd(wd)
+salidas<- paste0("C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Enviar a COTEC/graficos/")
+setwd(github)
 
-df<-read_parquet("cleandata.parquet")
+df<-read_parquet("1. Data/processed data/cleandata.parquet")
+
+df<-read_parquet("C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Datos y codigo/clean_data.parquet")
 
 theme_set(theme_minimal()+
             theme(axis.text = element_text(face="bold", color="#404040"),
@@ -139,7 +214,7 @@ gg<-df2 %>%
   geom_text(aes(y=ratio/2,label=percent(ratio, .1)),color="grey90", fontface="bold")+
   scale_y_continuous(labels = scales::label_percent())
 
-ggsave(gg, filename=paste0(salidas, "algunovsninguno.jpeg"), width=5)
+ggsave_excel(gg, filename=paste0(salidas, "algunovsninguno.jpeg"), width=5)
 
 
 # MONOTONÍA
@@ -158,7 +233,7 @@ gg<-df2 %>%
   scale_x_continuous(breaks = seq(0,8,1))+
   scale_y_continuous(labels = label_percent())
 
-ggsave(gg, filename=paste0(salidas, "monotonia",".jpeg"), width=5)
+ggsave_excel(gg, filename=paste0(salidas, "monotonia",".jpeg"), width=5)
 
 
 # 1 FALLO 
@@ -211,7 +286,7 @@ gg <- df2 %>%
   guides(fill = "none")
 
 
-ggsave(gg, filename=paste0(salidas, "unfallo",".jpeg"), width=7, height=5)
+ggsave_excel(gg, filename=paste0(salidas, "unfallo",".jpeg"), width=7, height=5)
 
 # GEOM_TILE INTERACCIÓN DOS FALLOS
 
@@ -259,7 +334,7 @@ gg<-df3%>%
   scale_fill_gradient(low=paleta[5], high=paleta[1])+
   guides(fill="none")
   
-ggsave(gg, filename=paste0(salidas, "interacciondosfallos",".jpeg"), width=7, height = 5)
+ggsave_excel(gg, filename=paste0(salidas, "interacciondosfallos",".jpeg"), width=7, height = 5)
 
 
 #### GUSTOS EN POLÍTICA
@@ -285,7 +360,7 @@ gg<-df2 %>%
   scale_fill_manual(values = c(paleta[1], paleta[3], paleta[4]))+
   guides(fill="none")
 
-ggsave(gg, filename=paste0(salidas, "piechart.jpeg"), width=7)
+ggsave_excel(gg, filename=paste0(salidas, "piechart.jpeg"), width=7)
 
 
 # GUSTOS EN POLÍTICA DECISIONES
@@ -309,7 +384,7 @@ gg<-df2 %>%
   ylab("Tasa de repetición")+
   theme(axis.title.y = element_text())
 
-ggsave(gg, filename=paste0(salidas, "politica_preferida",".jpeg"), width=5)
+ggsave_excel(gg, filename=paste0(salidas, "politica_preferida",".jpeg"), width=5)
 
 ## GUSTOS EN POLÍTICA MÁS UN FALLO
 
@@ -347,7 +422,7 @@ gg<-df2 %>%
 
 
 
-ggsave(gg, filename=paste0(salidas, "penalizacion1fallo_gustospolitica",".jpeg"), width=7, height=5)
+ggsave_excel(gg, filename=paste0(salidas, "penalizacion1fallo_gustospolitica",".jpeg"), width=7, height=5)
 
 
 
@@ -392,7 +467,7 @@ ggplot(aes(area = coeficiente, fill = variable, label = variable)) +
   scale_fill_manual(values = rev(c("#537d90", "#002059",   "lightblue","#69d3e3","#00b89f",   "#a29cb8")))+
   guides(fill="none")
 
-ggsave(gg, filename=paste0(salidas, "random_forest",".jpeg"), width=5)
+ggsave_excel(gg, filename=paste0(salidas, "random_forest",".jpeg"), width=5)
 
 # ## RANDOM FOREST DE TIEMPO
 # 
@@ -454,7 +529,7 @@ gg<-dfmodelo %>%
   guides(color="none")
 
 
-ggsave(gg, filename=paste0(salidas, "coefplot.jpeg"), width=5)
+ggsave_excel(gg, filename=paste0(salidas, "coefplot.jpeg"), width=5)
 ## Política asignada 
 
 df2 %>% 
@@ -540,7 +615,7 @@ df2 %>%
     scale_fill_gradient(low=paleta[5], high=paleta[1])+
     guides(fill="none")
   
-  ggsave(gg, filename=paste0(salidas, "interacciondosfallos",titulo,".jpeg"), width=7, height = 5)
+  ggsave_excel(gg, filename=paste0(salidas, "interacciondosfallos",titulo,".jpeg"), width=7, height = 5)
   }
   
   ## 1 FALLO PRIMARIA/SECUNDARIA
@@ -599,7 +674,7 @@ df2 %>%
     guides(fill = "none")
   
   
-  ggsave(gg, filename=paste0(salidas, "unfallo", titulo,".jpeg"), width=7, height=5)
+  ggsave_excel(gg, filename=paste0(salidas, "unfallo", titulo,".jpeg"), width=7, height=5)
   
   }
   

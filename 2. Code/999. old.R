@@ -87,7 +87,7 @@ gg<- dfanalisis %>%
   geom_smooth(se=F, method="lm", size=2,linetype="dashed") + #ESTE incidencia en separación a lo largo de x y 
   scale_color_manual(values=c("#00b89f", "#002059", "#a29cb8","#69d3e3"))
 
-ggsave(gg, file=paste0(salidas, "culpa.jpeg"), width=7, height=5)
+ggsave_excel(gg, file=paste0(salidas, "culpa.jpeg"), width=14.5, height=7.25)
 
 
 ## Distribución de harshness
@@ -362,10 +362,11 @@ gg<-data %>%
   select(hb, variables_cr_corr) %>% 
   pivot_longer(cols = variables_cr_corr) %>% 
   ggplot(aes(x=value, hb, color=name))+
+  geom_hline(yintercept=0, color="grey80", linewidth=1)+
   geom_smooth(se=F, method="lm")+
   scale_color_manual(values=c("#00b89f","#537d90", "#002059", "#a47dab","#69d3e3"))
 
-ggsave(gg, file=paste0(salidas, "impacto.jpeg"), width=11, height=5)
+ggsave(gg, file=paste0(salidas, "impacto.jpeg"), width=14.5, height=7.25)
 
 
 
