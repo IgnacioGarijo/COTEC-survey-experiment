@@ -1,18 +1,21 @@
 ---
 format: 
   revealjs:
-    theme: [default, custom.scss]
+    theme: [default, estilo/custom.scss]
     code-fold: true
     code-tools: true
     code-link: true
     slide-number: true
     incremental: false
-    css: estilo.css
+    css: estilo/estilo.css
     embed-resources: true
     transition: slide 
     controls: true
     footer: |
       <span style="font-size: 0.7em; color: #537d90;">Informe COTEC: determinantes de la repetición escolar</span>
+    include-in-header:
+      - file: estilo/zoom-image.html
+      - file: estilo/zoom-image-loader.html
 output-file: index.html
 editor: 
   markdown: 
@@ -24,7 +27,7 @@ tables_path <- "../../3. Output/tables/"
 figures_path <- "../../3. Output/figures/"
 ```
 
-# Exploring teacher’s repetition biases with a survey experiment {.diapositiva-titulo style="background: none;" data-menu-title="Titulo"}
+# The Decision to Hold Back: Experimental Evidence on Teachers’ Repetition Biases {.diapositiva-titulo style="background: none;" data-menu-title="Titulo"}
 
 <img src="svg/logolargo.png" class="imglogoslide1"/>
 
@@ -64,7 +67,7 @@ Anxo Sánchez
 
 ### Hipótesis
 
-- Se testean hipótesis sobre el comportamiento de los profesores dependiendo de sus gustos sobre las políticas y de si esos gustos con complacidos. 
+- Se testean hipótesis sobre el comportamiento de los profesores dependiendo de sus gustos sobre las políticas y de si esos gustos son complacidos. 
 
 - Se muestran los resultados con tablas de regresiones y algún gráfico
 
@@ -77,6 +80,7 @@ Anxo Sánchez
 ## Las medidas de harshness son similares entre ellas
 
 <img src="`r paste0(figures_path, 'histograms.jpeg')`"
+     class= "zoomable"
      style="display:block; margin:auto; width:60%; height:auto">
      
 ::: callout
@@ -119,6 +123,7 @@ Anxo Sánchez
 Aquí medimos la correlación porque queremos saber la capacidad explicativa del modelo (fit), no su capacidad de predicción.
 
 <img src="`r paste0(figures_path, 'correlation.jpeg')`"
+     class= "zoomable"
      style="display:block; margin:auto; width:60%; height:100%">
 
 
@@ -127,6 +132,7 @@ Aquí medimos la correlación porque queremos saber la capacidad explicativa del
 El modelo elige qué variables han sido más importantes para el cálculo del modelo (mide cuánto aumenta el error del modelo cuando se aleatorizan los valores de cada variable en vez de tomar los valores reales)
 
 <img src="`r paste0(figures_path, 'variable_importance.jpeg')`"
+      class= "zoomable"
      style="display:block; margin:auto; width:60%; height:100%">
 
 
@@ -137,7 +143,8 @@ Como los coeficientes de un logit/probit, pero observación a observación: cada
 Ejemplo: para la variable "age" el color del punto oscurece con la edad. El profesor más mayor es menos "duro". Pero también tenemos el matiz de que vemos que los jóvenes (verde claro) tienen una distribución muy poco concentrada...
 
 <img src="`r paste0(figures_path, 'SHAP.jpeg')`"
-     style="display:block; margin:auto; width:50%; height:auto">
+     class="zoomable"
+     style="display:block; margin:auto; width:50%; height:auto;">
 
 
 ### Logit
@@ -149,6 +156,7 @@ Si se replicara esto con un modelo Logit, los coeficientes quedarían así:
 
 ::: column
 <img src="`r paste0(figures_path, 'coefs.jpeg')`"
+     class= "zoomable"
      style="display:block; margin:auto; width:100%; height:auto">
 :::
 :::
@@ -167,7 +175,8 @@ El análisis se compone de 4 estudios:
 3. Compara grupo revelation con grupo Awareness
 4. Otros
 
-<img src="mindmap.png"
+<img src="svg/mindmap.png"
+     class= "zoomable"
      style="display:block; margin:auto; width:60%; height:auto">
 
 
@@ -459,10 +468,12 @@ We study if preferences are dependent on the treatment. To study this, we will s
 ::: panel-tabset
 ### Favorite
 <img src="`r paste0(figures_path, 'h43_fav.jpeg')`"
+     class= "zoomable"
      style="display:block; margin:auto; width:60%; height:auto">
 
 ### Least-favorite
 <img src="`r paste0(figures_path, 'h43_lfav.jpeg')`"
+     class= "zoomable"
      style="display:block; margin:auto; width:60%; height:auto">
 :::
 
@@ -479,10 +490,12 @@ Las hipótesis 3 de cada estudio analizan si la alineación de las preferencias 
 ### Favorito
 
 <img src="`r paste0(figures_path, 'heatmatp_fav.jpeg')`"
+     class= "zoomable"
      style="display:block; margin:auto; width:60%; height:auto">
 
 ### Menos favorito
 <img src="`r paste0(figures_path, 'heatmatp_leastfav.jpeg')`"
+     class= "zoomable"
      style="display:block; margin:auto; width:60%; height:auto">
 
 :::

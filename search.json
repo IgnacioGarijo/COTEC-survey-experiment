@@ -11,7 +11,7 @@
     "href": "index.html#el-preregistro-consta-de-dos-partes",
     "title": "",
     "section": "El preregistro consta de dos partes",
-    "text": "El preregistro consta de dos partes\n\n\n\nCaracterización\n\nSe crean medidas de harshness del profesor\nSe utilizan las preguntas socioeconómicas y de comportamiento para intentar caracterizar a los profesores más duros (Random Forest)\n\n\n\nHipótesis\n\nSe testean hipótesis sobre el comportamiento de los profesores dependiendo de sus gustos sobre las políticas y de si esos gustos con complacidos.\nSe muestran los resultados con tablas de regresiones y algún gráfico"
+    "text": "El preregistro consta de dos partes\n\n\n\nCaracterización\n\nSe crean medidas de harshness del profesor\nSe utilizan las preguntas socioeconómicas y de comportamiento para intentar caracterizar a los profesores más duros (Random Forest)\n\n\n\nHipótesis\n\nSe testean hipótesis sobre el comportamiento de los profesores dependiendo de sus gustos sobre las políticas y de si esos gustos son complacidos.\nSe muestran los resultados con tablas de regresiones y algún gráfico"
   },
   {
     "objectID": "index.html#h11",

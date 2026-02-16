@@ -425,37 +425,39 @@ gg
 #-----------------------------#
 
 dfanalisis<-dfanalisis %>% 
-  mutate(control=ifelse(treatment==1, 1, 0),
+  mutate(control=factor(ifelse(treatment==1, "Control", "Non-control"), levels= c("Control", "Non-control")),
          D= case_when(treatment==1~ "Control", 
-                      treatment %in% c(2:4) ~ "Policy", 
-                      treatment %in% c(5:7) ~ "Revelation", 
-                      treatment %in% c(8:10) ~ "Awareness"),
-         D= factor(D, levels=c("Control", "Policy", "Revelation", "Awareness")),
-         lambda= factor(ifelse(control==1, "Control", paste0("Policy ",politica))),
-         lambda= relevel(lambda, ref="Control"),
-         favorite = case_when(orden_pref_refuerzo == 1 ~ "reinforcement",
-                              orden_pref_criterios_promo == 1 ~ "promotion_criteria",
-                              orden_pref_formacion_prof == 1 ~ "training"),
-         least_favorite = case_when(orden_pref_refuerzo == 3 ~ "reinforcement",
-                                    orden_pref_criterios_promo == 3 ~ "promotion_criteria",
-                                    orden_pref_formacion_prof == 3 ~ "training"),
-         favorite_num= case_when(orden_pref_refuerzo==1~ 1, 
+                      treatment %in% c(2:4) ~ "Policy treatment", 
+                      treatment %in% c(5:7) ~ "Revelation treatment", 
+                      treatment %in% c(8:10) ~ "Awareness treatment"),
+         D= factor(D, levels=c("Control", "Policy treatment", "Revelation treatment", "Awareness treatment")),
+         assigned= factor(ifelse(control== "Control", "Control", paste0("Policy ",politica))),
+         assigned= relevel(assigned, ref="Control"),
+         favorite = factor(case_when(orden_pref_refuerzo == 1 ~ "Policy 1",
+                              orden_pref_criterios_promo == 1 ~ "Policy 2",
+                              orden_pref_formacion_prof == 1 ~ "Policy 3")),
+         favorite= relevel(favorite, ref= "Policy 1"),
+         least_favorite = factor(case_when(orden_pref_refuerzo == 3 ~ "Policy 1",
+                                    orden_pref_criterios_promo == 3 ~ "Policy 2",
+                                    orden_pref_formacion_prof == 3 ~ "Policy 3")),
+         least_favorite= relevel(least_favorite, ref="Policy 1"),
+         favorite_num= factor(case_when(orden_pref_refuerzo==1~ 1, 
                                  orden_pref_criterios_promo==1 ~2, 
-                                 orden_pref_formacion_prof==1 ~3), 
-         least_favorite_num = case_when(orden_pref_refuerzo==3~ 1, 
+                                 orden_pref_formacion_prof==1 ~3)),
+         favorite_num= relevel(favorite_num, ref="1"),
+         least_favorite_num = factor(case_when(orden_pref_refuerzo==3~ 1, 
                                         orden_pref_criterios_promo==3 ~2, 
-                                        orden_pref_formacion_prof==3 ~3),
-         politica=ifelse(D!="Control", politica, NA)) 
+                                        orden_pref_formacion_prof==3 ~3)),
+         least_favorite_num= relevel(least_favorite_num, ref="1"),
+         politica=factor(ifelse(D!="Control", paste0("Policy ",politica), NA)), 
+         politica=relevel(politica, ref="Policy 1")) 
 
 gg<-dfanalisis %>% 
-  drop_na(favorite, lambda) %>% 
-  group_by(favorite, lambda= case_when(lambda=="Policy 1" ~ "reinforcement", 
-                                       lambda=="Policy 2" ~ "promotion_criteria", 
-                                       lambda=="Policy 3" ~ "Training", 
-                                       lambda=="Control" ~ "control")) %>% 
+  drop_na(favorite, assigned) %>% 
+  group_by(favorite, assigned) %>% 
   summarise(value=mean(hb, na.rm=T)) %>% 
-  mutate(color_aes=factor(ifelse(lambda=="control", 1, 0))) %>% 
-  ggplot(aes(favorite, lambda, fill=value))+
+  mutate(color_aes=factor(ifelse(assigned=="control", 1, 0))) %>% 
+  ggplot(aes(favorite, assigned, fill=value))+
   geom_tile()+
   geom_label(aes(label= round(value, 3), color=color_aes))+
   scale_fill_gradient(low=paleta_alt[2], high=paleta_alt[[3]])+
@@ -472,14 +474,11 @@ ggsave(gg, file=file.path(graficos, "heatmatp_fav.jpeg"), width=7, height=5)
 
 
 gg<-dfanalisis %>% 
-  drop_na(least_favorite, lambda) %>% 
-  group_by(least_favorite, lambda= case_when(lambda=="Policy 1" ~ "reinforcement", 
-                                       lambda=="Policy 2" ~ "promotion_criteria", 
-                                       lambda=="Policy 3" ~ "Training", 
-                                       lambda=="Control" ~ "control")) %>% 
+  drop_na(least_favorite, assigned) %>% 
+  group_by(least_favorite, assigned) %>% 
   summarise(value=mean(hb, na.rm=T)) %>% 
-  mutate(color_aes=factor(ifelse(lambda=="control", 1, 0))) %>% 
-  ggplot(aes(least_favorite, lambda, fill=value))+
+  mutate(color_aes=factor(ifelse(assigned=="control", 1, 0))) %>% 
+  ggplot(aes(least_favorite, assigned, fill=value))+
   geom_tile()+
   geom_label(aes(label= round(value, 3), color=color_aes))+
   scale_fill_gradient(low=paleta_alt[2], high=paleta_alt[[3]])+
@@ -494,19 +493,23 @@ gg<-dfanalisis %>%
 
 ggsave(gg, file=file.path(graficos, "heatmatp_leastfav.jpeg"), width=7, height=5)
 
-
+dfanalisis<-dfanalisis %>% 
+  drop_na(favorite)
 #--------------------#
 ##### A. STUDY 1 #####
 #--------------------#
 
+dfanalisis1<-dfanalisis %>% 
+  filter(D %in% c("Control", "Policy treatment"))
+
 ###### H11 ######
 
 
-modeloh11<- lm(data=dfanalisis, formula= hb ~ control)
+modeloh11<- lm(data=dfanalisis1, formula= hb ~ D)
 
 modelsummary(models = modeloh11,
              stars=c("*"=.1, "**"=.05, "***"=.01),
-             coef_map = c(control= "<b>Control</b>"),
+             coef_map = c(`DPolicy treatment`= "<b>Policy treatment</b>"),
              gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
              format="html",
              escape=F,
@@ -515,8 +518,8 @@ modelsummary(models = modeloh11,
 ###### H12 ######
 
 
-modeloh12a<- lm(data=dfanalisis, formula= hb ~ lambda)
-modeloh12<- lm(data=dfanalisis, formula= hb ~ lambda+favorite)
+modeloh12a<- lm(data=dfanalisis1, formula= hb ~ assigned)
+modeloh12<- lm(data=dfanalisis1, formula= hb ~ assigned+favorite)
 
 modelsummary(models = list(modeloh12a, modeloh12),
              stars=c("*"=.1, "**"=.05, "***"=.01),
@@ -526,17 +529,16 @@ modelsummary(models = list(modeloh12a, modeloh12),
 
 ###### H13 ######
 
-dfanalisis_h13 <- dfanalisis %>% 
-  filter(favorite_num== politica | least_favorite_num==politica | control==1) %>%
-  mutate(assignation= case_when(favorite_num==politica & control==0 ~ "favorite", 
-                                least_favorite_num==politica & control==0 ~ "least-favorite", 
-                                control==1 ~ "Control"),
-         assignation= relevel(factor(assignation), ref="Control"), 
-         politica= factor(paste0("Policy", politica)))
+dfanalisis_h13 <- dfanalisis1 %>% 
+  filter(favorite== politica | least_favorite==politica | control=="Control") %>%
+  mutate(assignation= case_when(favorite==politica & control=="Non-control" ~ "favorite", 
+                                least_favorite==politica & control=="Non-control" ~ "least-favorite", 
+                                control=="Control" ~ "Control"),
+         assignation= relevel(factor(assignation), ref="Control"))
 
 
 modelo_h13a<- lm(data=dfanalisis_h13, formula= hb ~ assignation)
-modelo_h13<- lm(data=dfanalisis_h13, formula= hb ~ assignation+lambda+ favorite)
+modelo_h13<- lm(data=dfanalisis_h13, formula= hb ~ assignation+assigned+ favorite)
 
 #CHECK: esto hay que pensarlo bien porque comparar con el grupo de control no queda muy claro, y si se debe controlar por la política preferida o por la que te ha tocado tampoco
 
@@ -553,8 +555,8 @@ modelsummary(models = list(modelo_h13a, modelo_h13),
 ###### H21 ######
 
 dfanalisish2<-dfanalisis %>% 
-  filter(D %in% c("Policy", "Revelation")) %>% 
-  mutate(D= relevel(factor(D), ref="Policy"))
+  filter(D %in% c("Policy treatment", "Revelation treatment")) %>% 
+  mutate(D= relevel(factor(D), ref="Policy treatment"))
 
 modelo_h21<- lm(data=dfanalisish2, formula= hb ~ D)
 
@@ -566,9 +568,12 @@ modelsummary(models = modelo_h21,
 
 ###### H22 ######
 
-modelo_h22<- lm(data=dfanalisish2, formula= hb ~ D+lambda+ lambda:D+favorite)
+modelo_h22a<- lm(data=dfanalisish2, formula= hb ~ D+assigned)
+modelo_h22b<- lm(data=dfanalisish2, formula= hb ~ D+assigned+ favorite)
+modelo_h22<- lm(data=dfanalisish2, formula= hb ~ D+assigned+ D:assigned+favorite)
 
-modelsummary(models = modelo_h22,
+
+modelsummary(models = list(modelo_h22a, modelo_h22b,modelo_h22),
              stars=c("*"=.1, "**"=.05, "***"=.01),
              gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
              format="html",
@@ -577,13 +582,13 @@ modelsummary(models = modelo_h22,
 ###### H23 ######
 
 dfanalisish23f<-dfanalisish2 %>% 
-  filter(favorite_num==politica) 
+  filter(favorite==politica) 
 
 modelo_h23f<- lm(data=dfanalisish23f, formula= hb ~ D+favorite)
 
 
 dfanalisish23lf<-dfanalisish2 %>% 
-  filter(least_favorite_num==politica) 
+  filter(least_favorite==politica) 
 
 modelo_h23lf<- lm(data=dfanalisish23lf, formula= hb ~ D+favorite)
 
@@ -600,8 +605,8 @@ modelsummary(models = list("Favorite"=modelo_h23f, "Least\n favorite"=modelo_h23
 ###### H31 ######
 
 dfanalisish3<-dfanalisis %>% 
-  filter(D %in% c("Revelation", "Awareness")) %>% 
-  mutate(D= relevel(factor(D), ref="Revelation"))
+  filter(D %in% c("Revelation treatment", "Awareness treatment")) %>% 
+  mutate(D= relevel(factor(D), ref="Revelation treatment"))
 
 modelo_h31<- lm(data=dfanalisish3, formula= hb ~ D)
 
@@ -613,7 +618,7 @@ modelsummary(models = modelo_h31,
 
 ###### H32 ######
 
-modelo_h32<- lm(data=dfanalisish3, formula= hb ~ D+lambda+ lambda:D+favorite)
+modelo_h32<- lm(data=dfanalisish3, formula= hb ~ D+assigned+ assigned:D+favorite)
 
 modelsummary(models = modelo_h32,
              stars=c("*"=.1, "**"=.05, "***"=.01),
