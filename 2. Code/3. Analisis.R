@@ -538,7 +538,7 @@ dfanalisis_h13 <- dfanalisis1 %>%
 
 
 modelo_h13a<- lm(data=dfanalisis_h13, formula= hb ~ assignation)
-modelo_h13<- lm(data=dfanalisis_h13, formula= hb ~ assignation+assigned+ favorite)
+modelo_h13<- lm(data=dfanalisis_h13, formula= hb ~ assignation+ favorite)
 
 #CHECK: esto hay que pensarlo bien porque comparar con el grupo de control no queda muy claro, y si se debe controlar por la política preferida o por la que te ha tocado tampoco
 
@@ -547,6 +547,26 @@ modelsummary(models = list(modelo_h13a, modelo_h13),
              gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
              format="html",
              output = file.path(tables, "h13.html"))
+
+##### H13 alt #####
+
+dfanalisish13f<-dfanalisis1 %>% 
+  filter(favorite==politica| control=="Control") 
+
+modelo_h13f<- lm(data=dfanalisish13f, formula= hb ~ D+favorite)
+
+
+dfanalisish13lf<-dfanalisis1 %>% 
+  filter(least_favorite==politica| control=="Control") 
+
+modelo_h13lf<- lm(data=dfanalisish13lf, formula= hb ~ D+favorite)
+
+modelsummary(models = list("Favorite"=modelo_h13f, "Least\n favorite"=modelo_h13lf),
+             stars=c("*"=.1, "**"=.05, "***"=.01),
+             gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
+             format="html",
+             output = file.path(tables, "h13_alt.html"))
+
 
 #--------------------#
 ##### B. STUDY 2 #####
@@ -573,7 +593,7 @@ modelo_h22b<- lm(data=dfanalisish2, formula= hb ~ D+assigned+ favorite)
 modelo_h22<- lm(data=dfanalisish2, formula= hb ~ D+assigned+ D:assigned+favorite)
 
 
-modelsummary(models = list(modelo_h22a, modelo_h22b,modelo_h22),
+modelsummary(models = list(modelo_h21,modelo_h22a, modelo_h22b,modelo_h22),
              stars=c("*"=.1, "**"=.05, "***"=.01),
              gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
              format="html",
@@ -618,9 +638,11 @@ modelsummary(models = modelo_h31,
 
 ###### H32 ######
 
-modelo_h32<- lm(data=dfanalisish3, formula= hb ~ D+assigned+ assigned:D+favorite)
+modelo_h32a<- lm(data=dfanalisish3, formula= hb ~ D+assigned)
+modelo_h32b<- lm(data=dfanalisish3, formula= hb ~ D+assigned+ favorite)
+modelo_h32<- lm(data=dfanalisish3, formula= hb ~ D+assigned+ D:assigned+favorite)
 
-modelsummary(models = modelo_h32,
+modelsummary(models = list(modelo_h32a, modelo_h32b,modelo_h32),
              stars=c("*"=.1, "**"=.05, "***"=.01),
              gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
              format="html",
@@ -630,13 +652,13 @@ modelsummary(models = modelo_h32,
 ###### H33 ######
 
 dfanalisish33f<-dfanalisish3 %>% 
-  filter(favorite_num==politica) 
+  filter(favorite==politica) 
 
 modelo_h33f<- lm(data=dfanalisish33f, formula= hb ~ D+favorite)
 
 
 dfanalisish33lf<-dfanalisish3 %>% 
-  filter(least_favorite_num==politica) 
+  filter(least_favorite==politica) 
 
 modelo_h33lf<- lm(data=dfanalisish33lf, formula= hb ~ D+favorite)
 
@@ -668,7 +690,7 @@ modelsummary(models = modelo_h3b1,
 ###### H3b3 ######
 
 dfanalisish3b3f<-dfanalisish3b %>% 
-  filter(favorite_num==politica | D=="Control") 
+  filter(favorite==politica | D=="Control") 
 
 modelo_h3b3f<- lm(data=dfanalisish3b3f, formula= hb ~ D+favorite)
 
@@ -680,7 +702,7 @@ modelsummary(models = modelo_h3b3f,
              include.rmse = FALSE)
 
 dfanalisish3b3lf<-dfanalisish3b %>% 
-  filter(least_favorite_num==politica | D=="Control") 
+  filter(least_favorite==politica | D=="Control") 
 
 modelo_h3b3lf<- lm(data=dfanalisish3b3lf, formula= hb ~ D+favorite)
 
@@ -708,11 +730,11 @@ models_f<-list()
 models_lf<-list()
 
 for (x in 1:3){
-  if (x==1){name= "Reinforcement"}else if (x==2){name= "Promotion criteria"}else{name="Training"}
+  if (x==1){name= "Policy 1"}else if (x==2){name= "Policy 2"}else{name="Policy 3"}
   dfanalisis42_list[[paste0("policy_",x)]]<-dfanalisis42 %>%
     mutate(fav=as.numeric(favorite_num==x), 
            least_fav= as.numeric((least_favorite_num==x)), 
-           assigned= as.numeric(politica==x))
+           assigned= as.numeric(politica==paste0("Policy ", x)))
 
 models_f[[paste0(name)]] <- glm(data=dfanalisis42_list[[paste0("policy_",x)]], formula = fav ~ assigned, family = "binomial") 
 models_lf[[paste0(name)]]<-  glm(data=dfanalisis42_list[[paste0("policy_",x)]], formula = least_fav ~ assigned, family = "binomial") 
