@@ -1,0 +1,227 @@
+\documentclass[12pt,a4]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{array}
+\usepackage{graphicx}% use this package if an eps figure is included.
+\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{siunitx}
+\setlength\topmargin{-1.1in} \addtolength\textheight{2.1in}
+\addtolength{\oddsidemargin}{-0.2in}
+\addtolength{\evensidemargin}{-0.1in} \textwidth 5.8in
+\newcounter{questioncounter}
+\newcounter{equestioncounter}
+\setlength\parskip{10pt} \setlength\parindent{0in}
+\usepackage{subcaption}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[table]{xcolor}
+\definecolor{mycolor}{RGB}{0, 68, 106}
+\usepackage[hidelinks]{hyperref}
+\usepackage[T1]{fontenc}     % codificación moderna
+\usepackage[utf8]{inputenc}  % codificación del archivo
+\usepackage[
+backend=biber,
+style=apa,
+]{biblatex}
+\usepackage{lmodern}         % fuentes Latin Modern (vectoriales)
+\usepackage{microtype}       % mejora espaciado y renderizado
+\usepackage{adjustbox}
+\usepackage{afterpage} 
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage[skip=10pt plus1pt, indent=40pt]{parskip}
+\usepackage{threeparttable}
+\usepackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default)
+\usepackage{tabularray}
+\usepackage{booktabs} 
+\usepackage{geometry}
+\UseTblrLibrary{booktabs}
+
+\linespread{1.5}
+
+\hypersetup{colorlinks,linkcolor={mycolor},citecolor={mycolor},urlcolor={mycolor}}  
+\newcommand{\marcar}[1]{\textbf{\textcolor{red}{#1}}}
+\newcommand{\figpath}{../3. Output/figures/}
+\newcommand{\tabpath}{../3. Output/tables/}
+
+
+
+\addbibresource{export.bib}
+
+
+\begin{document}
+	
+	\title{The Decision to Hold Back: Experimental Evidence on Teachers’ Repetition Biases}
+	
+	
+	\author{Ignacio Garijo Campos}
+	\author{hola}
+	\maketitle
+	
+	\begin{abstract}
+		
+	\end{abstract}
+	
+	\newpage
+	\textcolor{white}{.}
+	
+	\section{Notas reunión}
+\begin{enumerate}
+	\item Cambiar la notación de las variables en las tablas para que esté más claro
+	\item Ser consistente con las categorías de referencia de las variables de un modelo/estudio a otro
+	\item Aglomerar los modelos de cada estudio en una sola tabla que incorpore las variables de manera escalonada
+	\item Revisar posible multicolinealidad y ausencia de coeficientes en algunos modelos
+\end{enumerate}
+
+\clearpage
+	\section{Contenido}
+	
+	\textbf{Reminders:}
+	
+	El gráfico \ref{fig:mindmap} muestra el mapa conceptual de las ramas del experimento para tenerlo presente al ver los resultados. 
+	
+	Hay 3 estudios que comparan los diferentes grupos:
+	
+	\begin{itemize}
+		\item \textbf{Estudio 1: } Utiliza el grupo Policy treatment como grupo de tratamiento y el grupo Control como grupo de control
+		\item \textbf{Estudio 2: } Utiliza el grupo Revelations treatment como grupo de tratamiento y el grupo Policy treatment como grupo de control
+		\item \textbf{Estudio 3: } Utiliza el grupo Awareness treatment como grupo de tratamiento y el grupo Revelations como grupo de control
+	\end{itemize}
+
+	
+	Cada estudio tiene 3 hipótesis equivalentes de estudio a estudio: 
+	
+	\begin{itemize}
+		\item \textbf{Hipótesis 1:} compara al grupo de tratamiento con el grupo de control simplemente
+		\item \textbf{Hipótesis 2:} Comprueba si ser asignado a una política en el grupo de tratamiento tiene un efecto diferente a ser asignado a la misma en el grupo de control
+		\item \textbf{Hipótesis 3:} Comprueba si ser asignado a tu política favorita/menos favorita tiene un efecto diferente en el grupo de tratamiento respecto al grupo de control
+	\end{itemize}	
+	
+	Los nombres de las variables en la tabla siguen esta lógica:
+	
+	\begin{enumerate}
+		\item \textbf{Ej: ``DPolicy treatment''}: Es el efecto de estar en el policy treatment respecto al control en el estudio 1. En el estudio 2 sería ``DRevelations treatment'' y en el estudio 3 ``DAwareness treatment''.
+		\item \textbf{Ej: ``assignedPolicy x''}: assigned denota la política x asignada al profesor
+		\item \textbf{Ej: ``favoritePolicy x''}: favorite denota la política favorita x del profesor
+		\item \textbf{Ej: ``assignationfavorite''}: assignation sólo se usa en la hipótesis H13, y denota haber sido asignado a la política favorita o a la menos favorita (si es menos favorita, sería ``assignationleast-favorite'') con respecto a no haber sido asignado a ninguna porque se pertenece al grupo Control.
+	\end{enumerate}
+	
+	\begin{figure}
+		\centering
+		\caption{Mapa conceptual}
+		\includegraphics[width=0.8\textwidth]{\figpath mindmap.png}
+		\label{fig:mindmap}
+	\end{figure}
+	
+	
+	\clearpage
+	
+	\subsection{Estudio 1: Policy vs Control}
+	
+	Tabla \ref{tab:h1}
+	\begin{itemize}
+		\item 	\textbf{DPolicy treatment} no es significativa, por lo que pertenecer al grupo policy no te hace más harsh con respecto al control (H11).
+		\item \textbf{assignedPolicy x} no es significativa para ninguna policy, se controle o no por la política favorita. Es decir, ser asignado a una policy no te hace más harsh con respecto al grupo de control (H22).
+	\end{itemize}
+	
+	Tabla \ref{tab:h13}:
+	
+	En el preregistro la función incluía la variable que denota la política a la que un profesor está asignado (control vs policy 1 vs policy 2 vs policy 3); la variable favorita (policy 1 vs policy 2 vs policy 3); y la variable que especifica si ese profesor se ha asignado a su política favorita o menos favorita (control vs favorite vs least-favorite). Esto generaba multicolinealidad, por lo que sólo se han mantenido las dos últimas. Resultados:
+	
+	\begin{itemize}
+		\item \textbf{assignationfavorite} y \textbf{assignationleast-favorite} no son significativas tampoco, por lo que ser asignado a tu favorita o menos favorita en el policy no te hace más harsh con respecto al grupo de referencia (en este caso, no haber sido asignado a ninguna política por encontrarse en el control)
+	\end{itemize}
+	
+	
+	\begin{table}
+		\caption{Hipótesis H11 y H12}
+	\input{\tabpath h1_agg.tex}	
+	\label{tab:h1}
+	\end{table}
+	
+	\begin{table}
+		\caption{Hipótesis H13}
+		\input{\tabpath h13_final.tex}	
+		\label{tab:h13}
+	\end{table}
+
+\clearpage
+
+	\subsection{Estudio 2}
+	
+		Tablas \ref{tab:h2} y \ref{tab:h22}:
+	\begin{itemize}
+		\item 	\textbf{DRevelation treatment} no es significativa, por lo que pertenecer al grupo Revelation no te hace más harsh con respecto al Policy (H11).
+		\item \textbf{assignedPolicy x} sólo es significativa para policy 2, por lo que ser asignado a policy 2 tiene un efecto positivo en tu harshness con respecto a la categoría de referencia (policy 1).
+		\item \textbf{DRevelation treatment x assignedPolicy x} no es significativa para ninguna de las dos policies. Sin embargo, aquí la categoría de referencia es ``Policy treatment Policy 1'', así que el coeficiente por sí sólo no es suficiente. Para saber si el grupo de tratamiento afecta a cómo responde el profesor a cada policy (H22), se muestra la tabla \ref{tab:h22} calculada a partir del último modelo de la tabla \ref{tab:h2}.
+		\item La tabla \ref{tab:h22} muestra que ser asignado al policy 2 en el revelation treatment te hace más harsh que ser asignado al policy 2 en el policy treatment, aunque sólo es significativo al 10\%. No tengo muy claro cómo interpretar esto. La policy 2 es la que menos gusta, así que a lo mejor tiene que ver.
+	\end{itemize}
+	
+	Tabla \ref{tab:h23}:
+	\begin{itemize}
+		\item \textbf{DRevelation treatment} no es significativo, lo que significa que ser asignado a tu política favorita o menos favorita en el revelation treatment no cambia nada con respecto al policy treatment (H13). Esto para mí choca con lo de la policy 2 de la tabla anterior.
+	\end{itemize}
+	
+	\begin{itemize}
+		\item \textbf{assignationfavorite} y \textbf{assignationleast-favorite} no son significativas tampoco, por lo que ser asignado a tu favorita o menos favorita en el revelations no te hace más harsh con respecto al policy
+	\end{itemize}
+	
+	
+	\begin{table}
+		\caption{Hipótesis H21 y H22}
+		\input{\tabpath h2_agg.tex}	
+		\label{tab:h2}
+	\end{table}
+	
+	\begin{table}
+		\caption{Hipótesis H22}
+		\input{\tabpath h22_contrasts.tex}	
+		\label{tab:h22}
+	\end{table}
+	
+	
+	\begin{table}
+		\caption{Hipótesis H23}
+		\input{\tabpath h23_final.tex}	
+		\label{tab:h23}
+	\end{table}
+	
+\clearpage
+	\subsection{Estudio 3}
+	
+	Tablas \ref{tab:h3} y  \ref{tab:h32}:
+	
+	\begin{itemize}
+		\item \textbf{DAwareness treatment} no es significativo, por lo que estar en el Awareness treatment no te hace más harsh que estar en el Revelations treatment (H31)
+		\item \textbf{assignedPolicy 2} y \textbf{assignedPolicy 3} no son significativas
+		\item La tabla \ref{tab:h32} se calcula a través del último modelo de la tabla \ref{tab:h32} y muestra que no hay diferencia entre estar asignado a una policy x en un grupo de tratamiento u otro (H32).
+	\end{itemize}
+	
+	Tabla \ref{tab:h33}:
+	
+	\begin{itemize}
+		\item \textbf{DAwareness treatment} no es significativo, por lo que estar asignado a tu política favorita/menos favorita en un grupo no te hace más/menos harsh que en el otro.
+	\end{itemize}
+	
+	\begin{table}
+		\caption{Hipótesis H31 y H32}
+		\input{\tabpath h3_agg.tex}	
+		\label{tab:h3}
+	\end{table}
+	
+	\begin{table}
+		\caption{Hipótesis H32}
+		\input{\tabpath h32_contrasts.tex}	
+		\label{tab:h32}
+	\end{table}
+	
+	\begin{table}
+		\caption{Hipótesis H33}
+		\input{\tabpath h33_final.tex}	
+		\label{tab:h33}
+	\end{table}
+	
+\end{document}

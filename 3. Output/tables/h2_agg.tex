@@ -1,0 +1,37 @@
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={* p < 0.1, ** p < 0.05, *** p < 0.01},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+hline{18}={1,2,3,4,5}{solid, 0.05em, black},
+}                     %% tabularray inner close
+\toprule
+& H21 & (2) & (3) & H22 \\ \midrule %% TinyTableHeader
+(Intercept)                              & \num{0.010}   & \num{-0.002}  & \num{0.006}     & \num{-0.003}    \\
+& (\num{0.007}) & (\num{0.010}) & (\num{0.011})   & (\num{0.013})   \\
+DRevelation treatment                    & \num{-0.012}  & \num{-0.012}  & \num{-0.010}    & \num{0.007}     \\
+& (\num{0.010}) & (\num{0.010}) & (\num{0.010})   & (\num{0.017})   \\
+assignedPolicy 2                         &                & \num{0.022}*  & \num{0.025}**   & \num{0.044}***  \\
+&                & (\num{0.012}) & (\num{0.012})   & (\num{0.017})   \\
+assignedPolicy 3                         &                & \num{0.013}   & \num{0.018}     & \num{0.024}     \\
+&                & (\num{0.012}) & (\num{0.012})   & (\num{0.017})   \\
+favoritePolicy 2                         &                &                & \num{0.052}***  & \num{0.053}***  \\
+&                &                & (\num{0.017})   & (\num{0.017})   \\
+favoritePolicy 3                         &                &                & \num{-0.044}*** & \num{-0.044}*** \\
+&                &                & (\num{0.010})   & (\num{0.010})   \\
+DRevelation treatment × assignedPolicy 2 &                &                &                  & \num{-0.038}    \\
+&                &                &                  & (\num{0.024})   \\
+DRevelation treatment × assignedPolicy 3 &                &                &                  & \num{-0.013}    \\
+&                &                &                  & (\num{0.023})   \\
+Num.Obs.                                 & \num{1520}    & \num{1520}    & \num{1520}      & \num{1520}      \\
+R2                                       & \num{0.001}   & \num{0.003}   & \num{0.027}     & \num{0.028}     \\
+F                                        & \num{1.570}   & \num{1.681}   & \num{8.329}     & \num{6.325}     \\
+\bottomrule
+\end{talltblr}

@@ -23,20 +23,21 @@ library(iml)
 library(fastshap)
 library(GGally)
 library(patchwork)
+library(emmeans)
 })
 
 #====================#
 #### 2. PATHS #### 
 #====================#
 
-wd<-here::here()
-setwd(wd)
+# wd<-here::here()
+# setwd(wd)
 
-output<- file.path(wd, "3. Output/")
+output<- file.path("3. Output/")
 graficos<- file.path(output, "figures/")
 tables<- file.path(output, "tables/")
-code<- file.path(wd, "2. Code")
-data<- file.path(wd, "1. Data")
+code<- file.path("2. Code")
+data<- file.path("1. Data")
 rawdata<- file.path(data, "raw data")
 processed_data<-file.path(data, "processed data")
 
@@ -193,3 +194,112 @@ ntile3_label <- function(x) {
 f<- function(object, newdata) {
   predict(modelo_rf, data=newdata)$predictions
 }
+
+
+
+
+table_export <- function(...,
+                         file,
+                         path = tables,
+                         stars = c("*" = .1, "**" = .05, "***" = .01),
+                         gof_omit = "BIC|AIC|R2 Within|R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE") {
+  
+  dots <- list(...)
+  
+  if (!"stars" %in% names(dots)) dots$stars <- stars
+  if (!"gof_omit" %in% names(dots)) dots$gof_omit <- gof_omit
+  
+  # Crear directorio si no existe
+  if (!dir.exists(path)) dir.create(path, recursive = TRUE)
+  
+  # ---------------- HTML ----------------
+  do.call(
+    modelsummary::modelsummary,
+    c(dots,
+      list(
+        format = "html",
+        output = file.path(path, paste0(file, ".html"))
+      )
+    )
+  )
+  
+  # ---------------- LaTeX ----------------
+  tex_file <- file.path(path, paste0(file, ".tex"))
+  
+  # Guardar el .tex original con table
+  do.call(
+    modelsummary::modelsummary,
+    c(dots,
+      list(
+        format = "texreg",
+        output = tex_file
+      )
+    )
+  )
+  
+  # Leer el .tex y limpiar \begin{table} y \end{table}
+  lines <- readLines(tex_file)
+  
+  # Eliminar líneas que contengan \begin{table} o \end{table} y opcionalmente \caption{} y \label{}
+  lines_clean <- lines[!grepl("^\\\\begin\\{table\\}|^\\\\end\\{table\\}|^\\\\caption\\{|^\\\\label\\{", lines)]
+  
+  # Sobrescribir
+  writeLines(lines_clean, tex_file)
+}
+
+
+
+
+library(dplyr)
+library(kableExtra)
+library(emmeans)
+
+contrasts_export <- function(emmeans_obj,
+                                     file,
+                                     path = tables,
+                                     stars = c("*" = 0.1, "**" = 0.05, "***" = 0.01)) {
+  
+  # Crear directorio si no existe
+  if (!dir.exists(path)) dir.create(path, recursive = TRUE)
+  
+  # Extraer contrasts
+  contrasts_df <- as.data.frame(emmeans_obj$contrasts) %>%
+    mutate(
+      # Crear columna de significancia
+      stars_col = case_when(
+        p.value < stars["***"] ~ "***",
+        p.value < stars["**"]  ~ "**",
+        p.value < stars["*"]   ~ "*",
+        TRUE                   ~ ""
+      ),
+      # Redondear y combinar estimate + stars
+      estimate = paste0(round(estimate, 3), stars_col),
+      SE = round(SE, 3),
+      t.ratio = round(t.ratio, 2),
+      p.value = round(p.value, 3)
+    ) %>%
+    select(assigned, contrast, estimate, SE, t.ratio, p.value)
+  
+  # Crear tabla LaTeX
+  kbl_obj <- contrasts_df %>%
+    kbl(
+      booktabs = TRUE,
+      col.names = c("Assigned Policy", "Contrast", "Estimate", "SE", "t ratio", "p value"),
+      format = "latex",
+      escape = FALSE
+    )
+  
+  tex_file <- file.path(path, paste0(file, ".tex"))
+  kbl_obj %>%
+    kable_styling(latex_options = c("striped", "hold_position")) %>%
+    save_kable(file = tex_file)
+  
+  # ---------------- Limpiar begin/end table ----------------
+  lines <- readLines(tex_file)
+  lines_clean <- lines[!grepl("^\\\\begin\\{table\\}|^\\\\end\\{table\\}|^\\\\caption\\{|^\\\\label\\{", lines)]
+  writeLines(lines_clean, tex_file)
+  
+  message("Tabla exportada y limpiada en: ", tex_file)
+}
+
+

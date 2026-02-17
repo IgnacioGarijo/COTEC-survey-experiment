@@ -548,12 +548,22 @@ modelsummary(models = list(modelo_h13a, modelo_h13),
              format="html",
              output = file.path(tables, "h13.html"))
 
+##### H1 unido #####
+
+table_export_clean(models= list("H11"=modeloh11, "(2)"=modeloh12a, "H12"=modeloh12), 
+             file = "h1_agg")
+
+table_export(models=list("(1)"=modelo_h13a, "H13"=modelo_h13), 
+             file="h13_final")
+
+
 ##### H13 alt #####
 
 dfanalisish13f<-dfanalisis1 %>% 
   filter(favorite==politica| control=="Control") 
 
 modelo_h13f<- lm(data=dfanalisish13f, formula= hb ~ D+favorite)
+
 
 
 dfanalisish13lf<-dfanalisis1 %>% 
@@ -599,6 +609,8 @@ modelsummary(models = list(modelo_h21,modelo_h22a, modelo_h22b,modelo_h22),
              format="html",
              output = file.path(tables, "h22.html"))
 
+
+
 ###### H23 ######
 
 dfanalisish23f<-dfanalisish2 %>% 
@@ -617,6 +629,22 @@ modelsummary(models = list("Favorite"=modelo_h23f, "Least\n favorite"=modelo_h23
              gof_omit = "BIC|AIC|R2 Within| R2 Within Adj.|Log.Lik.|R2 Adj.|RMSE",
              format="html",
              output = file.path(tables, "h23.html"))
+
+
+
+###### H2 unido ######
+
+table_export(models = list("H21"=modelo_h21, "(2)"=modelo_h22a, "(3)"=modelo_h22b, "H22"=modelo_h22), 
+             file="h2_agg")
+
+emh22 <- emmeans(modelo_h22, pairwise ~ D | assigned)
+
+contrasts_export(emh22, 
+                 file= "h22_contrasts")
+
+table_export(models = list("Favorite"=modelo_h23f, "Least\n favorite"=modelo_h23lf), 
+             file= "h23_final")
+
 
 #--------------------#
 ##### C. STUDY 3 #####
@@ -649,6 +677,8 @@ modelsummary(models = list(modelo_h32a, modelo_h32b,modelo_h32),
              output = file.path(tables, "h32.html"))
 
 
+
+
 ###### H33 ######
 
 dfanalisish33f<-dfanalisish3 %>% 
@@ -668,6 +698,20 @@ modelsummary(models = list("Favorite"=modelo_h33f, "Least\n favorite"=modelo_h33
              format="html",
              output = file.path(tables, "h33.html"))
 
+###### H3 unido ######
+
+table_export(models = list("H31"=modelo_h31, "(2)"=modelo_h32a, "(3)"=modelo_h32b, "H32"=modelo_h32), 
+             file= "h3_agg")
+
+emh32 <- emmeans(modelo_h32, pairwise ~ D | assigned)
+
+contrasts_export(emh32, 
+                 file= "h32_contrasts")
+
+table_export(models = list("Favorite"=modelo_h33f, "Least\n favorite"=modelo_h33lf),
+             file= "h33_final")
+
+
 #--------------------------------#
 ##### D. STUDY 3 ALTERNATIVE #####
 #--------------------------------#
@@ -675,7 +719,7 @@ modelsummary(models = list("Favorite"=modelo_h33f, "Least\n favorite"=modelo_h33
 ###### H3B1 ######
 
 dfanalisish3b<-dfanalisis %>% 
-  filter(D %in% c("Control", "Awareness")) %>% 
+  filter(D %in% c("Control", "Awareness treatment")) %>% 
   mutate(D= relevel(factor(D), ref="Control"))
 
 modelo_h3b1<- lm(data=dfanalisish3b, formula= hb ~ D)
