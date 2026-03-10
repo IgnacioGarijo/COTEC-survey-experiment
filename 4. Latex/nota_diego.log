@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.12)  16 FEB 2026 19:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.12)  7 MAR 2026 20:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1167,35 +1167,35 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 6
-3.
+7.
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 6
-3.
+7.
 
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-63.
+67.
 
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-63.
+67.
 
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 63.
+(Font)              <14.4> on input line 67.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 63.
+(Font)              <10> on input line 67.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 63.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 63.
+(Font)              <7> on input line 67.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 67.
 
 
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -1204,7 +1204,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 63.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 67.
 
 
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -1213,7 +1213,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 63
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 67
 .
 
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
@@ -1223,8 +1223,8 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 {C:/Users/ignac/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/igna
 c/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}] [2]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 8
-9.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 9
+3.
 
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1235,7 +1235,7 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 File: ../3. Output/figures/mindmap.png Graphic file (type png)
 <use ../3. Output/figures/mindmap.png>
 Package pdftex.def Info: ../3. Output/figures/mindmap.png  used on input line 1
-15.
+19.
 (pdftex.def)             Requested size: 344.005pt x 224.26366pt.
  [4 <../3. Output/figures/mindmap.png>] (../3. Output/tables/h1_agg.tex
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1263,29 +1263,29 @@ Package microtype Info: Loading generic protrusion settings for font family
 ] [7] [8
 
 ] (../3. Output/tables/h2_agg.tex)
-Overfull \hbox (28.2754pt too wide) in paragraph at lines 37--177
+Overfull \hbox (28.2754pt too wide) in paragraph at lines 37--181
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 11.66092pt on input line 177.
+LaTeX Warning: Float too large for page by 11.66092pt on input line 181.
 
 (../3. Output/tables/h22_contrasts.tex)
-Overfull \hbox (71.70522pt too wide) in paragraph at lines 2--183
+Overfull \hbox (71.70522pt too wide) in paragraph at lines 2--187
  [][] 
  []
 
 (../3. Output/tables/h23_final.tex) [9] [10] [11]
 (../3. Output/tables/h3_agg.tex)
-Overfull \hbox (26.2817pt too wide) in paragraph at lines 37--213
+Overfull \hbox (26.2817pt too wide) in paragraph at lines 37--217
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 11.66092pt on input line 213.
+LaTeX Warning: Float too large for page by 11.66092pt on input line 217.
 
 (../3. Output/tables/h32_contrasts.tex)
-Overfull \hbox (92.88469pt too wide) in paragraph at lines 2--219
+Overfull \hbox (92.88469pt too wide) in paragraph at lines 2--223
  [][] 
  []
 
@@ -1322,7 +1322,7 @@ b><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb
 ><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb>
 <C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
 
-Output written on nota_diego.pdf (14 pages, 253734 bytes).
+Output written on nota_diego.pdf (14 pages, 254695 bytes).
 PDF statistics:
  178 PDF objects out of 1000 (max. 8388607)
  43 named destinations out of 1000 (max. 500000)

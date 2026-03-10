@@ -145,6 +145,23 @@ gg<-dfanalisis %>%
 
 ggsave(gg, filename=file.path(graficos, "histograms.jpeg"), width = 12, height = 8)
 
+# Only hb
+
+ gg<-
+dfanalisis %>% 
+  ggplot(aes(hb, y=after_stat(density)))+
+  geom_histogram(bins=13, alpha=.8, fill= paleta_alt[[1]])+
+  geom_vline(xintercept = 0, linetype="longdash", color=paleta[[4]], linewidth=.6)+
+  scale_y_continuous(expand = c(0,0))+
+  theme(
+    strip.text = element_text(
+      size = 30,       # tamaño
+      face = "bold",   # negrita
+    )
+  )
+
+ ggsave(gg, filename=file.path(graficos, "histogram_hb.jpeg"), width = 18, height = 8)
+ 
 
 dfanalisis %>% 
   pivot_longer(cols=c("ha", "hb", "hc", "hd")) %>% 
@@ -342,14 +359,14 @@ modelsummary::modelsummary(models = list(modeloa, modelob, modeloc, modelod),
                            include.nobs = FALSE,
                            include.rmse = FALSE)
 
-
+dfanalisis <- dfanalisis %>% 
+  mutate(titularidad= ifelse(titularidad=="Pública", "Pública", "Privada/Concertada"))
 
 modeloa2<-lm(data=dfanalisis, formula = ha ~ nivel + experiencia + antiguedad3 + female + edad + 
               titularidad + indefinido + grupos_docencia + impacto_estudiantes +
               empatia + meritocracia)
-modelob2<-lm(data=dfanalisis, formula = hb ~ nivel + experiencia + antiguedad3 + female + edad + 
-              titularidad + indefinido + grupos_docencia + impacto_estudiantes +
-              empatia + meritocracia)
+modelob2<-lm(data=dfanalisis, formula = hb ~ nivel + experiencia + female + edad + indefinido + grupos_docencia + impacto_estudiantes +
+              titularidad + meritocracia)
 modeloc2<-lm(data=dfanalisis, formula = hc ~ nivel + experiencia + antiguedad3 + female + edad +
               titularidad + indefinido + grupos_docencia + impacto_estudiantes +
               empatia + meritocracia)
@@ -376,26 +393,33 @@ gg<-modelob2 %>%
   filter(term != "(Intercept)") %>%  
   mutate(sign=ifelse(conf.low<=0 & conf.high>=0, "No", "Si"), 
          term= case_when(term == "titularidadPrivada" ~ "Privada", 
-                         term == "nivelE. Secundaria" ~ "Secundaria", 
-                         term == "indefinidotemporal" ~ "Temporal", 
-                         term== "titularidadPública" ~ "Pública",
-                         term== "female1" ~ "Mujer", 
+                         term == "nivelE. Secundaria" ~ "High School", 
+                         term == "indefinidotemporal" ~ "Temporary contract", 
+                         term== "titularidadPública" ~ "Public school",
+                         term== "female1" ~ "Female", 
+                         term== "meritocracia" ~ "Belief in meritocracy", 
+                         term== "grupos_docencia" ~ "N. teaching groups",
+                         term== "impacto_estudiantes" ~ "Perceived impact on students", 
+                         term== "experiencia" ~ "Years of experience", 
+                         term== "empatia" ~ "Self-reported empathy", 
+                         term== "edad" ~ "Age",
                          TRUE ~ term), 
-         discr= ifelse(term %in% c("meritocracia", "grupos_docencia", "experiencia", "antiguedad3", "impacto_estudiantes", "edad", "empatia"), "cont", "discr")) %>% 
+         discr= ifelse(term %in% c("Belief in meritocracy", "N. teaching groups", "Years of experience", "Perceived impact on students", "Age", "Self-reported empathy"), "cont", "discr")) %>% 
   ggplot(aes(x = reorder(term, estimate),
              y = estimate,
              ymin = conf.low,
              ymax = conf.high, 
              color=sign)) +
-  geom_pointrange() +
+  geom_point()+
+  geom_errorbar(width=.4, linewidth=1) +
   geom_hline(yintercept = 0, color="grey40", linetype="longdash")+
   coord_flip()+
   guides(color="none")+
   scale_color_manual(values= c("#537d90", "#00b89f"))+
   facet_wrap(~discr, scales="free", labeller = labeller(.default = ~"")) +# Sacar
-  theme(text = element_text(size=15))
+  theme(text = element_text(size=25))
 
-ggsave(gg, file=file.path(graficos, "coefs.jpeg"), width=7, height=5)
+ggsave(gg, file=file.path(graficos, "coefs.jpeg"), width=15, height=5)
 
 modelob2<-lm(data=dfrf, formula=fmla)
 

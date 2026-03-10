@@ -1,0 +1,118 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\definecolor{kkcolor}{RGB}{61, 66, 107}
+\usecolortheme[named=kkcolor]{structure}
+\usepackage[
+backend=biber,
+style=apa,
+]{biblatex}
+\newcommand{\figpath}{../../3. Output/figures/}
+\newcommand{\tabpath}{../../3. Output/tables/}
+
+\title[The Decision to Hold Back]{The Decision to Hold Back: Experimental Evidence on Teachers’ Repetition Biases}
+\author[Garijo Campos, Ignacio]{Ignacio Garijo Campos \\
+		Antonio Alfonso \\
+		Pablo Brañas \\
+		Diego Jorrat \\
+		Ángel Sánchez 
+}
+\institute[]{Universidad Loyola Andalucía}
+
+\AtBeginSection[]
+{
+	\begin{frame} 
+
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+
+\begin{document}
+	
+
+		\maketitle
+
+	
+	
+	\section{Introduction} \label{intro}
+	
+	\begin{frame}{\nameref{intro}: Grade Repetition}
+		\begin{itemize}
+			\item Grade repetition can be seen as a \textbf{double punishment}: students face academic failure and are separated from their peers.
+			\item This separation may negatively affect \textbf{self-esteem} and perceptions of ability.
+			\item In psychology, this relates to \textbf{learned helplessness}: students stop trying because they believe success is impossible regardless of effort.
+			\item Overall, the literature finds \textbf{little or no positive effects} of grade repetition on test scores, skills or dropout rates
+		\end{itemize}
+	\end{frame}
+	
+	
+	\section{Our approach}\label{exp}
+	
+	\begin{frame}{\nameref{exp}}
+		\begin{itemize}
+			\item Our novel approach: we focus on teachers and their `harshness' level
+			\item We carry out a survey experiment in Spain, where the grade repetition rate more than doubles that of the OECD (9\% and 22\%)
+			\item Double objective: 
+				\begin{enumerate}
+					\item Characterizing `harsh' teachers 
+					\item Studying how teachers behave under different policy circumstances
+				\end{enumerate}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{\nameref{exp}: What is harshness?}
+		
+		Socioeconomic questionnaire $\rightarrow$ Experimental section $\rightarrow$ Behavioral questionnaire		
+		 \begin{table}[!ht]
+			\centering 
+			\begin{tabular}{|p{7cm}|*{3}{c|}}
+				\hline
+				& Option 1 & Option 2 \\
+				\hline
+				Gender & Male & Female \\
+				\hline
+				Disadvantaged background & Yes & No  \\
+				\hline
+				Failed 3 or more subjects & Yes & No  \\
+				\hline
+				Lacks mathematical and/or linguistic abilities & Yes & No  \\
+				\hline
+				Has committed a serious or very serious infraction or has been suspended & Yes & No\\
+				\hline
+				Frequently misses class without justification & Yes & No \\
+				\hline
+			\end{tabular}
+			\label{tab:cards}
+		\end{table}
+	\end{frame}
+	
+	\begin{frame}{\nameref{exp}: Measures of harshness}
+		We estimate 4 different measures, but due to their similarity, only show results for one: 
+		
+		\begin{enumerate}
+			\item Number of repetitions
+			\item \textbf{Average deviation with respect to peers} ($\simeq$ 320)
+			\item Average deviation with respect to predicted probability of repetition
+			\item Average deviation with respect to predicted probability of repetition in a more complete model
+		\end{enumerate}
+		
+		\begin{figure} 
+			\centering
+			\caption{Average deviation with respect to peers}
+			\includegraphics[width=0.6\textwidth]{\figpath histogram_hb.jpeg}
+		\end{figure}
+	\end{frame}
+	
+	\section{Characterizing harsh teachers}\label{charac}
+	
+	\begin{frame}{\nameref{charac}: the model}
+		\begin{figure} 
+			\centering
+			\caption{Coefficients of linear regression on harshness}
+			\includegraphics[width=\textwidth]{\figpath coefs.jpeg}
+		\end{figure}
+	\end{frame}
+
+\end{document}
