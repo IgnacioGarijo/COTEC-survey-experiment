@@ -1,0 +1,27 @@
+\begin{table}
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={* p < 0.1, ** p < 0.05, *** p < 0.01},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+hline{6}={1,2,3,4,5,6,7}{solid, 0.05em, black},
+}                     %% tabularray inner close
+\toprule
+& Policy 1 & Policy 2 & Policy 3 & Policy 1  & Policy 2  & Policy 3  \\ \midrule %% TinyTableHeader
+(Intercept) & \num{-3.065}*** & \num{1.086}*** & \num{-1.228}*** & \num{0.179}** & \num{-2.213}*** & \num{-0.779}*** \\
+& (\num{0.213})   & (\num{0.102})  & (\num{0.107})   & (\num{0.088}) & (\num{0.149})   & (\num{0.096})   \\
+assigned    & \num{0.469}     & \num{-0.099}   & \num{-0.372}*   & \num{0.109}   & \num{-0.002}    & \num{0.424}***  \\
+& (\num{0.330})   & (\num{0.174})  & (\num{0.197})   & (\num{0.156}) & (\num{0.258})   & (\num{0.158})   \\
+Num.Obs.    & \num{761}       & \num{761}      & \num{761}       & \num{761}     & \num{761}       & \num{761}       \\
+\bottomrule
+\end{talltblr}
+\end{table}

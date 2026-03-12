@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.12)  10 MAR 2026 01:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.12)  12 MAR 2026 01:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1047,45 +1047,241 @@ Package: xparse 2025-10-09 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2025/07/10 v3.21 expl3 case changing code for biblatex
 ))
+(C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/tabularray\tabularray.s
+ty
+Package: tabularray 2025-08-29 v2025B Typeset tabulars and arrays with LaTeX3
+
+(C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/ninecolors\ninecolors.s
+ty
+Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
+)
+\l__tblr_a_int=\count495
+\l__tblr_c_int=\count496
+\l__tblr_r_int=\count497
+\l__tblr_d_dim=\dimen302
+\l__tblr_h_dim=\dimen303
+\l__tblr_o_dim=\dimen304
+\l__tblr_p_dim=\dimen305
+\l__tblr_q_dim=\dimen306
+\l__tblr_r_dim=\dimen307
+\l__tblr_s_dim=\dimen308
+\l__tblr_t_dim=\dimen309
+\l__tblr_v_dim=\dimen310
+\l__tblr_w_dim=\dimen311
+\l__tblr_a_box=\box78
+\l__tblr_b_box=\box79
+\l__tblr_c_box=\box80
+\l__tblr_d_box=\box81
+\c@tblrcount=\count498
+\c@rownum=\count499
+\c@colnum=\count500
+\c@rowcount=\count501
+\c@colcount=\count502
+\abovesep=\dimen312
+\belowsep=\dimen313
+\leftsep=\dimen314
+\rightsep=\dimen315
+\gTblrLevelInt=\count503
+\g__tblr_data_row_key_count_int=\count504
+\g__tblr_data_column_key_count_int=\count505
+\g__tblr_data_cell_key_count_int=\count506
+\g__tblr_array_int=\count507
+\l__tblr_key_count_int=\count508
+\l__tblr_key_quotient_int=\count509
+\l__tblr_key_quotient_two_int=\count510
+\l__tblr_key_remainder_int=\count511
+\g__tblr_data_str_value_count_int=\count512
+\lTblrChildTotalInt=\count513
+\lTblrChildHtotalInt=\count514
+\lTblrChildVtotalInt=\count515
+\l__child_diff_h_int=\count516
+\l__child_diff_v_int=\count517
+\l__child_sign_h_int=\count518
+\l__child_sign_v_int=\count519
+\l__child_step_int=\count520
+\lTblrDefaultHruleWidthDim=\dimen316
+\lTblrDefaultVruleWidthDim=\dimen317
+\l__tblr_split_balance_int=\count521
+\l__tblr_strut_dp_dim=\dimen318
+\l__tblr_strut_ht_dim=\dimen319
+\g__tblr_cell_wd_dim=\dimen320
+\g__tblr_cell_ht_dim=\dimen321
+\g__tblr_cell_head_dim=\dimen322
+\g__tblr_cell_foot_dim=\dimen323
+\l__tblr_measured_cell_box=\box82
+\g__tblr_last_box=\box83
+\l__tblr_temp_box=\box84
+\l__tblr_column_target_dim=\dimen324
+\l__tblr_hfuzz_dim=\dimen325
+\l__tblr_caption_box=\box85
+\l__tblr_caption_left_box=\box86
+\lTblrRowHeadInt=\count522
+\lTblrRowFootInt=\count523
+\l__tblr_row_head_box=\box87
+\l__tblr_row_foot_box=\box88
+\l__tblr_row_head_foot_dim=\dimen326
+\lTblrTableWidthDim=\dimen327
+\l__tblr_table_firsthead_box=\box89
+\l__tblr_table_middlehead_box=\box90
+\l__tblr_table_lasthead_box=\box91
+\l__tblr_table_firstfoot_box=\box92
+\l__tblr_table_middlefoot_box=\box93
+\l__tblr_table_lastfoot_box=\box94
+\l__tblr_remain_height_dim=\dimen328
+\l__tblr_long_from_int=\count524
+\l__tblr_long_to_int=\count525
+\l__tblr_curr_i_int=\count526
+\l__tblr_prev_i_int=\count527
+\lTblrTablePageInt=\count528
+\l__tblr_table_head_box=\box95
+\l__tblr_table_foot_box=\box96
+\l__tblr_table_head_foot_dim=\dimen329
+\l__tblr_table_head_body_foot_dim=\dimen330
+\l__tblr_table_box=\box97
+\lTblrRowFirstInt=\count529
+\lTblrRowLastInt=\count530
+\l__tblr_table_hlines_box=\box98
+\l__tblr_hline_box=\box99
+\l__tblr_row_box=\box100
+\l__tblr_col_o_wd_dim=\dimen331
+\l__tblr_col_b_wd_dim=\dimen332
+\l__tblr_hline_leftskip_dim=\dimen333
+\l__tblr_hline_rightskip_dim=\dimen334
+\l__tblr_row_ht_dim=\dimen335
+\l__tblr_row_dp_dim=\dimen336
+\l__tblr_row_abovesep_dim=\dimen337
+\l__tblr_row_belowsep_dim=\dimen338
+\l__tblr_row_vlines_box=\box101
+\l__tblr_vline_box=\box102
+\l__tblr_cell_box=\box103
+\l__tblr_row_upper_dim=\dimen339
+\l__tblr_row_lower_dim=\dimen340
+\l__tblr_row_vpace_dim=\dimen341
+\l__tblr_vline_aboveskip_dim=\dimen342
+\l__tblr_vline_belowskip_dim=\dimen343
+\lTblrCellRowSpanInt=\count531
+\lTblrCellColSpanInt=\count532
+\l__tblr_cell_wd_dim=\dimen344
+\l__tblr_cell_ht_dim=\dimen345
+\lTblrCellAboveBorderWidthDim=\dimen346
+\lTblrCellBelowBorderWidthDim=\dimen347
+\lTblrCellLeftBorderWidthDim=\dimen348
+\lTblrCellRightBorderWidthDim=\dimen349
+\l__tblr_diag_box=\box104
+\l__tblr_cell_inner_wd_dim=\dimen350
+\l__tblr_cell_inner_dp_dim=\dimen351
+\l__tblr_cell_hanchor_dim=\dimen352
+\l__tblr_last_cell_table_ht_dim=\dimen353
+\l__tblr_last_cell_table_dp_dim=\dimen354
+\l__tblr_last_vline_wd_dim=\dimen355
+\l__tblr_tikz_node_box=\box105
+)
+(C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen356
+\lightrulewidth=\dimen357
+\cmidrulewidth=\dimen358
+\belowrulesep=\dimen359
+\belowbottomsep=\dimen360
+\aboverulesep=\dimen361
+\abovetopsep=\dimen362
+\cmidrulesep=\dimen363
+\cmidrulekern=\dimen364
+\defaultaddspace=\dimen365
+\@cmidla=\count533
+\@cmidlb=\count534
+\@aboverulesep=\dimen366
+\@belowrulesep=\dimen367
+\@thisruleclass=\count535
+\@lastruleclass=\count536
+\@thisrulewidth=\dimen368
+)
+(C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx.sty
+Package: siunitx 2025-07-09 v3.4.14 A comprehensive (SI) units package
+\l__siunitx_number_uncert_offset_int=\count537
+\l__siunitx_number_exponent_fixed_int=\count538
+\l__siunitx_number_min_decimal_int=\count539
+\l__siunitx_number_min_integer_int=\count540
+\l__siunitx_number_round_precision_int=\count541
+\l__siunitx_number_lower_threshold_int=\count542
+\l__siunitx_number_upper_threshold_int=\count543
+\l__siunitx_number_group_first_int=\count544
+\l__siunitx_number_group_size_int=\count545
+\l__siunitx_number_group_minimum_int=\count546
+\l__siunitx_angle_tmp_dim=\dimen369
+\l__siunitx_angle_marker_box=\box106
+\l__siunitx_angle_unit_box=\box107
+\l__siunitx_compound_count_int=\count547
+
+(C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/translations\translatio
+ns.sty
+Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
+ (CN)
+)
+\l__siunitx_table_tmp_box=\box108
+\l__siunitx_table_tmp_dim=\dimen370
+\l__siunitx_table_column_width_dim=\dimen371
+\l__siunitx_table_integer_box=\box109
+\l__siunitx_table_decimal_box=\box110
+\l__siunitx_table_uncert_box=\box111
+\l__siunitx_table_before_box=\box112
+\l__siunitx_table_after_box=\box113
+\l__siunitx_table_before_dim=\dimen372
+\l__siunitx_table_carry_dim=\dimen373
+\l__siunitx_unit_tmp_int=\count548
+\l__siunitx_unit_position_int=\count549
+\l__siunitx_unit_total_int=\count550
+ (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen374
+\ar@mcellbox=\box114
+\extrarowheight=\dimen375
+\NC@list=\toks46
+\extratabsurround=\skip89
+\backup@length=\skip90
+\ar@cellbox=\box115
+))
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 21.
+(hyperref)                removing `\\' on input line 24.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 21.
+(hyperref)                removing `\\' on input line 24.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 21.
+(hyperref)                removing `\\' on input line 24.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 21.
+(hyperref)                removing `\\' on input line 24.
 
-\@quotelevel=\count495
-\@quotereset=\count496
+\@quotelevel=\count551
+\@quotereset=\count552
+Package translations Info: No language package found. I am going to use `englis
+h' as default language. on input line 35.
 (presentacion_seet.aux)
 \openout1 = `presentacion_seet.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1125,17 +1321,17 @@ LaTeX Font Info:    ... okay on input line 32.
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count497
-\scratchdimen=\dimen302
-\scratchbox=\box78
-\nofMPsegments=\count498
-\nofMParguments=\count499
-\everyMPshowfont=\toks46
-\MPscratchCnt=\count500
-\MPscratchDim=\dimen303
-\MPnumerator=\count501
-\makeMPintoPDFobject=\count502
-\everyMPtoPDFconversion=\toks47
+\scratchcounter=\count553
+\scratchdimen=\dimen376
+\scratchbox=\box116
+\nofMPsegments=\count554
+\nofMParguments=\count555
+\everyMPshowfont=\toks47
+\MPscratchCnt=\count556
+\MPscratchDim=\dimen377
+\MPnumerator=\count557
+\makeMPintoPDFobject=\count558
+\everyMPtoPDFconversion=\toks48
 )
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -1147,63 +1343,63 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 32.
+Package hyperref Info: Link coloring OFF on input line 35.
  (presentacion_seet.out) (presentacion_seet.out)
 \@outlinefile=\write6
 \openout6 = `presentacion_seet.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 32.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 35.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 32.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 35.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 32.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 32.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 32.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 32.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 35.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 32.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 32.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 32.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 35.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 32.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 32.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 32.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 35.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 32.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 32.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 35.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 32.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 35.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 32.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 32.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 32.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 32.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 32.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 32.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 32.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 35.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 35.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 3
-2.
+5.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 3
-2.
+5.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 32.
+ut line 35.
 
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator-b
 asic-dictionary-English.dict
@@ -1270,34 +1466,43 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'presentacion_seet.bbl' not found.
 
 No file presentacion_seet.bbl.
-Package biblatex Info: Reference section=0 on input line 32.
-Package biblatex Info: Reference segment=0 on input line 32.
-(presentacion_seet.nav) [1
+Package biblatex Info: Reference section=0 on input line 35.
+Package biblatex Info: Reference segment=0 on input line 35.
+
+(C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\tran
+slations-basic-dictionary-english.trsl
+File: translations-basic-dictionary-english.trsl (english translation file `tra
+nslations-basic-dictionary')
+)
+Package translations Info: loading dictionary `translations-basic-dictionary' f
+or `english'. on input line 35.
+ (presentacion_seet.nav) [1
 
 {C:/Users/ignac/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (presentacio
-n_seet.toc) [2
+n_seet.toc)
+[2
 
 ] [3
 
 ] (presentacion_seet.toc) [4
 
-]
-[5
+] [5
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 89.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 92.
 
- (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+
+(C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 89.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 92.
 
 
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 89.
+ut line 92.
 
 (C:\Users\ignac\AppData\Local\Programs\MiKTeX\tex/latex/sansmathaccent\ot1mathk
 erncmss.fd
@@ -1306,11 +1511,11 @@ thkerncmss.
 ) [6
 
 ]
-<../../3. Output/figures/histogram_hb.jpeg, id=212, 5420.25pt x 2409.0pt>
+<../../3. Output/figures/histogram_hb.jpeg, id=219, 5420.25pt x 2409.0pt>
 File: ../../3. Output/figures/histogram_hb.jpeg Graphic file (type jpg)
 <use ../../3. Output/figures/histogram_hb.jpeg>
 Package pdftex.def Info: ../../3. Output/figures/histogram_hb.jpeg  used on inp
-ut line 106.
+ut line 109.
 (pdftex.def)             Requested size: 205.37926pt x 91.27094pt.
  [7
 
@@ -1318,15 +1523,50 @@ ut line 106.
 (presentacion_seet.toc) [8
 
 ]
-<../../3. Output/figures/coefs.jpeg, id=269, 4516.875pt x 1505.625pt>
+<../../3. Output/figures/coefs.jpeg, id=278, 4516.875pt x 1505.625pt>
 File: ../../3. Output/figures/coefs.jpeg Graphic file (type jpg)
 <use ../../3. Output/figures/coefs.jpeg>
 Package pdftex.def Info: ../../3. Output/figures/coefs.jpeg  used on input line
- 116.
+ 119.
 (pdftex.def)             Requested size: 342.2953pt x 114.08867pt.
  [9
 
  <../../3. Output/figures/coefs.jpeg>]
+(presentacion_seet.toc) [10
+
+]
+<../../3. Output/figures/mindmap.png, id=337, 986.18437pt x 642.90187pt>
+File: ../../3. Output/figures/mindmap.png Graphic file (type png)
+<use ../../3. Output/figures/mindmap.png>
+Package pdftex.def Info: ../../3. Output/figures/mindmap.png  used on input lin
+e 128.
+(pdftex.def)             Requested size: 342.2953pt x 223.14534pt.
+ [11
+
+ <../../3. Output/figures/mindmap.png>]
+(h1_agg_seet.tex) [12
+
+] (../../3. Output/tables/h13_final.tex) [13
+
+]
+(../../3. Output/tables/h23_final.tex) [14
+
+]
+(../../3. Output/tables/h33_final.tex) [15
+
+] [16
+
+]
+(../../3. Output/tables/h42.tex
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
+
+ []
+
+) [17
+
+] [18
+
+]
 \tf@nav=\write7
 \openout7 = `presentacion_seet.nav'.
 
@@ -1336,35 +1576,36 @@ Package pdftex.def Info: ../../3. Output/figures/coefs.jpeg  used on input line
 \tf@snm=\write9
 \openout9 = `presentacion_seet.snm'.
 
-
-(presentacion_seet.aux)
+ (presentacion_seet.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-10-24>
  ***********
 Package rerunfilecheck Info: File `presentacion_seet.out' has not changed.
-(rerunfilecheck)             Checksum: 937E9D2C1F4D764FB67F3C8424DE7047;403.
+(rerunfilecheck)             Checksum: 655BB163ABE2C217C616EB0B63926D42;519.
 Package logreq Info: Writing requests to 'presentacion_seet.run.xml'.
 \openout1 = `presentacion_seet.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29730 strings out of 467871
- 590724 string characters out of 5418375
- 1499848 words of memory out of 5000000
- 58061 multiletter control sequences out of 15000+600000
- 635070 words of font info for 66 fonts, out of 8000000 for 9000
+ 36904 strings out of 467871
+ 796073 string characters out of 5418375
+ 1679694 words of memory out of 5000000
+ 65163 multiletter control sequences out of 15000+600000
+ 636410 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,123p,708b,5050s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmss10.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmss12.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmss8.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/ignac/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on presentacion_seet.pdf (9 pages, 1518877 bytes).
+cmmi6.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmss10.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmss12.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/ignac/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/ignac/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ignac/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
+Output written on presentacion_seet.pdf (18 pages, 1699242 bytes).
 PDF statistics:
- 326 PDF objects out of 1000 (max. 8388607)
- 26 named destinations out of 1000 (max. 500000)
- 95 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 605 PDF objects out of 1000 (max. 8388607)
+ 50 named destinations out of 1000 (max. 500000)
+ 108 words of extra memory for PDF output out of 10000 (max. 10000000)
 

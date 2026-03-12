@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.12)  10 MAR 2026 20:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.12)  10 MAR 2026 20:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./h1_agg.tex
-(h1_agg.tex
+**./h1_agg_seet.tex
+(h1_agg_seet.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-10-24>
 
@@ -61,7 +61,10 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no = in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no p in font nullfont!
-Missing character: There is no < in font nullfont!
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 4.
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no 1 in font nullfont!
@@ -69,7 +72,6 @@ Missing character: There is no , in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no p in font nullfont!
-Missing character: There is no < in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
@@ -79,7 +81,6 @@ Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no p in font nullfont!
-Missing character: There is no < in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
@@ -103,9 +104,6 @@ Missing character: There is no ] in font nullfont!
 Missing character: There is no Q in font nullfont!
 Missing character: There is no [ in font nullfont!
 Missing character: There is no ] in font nullfont!
-Missing character: There is no Q in font nullfont!
-Missing character: There is no [ in font nullfont!
-Missing character: There is no ] in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no o in font nullfont!
@@ -150,24 +148,6 @@ Missing character: There is no u in font nullfont!
 Missing character: There is no m in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no 3 in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no 4 in font nullfont!
 Missing character: There is no = in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no a in font nullfont!
@@ -185,15 +165,13 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no 1 in font nullfont!
-Missing character: There is no 6 in font nullfont!
+Missing character: There is no 4 in font nullfont!
 Missing character: There is no = in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no 2 in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no 3 in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 4 in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no l in font nullfont!
@@ -214,8 +192,8 @@ Missing character: There is no c in font nullfont!
 Missing character: There is no k in font nullfont!
 Missing character: There is no , in font nullfont!
 ! Undefined control sequence.
-l.14 \toprule
-             
+l.13 	\toprule
+              
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -223,8 +201,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Misplaced alignment tab character &.
-l.15 &
-       H11 & (2) & H12 \\ \midrule %% TinyTableHeader
+l.14 	&
+        (1) & (2)\\ \midrule %% TinyTableHeader
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -232,12 +210,12 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-Missing character: There is no H in font nullfont!
+Missing character: There is no ( in font nullfont!
 Missing character: There is no 1 in font nullfont!
-Missing character: There is no 1 in font nullfont!
+Missing character: There is no ) in font nullfont!
 ! Misplaced alignment tab character &.
-l.15 & H11 &
-             (2) & H12 \\ \midrule %% TinyTableHeader
+l.14 	& (1) &
+              (2)\\ \midrule %% TinyTableHeader
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -248,24 +226,26 @@ might try typing `S' now just to see what is salvageable.
 Missing character: There is no ( in font nullfont!
 Missing character: There is no 2 in font nullfont!
 Missing character: There is no ) in font nullfont!
-! Misplaced alignment tab character &.
-l.15 & H11 & (2) &
-                   H12 \\ \midrule %% TinyTableHeader
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
 
-Missing character: There is no H in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no 2 in font nullfont!
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 2--14
+ \OML/cmm/m/it/10 <$ 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 2--14
+ \OML/cmm/m/it/10 <$ 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 2--14
+ \OML/cmm/m/it/10 <$ 
+ []
+
 ! Undefined control sequence.
 <recently read> \midrule 
                          
-l.15 & H11 & (2) & H12 \\ \midrule
-                                   %% TinyTableHeader
+l.14 	& (1) & (2)\\ \midrule
+                             %% TinyTableHeader
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -279,8 +259,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.16 (
-      Intercept)       & \num{0.014}   & \num{0.014}   & \num{0.023}*    \\
+l.15 	(
+       Intercept)        & \num{0.014}   & \num{0.023}*    \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -296,8 +276,8 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no ) in font nullfont!
 ! Misplaced alignment tab character &.
-l.16 (Intercept)       &
-                         \num{0.014}   & \num{0.014}   & \num{0.023}*    \\
+l.15 	(Intercept)        &
+                           \num{0.014}   & \num{0.023}*    \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -306,8 +286,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.16 (Intercept)       & \num
-                             {0.014}   & \num{0.014}   & \num{0.023}*    \\
+l.15 	(Intercept)        & \num
+                               {0.014}   & \num{0.023}*    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -320,8 +300,8 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no 4 in font nullfont!
 ! Misplaced alignment tab character &.
-l.16 (Intercept)       & \num{0.014}   &
-                                         \num{0.014}   & \num{0.023}*    \\
+l.15 	(Intercept)        & \num{0.014}   &
+                                           \num{0.023}*    \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -330,32 +310,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.16 (Intercept)       & \num{0.014}   & \num
-                                             {0.014}   & \num{0.023}*    \\
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no 4 in font nullfont!
-! Misplaced alignment tab character &.
-l.16 ...t)       & \num{0.014}   & \num{0.014}   &
-                                                   \num{0.023}*    \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Undefined control sequence.
-l.16 ...    & \num{0.014}   & \num{0.014}   & \num
-                                                  {0.023}*    \\
+l.15 	(Intercept)        & \num{0.014}   & \num
+                                               {0.023}*    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -371,8 +327,8 @@ Missing character: There is no * in font nullfont!
 ! Misplaced alignment tab character &.
 <recently read> &
                  
-l.17 &
-       (\num{0.012}) & (\num{0.012}) & (\num{0.013})   \\
+l.16 	 &
+         (\num{0.012}) & (\num{0.013})   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -387,15 +343,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.17 & (
-        \num{0.012}) & (\num{0.012}) & (\num{0.013})   \\
+l.16 	 & (
+          \num{0.012}) & (\num{0.013})   \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
-l.17 & (\num
-            {0.012}) & (\num{0.012}) & (\num{0.013})   \\
+l.16 	 & (\num
+              {0.012}) & (\num{0.013})   \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -409,8 +365,8 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no 2 in font nullfont!
 Missing character: There is no ) in font nullfont!
 ! Misplaced alignment tab character &.
-l.17 & (\num{0.012}) &
-                       (\num{0.012}) & (\num{0.013})   \\
+l.16 	 & (\num{0.012}) &
+                         (\num{0.013})   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -420,34 +376,8 @@ might try typing `S' now just to see what is salvageable.
 
 Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
-l.17 & (\num{0.012}) & (\num
-                            {0.012}) & (\num{0.013})   \\
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no 2 in font nullfont!
-Missing character: There is no ) in font nullfont!
-! Misplaced alignment tab character &.
-l.17 & (\num{0.012}) & (\num{0.012}) &
-                                       (\num{0.013})   \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-Missing character: There is no ( in font nullfont!
-! Undefined control sequence.
-l.17 & (\num{0.012}) & (\num{0.012}) & (\num
-                                            {0.013})   \\
+l.16 	 & (\num{0.012}) & (\num
+                              {0.013})   \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -467,141 +397,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.18 D
-      Policy treatment & \num{-0.004}  &                &                  \\
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no D in font nullfont!
-Missing character: There is no P in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no y in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no t in font nullfont!
-! Misplaced alignment tab character &.
-l.18 DPolicy treatment &
-                         \num{-0.004}  &                &                  \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Undefined control sequence.
-l.18 DPolicy treatment & \num
-                             {-0.004}  &                &                  \\
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no - in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 4 in font nullfont!
-! Misplaced alignment tab character &.
-l.18 DPolicy treatment & \num{-0.004}  &
-                                                        &                  \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.18 ...eatment & \num{-0.004}  &                &
-                                                                    \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-<recently read> &
-                 
-l.19 &
-       (\num{0.013}) &                &                  \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.19 & (
-        \num{0.013}) &                &                  \\
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no ( in font nullfont!
-! Undefined control sequence.
-l.19 & (\num
-            {0.013}) &                &                  \\
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no 3 in font nullfont!
-Missing character: There is no ) in font nullfont!
-! Misplaced alignment tab character &.
-l.19 & (\num{0.013}) &
-                                      &                  \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.19 & (\num{0.013}) &                &
-                                                         \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.20 a
-      ssignedPolicy 1  &                & \num{-0.023}  & \num{-0.025}    \\
+l.17 	a
+       ssignedPolicy 1   & \num{-0.023}  & \num{-0.025}    \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -621,18 +418,8 @@ Missing character: There is no c in font nullfont!
 Missing character: There is no y in font nullfont!
 Missing character: There is no 1 in font nullfont!
 ! Misplaced alignment tab character &.
-l.20 assignedPolicy 1  &
-                                        & \num{-0.023}  & \num{-0.025}    \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.20 assignedPolicy 1  &                &
-                                          \num{-0.023}  & \num{-0.025}    \\
+l.17 	assignedPolicy 1   &
+                           \num{-0.023}  & \num{-0.025}    \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -641,8 +428,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.20 assignedPolicy 1  &                & \num
-                                              {-0.023}  & \num{-0.025}    \\
+l.17 	assignedPolicy 1   & \num
+                               {-0.023}  & \num{-0.025}    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -656,8 +443,8 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 2 in font nullfont!
 Missing character: There is no 3 in font nullfont!
 ! Misplaced alignment tab character &.
-l.20 ...licy 1  &                & \num{-0.023}  &
-                                                   \num{-0.025}    \\
+l.17 	assignedPolicy 1   & \num{-0.023}  &
+                                           \num{-0.025}    \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -666,8 +453,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.20 ...1  &                & \num{-0.023}  & \num
-                                                  {-0.025}    \\
+l.17 	assignedPolicy 1   & \num{-0.023}  & \num
+                                               {-0.025}    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -683,18 +470,8 @@ Missing character: There is no 5 in font nullfont!
 ! Misplaced alignment tab character &.
 <recently read> &
                  
-l.21 &
-                      & (\num{0.017}) & (\num{0.016})   \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.21 &                &
-                        (\num{0.017}) & (\num{0.016})   \\
+l.18 	  &
+          (\num{0.017}) & (\num{0.016})   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -709,15 +486,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.21 &                & (
-                         \num{0.017}) & (\num{0.016})   \\
+l.18 	  & (
+           \num{0.017}) & (\num{0.016})   \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
-l.21 &                & (\num
-                             {0.017}) & (\num{0.016})   \\
+l.18 	  & (\num
+               {0.017}) & (\num{0.016})   \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -731,8 +508,8 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no 7 in font nullfont!
 Missing character: There is no ) in font nullfont!
 ! Misplaced alignment tab character &.
-l.21 &                & (\num{0.017}) &
-                                        (\num{0.016})   \\
+l.18 	  & (\num{0.017}) &
+                          (\num{0.016})   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -742,8 +519,8 @@ might try typing `S' now just to see what is salvageable.
 
 Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
-l.21 &                & (\num{0.017}) & (\num
-                                             {0.016})   \\
+l.18 	  & (\num{0.017}) & (\num
+                               {0.016})   \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -763,8 +540,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.22 a
-      ssignedPolicy 2  &                & \num{0.017}   & \num{0.019}     \\
+l.19 	a
+       ssignedPolicy 2     & \num{0.017}   & \num{0.019}     \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -784,18 +561,8 @@ Missing character: There is no c in font nullfont!
 Missing character: There is no y in font nullfont!
 Missing character: There is no 2 in font nullfont!
 ! Misplaced alignment tab character &.
-l.22 assignedPolicy 2  &
-                                        & \num{0.017}   & \num{0.019}     \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.22 assignedPolicy 2  &                &
-                                          \num{0.017}   & \num{0.019}     \\
+l.19 	assignedPolicy 2     &
+                             \num{0.017}   & \num{0.019}     \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -804,8 +571,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.22 assignedPolicy 2  &                & \num
-                                              {0.017}   & \num{0.019}     \\
+l.19 	assignedPolicy 2     & \num
+                                 {0.017}   & \num{0.019}     \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -818,8 +585,8 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no 7 in font nullfont!
 ! Misplaced alignment tab character &.
-l.22 ...licy 2  &                & \num{0.017}   &
-                                                   \num{0.019}     \\
+l.19 	assignedPolicy 2     & \num{0.017}   &
+                                             \num{0.019}     \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -828,8 +595,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.22 ...2  &                & \num{0.017}   & \num
-                                                  {0.019}     \\
+l.19 	assignedPolicy 2     & \num{0.017}   & \num
+                                                 {0.019}     \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -844,18 +611,8 @@ Missing character: There is no 9 in font nullfont!
 ! Misplaced alignment tab character &.
 <recently read> &
                  
-l.23 &
-                      & (\num{0.016}) & (\num{0.016})   \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.23 &                &
-                        (\num{0.016}) & (\num{0.016})   \\
+l.20   &
+         (\num{0.016}) & (\num{0.016})   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -870,15 +627,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.23 &                & (
-                         \num{0.016}) & (\num{0.016})   \\
+l.20   & (
+          \num{0.016}) & (\num{0.016})   \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
-l.23 &                & (\num
-                             {0.016}) & (\num{0.016})   \\
+l.20   & (\num
+              {0.016}) & (\num{0.016})   \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -892,8 +649,8 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no 6 in font nullfont!
 Missing character: There is no ) in font nullfont!
 ! Misplaced alignment tab character &.
-l.23 &                & (\num{0.016}) &
-                                        (\num{0.016})   \\
+l.20   & (\num{0.016}) &
+                         (\num{0.016})   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -903,8 +660,8 @@ might try typing `S' now just to see what is salvageable.
 
 Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
-l.23 &                & (\num{0.016}) & (\num
-                                             {0.016})   \\
+l.20   & (\num{0.016}) & (\num
+                              {0.016})   \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -924,8 +681,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.24 a
-      ssignedPolicy 3  &                & \num{-0.007}  & \num{-0.001}    \\
+l.21 	a
+       ssignedPolicy 3    & \num{-0.007}  & \num{-0.001}    \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -945,18 +702,8 @@ Missing character: There is no c in font nullfont!
 Missing character: There is no y in font nullfont!
 Missing character: There is no 3 in font nullfont!
 ! Misplaced alignment tab character &.
-l.24 assignedPolicy 3  &
-                                        & \num{-0.007}  & \num{-0.001}    \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.24 assignedPolicy 3  &                &
-                                          \num{-0.007}  & \num{-0.001}    \\
+l.21 	assignedPolicy 3    &
+                            \num{-0.007}  & \num{-0.001}    \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -965,8 +712,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.24 assignedPolicy 3  &                & \num
-                                              {-0.007}  & \num{-0.001}    \\
+l.21 	assignedPolicy 3    & \num
+                                {-0.007}  & \num{-0.001}    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -980,8 +727,8 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 7 in font nullfont!
 ! Misplaced alignment tab character &.
-l.24 ...licy 3  &                & \num{-0.007}  &
-                                                   \num{-0.001}    \\
+l.21 	assignedPolicy 3    & \num{-0.007}  &
+                                            \num{-0.001}    \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -990,8 +737,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.24 ...3  &                & \num{-0.007}  & \num
-                                                  {-0.001}    \\
+l.21 	assignedPolicy 3    & \num{-0.007}  & \num
+                                                {-0.001}    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1007,18 +754,8 @@ Missing character: There is no 1 in font nullfont!
 ! Misplaced alignment tab character &.
 <recently read> &
                  
-l.25 &
-                      & (\num{0.016}) & (\num{0.016})   \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.25 &                &
-                        (\num{0.016}) & (\num{0.016})   \\
+l.22 	   &
+           (\num{0.016}) & (\num{0.016})   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1033,15 +770,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.25 &                & (
-                         \num{0.016}) & (\num{0.016})   \\
+l.22 	   & (
+            \num{0.016}) & (\num{0.016})   \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
-l.25 &                & (\num
-                             {0.016}) & (\num{0.016})   \\
+l.22 	   & (\num
+                {0.016}) & (\num{0.016})   \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1055,8 +792,8 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no 6 in font nullfont!
 Missing character: There is no ) in font nullfont!
 ! Misplaced alignment tab character &.
-l.25 &                & (\num{0.016}) &
-                                        (\num{0.016})   \\
+l.22 	   & (\num{0.016}) &
+                           (\num{0.016})   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1066,8 +803,8 @@ might try typing `S' now just to see what is salvageable.
 
 Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
-l.25 &                & (\num{0.016}) & (\num
-                                             {0.016})   \\
+l.22 	   & (\num{0.016}) & (\num
+                                {0.016})   \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1087,8 +824,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.26 f
-      avoritePolicy 2  &                &                & \num{0.046}**   \\
+l.23 	f
+       avoritePolicy 2     &                & \num{0.046}**   \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -1108,8 +845,8 @@ Missing character: There is no c in font nullfont!
 Missing character: There is no y in font nullfont!
 Missing character: There is no 2 in font nullfont!
 ! Misplaced alignment tab character &.
-l.26 favoritePolicy 2  &
-                                        &                & \num{0.046}**   \\
+l.23 	favoritePolicy 2     &
+                                            & \num{0.046}**   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1118,18 +855,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.26 favoritePolicy 2  &                &
-                                                         & \num{0.046}**   \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.26 ...icy 2  &                &                &
-                                                   \num{0.046}**   \\
+l.23 	favoritePolicy 2     &                &
+                                              \num{0.046}**   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1138,7 +865,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.26 ...  &                &                & \num
+l.23 	favoritePolicy 2     &                & \num
                                                   {0.046}**   \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1156,8 +883,8 @@ Missing character: There is no * in font nullfont!
 ! Misplaced alignment tab character &.
 <recently read> &
                  
-l.27 &
-                      &                & (\num{0.020})   \\
+l.24   &
+                        & (\num{0.020})   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1166,18 +893,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.27 &                &
-                                       & (\num{0.020})   \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.27 &                &                &
-                                         (\num{0.020})   \\
+l.24   &                &
+                          (\num{0.020})   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1192,15 +909,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.27 &                &                & (
-                                          \num{0.020})   \\
+l.24   &                & (
+                           \num{0.020})   \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
-l.27 &                &                & (\num
-                                              {0.020})   \\
+l.24   &                & (\num
+                               {0.020})   \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1220,8 +937,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.28 f
-      avoritePolicy 3  &                &                & \num{-0.044}*** \\
+l.25 	f
+       avoritePolicy 3    &                & \num{-0.044}*** \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -1241,8 +958,8 @@ Missing character: There is no c in font nullfont!
 Missing character: There is no y in font nullfont!
 Missing character: There is no 3 in font nullfont!
 ! Misplaced alignment tab character &.
-l.28 favoritePolicy 3  &
-                                        &                & \num{-0.044}*** \\
+l.25 	favoritePolicy 3    &
+                                           & \num{-0.044}*** \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1251,18 +968,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.28 favoritePolicy 3  &                &
-                                                         & \num{-0.044}*** \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.28 ...icy 3  &                &                &
-                                                   \num{-0.044}*** \\
+l.25 	favoritePolicy 3    &                &
+                                             \num{-0.044}*** \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1271,8 +978,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.28 ...  &                &                & \num
-                                                  {-0.044}*** \\
+l.25 	favoritePolicy 3    &                & \num
+                                                 {-0.044}*** \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1291,8 +998,8 @@ Missing character: There is no * in font nullfont!
 ! Misplaced alignment tab character &.
 <recently read> &
                  
-l.29 &
-                      &                & (\num{0.013})   \\
+l.26   &
+                        & (\num{0.013})   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1301,18 +1008,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.29 &                &
-                                       & (\num{0.013})   \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-l.29 &                &                &
-                                         (\num{0.013})   \\
+l.26   &                &
+                          (\num{0.013})   \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1327,15 +1024,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.29 &                &                & (
-                                          \num{0.013})   \\
+l.26   &                & (
+                           \num{0.013})   \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
-l.29 &                &                & (\num
-                                              {0.013})   \\
+l.26   &                & (\num
+                               {0.013})   \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1355,8 +1052,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.30 N
-      um.Obs.          & \num{1011}    & \num{1011}    & \num{1011}      \\
+l.27 	N
+       um.Obs.             & \num{1011}    & \num{1011}      \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -1369,8 +1066,8 @@ Missing character: There is no b in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no . in font nullfont!
 ! Misplaced alignment tab character &.
-l.30 Num.Obs.          &
-                         \num{1011}    & \num{1011}    & \num{1011}      \\
+l.27 	Num.Obs.             &
+                             \num{1011}    & \num{1011}      \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1379,8 +1076,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.30 Num.Obs.          & \num
-                             {1011}    & \num{1011}    & \num{1011}      \\
+l.27 	Num.Obs.             & \num
+                                 {1011}    & \num{1011}      \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1392,8 +1089,8 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 ! Misplaced alignment tab character &.
-l.30 Num.Obs.          & \num{1011}    &
-                                         \num{1011}    & \num{1011}      \\
+l.27 	Num.Obs.             & \num{1011}    &
+                                             \num{1011}      \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1402,31 +1099,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.30 Num.Obs.          & \num{1011}    & \num
-                                             {1011}    & \num{1011}      \\
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-! Misplaced alignment tab character &.
-l.30 ...         & \num{1011}    & \num{1011}    &
-                                                   \num{1011}      \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Undefined control sequence.
-l.30 ...    & \num{1011}    & \num{1011}    & \num
-                                                  {1011}      \\
+l.27 	Num.Obs.             & \num{1011}    & \num
+                                                 {1011}      \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1444,16 +1118,16 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.31 R
-      2                & \num{0.000}   & \num{0.006}   & \num{0.028}     \\
+l.28 	R
+       2                   & \num{0.006}   & \num{0.028}     \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no R in font nullfont!
 Missing character: There is no 2 in font nullfont!
 ! Misplaced alignment tab character &.
-l.31 R2                &
-                         \num{0.000}   & \num{0.006}   & \num{0.028}     \\
+l.28 	R2                   &
+                             \num{0.006}   & \num{0.028}     \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1462,32 +1136,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.31 R2                & \num
-                             {0.000}   & \num{0.006}   & \num{0.028}     \\
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 0 in font nullfont!
-! Misplaced alignment tab character &.
-l.31 R2                & \num{0.000}   &
-                                         \num{0.006}   & \num{0.028}     \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Undefined control sequence.
-l.31 R2                & \num{0.000}   & \num
-                                             {0.006}   & \num{0.028}     \\
+l.28 	R2                   & \num
+                                 {0.006}   & \num{0.028}     \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1500,8 +1150,8 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 6 in font nullfont!
 ! Misplaced alignment tab character &.
-l.31 ...         & \num{0.000}   & \num{0.006}   &
-                                                   \num{0.028}     \\
+l.28 	R2                   & \num{0.006}   &
+                                             \num{0.028}     \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1510,8 +1160,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.31 ...    & \num{0.000}   & \num{0.006}   & \num
-                                                  {0.028}     \\
+l.28 	R2                   & \num{0.006}   & \num
+                                                 {0.028}     \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1530,15 +1180,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.32 F
-                       & \num{0.099}   & \num{2.034}   & \num{5.833}     \\
+l.29 	F
+                          & \num{2.034}   & \num{5.833}     \\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no F in font nullfont!
 ! Misplaced alignment tab character &.
-l.32 F                 &
-                         \num{0.099}   & \num{2.034}   & \num{5.833}     \\
+l.29 	F                   &
+                            \num{2.034}   & \num{5.833}     \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1547,32 +1197,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.32 F                 & \num
-                             {0.099}   & \num{2.034}   & \num{5.833}     \\
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 9 in font nullfont!
-Missing character: There is no 9 in font nullfont!
-! Misplaced alignment tab character &.
-l.32 F                 & \num{0.099}   &
-                                         \num{2.034}   & \num{5.833}     \\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Undefined control sequence.
-l.32 F                 & \num{0.099}   & \num
-                                             {2.034}   & \num{5.833}     \\
+l.29 	F                   & \num
+                                {2.034}   & \num{5.833}     \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1585,8 +1211,8 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 3 in font nullfont!
 Missing character: There is no 4 in font nullfont!
 ! Misplaced alignment tab character &.
-l.32 ...         & \num{0.099}   & \num{2.034}   &
-                                                   \num{5.833}     \\
+l.29 	F                   & \num{2.034}   &
+                                            \num{5.833}     \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1595,8 +1221,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.32 ...    & \num{0.099}   & \num{2.034}   & \num
-                                                  {5.833}     \\
+l.29 	F                   & \num{2.034}   & \num
+                                                {5.833}     \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1611,8 +1237,8 @@ Missing character: There is no 3 in font nullfont!
 ! Undefined control sequence.
 <recently read> \bottomrule 
                             
-l.33 \bottomrule
-                
+l.30 	\bottomrule
+                 
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1626,7 +1252,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.34 \end{talltblr}
+l.31 \end{talltblr}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1634,17 +1260,17 @@ or  <return>  to continue without it.
 
 )
 ! Emergency stop.
-<*> ./h1_agg.tex
-                
+<*> ./h1_agg_seet.tex
+                     
 *** (job aborted, no legal \end found)
 
  
 Here is how much of TeX's memory you used:
- 21 strings out of 467871
- 552 string characters out of 5418375
+ 23 strings out of 467871
+ 621 string characters out of 5418375
  434736 words of memory out of 5000000
- 29000 multiletter control sequences out of 15000+600000
+ 29002 multiletter control sequences out of 15000+600000
  627721 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 16i,0n,20p,120b,33s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 18i,1n,20p,118b,65s stack positions out of 10000i,1000n,20000p,200000b,200000s
 !  ==> Fatal error occurred, no output PDF file produced!

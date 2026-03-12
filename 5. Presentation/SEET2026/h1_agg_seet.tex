@@ -1,0 +1,31 @@
+\centering
+\begin{talltblr}[         %% tabularray outer open
+	entry=none,label=none,
+	note{}={* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01},
+	]                     %% tabularray outer close
+	{                     %% tabularray inner open
+		colspec={Q[]Q[]Q[]},
+		column{1}={halign=l,},
+		column{2}={halign=c,},
+		column{3}={halign=c,},
+		hline{14}={1,2,3}{solid, 0.05em, black},
+	}                     %% tabularray inner close
+	\toprule
+	& (1) & (2)\\ \midrule %% TinyTableHeader
+	(Intercept)        & \num{0.014}   & \num{0.023}*    \\
+	 & (\num{0.012}) & (\num{0.013})   \\
+	assignedPolicy 1   & \num{-0.023}  & \num{-0.025}    \\
+	  & (\num{0.017}) & (\num{0.016})   \\
+	assignedPolicy 2     & \num{0.017}   & \num{0.019}     \\
+  & (\num{0.016}) & (\num{0.016})   \\
+	assignedPolicy 3    & \num{-0.007}  & \num{-0.001}    \\
+	   & (\num{0.016}) & (\num{0.016})   \\
+	favoritePolicy 2     &                & \num{0.046}**   \\
+  &                & (\num{0.020})   \\
+	favoritePolicy 3    &                & \num{-0.044}*** \\
+  &                & (\num{0.013})   \\
+	Num.Obs.             & \num{1011}    & \num{1011}      \\
+	R2                   & \num{0.006}   & \num{0.028}     \\
+	F                   & \num{2.034}   & \num{5.833}     \\
+	\bottomrule
+\end{talltblr}

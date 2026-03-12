@@ -366,7 +366,7 @@ modeloa2<-lm(data=dfanalisis, formula = ha ~ nivel + experiencia + antiguedad3 +
               titularidad + indefinido + grupos_docencia + impacto_estudiantes +
               empatia + meritocracia)
 modelob2<-lm(data=dfanalisis, formula = hb ~ nivel + experiencia + female + edad + indefinido + grupos_docencia + impacto_estudiantes +
-              titularidad + meritocracia)
+               titularidad+meritocracia)
 modeloc2<-lm(data=dfanalisis, formula = hc ~ nivel + experiencia + antiguedad3 + female + edad +
               titularidad + indefinido + grupos_docencia + impacto_estudiantes +
               empatia + meritocracia)
@@ -388,23 +388,28 @@ dfanalisis %>%
   geom_point()+
   geom_line()
 
+dfanalisis %>% 
+  ggplot(aes(edad, hb))+
+  geom_jitter()+
+  geom_smooth()
+
 gg<-modelob2 %>%
   tidy(conf.int = TRUE) %>%       # estimates + IC 95%
   filter(term != "(Intercept)") %>%  
   mutate(sign=ifelse(conf.low<=0 & conf.high>=0, "No", "Si"), 
-         term= case_when(term == "titularidadPrivada" ~ "Privada", 
+         term= case_when(term == "titularidadPrivada" ~ "Private school", 
                          term == "nivelE. Secundaria" ~ "High School", 
                          term == "indefinidotemporal" ~ "Temporary contract", 
                          term== "titularidadPública" ~ "Public school",
                          term== "female1" ~ "Female", 
-                         term== "meritocracia" ~ "Belief in meritocracy", 
+                         term== "meritocracia" ~ "Belief in effort (vs. luck)", 
                          term== "grupos_docencia" ~ "N. teaching groups",
                          term== "impacto_estudiantes" ~ "Perceived impact on students", 
                          term== "experiencia" ~ "Years of experience", 
                          term== "empatia" ~ "Self-reported empathy", 
                          term== "edad" ~ "Age",
                          TRUE ~ term), 
-         discr= ifelse(term %in% c("Belief in meritocracy", "N. teaching groups", "Years of experience", "Perceived impact on students", "Age", "Self-reported empathy"), "cont", "discr")) %>% 
+         discr= ifelse(term %in% c("Belief in effort (vs. luck)", "N. teaching groups", "Years of experience", "Perceived impact on students", "Age", "Self-reported empathy"), "cont", "discr")) %>% 
   ggplot(aes(x = reorder(term, estimate),
              y = estimate,
              ymin = conf.low,
@@ -475,6 +480,15 @@ dfanalisis<-dfanalisis %>%
          least_favorite_num= relevel(least_favorite_num, ref="1"),
          politica=factor(ifelse(D!="Control", paste0("Policy ",politica), NA)), 
          politica=relevel(politica, ref="Policy 1")) 
+
+dfanalisis %>% 
+  drop_na(favorite) %>% 
+  ggplot(aes(hb, after_stat(density), fill=favorite, color=favorite))+
+  geom_density(position="identity", alpha=.35, adjust=2)+
+  scale_y_continuous(expand=c(0,0))+
+  scale_fill_manual(values=paleta_alt)+
+  scale_color_manual(values=paleta_alt)+
+  geom_vline(xintercept=0, linetype="longdash")
 
 gg<-dfanalisis %>% 
   drop_na(favorite, assigned) %>% 
@@ -574,7 +588,7 @@ modelsummary(models = list(modelo_h13a, modelo_h13),
 
 ##### H1 unido #####
 
-table_export_clean(models= list("H11"=modeloh11, "(2)"=modeloh12a, "H12"=modeloh12), 
+table_export(models= list("H11"=modeloh11, "(2)"=modeloh12a, "H12"=modeloh12), 
              file = "h1_agg")
 
 table_export(models=list("(1)"=modelo_h13a, "H13"=modelo_h13), 
@@ -791,7 +805,7 @@ modelsummary(models = list("Favorite"=modelo_h3b3f, "Least\n favorite"=modelo_h3
 ###### H42 ######
 
 dfanalisis42<-dfanalisis %>% 
-  filter(D == "Policy")
+  filter(D == "Policy treatment")
 
 dfanalisis42_list<- list()
 models_f<-list()
@@ -833,6 +847,25 @@ gt::gtsave(
   gt_tbl,
   file = file.path(tables, "h42.html")
 )
+
+latex_code <- gt::as_latex(gt_tbl)
+
+tex_file <- file.path(tables, "h42.tex")
+
+writeLines(
+  as.character(latex_code),
+  tex_file
+)
+
+# Leer y limpiar
+lines <- readLines(tex_file)
+
+lines_clean <- lines[
+  !grepl("^\\\\begin\\{table\\}|^\\\\end\\{table\\}|^\\\\caption\\{|^\\\\label\\{|^\\\\fontsize", lines)
+]
+
+writeLines(lines_clean, tex_file)
+
 ###### H43 ######
 
 gg<-dfanalisis %>% 

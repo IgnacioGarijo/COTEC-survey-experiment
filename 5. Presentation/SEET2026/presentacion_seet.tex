@@ -9,6 +9,9 @@
 backend=biber,
 style=apa,
 ]{biblatex}
+\usepackage{tabularray}
+\UseTblrLibrary{booktabs}
+\usepackage{siunitx}
 \newcommand{\figpath}{../../3. Output/figures/}
 \newcommand{\tabpath}{../../3. Output/tables/}
 
@@ -43,14 +46,14 @@ style=apa,
 			\item Grade repetition can be seen as a \textbf{double punishment}: students face academic failure and are separated from their peers.
 			\item This separation may negatively affect \textbf{self-esteem} and perceptions of ability.
 			\item In psychology, this relates to \textbf{learned helplessness}: students stop trying because they believe success is impossible regardless of effort.
-			\item Overall, the literature finds \textbf{little or no positive effects} of grade repetition on test scores, skills or dropout rates
+			\item Overall, the literature finds \textbf{little or no positive effects of grade repetition on test scores, skills or dropout rates}
 		\end{itemize}
 	\end{frame}
 	
 	
-	\section{Our approach}\label{exp}
+	\section{Our approach}\label{app}
 	
-	\begin{frame}{\nameref{exp}}
+	\begin{frame}{\nameref{app}}
 		\begin{itemize}
 			\item Our novel approach: we focus on teachers and their `harshness' level
 			\item We carry out a survey experiment in Spain, where the grade repetition rate more than doubles that of the OECD (9\% and 22\%)
@@ -62,7 +65,7 @@ style=apa,
 		\end{itemize}
 	\end{frame}
 	
-	\begin{frame}{\nameref{exp}: What is harshness?}
+	\begin{frame}{\nameref{app}: What is harshness?}
 		
 		Socioeconomic questionnaire $\rightarrow$ Experimental section $\rightarrow$ Behavioral questionnaire		
 		 \begin{table}[!ht]
@@ -88,7 +91,7 @@ style=apa,
 		\end{table}
 	\end{frame}
 	
-	\begin{frame}{\nameref{exp}: Measures of harshness}
+	\begin{frame}{\nameref{app}: Measures of harshness}
 		We estimate 4 different measures, but due to their similarity, only show results for one: 
 		
 		\begin{enumerate}
@@ -115,4 +118,62 @@ style=apa,
 		\end{figure}
 	\end{frame}
 
+	\section{The experiment}\label{exp}
+	
+	\begin{frame}{\nameref{exp}: design}
+		\begin{figure} 
+			\centering
+			\includegraphics[width=\textwidth]{\figpath mindmap.png}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}{\nameref{exp}: does teacher behavior change when assigned to a policy?} 
+		\tiny
+		\begin{table}
+			\input{ h1_agg_seet.tex} 
+		\end{table} 
+	\end{frame}
+
+	\begin{frame}{\nameref{exp}: does teacher behavior change when assigned to a policy they like/dislike?} 
+		\tiny
+		\begin{table}
+			\input{ \tabpath h13_final.tex} 
+		\end{table} 
+	\end{frame}
+	
+	\begin{frame}{\nameref{exp}: does teacher behavior change when assigned to a policy they already said they like/dislike?} 
+		\tiny
+		\begin{table}
+			\input{ \tabpath h23_final.tex} 
+		\end{table} 
+	\end{frame}
+	
+	\begin{frame}{\nameref{exp}: does teacher behavior change when assigned to a policy they are being reminded they do not like?} 
+		\tiny
+		\begin{table}
+			\input{ \tabpath h33_final.tex} 
+		\end{table} 
+	\end{frame}
+	
+	\begin{frame}
+		So... Did anything change at all?
+	\end{frame}
+	
+	\begin{frame}{Teachers were more (less) likely to say their (least) favorite policy was Policy 3 when assigned to it}
+		\tiny
+		\begin{table}
+			\input{ \tabpath h42.tex} 
+		\end{table}
+	\end{frame}
+	
+	\begin{frame}
+		\begin{itemize}
+			\item Grade repetition is not only a matter of students! Who is the teacher matters
+			\item Teacher's gender, experience, contract situation or perceived positive impact on students does not matter; \textbf{belief in effort, age and grade level does}
+			\item Teachers do not change their grade repetition patterns when assigned to a policy
+			\item Teachers' alignment with the policy does not change their grade repetition patterns either
+			\item Mere exposure to a policy may have an impact on teacher's preferences
+		\end{itemize}
+	\end{frame}
+	
 \end{document}
