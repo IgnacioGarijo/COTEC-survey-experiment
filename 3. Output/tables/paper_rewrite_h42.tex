@@ -1,0 +1,23 @@
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={* p < 0.1, ** p < 0.05, *** p < 0.01},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+hline{4}={1,2,3,4,5,6,7}{solid, 0.05em, black},
+}                     %% tabularray inner close
+\toprule
+& Policy 1 favorite & Policy 1 least favorite & Policy 2 favorite & Policy 2 least favorite & Policy 3 favorite & Policy 3 least favorite \\ \midrule %% TinyTableHeader
+Assigned to policy & \num{0.109}   & \num{0.469}   & \num{-0.002}  & \num{-0.099}  & \num{0.424}*** & \num{-0.372}* \\
+& (\num{0.156}) & (\num{0.330}) & (\num{0.258}) & (\num{0.174}) & (\num{0.158})  & (\num{0.197}) \\
+Num.Obs.           & \num{761}     & \num{761}     & \num{761}     & \num{761}     & \num{761}      & \num{761}     \\
+F                  & \num{0.485}   & \num{2.022}   & \num{0.000}   & \num{0.325}   & \num{7.169}    & \num{3.568}   \\
+\bottomrule
+\end{talltblr}
