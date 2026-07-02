@@ -8,6 +8,7 @@ df <- read_parquet(cleandata)
 
 if (!dir.exists(tables)) dir.create(tables, recursive = TRUE)
 if (!dir.exists(graficos)) dir.create(graficos, recursive = TRUE)
+if (!dir.exists(file.path(output, "reports"))) dir.create(file.path(output, "reports"), recursive = TRUE)
 
 #==============================#
 #### 1. Harshness measures ####
@@ -401,6 +402,74 @@ data.frame(
 ) %>%
   write.csv(file.path(tables, "paper_rewrite_rf_summary.csv"), row.names = FALSE)
 
+set.seed(123)
+rf_model_final <- ranger(
+  formula = rf_formula,
+  data = dfrf,
+  importance = "permutation",
+  num.trees = 1000,
+  mtry = 3,
+  min.node.size = 5,
+  respect.unordered.factors = TRUE
+)
+
+rf_x <- dfrf %>% select(-hb)
+rf_predict <- function(object, newdata) {
+  predict(object, data = newdata)$predictions
+}
+
+set.seed(123)
+shap_values <- fastshap::explain(
+  object = rf_model_final,
+  X = rf_x,
+  pred_wrapper = rf_predict,
+  nsim = 30,
+  adjust = TRUE
+)
+
+shap_summary <- as.data.frame(shap_values) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "shap_value") %>%
+  group_by(variable) %>%
+  summarise(
+    mean_abs_shap = mean(abs(shap_value), na.rm = TRUE),
+    se_abs_shap = sd(abs(shap_value), na.rm = TRUE) / sqrt(sum(!is.na(shap_value))),
+    ci_low = mean_abs_shap - 1.96 * se_abs_shap,
+    ci_high = mean_abs_shap + 1.96 * se_abs_shap,
+    .groups = "drop"
+  ) %>%
+  mutate(
+    variable = case_when(
+      variable == "resource_skepticism" ~ "Resource skepticism",
+      variable == "student_impact" ~ "Perceived impact on students",
+      variable == "meritocracy" ~ "Belief in effort",
+      variable == "experience" ~ "Years teaching",
+      variable == "tenure" ~ "Years in current school",
+      variable == "groups" ~ "Number of teaching groups",
+      variable == "high_empathy" ~ "High empathy",
+      variable == "primary" ~ "Primary education",
+      variable == "public" ~ "Public school",
+      variable == "permanent" ~ "Permanent contract",
+      variable == "female" ~ "Female",
+      variable == "age" ~ "Age",
+      TRUE ~ variable
+    )
+  ) %>%
+  arrange(desc(mean_abs_shap))
+
+write.csv(shap_summary, file.path(tables, "paper_rewrite_rf_shap_summary.csv"), row.names = FALSE)
+
+shap_summary %>%
+  mutate(
+    `Mean absolute SHAP` = sprintf("%.4f", mean_abs_shap),
+    `Lower interval` = sprintf("%.4f", ci_low),
+    `Upper interval` = sprintf("%.4f", ci_high)
+  ) %>%
+  select(Variable = variable, `Mean absolute SHAP`, `Lower interval`, `Upper interval`) %>%
+  kableExtra::kbl(format = "latex", booktabs = TRUE, escape = FALSE) %>%
+  kableExtra::kable_styling(latex_options = c("hold_position")) %>%
+  kableExtra::save_kable(file.path(tables, "paper_rewrite_rf_shap_summary.tex"))
+clean_tex_table(file.path(tables, "paper_rewrite_rf_shap_summary.tex"))
+
 #===========================================#
 #### 5. Descriptive card-level attributes ####
 #===========================================#
@@ -560,6 +629,38 @@ modelsummary::modelsummary(
   output = file.path(tables, "paper_rewrite_h1_agg.tex")
 )
 clean_tex_table(file.path(tables, "paper_rewrite_h1_agg.tex"))
+
+teacher_data_1_all <- teacher_data %>%
+  mutate(
+    any_treatment = factor(ifelse(D == "Control", "Control", "Any treatment"),
+                           levels = c("Control", "Any treatment"))
+  )
+
+model_h11_all <- lm(hb ~ any_treatment, data = teacher_data_1_all)
+model_h12_all <- lm(hb ~ assigned + favorite, data = teacher_data_1_all)
+
+teacher_data_h13_all <- teacher_data_1_all %>%
+  filter(favorite == politica | least_favorite == politica | control == "Control") %>%
+  mutate(
+    assignation = case_when(
+      favorite == politica & control == "Non-control" ~ "favorite",
+      least_favorite == politica & control == "Non-control" ~ "least-favorite",
+      control == "Control" ~ "Control"
+    ),
+    assignation = relevel(factor(assignation), ref = "Control")
+  )
+
+model_h13_all <- lm(hb ~ assignation + favorite, data = teacher_data_h13_all)
+
+modelsummary::modelsummary(
+  list("Any treatment" = model_h11_all,
+       "Assigned policy" = model_h12_all,
+       "Alignment" = model_h13_all),
+  stars = c("*" = .1, "**" = .05, "***" = .01),
+  gof_omit = "AIC|BIC|Log.Lik.|RMSE",
+  output = file.path(tables, "paper_rewrite_study1_all_treatments.tex")
+)
+clean_tex_table(file.path(tables, "paper_rewrite_study1_all_treatments.tex"))
 
 modelsummary::modelsummary(
   list("(1)" = model_h13a, "H1|3" = model_h13),
@@ -784,5 +885,147 @@ bind_rows(h43_favorite, h43_least) %>%
   kableExtra::kable_styling(latex_options = c("hold_position", "scale_down")) %>%
   kableExtra::save_kable(file.path(tables, "paper_rewrite_h43_preference_shares.tex"))
 clean_tex_table(file.path(tables, "paper_rewrite_h43_preference_shares.tex"))
+
+#=========================================#
+#### 9. Extra diagnostic report data ####
+#=========================================#
+
+duration_vars <- names(df)[grepl("(_ps$|_sp$)", names(df))]
+card_time_vars <- names(df)[grepl("^alumno_.*_ps$", names(df))]
+
+timing_data <- df %>%
+  mutate(
+    total_duration_seconds = duration,
+    total_page_seconds = rowSums(across(all_of(duration_vars)), na.rm = TRUE),
+    card_page_seconds = rowSums(across(all_of(card_time_vars)), na.rm = TRUE),
+    n_page_times = rowSums(!is.na(across(all_of(duration_vars)))),
+    flagged_prereg_time_trim = percent_rank(total_duration_seconds) <= .0175 |
+      percent_rank(total_duration_seconds) >= .9825
+  )
+
+timing_summary <- timing_data %>%
+  summarise(
+    n = sum(!is.na(total_duration_seconds)),
+    mean_minutes = mean(total_duration_seconds, na.rm = TRUE) / 60,
+    sd_minutes = sd(total_duration_seconds, na.rm = TRUE) / 60,
+    p1_minutes = quantile(total_duration_seconds, .01, na.rm = TRUE) / 60,
+    p1_75_minutes = quantile(total_duration_seconds, .0175, na.rm = TRUE) / 60,
+    p5_minutes = quantile(total_duration_seconds, .05, na.rm = TRUE) / 60,
+    p25_minutes = quantile(total_duration_seconds, .25, na.rm = TRUE) / 60,
+    median_minutes = quantile(total_duration_seconds, .50, na.rm = TRUE) / 60,
+    p75_minutes = quantile(total_duration_seconds, .75, na.rm = TRUE) / 60,
+    p95_minutes = quantile(total_duration_seconds, .95, na.rm = TRUE) / 60,
+    p98_25_minutes = quantile(total_duration_seconds, .9825, na.rm = TRUE) / 60,
+    p99_minutes = quantile(total_duration_seconds, .99, na.rm = TRUE) / 60,
+    max_minutes = max(total_duration_seconds, na.rm = TRUE) / 60,
+    n_prereg_trim = sum(flagged_prereg_time_trim, na.rm = TRUE)
+  )
+
+timing_by_trim <- timing_data %>%
+  mutate(time_group = case_when(
+    percent_rank(total_duration_seconds) <= .0175 ~ "Fastest 1.75%",
+    percent_rank(total_duration_seconds) >= .9825 ~ "Slowest 1.75%",
+    TRUE ~ "Middle 96.5%"
+  )) %>%
+  group_by(time_group) %>%
+  summarise(
+    n = n(),
+    mean_total_minutes = mean(total_duration_seconds, na.rm = TRUE) / 60,
+    median_total_minutes = median(total_duration_seconds, na.rm = TRUE) / 60,
+    mean_card_minutes = mean(card_page_seconds, na.rm = TRUE) / 60,
+    median_card_minutes = median(card_page_seconds, na.rm = TRUE) / 60,
+    mean_hb = mean(teacher_data$hb[match(id, teacher_data$id)], na.rm = TRUE),
+    .groups = "drop"
+  )
+
+write.csv(timing_summary, file.path(tables, "paper_rewrite_timing_summary.csv"), row.names = FALSE)
+write.csv(timing_by_trim, file.path(tables, "paper_rewrite_timing_by_trim.csv"), row.names = FALSE)
+
+timing_by_trim %>%
+  mutate(
+    `Mean total minutes` = sprintf("%.1f", mean_total_minutes),
+    `Median total minutes` = sprintf("%.1f", median_total_minutes),
+    `Mean card minutes` = sprintf("%.1f", mean_card_minutes),
+    `Mean harshness` = sprintf("%.3f", mean_hb)
+  ) %>%
+  select(Group = time_group, N = n, `Mean total minutes`, `Median total minutes`,
+         `Mean card minutes`, `Mean harshness`) %>%
+  kableExtra::kbl(format = "latex", booktabs = TRUE, escape = FALSE) %>%
+  kableExtra::kable_styling(latex_options = c("hold_position")) %>%
+  kableExtra::save_kable(file.path(tables, "paper_rewrite_timing_by_trim.tex"))
+clean_tex_table(file.path(tables, "paper_rewrite_timing_by_trim.tex"))
+
+prereg_mde <- data.frame(
+  n = c(2500, 3500, 4500, 5500, 6500, 7500),
+  prereg_mde_sd = c(.24, .20, .18, .16, .15, .14)
+)
+
+actual_mde_standardized <- sensitivity %>%
+  mutate(
+    actual_mde_sd = mde_80 / sd(teacher_data$hb, na.rm = TRUE),
+    n_actual = case_when(
+      grepl("^H1", hypothesis) ~ nrow(teacher_data_1),
+      grepl("^H2", hypothesis) ~ nrow(teacher_data_2),
+      grepl("^H3", hypothesis) ~ nrow(teacher_data_3),
+      TRUE ~ nrow(teacher_data)
+    )
+  )
+
+write.csv(actual_mde_standardized, file.path(tables, "paper_rewrite_actual_mde_standardized.csv"), row.names = FALSE)
+
+study1_all_terms <- broom::tidy(model_h11_all) %>%
+  bind_rows(broom::tidy(model_h12_all) %>% mutate(model = "assigned_policy")) %>%
+  bind_rows(broom::tidy(model_h13_all) %>% mutate(model = "alignment"))
+write.csv(study1_all_terms, file.path(tables, "paper_rewrite_study1_all_treatments.csv"), row.names = FALSE)
+
+report_lines <- c(
+  "# Informe extra para Ignacio",
+  "",
+  "## 1. Coherencia entre MDE del paper y MDE del prerregistro",
+  "",
+  paste0("El prerregistro reportaba MDEs en desviaciones estandar: ",
+         paste0(prereg_mde$n, " profesores = ", prereg_mde$prereg_mde_sd, " SD", collapse = "; "), "."),
+  "",
+  paste0("El paper actual calcula MDEs post-estimacion para cada contraste preregistrado usando el error estandar observado. ",
+         "Es conceptualmente coherente con el prerregistro porque ambos calculos preguntan que tamano de efecto se podia detectar con 80% de potencia, ",
+         "pero no son numericamente identicos porque el prerregistro era ex ante, en SD, con R2 = 0.1, SD = 0.10 y 10 brazos; el paper usa SEs observados, muestras por contraste y unidades de harshness."),
+  "",
+  paste0("La desviacion estandar observada de hb es ", sprintf("%.3f", sd(teacher_data$hb, na.rm = TRUE)), ". ",
+         "Los MDEs estandarizados actuales para los contrastes principales son: H1|1 = ",
+         sprintf("%.2f", actual_mde_standardized$actual_mde_sd[actual_mde_standardized$hypothesis == "H1|1: Policy treatment vs Control"]),
+         " SD; H2|1 = ",
+         sprintf("%.2f", actual_mde_standardized$actual_mde_sd[actual_mde_standardized$hypothesis == "H2|1: Revelation vs Policy"]),
+         " SD; H3|1 = ",
+         sprintf("%.2f", actual_mde_standardized$actual_mde_sd[actual_mde_standardized$hypothesis == "H3|1: Awareness vs Revelation"]),
+         " SD."),
+  "",
+  "Mi lectura: los MDEs actuales estan en el mismo orden de magnitud que los del prerregistro para comparaciones amplias, aunque algo mas grandes para algunos contrastes especificos de policy/alignment. Tiene sentido presentarlos como sensibilidad, no como reemplazo del power analysis ex ante.",
+  "",
+  "## 2. Study 1 ampliado: Control vs todos los tratamientos",
+  "",
+  paste0("Cuando se agrupan Policy treatment, Revelation treatment y Awareness treatment como un unico grupo tratado, el efecto de Any treatment vs Control es ",
+         sprintf("%.3f", coef(model_h11_all)[["any_treatmentAny treatment"]]),
+         " (p = ", sprintf("%.3f", broom::tidy(model_h11_all)$p.value[broom::tidy(model_h11_all)$term == "any_treatmentAny treatment"]), ")."),
+  "",
+  "La tabla completa esta en `3. Output/tables/paper_rewrite_study1_all_treatments.tex` y el CSV en `3. Output/tables/paper_rewrite_study1_all_treatments.csv`.",
+  "",
+  "## 3. Tiempos de encuesta",
+  "",
+  paste0("Duracion total mediana: ", sprintf("%.1f", timing_summary$median_minutes), " minutos. ",
+         "Percentil 1.75: ", sprintf("%.1f", timing_summary$p1_75_minutes), " minutos. ",
+         "Percentil 98.25: ", sprintf("%.1f", timing_summary$p98_25_minutes), " minutos. ",
+         "Maximo: ", sprintf("%.1f", timing_summary$max_minutes), " minutos."),
+  "",
+  paste0("La regla preregistrada de quitar 1.75% mas rapidos y 1.75% mas lentos marcaria ",
+         timing_summary$n_prereg_trim, " observaciones."),
+  "",
+  "Resumen por grupo de tiempo:",
+  "",
+  paste(capture.output(print(timing_by_trim)), collapse = "\n"),
+  "",
+  "Mi lectura: la cola lenta parece claramente compatible con gente que dejo la encuesta abierta y volvio despues. La cola rapida debe revisarse, especialmente si combina poca duracion total con poco tiempo en tarjetas. La regla preregistrada de trim simetrico es defendible como limpieza mecanica, pero conviene reportar robustez con y sin trim si los resultados principales cambian."
+)
+
+writeLines(report_lines, file.path("3. Output/reports", "paper_rewrite_extra_diagnostics.md"))
 
 message("Finished paper rewrite analysis.")

@@ -1,0 +1,38 @@
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={* p < 0.1, ** p < 0.05, *** p < 0.01},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+hline{20}={1,2,3,4}{solid, 0.05em, black},
+}                     %% tabularray inner close
+\toprule
+& Any treatment & Assigned policy & Alignment \\ \midrule %% TinyTableHeader
+(Intercept)                  & \num{0.014}   & \num{0.021}*    & \num{0.018}     \\
+& (\num{0.012}) & (\num{0.012})   & (\num{0.012})   \\
+any\_treatmentAny treatment & \num{-0.016}  &                  &                  \\
+& (\num{0.013}) &                  &                  \\
+assignedPolicy 1             &                & \num{-0.025}*   &                  \\
+&                & (\num{0.014})   &                  \\
+assignedPolicy 2             &                & \num{-0.003}    &                  \\
+&                & (\num{0.014})   &                  \\
+assignedPolicy 3             &                & \num{-0.009}    &                  \\
+&                & (\num{0.014})   &                  \\
+favoritePolicy 2             &                & \num{0.057}***  & \num{0.070}***  \\
+&                & (\num{0.013})   & (\num{0.016})   \\
+favoritePolicy 3             &                & \num{-0.042}*** & \num{-0.037}*** \\
+&                & (\num{0.008})   & (\num{0.009})   \\
+assignationfavorite          &                &                  & \num{-0.011}    \\
+&                &                  & (\num{0.014})   \\
+assignationleast-favorite    &                &                  & \num{-0.010}    \\
+&                &                  & (\num{0.014})   \\
+Num.Obs.                     & \num{2546}    & \num{2546}      & \num{1817}      \\
+R2                           & \num{0.001}   & \num{0.025}     & \num{0.026}     \\
+R2 Adj.                      & \num{0.000}   & \num{0.023}     & \num{0.024}     \\
+F                            & \num{1.584}   & \num{13.074}    & \num{12.108}    \\
+\bottomrule
+\end{talltblr}
