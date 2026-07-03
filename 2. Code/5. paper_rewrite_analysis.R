@@ -274,6 +274,52 @@ modelsummary::modelsummary(
 )
 clean_tex_table(file.path(tables, "paper_rewrite_characterization_regression.tex"))
 
+harshness_plot_data <- teacher_data %>%
+  transmute(
+    hb,
+    `Secondary education (=1)` = ifelse(level == "Secondary", 1, 0),
+    Age = edad,
+    `Belief in effort` = meritocracia,
+    `Resource skepticism` = resource_skepticism_index
+  ) %>%
+  pivot_longer(-hb, names_to = "variable", values_to = "x_value") %>%
+  filter(!is.na(hb), !is.na(x_value))
+
+harshness_plot_labels <- harshness_plot_data %>%
+  group_by(variable) %>%
+  summarise(
+    correlation = cor(x_value, hb),
+    .groups = "drop"
+  ) %>%
+  mutate(label = paste0("r = ", sprintf("%.2f", correlation)))
+
+harshness_significant_plot <- ggplot(harshness_plot_data, aes(x = x_value, y = hb)) +
+  geom_point(alpha = 0.18, size = 0.7, position = position_jitter(width = 0.03, height = 0)) +
+  geom_smooth(method = "lm", se = TRUE, linewidth = 0.7, color = "#1f5a85", fill = "#9ecae1") +
+  geom_text(
+    data = harshness_plot_labels,
+    aes(x = -Inf, y = Inf, label = label),
+    inherit.aes = FALSE,
+    hjust = -0.05,
+    vjust = 1.35,
+    size = 3.2
+  ) +
+  facet_wrap(~ variable, scales = "free_x", ncol = 2) +
+  labs(x = NULL, y = "Teacher harshness") +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid.minor = element_blank(),
+    strip.text = element_text(face = "bold"),
+    plot.margin = ggplot2::margin(8, 8, 8, 8)
+  )
+ggsave(
+  filename = file.path(graficos, "paper_rewrite_harshness_significant_predictors.jpeg"),
+  plot = harshness_significant_plot,
+  width = 8.5,
+  height = 6.2,
+  dpi = 300
+)
+
 appendix_models <- list(
   "Number repetitions" = lm(ha ~ level + experiencia + antiguedad3 + female + edad +
                               titularidad + indefinido + grupos_docencia + impacto_estudiantes +
@@ -402,74 +448,6 @@ data.frame(
 ) %>%
   write.csv(file.path(tables, "paper_rewrite_rf_summary.csv"), row.names = FALSE)
 
-set.seed(123)
-rf_model_final <- ranger(
-  formula = rf_formula,
-  data = dfrf,
-  importance = "permutation",
-  num.trees = 1000,
-  mtry = 3,
-  min.node.size = 5,
-  respect.unordered.factors = TRUE
-)
-
-rf_x <- dfrf %>% select(-hb)
-rf_predict <- function(object, newdata) {
-  predict(object, data = newdata)$predictions
-}
-
-set.seed(123)
-shap_values <- fastshap::explain(
-  object = rf_model_final,
-  X = rf_x,
-  pred_wrapper = rf_predict,
-  nsim = 30,
-  adjust = TRUE
-)
-
-shap_summary <- as.data.frame(shap_values) %>%
-  pivot_longer(everything(), names_to = "variable", values_to = "shap_value") %>%
-  group_by(variable) %>%
-  summarise(
-    mean_abs_shap = mean(abs(shap_value), na.rm = TRUE),
-    se_abs_shap = sd(abs(shap_value), na.rm = TRUE) / sqrt(sum(!is.na(shap_value))),
-    ci_low = mean_abs_shap - 1.96 * se_abs_shap,
-    ci_high = mean_abs_shap + 1.96 * se_abs_shap,
-    .groups = "drop"
-  ) %>%
-  mutate(
-    variable = case_when(
-      variable == "resource_skepticism" ~ "Resource skepticism",
-      variable == "student_impact" ~ "Perceived impact on students",
-      variable == "meritocracy" ~ "Belief in effort",
-      variable == "experience" ~ "Years teaching",
-      variable == "tenure" ~ "Years in current school",
-      variable == "groups" ~ "Number of teaching groups",
-      variable == "high_empathy" ~ "High empathy",
-      variable == "primary" ~ "Primary education",
-      variable == "public" ~ "Public school",
-      variable == "permanent" ~ "Permanent contract",
-      variable == "female" ~ "Female",
-      variable == "age" ~ "Age",
-      TRUE ~ variable
-    )
-  ) %>%
-  arrange(desc(mean_abs_shap))
-
-write.csv(shap_summary, file.path(tables, "paper_rewrite_rf_shap_summary.csv"), row.names = FALSE)
-
-shap_summary %>%
-  mutate(
-    `Mean absolute SHAP` = sprintf("%.4f", mean_abs_shap),
-    `Lower interval` = sprintf("%.4f", ci_low),
-    `Upper interval` = sprintf("%.4f", ci_high)
-  ) %>%
-  select(Variable = variable, `Mean absolute SHAP`, `Lower interval`, `Upper interval`) %>%
-  kableExtra::kbl(format = "latex", booktabs = TRUE, escape = FALSE) %>%
-  kableExtra::kable_styling(latex_options = c("hold_position")) %>%
-  kableExtra::save_kable(file.path(tables, "paper_rewrite_rf_shap_summary.tex"))
-clean_tex_table(file.path(tables, "paper_rewrite_rf_shap_summary.tex"))
-
 #===========================================#
 #### 5. Descriptive card-level attributes ####
 #===========================================#
@@ -487,26 +465,49 @@ df_within <- df_card_long %>%
   ) %>%
   ungroup()
 
-attr_model <- lm(
+attr_model_demeaned_check <- lm(
   y_within ~ 0 + male_within + complex_background_within + failed_subjects_within +
     low_competence_within + absent_within + disruptive_within,
   data = df_within
 )
 
-attr_terms <- tidy_cluster(attr_model, df_within$id) %>%
+attr_model <- fixest::feols(
+  repite ~ male + complex_background + failed_subjects + low_competence + absent + disruptive | id,
+  data = df_card_long,
+  cluster = ~id
+)
+
+attr_terms <- as.data.frame(fixest::coeftable(attr_model)) %>%
+  rownames_to_column("term") %>%
+  as_tibble() %>%
+  transmute(
+    term,
+    estimate = Estimate,
+    std.error = `Std. Error`,
+    statistic = `t value`,
+    p.value = `Pr(>|t|)`
+  ) %>%
   mutate(
-    conf.low = estimate - qt(.975, df = n_distinct(df_within$id) - 1) * std.error,
-    conf.high = estimate + qt(.975, df = n_distinct(df_within$id) - 1) * std.error,
+    conf.low = estimate - qt(.975, df = n_distinct(df_card_long$id) - 1) * std.error,
+    conf.high = estimate + qt(.975, df = n_distinct(df_card_long$id) - 1) * std.error,
     attribute = case_when(
-      term == "male_within" ~ "Male student",
-      term == "complex_background_within" ~ "Complex/migrant background",
-      term == "failed_subjects_within" ~ "Three or more failed subjects",
-      term == "low_competence_within" ~ "Low math/linguistic competence",
-      term == "absent_within" ~ "Absenteeism",
-      term == "disruptive_within" ~ "Disruptive behavior",
+      term == "male" ~ "Male student",
+      term == "complex_background" ~ "Complex/migrant background",
+      term == "failed_subjects" ~ "Three or more failed subjects",
+      term == "low_competence" ~ "Low math/linguistic competence",
+      term == "absent" ~ "Absenteeism",
+      term == "disruptive" ~ "Disruptive behavior",
       TRUE ~ term
     )
   )
+
+attr_equivalence_check <- tibble(
+  attribute = c("male", "complex_background", "failed_subjects", "low_competence", "absent", "disruptive"),
+  fixed_effects = coef(attr_model)[attribute],
+  demeaned = coef(attr_model_demeaned_check)[paste0(attribute, "_within")]
+) %>%
+  mutate(abs_difference = abs(fixed_effects - demeaned))
+write.csv(attr_equivalence_check, file.path(tables, "paper_rewrite_attribute_fe_equivalence_check.csv"), row.names = FALSE)
 
 attr_terms %>%
   transmute(
@@ -531,30 +532,39 @@ teacher_terciles <- df_harshness %>%
   ) %>%
   select(id, harshness_group)
 
-df_within_terciles <- df_within %>%
+df_card_terciles <- df_card_long %>%
   left_join(teacher_terciles, by = "id")
 
 group_terms <- list()
-for (g in levels(df_within_terciles$harshness_group)) {
-  group_data <- df_within_terciles %>% filter(harshness_group == g)
-  group_model <- lm(
-    y_within ~ 0 + male_within + complex_background_within + failed_subjects_within +
-      low_competence_within + absent_within + disruptive_within,
-    data = group_data
+for (g in levels(df_card_terciles$harshness_group)) {
+  group_data <- df_card_terciles %>% filter(harshness_group == g)
+  group_model <- fixest::feols(
+    repite ~ male + complex_background + failed_subjects + low_competence + absent + disruptive | id,
+    data = group_data,
+    cluster = ~id
   )
-  group_terms[[g]] <- tidy_cluster(group_model, group_data$id) %>%
-    mutate(harshness_group = g)
+  group_terms[[g]] <- as.data.frame(fixest::coeftable(group_model)) %>%
+    rownames_to_column("term") %>%
+    as_tibble() %>%
+    transmute(
+      term,
+      estimate = Estimate,
+      std.error = `Std. Error`,
+      statistic = `t value`,
+      p.value = `Pr(>|t|)`,
+      harshness_group = g
+    )
 }
 
 group_terms <- bind_rows(group_terms) %>%
   mutate(
     attribute = case_when(
-      term == "male_within" ~ "Male student",
-      term == "complex_background_within" ~ "Complex/migrant background",
-      term == "failed_subjects_within" ~ "Three or more failed subjects",
-      term == "low_competence_within" ~ "Low math/linguistic competence",
-      term == "absent_within" ~ "Absenteeism",
-      term == "disruptive_within" ~ "Disruptive behavior",
+      term == "male" ~ "Male student",
+      term == "complex_background" ~ "Complex/migrant background",
+      term == "failed_subjects" ~ "Three or more failed subjects",
+      term == "low_competence" ~ "Low math/linguistic competence",
+      term == "absent" ~ "Absenteeism",
+      term == "disruptive" ~ "Disruptive behavior",
       TRUE ~ term
     ),
     cell = fmt_coef(estimate, p.value)
@@ -978,6 +988,45 @@ study1_all_terms <- broom::tidy(model_h11_all) %>%
   bind_rows(broom::tidy(model_h13_all) %>% mutate(model = "alignment"))
 write.csv(study1_all_terms, file.path(tables, "paper_rewrite_study1_all_treatments.csv"), row.names = FALSE)
 
+timing_by_trim_md <- timing_by_trim %>%
+  mutate(
+    n = format(n, big.mark = ","),
+    mean_total_minutes = sprintf("%.1f", mean_total_minutes),
+    median_total_minutes = sprintf("%.1f", median_total_minutes),
+    mean_card_minutes = sprintf("%.1f", mean_card_minutes),
+    median_card_minutes = sprintf("%.1f", median_card_minutes),
+    mean_hb = ifelse(is.na(mean_hb), "NA", sprintf("%.3f", mean_hb))
+  )
+
+timing_by_trim_lines <- c(
+  "| Grupo | N | Media total (min) | Mediana total (min) | Media tarjetas (min) | Mediana tarjetas (min) | Harshness media |",
+  "|---|---:|---:|---:|---:|---:|---:|",
+  paste0(
+    "| ", timing_by_trim_md$time_group,
+    " | ", timing_by_trim_md$n,
+    " | ", timing_by_trim_md$mean_total_minutes,
+    " | ", timing_by_trim_md$median_total_minutes,
+    " | ", timing_by_trim_md$mean_card_minutes,
+    " | ", timing_by_trim_md$median_card_minutes,
+    " | ", timing_by_trim_md$mean_hb,
+    " |"
+  )
+)
+
+study1_h12_all_terms <- broom::tidy(model_h12_all) %>%
+  filter(term != "(Intercept)") %>%
+  mutate(
+    estimate_txt = sprintf("%.3f", estimate),
+    p_txt = sprintf("%.3f", p.value)
+  )
+
+study1_h13_all_terms <- broom::tidy(model_h13_all) %>%
+  filter(term %in% c("assignationfavorite", "assignationleast-favorite")) %>%
+  mutate(
+    estimate_txt = sprintf("%.3f", estimate),
+    p_txt = sprintf("%.3f", p.value)
+  )
+
 report_lines <- c(
   "# Informe extra para Ignacio",
   "",
@@ -1007,6 +1056,22 @@ report_lines <- c(
          sprintf("%.3f", coef(model_h11_all)[["any_treatmentAny treatment"]]),
          " (p = ", sprintf("%.3f", broom::tidy(model_h11_all)$p.value[broom::tidy(model_h11_all)$term == "any_treatmentAny treatment"]), ")."),
   "",
+  paste0("H1|2 ampliada recalcula policy asignada controlando por favorite policy. Los coeficientes principales de assigned policy son: ",
+         paste0(study1_h12_all_terms$term[grepl("^assigned", study1_h12_all_terms$term)],
+                " = ", study1_h12_all_terms$estimate_txt[grepl("^assigned", study1_h12_all_terms$term)],
+                " (p = ", study1_h12_all_terms$p_txt[grepl("^assigned", study1_h12_all_terms$term)], ")",
+                collapse = "; "),
+         "."),
+  "",
+  paste0("H1|3 ampliada recalcula alignment. Los coeficientes de alignment son: ",
+         paste0(study1_h13_all_terms$term,
+                " = ", study1_h13_all_terms$estimate_txt,
+                " (p = ", study1_h13_all_terms$p_txt, ")",
+                collapse = "; "),
+         "."),
+  "",
+  "Esto no cambia la historia: con mas power al juntar los tres brazos, sigue sin aparecer un efecto medio de estar en cualquier tratamiento frente a Control ni un efecto claro de alignment.",
+  "",
   "La tabla completa esta en `3. Output/tables/paper_rewrite_study1_all_treatments.tex` y el CSV en `3. Output/tables/paper_rewrite_study1_all_treatments.csv`.",
   "",
   "## 3. Tiempos de encuesta",
@@ -1019,11 +1084,11 @@ report_lines <- c(
   paste0("La regla preregistrada de quitar 1.75% mas rapidos y 1.75% mas lentos marcaria ",
          timing_summary$n_prereg_trim, " observaciones."),
   "",
-  "Resumen por grupo de tiempo:",
+  timing_by_trim_lines,
   "",
-  paste(capture.output(print(timing_by_trim)), collapse = "\n"),
+  "La cola rapida no parece formar parte de la muestra analitica de tarjetas: su tiempo medio y mediano en tarjetas es cero, y por eso no aparece harshness media. La cola lenta, en cambio, si parece haber llegado al task, pero la duracion total es desproporcionada y probablemente refleja encuestas dejadas abiertas.",
   "",
-  "Mi lectura: la cola lenta parece claramente compatible con gente que dejo la encuesta abierta y volvio despues. La cola rapida debe revisarse, especialmente si combina poca duracion total con poco tiempo en tarjetas. La regla preregistrada de trim simetrico es defendible como limpieza mecanica, pero conviene reportar robustez con y sin trim si los resultados principales cambian."
+  "Mi lectura: la cola lenta es claramente compatible con gente que dejo la encuesta abierta y volvio despues. La cola rapida debe excluirse si no completa el task. La regla preregistrada de trim simetrico es defendible como limpieza mecanica, pero conviene reportar robustez con y sin trim si los resultados principales cambian."
 )
 
 writeLines(report_lines, file.path("3. Output/reports", "paper_rewrite_extra_diagnostics.md"))
