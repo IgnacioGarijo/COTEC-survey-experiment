@@ -1,0 +1,301 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\setlength\topmargin{-1.1in}
+\addtolength\textheight{2.1in}
+\addtolength{\oddsidemargin}{-0.2in}
+\addtolength{\evensidemargin}{-0.1in}
+\textwidth 5.8in
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+\linespread{1.5}
+\setlist[itemize]{topsep=0.2em,itemsep=0.2em,leftmargin=1.4em}
+\setlist[enumerate]{topsep=0.2em,itemsep=0.2em,leftmargin=1.6em}
+\definecolor{mycolor}{RGB}{0,68,106}
+\definecolor{darkblue}{RGB}{0,68,106}
+\definecolor{softgray}{RGB}{245,246,248}
+\hypersetup{colorlinks,linkcolor={mycolor},citecolor={mycolor},urlcolor={mycolor}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\newcommand{\pp}{puntos porcentuales}
+\newcommand{\resultrow}[4]{#1 & #2 & #3 & #4\\}
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{Informe explicativo sobre los nuevos análisis}}\\[0.35em]
+{\large Modelos a nivel profesor-tarjeta, equivalencia, MDEs e índice de creencias}\\[0.5em]
+{\small Generado a partir del script \texttt{4. decision\_card\_models.R}}
+\end{center}
+
+\vspace{0.5em}
+
+\section*{1. Qué he hecho}
+
+He creado un script nuevo de R que complementa el análisis preregistrado. El análisis original resume bastante la conducta de cada profesor en una medida agregada de dureza. Eso está bien para responder si unos profesores son más estrictos que otros, pero pierde información sobre cada decisión concreta.
+
+El nuevo script baja el análisis al nivel \textbf{profesor-tarjeta}. Es decir, en lugar de mirar solo ``cuánto repite de media este profesor'', mira cada decisión: este profesor vio esta tarjeta de alumno y decidió si repetía o pasaba.
+
+La base final usada en estos modelos tiene:
+
+\begin{itemize}
+  \item 2.705 profesores con decisiones válidas.
+  \item 22.124 decisiones profesor-tarjeta.
+  \item Una media de 8,18 decisiones válidas por profesor.
+  \item Una tasa media de repetición del 47,6\%.
+\end{itemize}
+
+Además del modelo a nivel tarjeta, el script añade tres cosas:
+
+\begin{enumerate}
+  \item \textbf{Equivalence tests}: tests para ver si los efectos son suficientemente pequeños como para tratarlos como prácticamente cero.
+  \item \textbf{MDEs}: cálculos del tamaño mínimo de efecto que el estudio podía detectar con potencia razonable.
+  \item \textbf{Índice de creencias}: una medida exploratoria de creencias más orientadas a responsabilidad individual, mérito y escepticismo sobre medidas de apoyo.
+\end{enumerate}
+
+\section*{2. Por qué esto aporta algo}
+
+Hay una diferencia importante entre dos preguntas:
+
+\begin{itemize}
+  \item \textbf{Pregunta agregada}: ¿un grupo de profesores repite más o menos que otro?
+  \item \textbf{Pregunta de regla de decisión}: cuando un profesor ve información sobre un alumno, ¿qué señales pesan más en su decisión?
+\end{itemize}
+
+El modelo profesor-tarjeta permite estudiar la segunda pregunta. Esto es útil porque el paper no solo quiere saber si los tratamientos mueven una media. Quiere entender si los profesores cambian su manera de decidir.
+
+Por ejemplo, imaginemos que un tratamiento no cambia la tasa total de repetición. Eso puede significar dos cosas distintas:
+
+\begin{itemize}
+  \item No pasó nada de nada.
+  \item O sí cambió la forma de decidir, pero unos cambios compensaron otros.
+\end{itemize}
+
+Los modelos a nivel tarjeta ayudan a distinguir esas posibilidades. En este caso, los resultados apuntan a lo primero: los tratamientos no parecen cambiar ni el nivel medio de repetición ni la regla usada para decidir.
+
+\section*{3. Explicación sencilla de las metodologías}
+
+\subsection*{Modelo a nivel profesor-tarjeta}
+
+Cada fila del análisis es una decisión concreta. La variable principal vale 1 si el profesor decidió que el alumno repite y 0 si decidió que pasa.
+
+El modelo compara decisiones entre tratamientos, pero tiene en cuenta que unas tarjetas son más ``difíciles'' que otras. Por eso se incluyen efectos fijos de tarjeta. En lenguaje simple: se compara cómo reaccionan profesores de distintos grupos ante la misma tarjeta o ante tarjetas equivalentes dentro del diseño.
+
+También se corrigen los errores estándar por profesor. Esto es necesario porque las decisiones de un mismo profesor no son independientes entre sí. Si un profesor tiende a ser muy estricto, probablemente lo sea en varias tarjetas.
+
+\subsection*{MDE}
+
+MDE significa ``minimum detectable effect'', o efecto mínimo detectable. Es una forma de preguntarse:
+
+\begin{quote}
+Con este tamaño de muestra y este ruido en los datos, ¿qué tamaño de efecto podía encontrar el estudio con una probabilidad razonable?
+\end{quote}
+
+Esto es importante para interpretar resultados nulos. Un nulo no significa siempre que no haya efecto. Puede significar que el estudio no tenía potencia suficiente. Aquí, los MDEs ayudan a decir qué tamaños de efecto podemos descartar razonablemente.
+
+\subsection*{Equivalence tests}
+
+El test de equivalencia hace una pregunta distinta al test clásico.
+
+El test clásico pregunta: ``¿puedo rechazar que el efecto sea cero?''. Si no puedo rechazarlo, eso no prueba que sea cero.
+
+El test de equivalencia pregunta: ``¿puedo rechazar que el efecto sea grande en términos prácticos?''. Para eso hay que definir primero qué cuenta como efecto relevante. En el script he usado márgenes de 2, 3 y 5 \pp{}.
+
+La interpretación es:
+
+\begin{itemize}
+  \item Si el resultado pasa el test con margen de 3 \pp{}, podemos decir que el efecto está suficientemente cerca de cero como para descartar efectos mayores que 3 \pp{}.
+  \item Si no lo pasa con margen de 2 \pp{}, no podemos descartar efectos muy pequeños.
+\end{itemize}
+
+\subsection*{Índice de creencias}
+
+El índice intenta resumir una familia de creencias relacionadas con dureza, mérito, responsabilidad individual y escepticismo sobre medidas de apoyo. Incluye, entre otras, variables sobre meritocracia, culpa atribuida a estudiantes, menor culpa atribuida al sistema educativo y percepciones sobre recursos destinados a repetidores.
+
+Para combinar preguntas medidas en escalas distintas, cada variable se estandariza. Eso significa que se convierte en una escala común donde 0 es la media y 1 equivale a una desviación estándar. Después se promedian los ítems disponibles.
+
+\vspace{0.3em}
+\noindent\fcolorbox{darkblue}{softgray}{%
+\begin{minipage}{0.94\textwidth}
+\textbf{Advertencia importante.} Este índice debe tratarse como exploratorio. Su consistencia interna es baja: alpha = 0,361 para el índice completo, 0,285 para responsabilidad y 0,470 para escepticismo sobre apoyo. Esto no invalida el análisis, pero sí aconseja no venderlo como una escala psicológica fuerte de ``ideología''. Es mejor describirlo como una batería de creencias relacionadas con strictness.
+\end{minipage}}
+
+\section*{4. Resultados principales}
+
+\subsection*{4.1. Los tratamientos casi no mueven la decisión de repetir}
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Contraste & Efecto & MDE80 & Lectura rápida\\
+\midrule
+\resultrow{Policy vs Control}{-0,18 pp}{3,75 pp}{Casi cero}
+\resultrow{Revelation vs Policy}{-0,83 pp}{2,64 pp}{Casi cero}
+\resultrow{Awareness vs Revelation}{-1,33 pp}{2,70 pp}{Pequeño y no concluyente}
+\bottomrule
+\end{tabular}
+\end{center}
+
+Los tres efectos son negativos, pero muy pequeños. La lectura no debería ser ``los tratamientos reducen repetición'', porque las estimaciones no son precisas ni consistentes como para defender eso. La lectura correcta es que no hay evidencia de un cambio relevante en la decisión de repetir.
+
+Los tests de equivalencia refuerzan esta idea. Con un margen de +/-3 \pp{}, los tres contrastes pasan el test de equivalencia. Es decir, el análisis puede descartar efectos de tamaño medio-pequeño alrededor de 3 \pp{}. Con un margen más exigente de +/-2 \pp{}, no todos pasan. Por tanto:
+
+\begin{quote}
+El estudio permite decir que no hay efectos comportamentales de tamaño relevante, pero no permite descartar efectos muy pequeños.
+\end{quote}
+
+\subsection*{4.2. Regla de decisión y señales académicas}
+
+El modelo within-teacher mira cómo cambia la decisión dentro del mismo profesor cuando cambian las características de la tarjeta. Esto es útil porque elimina la dureza media del profesor y se concentra en la regla usada para decidir.
+
+\begin{center}
+\small
+\begin{tabular}{L{0.30\textwidth}L{0.28\textwidth}L{0.28\textwidth}}
+\toprule
+Señal de la tarjeta & Cambio en probabilidad de repetir & Interpretación\\
+\midrule
+Suspensos & +54,6 pp & Es la señal central\\
+Baja competencia & +27,1 pp & Muy importante\\
+Absentismo & +6,4 pp & Importa, pero bastante menos\\
+Conducta disruptiva & +4,6 pp & Importa algo\\
+Contexto complejo o migrante & -1,9 pp & Pequeño y negativo\\
+Alumno varón & +0,3 pp & No relevante\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Esto es narrativamente muy útil. Los profesores no parecen decidir de forma caótica. Tienen una regla bastante clara: suspensos y competencia pesan muchísimo. Otras señales pesan bastante menos.
+
+Lo importante es que los tratamientos no cambian de forma clara esos pesos. No solo no cambia la media de repetición. Tampoco se ve que los profesores tratados empiecen a valorar de otra manera los suspensos, la competencia, el absentismo o la conducta.
+
+\subsection*{4.3. Creencias y preferencias sí predicen quién es más duro}
+
+Aunque los tratamientos no mueven la conducta, las diferencias entre profesores sí importan.
+
+\begin{center}
+\small
+\begin{tabular}{L{0.34\textwidth}L{0.22\textwidth}L{0.30\textwidth}}
+\toprule
+Variable & Asociación con repetir & Lectura\\
+\midrule
+Índice de strictness, +1 SD & +1,64 pp & Más creencias estrictas, más repetición\\
+Responsabilidad, +1 SD & +0,9 a +1,0 pp & Asociación positiva\\
+Escepticismo sobre apoyo, +1 SD & +1,3 pp & Asociación positiva\\
+Preferir criterios de promoción & +4,5 pp & Profesores más duros\\
+Preferir formación docente & -4,0 pp & Profesores menos duros\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Aquí hay que ser cuidadoso. Estos resultados no dicen que la ideología cause la decisión. No son variables asignadas aleatoriamente. Lo que sí dicen es que las creencias y preferencias declaradas predicen qué profesores son más duros.
+
+La parte más interesante aparece al mirar la regla de decisión. El índice de strictness aumenta sobre todo el peso dado a los suspensos: +3,46 \pp{} por cada desviación estándar del índice. En cambio, no cambia mucho el peso dado a género, contexto migrante o complejo, absentismo o conducta disruptiva.
+
+Esto sugiere que la diferencia entre profesores más y menos estrictos no está en castigar cualquier atributo negativo. Está más concentrada en cómo interpretan señales académicas fuertes, especialmente suspensos.
+
+\section*{5. Qué implica para la narrativa del paper}
+
+La historia más fuerte no es simplemente que ``los profesores son stubborn''. Esa frase tiene algo de verdad intuitiva, pero puede sonar acusatoria y demasiado psicológica. Los datos no observan directamente terquedad. Observan algo más concreto:
+
+\begin{quote}
+Las preferencias declaradas pueden moverse, pero las decisiones de repetición y la regla usada para decidir son muy estables.
+\end{quote}
+
+Esto es mejor que una historia de stubbornness pura por tres razones.
+
+\begin{enumerate}
+  \item Es más fiel a los resultados. Los tratamientos no mueven decisiones, pero las creencias sí se asocian con diferencias entre profesores.
+  \item Evita sobreinterpretar. No necesitamos afirmar que los profesores son tercos como rasgo psicológico.
+  \item Es más publicable. A un reviewer le resultará más convincente una historia sobre reglas profesionales estables que una acusación de sesgo o terquedad.
+\end{enumerate}
+
+La formulación que usaría sería:
+
+\begin{quote}
+Las decisiones de repetición parecen estar organizadas por reglas de decisión estables, ancladas en señales académicas y relacionadas con creencias previas sobre mérito, responsabilidad y apoyo. Las intervenciones ligeras pueden afectar preferencias declaradas, pero no desplazan la decisión comportamental.
+\end{quote}
+
+\section*{6. Cómo cambiaría el paper}
+
+\subsection*{Cambio 1: poner el contraste entre preferencias y conducta en el centro}
+
+La tensión más interesante es esta:
+
+\begin{itemize}
+  \item En las preferencias declaradas parece haber cierta movilidad.
+  \item En la decisión de repetir no aparece esa movilidad.
+\end{itemize}
+
+Eso es oro narrativo porque convierte el paper en algo más que ``probamos un tratamiento y salió nulo''. La pregunta pasa a ser:
+
+\begin{quote}
+¿Por qué una intervención puede mover lo que los profesores dicen preferir, pero no lo que hacen cuando tienen que decidir sobre un alumno concreto?
+\end{quote}
+
+\subsection*{Cambio 2: no decir ``ideología causa sesgos'', sino ``creencias organizan umbrales de decisión''}
+
+Yo evitaría una frase fuerte como ``los sesgos vienen de ideología''. Hay señales compatibles con esa idea, pero no una identificación causal limpia.
+
+Diría algo más preciso:
+
+\begin{quote}
+Las diferencias en decisiones de repetición están asociadas con creencias sobre mérito, responsabilidad y eficacia de las medidas de apoyo. Estas creencias parecen ordenar umbrales de decisión más estrictos.
+\end{quote}
+
+Esto mantiene la intuición ideológica, pero sin prometer más de lo que el diseño permite.
+
+\subsection*{Cambio 3: incluir los modelos profesor-tarjeta en resultados principales}
+
+No los dejaría solo como robustez. Aportan tres cosas centrales:
+
+\begin{itemize}
+  \item Muestran que el nulo no depende de cómo se construya el promedio por profesor.
+  \item Permiten decir que los tratamientos no cambian la regla de decisión.
+  \item Hacen visible qué señales pesan realmente en la decisión.
+\end{itemize}
+
+\subsection*{Cambio 4: usar equivalence tests y MDEs para que el nulo sea creíble}
+
+Un resultado nulo siempre genera dudas. Los MDEs y los equivalence tests ayudan a responder:
+
+\begin{quote}
+¿Este nulo es informativo o simplemente no teníamos potencia?
+\end{quote}
+
+La respuesta aquí es intermedia, pero útil: el estudio no descarta efectos minúsculos, pero sí descarta efectos comportamentales de alrededor de 3 \pp{} en los contrastes principales a nivel tarjeta.
+
+\subsection*{Cambio 5: presentar el índice de creencias como exploratorio}
+
+El índice es útil, pero no debe cargar todo el peso del paper. Tiene baja consistencia interna y mezcla dimensiones cercanas, pero no idénticas. Lo usaría como evidencia complementaria:
+
+\begin{itemize}
+  \item En el texto principal: resultado agregado y lectura cauta.
+  \item En apéndice: componentes, ítems separados y sensibilidad.
+\end{itemize}
+
+\section*{7. Mi recomendación final}
+
+Yo escribiría el paper alrededor de esta idea:
+
+\begin{quote}
+La política pública suele asumir que informar o hacer reflexionar a los docentes puede cambiar decisiones de repetición. Este experimento muestra que esa vía tiene límites: las preferencias declaradas pueden moverse, pero las decisiones concretas permanecen estables. Esa estabilidad no parece aleatoria: responde a reglas profesionales centradas en suspensos y competencias, y está correlacionada con creencias sobre mérito, responsabilidad y eficacia del apoyo.
+\end{quote}
+
+El paper ganaría si deja de pedirle al experimento que demuestre ``ideología causal'' y, en cambio, usa el experimento para mostrar \textbf{rigidez comportamental} y usa las creencias para explicar \textbf{quiénes son más estrictos y por qué esa rigidez puede ser difícil de mover}.
+
+\vfill
+{\small \textit{Nota técnica: el script se ejecutó correctamente. Los avisos de R observados corresponden a paquetes compilados con otra versión menor de R, no a problemas de estimación ni de datos.}}
+
+\end{document}

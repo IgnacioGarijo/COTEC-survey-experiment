@@ -1,0 +1,408 @@
+# Reporte: que hace el card-level analysis y que aporta
+
+Este reporte explica el bloque de analisis creado en `2. Code/4. decision_card_models.R`. Lo escribo deliberadamente como nota de trabajo, no como texto de paper. La idea es separar tres cosas que se estaban mezclando:
+
+1. Que analisis card-level sirven para entender mejor los resultados.
+2. Que analisis solo son robustez o diagnostico.
+3. Que analisis no deberian cargar la narrativa principal del paper.
+
+Mi lectura honesta es esta: tu escepticismo esta bastante justificado. El card-level analysis no deberia venderse como una contribucion grande por si mismo. Su mejor aportacion es caracterizar la regla de decision de los profesores: que atributos de los estudiantes pesan mas cuando deciden repetir. El resto sirve para dos cosas mas modestas: reforzar que los tratamientos no cambian mucho la decision efectiva, y explorar si las creencias mas ideologicas cambian el modo en que los profesores interpretan las tarjetas.
+
+## Como se construye el analisis
+
+La base card-level pone una fila por cada decision profesor-tarjeta. El resultado principal es `repeat_decision`, que vale 1 si el profesor decide que el estudiante debe repetir y 0 si no. Hay 2,705 profesores con decisiones validas y 22,124 decisiones de tarjeta. La media de repeticion es 47.6%.
+
+Los coeficientes se leen como puntos de probabilidad. En este reporte los convierto a puntos porcentuales (pp). Por ejemplo, un coeficiente de 0.05 significa 5 pp mas de probabilidad de recomendar repeticion.
+
+Como cada profesor responde varias tarjetas, los errores estandar se agrupan por profesor (`id`). Esto evita tratar ocho decisiones del mismo profesor como si fueran ocho profesores independientes.
+
+Hay dos familias de modelos:
+
+- Modelos card-level directos: usan `repeat_decision` como outcome y controlan por tratamiento, tarjeta, preferencias o covariables.
+- Modelos within-teacher: restan a cada decision la media del propio profesor. Estos modelos preguntan algo distinto: dentro de las tarjetas que ve un mismo profesor, que atributos hacen que esa tarjeta tenga mas o menos probabilidad de ser marcada como repeticion respecto al criterio medio de ese profesor.
+
+La segunda familia es la mas interesante, porque no confunde "este profesor repite mucho en general" con "este atributo concreto le importa".
+
+## 1. Efectos de tratamiento al nivel tarjeta
+
+**Pregunta.** Si miro cada decision de tarjeta por separado, en vez de agregar a nivel profesor, aparece algun efecto de tratamiento sobre la decision de repetir?
+
+**Regresion.**
+
+```text
+repeat_decision_it = tratamiento_i + fixed effects de tarjeta_t + error_it
+```
+
+Donde `i` es profesor y `t` es tarjeta. Se incluyen efectos fijos de tarjeta porque no todas las tarjetas tienen la misma composicion de atributos.
+
+**Resultados principales.**
+
+| Contraste | Efecto | IC 95% | p | MDE 80% |
+|---|---:|---:|---:|---:|
+| Policy treatment - Control | -0.18 pp | [-2.80, 2.45] | 0.895 | 3.75 pp |
+| Revelation - Policy | -0.83 pp | [-2.67, 1.02] | 0.381 | 2.64 pp |
+| Awareness - Revelation | -1.33 pp | [-3.23, 0.56] | 0.167 | 2.70 pp |
+
+**Como se obtiene.** El script estima la regresion con `lm`, calcula errores estandar clusterizados por profesor y luego calcula contrastes lineales entre brazos de tratamiento.
+
+**Que aporta.** Aporta poco como historia nueva, pero si aporta como robustez. Dice que el null experimental no aparece por haber agregado mal el outcome a nivel profesor: tambien se ve cuando usamos todas las decisiones tarjeta por tarjeta.
+
+**Como lo usaria.** En el main text solo lo mencionaria si ayuda a explicar precision. La tabla completa podria ir en appendix.
+
+## 2. Equivalence tests y MDEs
+
+**Pregunta.** Cuando no vemos efectos significativos, estamos viendo un verdadero cero aproximado o solo falta de potencia?
+
+**Que se calcula.**
+
+- El MDE 80% pregunta: con este error estandar, que tamano minimo de efecto era razonablemente detectable?
+- El TOST de equivalencia pregunta: podemos rechazar que el efecto sea mayor que cierto margen, por ejemplo +/-3 pp?
+
+**Resultados.**
+
+Al nivel tarjeta, los tres contrastes son equivalentes a cero si aceptamos un margen de +/-3 pp, pero no si exigimos +/-2 pp. Esto significa que el analisis card-level permite descartar efectos moderados, pero no efectos muy pequenos.
+
+Al nivel profesor, la evidencia de equivalencia es algo menos limpia: con margen de +/-3 pp, Awareness - Revelation si entra, pero Policy - Control y Revelation - Policy quedan demasiado cerca del borde. Con margen de +/-5 pp, si hay equivalencia.
+
+**Que aporta.** Esto si aporta a la interpretacion del null: no basta decir "no significativo". El mensaje correcto seria: los datos descartan cambios grandes o moderados en decisiones de repeticion, pero no descartan movimientos pequenos.
+
+**Como lo usaria.** Lo incluiria en el paper, pero no como tabla principal larga. Bastaria una frase clara en resultados y una tabla de appendix.
+
+## 3. Pesos de atributos dentro del profesor
+
+**Pregunta.** Que caracteristicas de la tarjeta pesan mas en la decision de repetir, comparando tarjetas dentro del mismo profesor?
+
+**Regresion.**
+
+```text
+(repeat_decision_it - media_repeat_i)
+  = boy_within_it
+  + complex_background_within_it
+  + failed_subjects_within_it
+  + low_competence_within_it
+  + absent_within_it
+  + disruptive_within_it
+  + error_it
+```
+
+Cada atributo tambien esta centrado respecto a la media del profesor. Por ejemplo, `failed_subjects_within` indica si una tarjeta tiene mas o menos suspensos que la media de tarjetas que vio ese profesor.
+
+**Resultados.**
+
+| Atributo | Efecto dentro del profesor | IC 95% | p |
+|---|---:|---:|---:|
+| Chico | +0.26 pp | [-0.62, 1.15] | 0.559 |
+| Background complejo/migrante | -1.88 pp | [-2.74, -1.02] | <0.001 |
+| Suspensos | +54.62 pp | [53.23, 56.01] | <0.001 |
+| Baja competencia | +27.07 pp | [25.83, 28.31] | <0.001 |
+| Absentismo | +6.37 pp | [5.52, 7.21] | <0.001 |
+| Disrupcion | +4.56 pp | [3.62, 5.50] | <0.001 |
+
+**Como se obtiene.** El script crea variables centradas por profesor y estima una regresion sin intercepto. Los seis atributos entran juntos, asi que cada coeficiente se interpreta manteniendo constantes los otros atributos de la tarjeta.
+
+**Que aporta.** Este es, para mi, el bloque que mas claramente aporta. Muestra que la decision no se mueve como una respuesta general a "estudiante problematico", sino que esta muy jerarquizada:
+
+- Suspensos domina todo.
+- Baja competencia importa mucho, pero la mitad que suspensos.
+- Absentismo y disrupcion importan, pero bastante menos.
+- Ser chico no pesa.
+- Background complejo/migrante no aumenta la repeticion; si acaso aparece con signo negativo condicional a los demas atributos.
+
+**Como lo usaria.** Esta si podria ser una tabla principal o una figura principal. Si el paper quiere hablar de decision-making docente, aqui hay contenido real.
+
+## 4. El tratamiento cambia los pesos de atributos?
+
+**Pregunta.** Aunque el tratamiento no cambie la media de repeticion, podria cambiar la regla de decision? Por ejemplo, despues de ver informacion, los profesores podrian dar menos peso a absentismo o mas peso a baja competencia.
+
+**Regresion preferida.**
+
+```text
+y_within_it
+  = atributos_within_it
+  + tratamiento_i x atributos_within_it
+  + error_it
+```
+
+Como el tratamiento es constante para cada profesor, la interaccion se interpreta como: el brazo de tratamiento cambia el peso que ese profesor da a cada atributo?
+
+**Resultados.** No hay un patron robusto. En la version within-teacher, todos los intervalos de confianza de las interacciones tratamiento x atributo incluyen cero. En la version card-level directa ocurre lo mismo, con una excepcion debil: Policy x disrupcion es -2.68 pp y p = 0.094, que no es suficiente para construir una historia.
+
+**Que aporta.** Poco. Este analisis cierra una puerta interesante: el tratamiento no parece cambiar la media ni tampoco la regla interna de decision. Pero precisamente porque sale casi todo null, no lo pondria en el centro.
+
+**Como lo usaria.** Appendix. En el texto principal, si acaso una frase: "The interventions did not meaningfully alter either average repetition decisions or the weights assigned to student attributes."
+
+## 5. Beliefs: indice amplio vs indice narrow
+
+**Pregunta.** Que medida de beliefs tiene sentido usar para estudiar si la ideologia esta relacionada con harshness?
+
+Se probaron varios indices. El indice amplio de strictness mezcla seis items: meritocracia, culpa de estudiantes, culpa del sistema invertida, pasar sin competencias, demasiados recursos para repetidores y recursos inefectivos. El problema es que es poco homogeneo: alpha = 0.361 y correlacion media entre items = 0.086.
+
+El indice mas limpio es `resource_skepticism_index`, compuesto por dos items:
+
+- Creencia de que se destinan demasiados recursos a estudiantes repetidores.
+- Creencia de que los recursos adicionales para repetidores son inefectivos.
+
+Este indice tiene alpha = 0.651 y correlacion entre items = 0.483. No es perfecto, pero es mucho mas coherente conceptualmente.
+
+**Resultado de screening.**
+
+| Indice | Items | Alpha | Asociacion bivariada con harshness |
+|---|---:|---:|---:|
+| Resource skepticism | 2 | 0.651 | +2.21 pp, p < 0.001 |
+| Academic standards | 2 | 0.424 | +0.42 pp, p = 0.262 |
+| Student attribution | 2 | 0.443 | +1.16 pp, p = 0.002 |
+| Broad strictness | 6 | 0.361 | +2.40 pp, p < 0.001 |
+
+**Que aporta.** Aporta una decision metodologica importante: si queremos hablar de ideologia o beliefs, no conviene usar un indice ancho que mezcla demasiadas cosas. Para una narrativa seria, el indice narrow de escepticismo sobre recursos es mas defendible.
+
+**Como lo usaria.** El paper no deberia decir "ideology" basandose en un cajon de sastre. Deberia hablar de una dimension mas precisa: escepticismo sobre la utilidad o legitimidad de dedicar recursos a estudiantes repetidores.
+
+## 6. Beliefs narrow y harshness media
+
+**Pregunta.** Los profesores mas escepticos sobre recursos recomiendan repetir mas?
+
+**Regresiones.**
+
+Version card-level:
+
+```text
+repeat_decision_it
+  = resource_skepticism_i
+  + tratamiento_i
+  + favorite_policy_i
+  + covariables_i
+  + fixed effects de tarjeta_t
+  + error_it
+```
+
+Version profesor:
+
+```text
+hb_i
+  = resource_skepticism_i
+  + tratamiento_i
+  + favorite_policy_i
+  + covariables_i
+  + error_i
+```
+
+Donde `hb` es la media de decisiones de repeticion del profesor.
+
+**Resultados.**
+
+- Card-level: una desviacion estandar mas en escepticismo sobre recursos predice +1.43 pp de probabilidad de repetir, IC 95% [0.64, 2.23], p < 0.001.
+- Teacher-level: una desviacion estandar mas predice +1.45 pp en harshness media, IC 95% [0.70, 2.20], p < 0.001.
+
+**Que aporta.** Aporta una asociacion estable entre beliefs y harshness. Pero el tamano no es enorme comparado con los atributos de la tarjeta. Suspensos mueve la decision unos 55 pp; resource skepticism mueve la harshness media 1.4 pp por desviacion estandar. Eso no invalida la narrativa ideologica, pero si obliga a formularla con cuidado.
+
+**Como lo usaria.** No diria "la ideologia explica los sesgos" como claim causal fuerte. Diria algo mas defendible: las creencias sobre recursos estan asociadas con una mayor propension a recomendar repeticion y, sobre todo, con diferencias en como se ponderan las senales academicas.
+
+## 7. Que pasa con los coeficientes al anadir la medida narrow de belief
+
+**Pregunta.** Si anadimos `resource_skepticism_index`, cambian los pesos de los atributos? Esto ayuda a saber si los coeficientes base estaban capturando diferencias ideologicas entre profesores.
+
+**Regresion.**
+
+```text
+y_within_it
+  = atributos_within_it
+  + resource_skepticism_i x atributos_within_it
+  + error_it
+```
+
+Aqui el termino principal de cada atributo se lee como el peso del atributo para un profesor con escepticismo de recursos promedio, porque el indice esta estandarizado. Las interacciones dicen si ese peso cambia cuando el profesor es mas esceptico.
+
+**Comparacion de coeficientes medios.**
+
+| Atributo | Base | Con resource skepticism | Cambio |
+|---|---:|---:|---:|
+| Chico | +0.26 pp | +0.17 pp | -0.09 pp |
+| Background complejo/migrante | -1.88 pp | -1.86 pp | +0.02 pp |
+| Suspensos | +54.62 pp | +54.86 pp | +0.23 pp |
+| Baja competencia | +27.07 pp | +27.32 pp | +0.25 pp |
+| Absentismo | +6.37 pp | +6.53 pp | +0.17 pp |
+| Disrupcion | +4.56 pp | +4.57 pp | +0.01 pp |
+
+**Resultado importante.** Los coeficientes medios casi no se mueven. Esto significa que el indice narrow no "explica" los pesos promedio de atributos. La regla media de decision sigue siendo la misma.
+
+Lo interesante aparece en las interacciones:
+
+| Atributo | Cambio por +1 SD de resource skepticism | p |
+|---|---:|---:|
+| Chico | -0.05 pp | 0.907 |
+| Background complejo/migrante | -0.11 pp | 0.814 |
+| Suspensos | +2.77 pp | <0.001 |
+| Baja competencia | -2.58 pp | <0.001 |
+| Absentismo | -0.38 pp | 0.404 |
+| Disrupcion | -0.17 pp | 0.740 |
+
+Otra forma de verlo: al comparar profesores con bajo escepticismo (-1 SD) y alto escepticismo (+1 SD), el peso de suspensos sube de 52.08 pp a 57.63 pp. El peso de baja competencia baja de 29.90 pp a 24.74 pp. El resto apenas cambia.
+
+**Que aporta.** Este bloque si puede aportar, pero de forma muy concreta. No dice que beliefs cambien toda la decision. Dice que una dimension ideologica narrow reorganiza dos senales academicas:
+
+- Los profesores mas escepticos sobre recursos dan mas peso a los suspensos acumulados.
+- Dan menos peso relativo a la baja competencia.
+
+Una interpretacion posible es que estos profesores tratan la repeticion menos como respuesta pedagogica a una necesidad de aprendizaje ("baja competencia") y mas como respuesta a una evidencia escolar acumulada y objetiva ("ha suspendido asignaturas"). Esto hay que formularlo como interpretacion, no como prueba causal.
+
+**Como lo usaria.** Esta podria ser una pieza secundaria del main text si el paper quiere sostener una narrativa de beliefs. Pero la tabla debe ser simple: solo interacciones de `resource_skepticism_index` con suspensos y baja competencia, y el resto resumido como null.
+
+## 8. Que caracteristicas valoran mas los profesores harsh
+
+**Pregunta.** Los profesores que en promedio son mas harsh dan mas peso a las mismas caracteristicas, o tienen una regla distinta?
+
+Aqui hice dos ejercicios.
+
+### 8.1 Interaccion continua con harshness
+
+**Regresion.**
+
+```text
+y_within_it
+  = atributos_within_it
+  + hb_z_i x atributos_within_it
+  + error_it
+```
+
+`hb_z` es la harshness media del profesor estandarizada. El coeficiente de interaccion dice cuanto cambia el peso del atributo cuando el profesor es 1 desviacion estandar mas harsh.
+
+**Resultados.**
+
+| Atributo | Cambio de peso por +1 SD de harshness | IC 95% | p |
+|---|---:|---:|---:|
+| Chico | +0.53 pp | [-0.39, 1.44] | 0.257 |
+| Background complejo/migrante | -1.94 pp | [-2.75, -1.12] | <0.001 |
+| Suspensos | +15.63 pp | [14.45, 16.82] | <0.001 |
+| Baja competencia | +3.01 pp | [2.02, 3.99] | <0.001 |
+| Absentismo | -2.68 pp | [-3.56, -1.81] | <0.001 |
+| Disrupcion | -3.43 pp | [-4.39, -2.46] | <0.001 |
+
+**Lectura.** Los profesores mas harsh no penalizan todo mas. Lo que mas los diferencia es el peso de suspensos. Tambien dan algo mas de peso a baja competencia, pero mucho menos. En cambio, dan menos peso marginal a absentismo y disrupcion una vez controlamos por suspensos, competencia y el resto de atributos.
+
+**Advertencia importante.** Este ejercicio es descriptivo y parcialmente mecanico. `hb` se calcula con la misma decision que estamos intentando explicar. Por tanto, no se puede decir que "ser harsh causa que se valore mas suspensos". Lo correcto es decir: entre profesores con harshness media mas alta, la decision diferencial entre tarjetas esta mucho mas estructurada por suspensos.
+
+### 8.2 Terciles de harshness
+
+**Regresion.**
+
+Dividi profesores en tres grupos segun `hb`: lenient, middle y harsh. Luego estime la regresion within-teacher de atributos por separado en cada grupo.
+
+**Resultados.**
+
+| Atributo | Lenient | Middle | Harsh |
+|---|---:|---:|---:|
+| Chico | +0.17 pp | +0.04 pp | +0.87 pp |
+| Background complejo/migrante | +1.22 pp | -3.90 pp | -3.81 pp |
+| Suspensos | +33.19 pp | +65.33 pp | +65.25 pp |
+| Baja competencia | +27.97 pp | +28.90 pp | +24.97 pp |
+| Absentismo | +8.74 pp | +9.93 pp | +0.79 pp |
+| Disrupcion | +11.53 pp | +6.70 pp | -4.23 pp |
+
+**Que caracteristicas valoran mas los harsh.** Comparados con profesores lenient, los harsh valoran muchisimo mas los suspensos. No parecen valorar mas el absentismo ni la disrupcion. De hecho, dentro del tercil harsh esos atributos pesan poco o negativamente una vez controlamos por las otras caracteristicas.
+
+**Como interpretar la disrupcion negativa.** No significa que los profesores harsh "premien" la disrupcion. Significa que, dentro de las tarjetas y condicionando por suspensos, competencia, absentismo, background y genero, las tarjetas con disrupcion no son las que empujan por encima de su baseline de repeticion. Los profesores harsh ya tienen una propension alta a repetir, y parecen reservar el salto adicional para senales academicas duras, sobre todo suspensos.
+
+**Chequeo de diseno.** Las correlaciones entre atributos no son extremas. La mas alta relevante es suspensos con baja competencia, 0.30. Disrupcion correlaciona 0.19 con suspensos y 0.19 con baja competencia. Por tanto, los coeficientes son interpretables como pesos condicionales, aunque no como comparaciones brutas.
+
+**Que aporta.** Aporta una caracterizacion interesante, pero yo no lo pondria como resultado causal ni como claim principal. Sirve para afinar la narrativa: harshness no es una penalizacion generalizada del mal comportamiento. Es, sobre todo, una regla de decision muy anclada en fracaso academico observable.
+
+## 9. Alignment entre policy asignada y favorite/least favorite
+
+**Pregunta.** Cuando la policy asignada coincide con la favorite o least favorite del profesor, cambia su harshness?
+
+**Regresiones.**
+
+Card-level:
+
+```text
+repeat_decision_it
+  = alignment_i
+  + tratamiento_i
+  + favorite_policy_i
+  + covariables_i
+  + fixed effects de tarjeta_t
+  + error_it
+```
+
+Teacher-level:
+
+```text
+hb_i
+  = alignment_i
+  + tratamiento_i
+  + favorite_policy_i
+  + covariables_i
+  + error_i
+```
+
+Within-teacher attribute model:
+
+```text
+y_within_it
+  = atributos_within_it
+  + alignment_i x atributos_within_it
+  + error_it
+```
+
+**Resultados.**
+
+En media, alignment no hace mucho:
+
+- Favorite assigned: +0.70 pp a nivel tarjeta, p = 0.461.
+- Least favorite assigned: +1.08 pp a nivel tarjeta, p = 0.260.
+- A nivel profesor, favorite assigned = +0.85 pp, p = 0.373; least favorite assigned = +0.80 pp, p = 0.412.
+
+Lo que si aparece fuerte no es alignment, sino la policy favorita en si:
+
+- Preferir promotion criteria predice mayor harshness, alrededor de +5 pp.
+- Preferir training predice menor harshness, alrededor de -4 pp.
+
+En las interacciones con atributos, casi todo es null. El unico resultado claramente significativo es que least favorite assigned aumenta el peso de baja competencia en +4.24 pp, p = 0.011. Hay dos resultados borderline con favorite assigned: menos peso a suspensos (-3.27 pp, p = 0.071) y mas peso a baja competencia (+2.90 pp, p = 0.070).
+
+**Que aporta.** Muy poco para la pregunta principal de harshness. Alignment no parece mover la decision media. El resultado mas interesante sigue siendo que las preferencias de politica revelan perfiles de harshness, no que recibir una politica alineada/desalineada cambie mucho las decisiones.
+
+**Como lo usaria.** Appendix o nota exploratoria. No lo pondria en la narrativa central salvo que haya una razon teorica muy fuerte para hablar de alignment.
+
+## 10. Mi evaluacion general
+
+Si tuviera que decidir que queda en el paper, lo ordenaria asi:
+
+**Main text.**
+
+1. Resultados preregistrados principales a nivel profesor.
+2. Card-level treatment/equivalence como robustez breve del null experimental.
+3. Pesos within-teacher de atributos: suspensos, competencia, absentismo, disrupcion.
+4. Beliefs narrow: resource skepticism predice mas harshness y cambia el peso relativo de suspensos vs baja competencia.
+
+**Appendix.**
+
+1. Treatment x attributes.
+2. Alignment favorite/least favorite.
+3. Harshness terciles.
+4. Indice amplio de strictness y componentes.
+
+**No lo venderia como central.**
+
+El conjunto grande de modelos card-level no deberia aparecer como si todos fueran igualmente importantes. La mayor parte son comprobaciones. El paper mejora si el analisis card-level se reduce a una idea clara:
+
+> Las intervenciones apenas cambian la decision efectiva, pero las decisiones no son ruido. Siguen una regla muy estable: fracaso academico observable domina. Las creencias sobre recursos no sustituyen esa regla, sino que la inclinan hacia una lectura mas punitiva/credencialista de los suspensos.
+
+## 11. Que haria con la narrativa de "stubborn teachers"
+
+Yo seria cuidadoso con la palabra "stubborn". Los resultados si son compatibles con profesores resistentes a cambiar decisiones de repeticion ante informacion experimental. Pero el card-level analysis muestra algo un poco mas rico: no son stubborn porque decidan al azar o porque ignoren toda informacion. Son stubborn porque aplican una regla de decision muy fuerte y estable, dominada por suspensos.
+
+La version mas publicable me parece:
+
+> Teachers' repetition decisions are highly rule-based and weakly responsive to informational or persuasive interventions. Their stated preferences may move, but their consequential decisions remain anchored in a stable interpretation of academic failure. Ideological beliefs, especially skepticism about compensatory resources, are associated with stricter repetition decisions and with greater reliance on objective failure signals rather than broader pedagogical assessments.
+
+En castellano llano: la historia no es solo "son tercos". La historia buena es que la terquedad tiene estructura. No cambian la decision final, pero no porque no tengan criterio; al contrario, porque tienen un criterio muy dominante.
+
+## 12. Archivos generados o actualizados
+
+- Script: `2. Code/4. decision_card_models.R`
+- Reporte base generado por el script: `3. Output/reports/card_level_report.md`
+- Este reporte: `3. Output/reports/card_level_deep_diagnostic_report.md`
+- Tabla nueva de harshness x atributos: `3. Output/tables/card_level_within_teacher_harshness_x_attributes.csv`
+- Tabla nueva por terciles de harshness: `3. Output/tables/card_level_within_teacher_attribute_weights_by_harshness_group.csv`
+- Tabla nueva con pesos al anadir resource skepticism: `3. Output/tables/card_level_within_teacher_attribute_weights_with_resource_skepticism_full.csv`
+- Tabla nueva de comparacion low/high resource skepticism: `3. Output/tables/card_level_within_teacher_resource_skepticism_slope_comparison.csv`

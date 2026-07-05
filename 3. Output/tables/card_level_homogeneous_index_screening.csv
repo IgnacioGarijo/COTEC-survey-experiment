@@ -1,0 +1,7 @@
+index,k_items,items,n_complete_items,n_index,alpha,mean_interitem_correlation,bivariate_estimate,bivariate_p_value
+resource_skepticism_index,2,z_too_many_resources + z_resources_ineffective,2412,2412,0.6514585548442959,0.4830838215499397,0.02214146163073554,3.97422819214417e-9
+academic_standards_index,2,z_pass_without_competence + z_prepared_next_level_rev,2412,2412,0.42367940539788296,0.26877743451980024,0.004238520433199943,0.2615561562492331
+student_attribution_index,2,z_blame_students + z_blame_system_rev,2394,2394,0.4427415809955282,0.28430835601361876,0.011552551259224459,0.002332438956932313
+merit_student_responsibility_index,2,z_meritocracy + z_blame_students,2386,2386,0.021853897828510327,0.011047682564722874,0.011797122025171145,0.001901724232494693
+remediation_skepticism_index,3,z_pass_without_competence + z_too_many_resources + z_resources_ineffective,2412,2412,0.47033416019938684,0.22839164999902462,0.021985950965206436,5.107481577746317e-9
+strictness_beliefs_index,6,z_meritocracy + z_blame_students + z_blame_system_rev + z_pass_without_competence + z_too_many_resources + z_resources_ineffective,2386,2386,0.3608325681664755,0.08591791631305616,0.023997009433986253,2.3495823272747727e-10

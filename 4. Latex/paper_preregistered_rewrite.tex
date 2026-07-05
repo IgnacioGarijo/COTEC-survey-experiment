@@ -67,21 +67,21 @@
 
 \textcolor{red}{Spain is a particularly relevant setting. In PISA 2022, 22 percent of 15-year-old students in Spain reported having repeated a grade at least once, compared with an OECD average of 9 percent. This difference has made repetition an important education-policy issue. However, most research on grade repetition studies what happens to students after they repeat. Much less is known about the teacher-side decision process that generates repetition recommendations in the first place.}
 
-\textcolor{red}{This paper shifts the perspective to teachers' decision-making. We conduct a preregistered survey experiment in Castilla-La Mancha, Spain, with 2,705 teachers. Teachers evaluate eight hypothetical students and decide whether each student should repeat a grade. Each student profile varies across six binary characteristics: gender, complex background, three or more failed subjects, low mathematical or linguistic competence, absenteeism, and disruptive behavior. This design allows us to estimate which student characteristics matter most for teachers when making repetition decisions.} It also allows us to estimate a teacher-level measure of \textit{harshness}, which we use to characterize harsher teachers.
+\textcolor{red}{This paper shifts the perspective to teachers' decision-making. We conduct a preregistered survey experiment in Castilla-La Mancha, Spain, with 2,705 teachers. Teachers evaluate eight hypothetical students and decide whether each student should repeat a grade.} We randomize each student profile across six binary characteristics: gender, complex background, three or more failed subjects, low mathematical or linguistic competence, absenteeism, and disruptive behavior. This design allows us to estimate which student characteristics matter the most for teachers when making repetition decisions. It also allows us to estimate a teacher-level measure of \textit{harshness}, which we use to characterize harsher teachers.
 
-The experiment also varies teachers' exposure to education policies. We can thus analyze how teachers react when they are assigned to different education policies, and if their decision-making regarding repetition is altered when the assigned policy is aligned with their preferences. The control group completes the repetition task freely, they are not assigned to an educational policy. In the treatment groups, teachers are randomly assigned to one of three policies before completing the repetition task. We present 3 variations of our treatment group, represented in table \ref{tab:design}. Policy treatment group is our baseline treatment group. They are assigned to a policy, then they complete the repetition task, and finally they rank the three policies from favorite to least favorite. The revelation treatment group ranks the policies first, so they have already revealed their preferences when they are randomly assigned to a policy. Finally, the awareness treatment follows the same path as the revelation treatment, but we prime them by reminding them if the policy they are assigned to is either their \textit{favorite}, \textit{least favorite}, or \textit{neither favorite nor least favorite}. This allows us to test whether policy exposure, preference revelation, and preference-policy alignment affect teacher harshness.
+The experiment also varies teachers' exposure to education policies. We can thus analyze how teachers react when they are assigned to different education policies, and if their decision-making regarding repetition is altered when the assigned policy is either aligned with or opposed to their preferences. The control group completes the repetition task freely, they are not assigned to an educational policy. In the treatment groups, teachers are randomly assigned to one of three policies before completing the repetition task. We present 3 variations of our treatment group, represented in table \ref{tab:design}. Policy treatment group is our baseline treatment group. They are assigned to a policy, then they complete the repetition task, and finally they rank the three policies from favorite to least favorite. The revelation treatment group ranks the policies first, so they have already revealed their preferences when they are randomly assigned to a policy. Finally, the awareness treatment follows the same path as the revelation treatment, but we prime them by reminding them if the policy they are assigned to is either their \textit{favorite}, \textit{least favorite}, or \textit{neither favorite nor least favorite}. This allows us to test whether policy exposure, preference revelation, and preference-policy alignment affect teacher harshness.
 
 \textcolor{red}{Following the preregistered analysis plan, we construct several teacher-level harshness measures. The preferred measure compares each teacher's decisions with those of other teachers who saw the same student profile. We use this measure to characterize harsher teachers with both ordinary regressions and  random forest models}; and to test our pre-registered hypotheses on whether teacher's repetition decisions vary with policy exposure and alignment of assigned policies and their preferences.
 
 Results show that repetition decisions are driven by teacher and student level characteristics, rather than assigned educational policies or  the alignment of said assignation with their preferences. 
 
-Firstly, we see that younger teachers, that teach in secondary school, belief in effort rather than luck and show skepticism on resources dedicated to repeating students are associated with higher harshness levels.
+Firstly, card-level regressions with teacher fixed effects show that younger teachers, who teach in secondary school, belief in effort rather than luck and show skepticism on resources dedicated to repeating students are associated with higher harshness levels. 
 
 Secondly, the random assignation of student characteristics suggest that teachers' decisions are mostly academically driven. A hypothetical student with three or more failed subjects is 54.6 p.p. more probable to be set to repeat. Showing low math/linguistic competence is also very relevant, and attitude-based characteristics like absenteeism and disruptive behavior also increase significantly the probability of repeating. Nonetheless, having a complex social background reduces it, and the gender of the student does not matter. Additionally, harsher teachers are even more academically driven, while lenient ones are comparatively more triggered by disruptive behavior and absenteeism.
 
-Thirdly, education policies do not seem to affect retention decisions in any way. Teachers do not change their behavior when they are told to act under a specific policy. They also do not decide differently when they are assigned their favorite nor their least favorite policy. These results hold for all of our treatment groups, even when the assignation of the policy includes a priming message reminding them they have been assigned to their favorite or least favorite policy. However, their preferred education policy is always determinant for the level of harshness, which supports the results on teacher characterization which showed that variables related to ideology (belief in effort vs. luck and resource skepticism) were highly associated with harsher teachers.
+Thirdly, education policies do not seem to affect retention decisions in any way. Teachers do not change their behavior when they are told to act under a specific policy. They also do not decide differently when they are assigned neither their favorite nor their least favorite policy. These results hold for all of our treatment groups, even when the assignation of the policy includes a priming message reminding them they have been assigned to their favorite or least favorite policy. However, their preferred education policy is always determinant for the level of harshness, which supports the results on teacher characterization that showed that variables related to ideology (belief in effort vs. luck and resource skepticism) were highly associated with harsher teachers.
 
-All in all, our results suggest that, within our experiment, repetition decisions are defined by predetermined characteristics of teachers and students, rather than assigned educational policy or teacher's content with the policies they were assigned to.
+All in all, our results indicate that, within our experiment, repetition decisions are defined by predetermined characteristics of teachers and students, rather than assigned educational policy or teacher's content with the policies they were assigned to. This is relevant for policy makers as it suggests that education policies may have very limited impact on grade repetition, therefore suggesting that reforms targeting the education of teachers and supporting the academical development of students might be more successful. 
 
 \textcolor{red}{This paper is related to a growing literature on grade retention, teacher expectations, and teacher decision-making. It is not the first paper to use vignette or survey methods to study teachers' views about repetition. Recent and older work has studied teachers' beliefs about retention and the factors that enter retention judgments. Our contribution is narrower but, we think, important: to our knowledge, this is among the first preregistered survey experiments with teachers that jointly studies repetition decisions, random policy assignment, preference revelation, and explicit preference-policy alignment. This combination allows us to distinguish the determinants of repetition decisions from the effects of policy exposure itself.}
 
@@ -95,85 +95,97 @@ The third literature studies teachers' beliefs about grade retention. Tomchin an
 
 The fourth literature concerns policy exposure and motivated reasoning. Information and policy cues do not always translate into behavioral change, particularly when decisions are anchored in professional routines. In our setting, teachers may have stable views about repetition formed through classroom experience. A short policy assignment or an alignment reminder may therefore be too weak to change the decision rule.
 
-\section{Experimental design and data}
 
-\subsection{The repetition task}
+\section{\textsc{Intervention \& Experimental design}}
 
-Teachers complete a repetition task, also referred to in the preregistration as the card game. Each card represents a hypothetical student with six binary characteristics. The characteristics are: male/female, complex background/no, failed three or more subjects/no, low mathematical or linguistic abilities/no, serious disciplinary infraction/no, and frequent unjustified absenteeism/no. Teachers are asked whether the student should repeat the grade.
+This was a one stage experiment, meaning that teachers are only contacted once, consisting of two surveys and a experimental section between them. 
 
-Before the task, teachers are shown two examples. One is an ideal student with no negative characteristics. The other is a student with all characteristics associated with grade repetition. These examples were included to make the task clear and to work as an attention check.
+\subsection{Surveys}
 
-The analysis sample contains 2,705 teachers. Each teacher was asked to evaluate eight students. I do not report the average number of valid teacher-card decisions here because the preregistered design is based on eight cards per teacher and any discrepancy in valid counts should be audited separately.
+The first survey retrieves sociodemographical information as well as data of the type of school, course and classes they teach. They are also asked about labor information such as the years of experience or the type of contract they hold. 
 
-\subsection{Teacher harshness}
+The second survey positions the teacher behaviorally. It asks many interesting questions like the teacher's confidence on meritocracy, their self-perceived level of empathy, and their opinion on resources dedicated to repeating students.
 
-The preregistration defines several measures of teacher harshness. We keep all of them in the analysis and report the alternatives in the appendix.
-
-
-The preferred measure is the average deviation from other teachers who evaluated the same card. We define it in two steps. First, for each teacher-card decision, we compute the distance between teacher \(j\)'s decision for card \(i\) and the leave-one-out repetition rate for that same card:
-\[
-d_{ij}=R_{ij}-\bar{R}_{i,-j}.
-\]
-Here, \(R_{ij}\) equals one if teacher \(j\) recommends repetition for card \(i\), and zero otherwise. The term \(\bar{R}_{i,-j}\) is the average repetition rate for card \(i\) among all other teachers who evaluated that same card, excluding teacher \(j\). Second, we average those distances across the cards evaluated by teacher \(j\):
-\[
-H^b_j=\frac{1}{n_j}\sum_{i\in I_j} d_{ij}.
-\]
-A positive value means that the teacher is harsher than other teachers facing the same student profiles.
-
-The third and fourth measures compare the teacher's decision with the predicted probability of repetition for the card. The prediction is obtained from a model using the six student characteristics, and in the more complete version also the education level and school ownership. These alternative measures are useful robustness checks because they adjust for profile difficulty in a parametric way.
-
-\subsection{Treatment arms}
-
-The experiment has four arms.
-
-
-Table \ref{tab:design} recreates the preregistered conceptual map in a more formal format.
+Between these two surveys, the teacher goes through the randomized experiment as shown in figure \ref{tab:design}. This part of the intervention is divided in different phases, which are presented in a different order depending on the treatment assigned to the teacher. The phases are: 
 
 \begin{table}[H]
-\centering
-\caption{Experimental design}
-\label{tab:design}
-\begin{adjustbox}{max width=\textwidth}
-\begin{tikzpicture}[
-  x=1cm, y=1cm,
-  boxstep/.style={rounded corners=2pt, align=center, minimum width=2.85cm, minimum height=0.82cm, font=\small},
-  taskstep/.style={boxstep, draw=green!45!black, thick},
-  rankstep/.style={boxstep, draw=blue!55!black, densely dotted, thick},
-  assignstep/.style={boxstep, draw=orange!70!black, dashed, thick},
-  arm/.style={font=\small\bfseries, align=right, text width=2.2cm, anchor=east},
-  arrow/.style={-{Latex[length=2mm]}, thick}
-]
-\node[arm] (c0) at (0,0) {Control};
-\node[taskstep] (c1) at (2.3,0) {Repetition\\task};
-\node[rankstep] (c2) at (5.6,0) {Policy\\ranking};
-\draw[arrow] (c1) -- (c2);
-
-\node[arm] (p0) at (0,-1.35) {Policy\\treatment};
-\node[assignstep] (p1) at (2.3,-1.35) {Random policy\\assignment};
-\node[taskstep] (p2) at (5.6,-1.35) {Repetition\\task};
-\node[rankstep] (p3) at (8.9,-1.35) {Policy\\ranking};
-\draw[arrow] (p1) -- (p2);
-\draw[arrow] (p2) -- (p3);
-
-\node[arm] (r0) at (0,-2.70) {Revelation\\treatment};
-\node[rankstep] (r1) at (2.3,-2.70) {Policy\\ranking};
-\node[assignstep] (r2) at (5.6,-2.70) {Random policy\\assignment};
-\node[taskstep] (r3) at (8.9,-2.70) {Repetition\\task};
-\draw[arrow] (r1) -- (r2);
-\draw[arrow] (r2) -- (r3);
-
-\node[arm] (a0) at (0,-4.05) {Awareness\\treatment};
-\node[rankstep] (a1) at (2.3,-4.05) {Policy\\ranking};
-\node[assignstep] (a2) at (5.6,-4.05) {Random pol. ass.\\with priming};
-\node[taskstep] (a3) at (8.9,-4.05) {Repetition\\task};
-\draw[arrow] (a1) -- (a2);
-\draw[arrow] (a2) -- (a3);
-\end{tikzpicture}
-\end{adjustbox}
-\begin{minipage}{0.92\textwidth}
-
-\end{minipage}
+	\centering
+	\caption{Experimental design}
+	\label{tab:design}
+	\begin{adjustbox}{max width=\textwidth}
+		\begin{tikzpicture}[
+			x=1cm, y=1cm,
+			boxstep/.style={rounded corners=2pt, align=center, minimum width=2.85cm, minimum height=0.82cm, font=\small},
+			taskstep/.style={boxstep, draw=green!45!black, thick},
+			rankstep/.style={boxstep, draw=blue!55!black, densely dotted, thick},
+			assignstep/.style={boxstep, draw=orange!70!black, dashed, thick},
+			arm/.style={font=\small\bfseries, align=right, text width=2.2cm, anchor=east},
+			arrow/.style={-{Latex[length=2mm]}, thick}
+			]
+			\node[arm] (c0) at (0,0) {Control};
+			\node[taskstep] (c1) at (2.3,0) {Repetition\\task};
+			\node[rankstep] (c2) at (5.6,0) {Policy\\ranking};
+			\draw[arrow] (c1) -- (c2);
+			
+			\node[arm] (p0) at (0,-1.35) {Policy\\treatment};
+			\node[assignstep] (p1) at (2.3,-1.35) {Random policy\\assignment};
+			\node[taskstep] (p2) at (5.6,-1.35) {Repetition\\task};
+			\node[rankstep] (p3) at (8.9,-1.35) {Policy\\ranking};
+			\draw[arrow] (p1) -- (p2);
+			\draw[arrow] (p2) -- (p3);
+			
+			\node[arm] (r0) at (0,-2.70) {Revelation\\treatment};
+			\node[rankstep] (r1) at (2.3,-2.70) {Policy\\ranking};
+			\node[assignstep] (r2) at (5.6,-2.70) {Random policy\\assignment};
+			\node[taskstep] (r3) at (8.9,-2.70) {Repetition\\task};
+			\draw[arrow] (r1) -- (r2);
+			\draw[arrow] (r2) -- (r3);
+			
+			\node[arm] (a0) at (0,-4.05) {Awareness\\treatment};
+			\node[rankstep] (a1) at (2.3,-4.05) {Policy\\ranking};
+			\node[assignstep] (a2) at (5.6,-4.05) {Random pol. ass.\\with priming};
+			\node[taskstep] (a3) at (8.9,-4.05) {Repetition\\task};
+			\draw[arrow] (a1) -- (a2);
+			\draw[arrow] (a2) -- (a3);
+		\end{tikzpicture}
+	\end{adjustbox}
+	\begin{minipage}{0.92\textwidth}
+		
+	\end{minipage}
 \end{table}
+
+
+\begin{enumerate}
+	\item \textbf{Preference Ranking:} the teacher faces the three policies and is asked to rank them according to their preference through a vertical slider. This slider displays the numeric position in which the policy is being ranked (1 for favorite and 3 for least favorite). The original position of the three policies is random for all treatments, so as to avoid conditioning. 
+	
+	\item \textbf{Random assignment of policy:} teachers are assigned to one of the three policies randomly, with probability $1/3$. Teachers in the control group do not go through this part, as they are not to be affected by policy assignment. The policies are displayed in appendix \ref{app:policy}.
+	
+	\item \textbf{Repetition task/card game:} consisting of facing 8 cards, one for each hypothetical student. They decide whether said student should repeat grades or not. Each card represents a hypothetical student with six binary characteristics (meaning there are 64 possible students). The characteristics are: male/female, complex background/no, failed three or more subjects/no, low mathematical or linguistic abilities/no, serious disciplinary infraction/no, and frequent unjustified absenteeism/no. 
+	
+	Before the task, teachers are shown two examples. One is an ideal student with no negative characteristics. The other is a student with all characteristics associated with grade repetition. These examples were included to make the task clear and to work as an attention check. We removed teachers that failed the student with none of the characteristics associated with grade repetition. We decided not to remove teachers that did not fail the student with all before-mentioned characteristics, since there are teachers that do not believe in grade repetition.
+	
+\end{enumerate}
+
+$1/10$ of teachers were assigned to the control group, while $3/10$ were assigned to each of the treatment groups ($1/10$ for each of the policies assigned)
+
+%\section{Experimental design and data}
+
+%The experimental part of the survey consists of three sections that are displayed in a different order depending on which of the four treatment arms they were assigned to (table \ref{tab:design}). 
+
+%\subsection{The repetition task}
+
+%Teachers complete a repetition task, also referred to as \textit{card game}, consisting of facing 8 cards, one for each hypothetical student. They decide whether said student should repeat grades or not. Each card represents a hypothetical student with six binary characteristics (meaning there are 64 possible students). The characteristics are: male/female, complex background/no, failed three or more subjects/no, low mathematical or linguistic abilities/no, serious disciplinary infraction/no, and frequent unjustified absenteeism/no. 
+
+%Before the task, teachers are shown two examples. One is an ideal student with no negative characteristics. The other is a student with all characteristics associated with grade repetition. These examples were included to make the task clear and to work as an attention check. We removed teachers that failed the student with none of the characteristics associated with grade repetition. We decided not to remove teachers that did not fail the student with all before-mentioned characteristics, since there are teachers that do not believe in grade repetition. 
+
+%\subsection{Random policy assignment}
+
+%Teachers who did not fall into the control group were asked to complete the repetition task as if they were under a randomly assigned education policy. The 3 possible policies are detailed in appendix \ref{app:policy}. 
+
+%\subsection{Policy ranking}
+
+
+
 
 \subsection{Preregistered hypotheses}
 
@@ -204,6 +216,26 @@ The preregistration expresses the hypotheses as null hypotheses. I keep that wor
 \textbf{H4\(|\)3.} Treatment assignment has no effect on policy preferences.
 
 \section{Empirical strategy}
+
+
+\subsection{Teacher harshness}
+
+The preregistration defines several measures of teacher harshness. We keep all of them in the analysis and report the alternatives in the appendix.
+
+
+The preferred measure is the average deviation from other teachers who evaluated the same card. We define it in two steps. First, for each teacher-card decision, we compute the distance between teacher \(j\)'s decision for card \(i\) and the leave-one-out repetition rate for that same card:
+\[
+d_{ij}=R_{ij}-\bar{R}_{i,-j}.
+\]
+Here, \(R_{ij}\) equals one if teacher \(j\) recommends repetition for card \(i\), and zero otherwise. The term \(\bar{R}_{i,-j}\) is the average repetition rate for card \(i\) among all other teachers who evaluated that same card, excluding teacher \(j\). Second, we average those distances across the cards evaluated by teacher \(j\):
+\[
+H^b_j=\frac{1}{n_j}\sum_{i\in I_j} d_{ij}.
+\]
+A positive value means that the teacher is harsher than other teachers facing the same student profiles.
+
+The third and fourth measures compare the teacher's decision with the predicted probability of repetition for the card. The prediction is obtained from a model using the six student characteristics, and in the more complete version also the education level and school ownership. These alternative measures are useful robustness checks because they adjust for profile difficulty in a parametric way.
+
+
 
 The confirmatory analysis estimates ordinary least squares models using teacher harshness as the dependent variable. The outcome in the main tables is \(H^b_j\), the average deviation from other teachers seeing the same cards. Study I compares Control and Policy treatment. Study II compares Policy treatment and Revelation treatment. Study III compares Revelation treatment and Awareness treatment. Depending on the hypothesis, the regressions include treatment-arm indicators, assigned-policy indicators, favorite-policy indicators, and interactions between treatment arm and assigned policy.
 
@@ -507,7 +539,7 @@ Table \ref{tab:mde} reports the minimum detectable effects for the preregistered
 \end{adjustbox}
 \end{table}
 
-\section{Policies}
+\section{Policies}\label{app:policy}
 
 The experiment randomly assigned treated teachers to one of the following three policies, as described in the preregistration:
 

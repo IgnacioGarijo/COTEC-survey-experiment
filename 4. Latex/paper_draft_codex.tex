@@ -1,0 +1,262 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{natbib}
+\usepackage[hidelinks]{hyperref}
+
+\geometry{margin=1in}
+\onehalfspacing
+\setlength{\parindent}{0.25in}
+\setlength{\parskip}{0.2em}
+
+\title{Policy Exposure, Preference Alignment, and the Rigidity of Grade-Repetition Decisions: Evidence from a Survey Experiment with Teachers}
+
+\author{
+Ignacio Garijo-Campos \and
+Antonio Alfonso \and
+Pablo Branas-Garza \and
+Diego Jorrat \and
+Angel Sanchez
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Grade repetition is a high-stakes educational decision, yet most evidence on the topic studies its consequences for students rather than the decision process that produces it. This paper studies whether teachers' repetition decisions can be shifted by policy exposure, preference elicitation, and explicit preference-policy alignment. We conducted a preregistered survey experiment with teachers in Castilla-La Mancha, Spain, a context where grade repetition is unusually prevalent. Teachers evaluated hypothetical student profiles and decided whether each student should repeat a grade. Across preregistered teacher-level models and new card-level analyses, policy exposure has little effect on repetition decisions. Card-level estimates are close to zero and statistically equivalent to zero within a 3 percentage point margin. Preference alignment also does not meaningfully change harshness: being assigned to one's favorite or least favorite policy does not shift repetition behavior. However, stated policy preferences and resource-skepticism beliefs predict which teachers are harsher. The results point to stable professional decision rules: teachers react strongly to academic signals such as failed subjects and low competence, while light-touch policy interventions move stated preferences more than actual decisions. The paper contributes evidence on the behavioral rigidity of teacher judgment in a consequential domain of education policy.
+\end{abstract}
+
+\noindent\textbf{Keywords:} grade repetition; teacher decision-making; survey experiment; policy preferences; belief updating; professional judgment.
+
+\section{Introduction}
+
+Grade repetition remains one of the most consequential decisions made inside schools. It determines whether a student progresses with peers or repeats a grade, with potential consequences for academic trajectories, social integration, motivation, and self-perception. The policy is particularly salient in Spain. According to the OECD's PISA 2022 country note, 22 percent of 15-year-old students in Spain reported having repeated a grade at least once, compared with an OECD average of 9 percent \citep{oecd2023spain}. Understanding why grade repetition remains so prevalent therefore requires studying not only students and institutions, but also the professional judgments through which repetition decisions are made.
+
+The existing literature has largely examined the consequences of grade retention for students. A broad body of evidence suggests that retention rarely produces large sustained academic gains and may carry substantial costs \citep{allen2009,alet2013,cabrera2022}. Yet repetition decisions are not mechanically determined by student achievement. They are made by teachers and schools under uncertainty, and they may depend on teachers' beliefs about effort, responsibility, remediation, standards, and the usefulness of alternative policies. This paper shifts the focus from the consequences of repetition to the decision process that produces repetition.
+
+We study whether teachers' repetition decisions respond to light-touch policy interventions. The experiment asks teachers to decide whether hypothetical students should repeat a grade. Student profiles vary across six binary characteristics: gender, complex or migrant background, failed subjects, low mathematical or linguistic competence, absenteeism, and disruptive behavior. Teachers are also exposed to policy scenarios, asked to rank policies, and, in some treatments, explicitly told whether the assigned policy corresponds to their favorite, middle, or least favorite option. This design makes it possible to study three related questions. First, does policy exposure change the probability that teachers recommend repetition? Second, does preference-policy alignment change teacher harshness? Third, do teachers' stated preferences and beliefs identify who is harsher, even when experimental treatments do not move behavior?
+
+The core result is simple. Teachers' repetition decisions are remarkably stable. Across the preregistered teacher-level analyses, policy treatment effects are small and statistically insignificant. New card-level models, which use each teacher-card decision as an observation and include card fixed effects, lead to the same conclusion. The estimated effects are -0.18 percentage points for Policy treatment versus Control, -0.83 percentage points for Revelation versus Policy, and -1.33 percentage points for Awareness versus Revelation. Equivalence tests show that these effects are statistically equivalent to zero under a 3 percentage point margin, although the design cannot rule out effects smaller than 2 percentage points.
+
+The card-level analysis adds an important interpretation to these null effects. Teachers' decisions are not noisy or unstructured. They are dominated by academic signals. Within teacher, failed subjects increase the probability of repetition by 54.6 percentage points, low competence by 27.1 percentage points, absenteeism by 6.4 percentage points, and disruptive behavior by 4.6 percentage points. Treatments do not meaningfully change these weights. Thus, policy exposure does not merely fail to shift the average repetition rate; it also fails to shift the rule by which teachers translate student characteristics into repetition decisions.
+
+Preference alignment also does not move behavior. Among treated teachers, being assigned to one's favorite policy rather than a middle-ranked policy increases repetition by 0.70 percentage points at the card level, while being assigned to one's least favorite policy increases repetition by 1.08 percentage points; both estimates are statistically insignificant. Teacher-level estimates are nearly identical. This suggests that the relevant mechanism is not temporary frustration or comfort produced by the policy assignment itself. Rather, stated policy preferences reveal stable differences across teachers. Teachers who favor stricter promotion criteria are about 4.5 to 5.4 percentage points harsher than those who favor reinforcement, while teachers who favor teacher training are about 4.0 percentage points less harsh.
+
+Finally, we revisit the role of beliefs. A broad "strictness" battery combining meritocracy, blame attribution, academic standards, and resource skepticism is too heterogeneous to serve as the main measure. Its internal consistency is low. A more defensible two-item resource-skepticism index, based only on whether teachers think too many resources go to repeating students and whether those resources are ineffective, has substantially better internal consistency (alpha = 0.65). A one standard deviation increase in this index predicts a 1.43 percentage point higher probability of repetition at the card level and a 1.45 percentage point increase in teacher harshness. These associations are not causal, but they suggest that teachers' beliefs about remediation and resource use are meaningful correlates of stricter decision thresholds.
+
+The paper's contribution is therefore not simply that an intervention had null effects. It is that the combination of experimental null effects, equivalence tests, card-level decision rules, preference results, and belief heterogeneity points to a broader phenomenon: limited behavioral updating in professional judgment. Teachers may adjust stated preferences when exposed to policies, but their actual decisions about students remain anchored in stable rules and pre-existing beliefs.
+
+\section{Related literature}
+
+This paper connects three literatures: the effects of grade retention, teachers' beliefs and expectations, and the responsiveness of professional judgment to information or contextual cues.
+
+First, the evidence on grade retention is mixed but cautious. Some studies find short-run benefits in particular contexts or grades, especially when retention is embedded in broader accountability or remediation systems. However, many studies find that any positive effects are short-lived or offset by longer-run costs. \citet{alet2013}, using French data, find that early repetition can improve test scores in the very short run but that the gains become negative several years later. \citet{allen2009} show in a meta-analysis that estimated effects depend heavily on research design quality. \citet{cabrera2022} studies a Mexican reform that sharply reduced early grade repetition and finds a large reduction in dropout rates without clear evidence of performance losses. The broad policy implication is not that repetition is never justified, but that it is costly, contested, and unlikely to be a simple academic remedy.
+
+Second, the paper contributes to work on teachers' beliefs, expectations, and judgment. Teachers' expectations can influence educational trajectories, and expectations may be systematically related to student characteristics or teacher-student mismatch \citep{gershenson2016,papageorge2020}. Evidence from grading also shows that teacher evaluations can reflect bias or differential expectations even when students' underlying performance is similar \citep{hanna2012}. At the same time, expectations are often partly accurate signals of information teachers possess, which makes the interpretation of teacher judgment more subtle \citep{jussim2005}. Our design contributes by holding student profiles experimentally fixed and varying policy context around the decision. This isolates how teachers respond to the same hypothetical information under different policy and preference conditions.
+
+Third, the paper speaks directly to teachers' beliefs about grade retention. \citet{tomchin1992} show that teachers' views on retention are complex: teachers may recognize potential harms while still believing that retention is appropriate for some students. Our findings are consistent with that complexity. Teachers' repetition decisions are not arbitrary; they respond strongly to academically relevant signals. However, teachers differ in their thresholds, and these differences are correlated with policy preferences and resource-skepticism beliefs. The resulting picture is not one of simple ignorance or random bias, but of stable decision rules that are difficult to move through light-touch policy exposure.
+
+\section{Experimental design}
+
+\subsection{Context and sample}
+
+The study was conducted in Castilla-La Mancha, Spain. The survey was distributed to teachers through the regional education authority. Eligible participants were teachers in primary and secondary education. The survey consisted of a first block collecting sociodemographic, labor, and school information; an experimental block; and a final block measuring behavioral and attitudinal variables.
+
+The experiment was preregistered before the analysis. The preregistration defined the repetition task, the treatment arms, the main harshness outcomes, and the hypotheses comparing policy exposure, policy assignment, and preference-policy alignment across treatment groups.
+
+\subsection{The repetition task}
+
+Teachers evaluated hypothetical student profiles and decided whether each student should repeat a grade. Each profile varied across six binary characteristics: male student, complex or migrant background, three or more failed subjects, low mathematical or linguistic competence, absenteeism, and disruptive behavior. The task therefore creates a controlled environment where teachers face comparable student information.
+
+The main behavioral outcome at the card level is an indicator equal to one if the teacher recommends repetition and zero otherwise. The preregistered teacher-level harshness measure compares each teacher's decisions to the average decision of other teachers who evaluated the same card. For teacher $j$ and card $i$, harshness is the teacher's decision minus the leave-one-out average decision for that card. Averaging across cards produces a teacher-level measure of relative harshness.
+
+\subsection{Treatment arms}
+
+The design includes four groups. In the Control group, teachers complete the repetition task and then rank the policies. In the Policy treatment, teachers are randomly assigned to one of three policies before the repetition task and then rank the policies. In the Revelation treatment, teachers rank the policies before being randomly assigned to one policy and completing the repetition task. In the Awareness treatment, teachers rank policies, are assigned to one policy, and are explicitly reminded whether that policy is their favorite, middle, or least favorite option before completing the repetition task.
+
+The three policy scenarios are: reinforcement or support, promotion criteria, and teacher training. Teachers rank these policies from favorite to least favorite. This creates a measure of preference-policy alignment: whether the assigned policy is the teacher's favorite, middle, or least favorite policy.
+
+\section{Empirical strategy}
+
+\subsection{Preregistered teacher-level analyses}
+
+The preregistered analyses estimate treatment effects on teacher-level harshness. Study 1 compares Policy treatment with Control. Study 2 compares Revelation with Policy treatment. Study 3 compares Awareness with Revelation. Within each study, the preregistered hypotheses test whether harshness changes with the treatment arm, with the assigned policy, or with preference-policy alignment.
+
+These models answer whether policy exposure or alignment changes the average harshness of teachers. They are the primary confirmatory analyses.
+
+\subsection{Card-level extension}
+
+We complement the preregistered teacher-level analysis with a card-level specification. Each observation is a teacher-card decision. The baseline model estimates:
+
+\[
+Repeat_{ij} = \alpha + \beta Treatment_j + \delta_i + \varepsilon_{ij},
+\]
+
+where $Repeat_{ij}$ indicates whether teacher $j$ recommends repetition for card $i$, and $\delta_i$ are card fixed effects. Standard errors are clustered by teacher. Card fixed effects ensure that comparisons are made net of differences in the difficulty or content of the card.
+
+This extension adds two advantages. First, it uses the full decision-level structure of the data. Second, it allows us to estimate whether treatments alter decision rules by interacting treatment indicators with student-card attributes.
+
+\subsection{Equivalence tests and minimum detectable effects}
+
+Because null results are central to the paper, we report both minimum detectable effects and equivalence tests. The minimum detectable effect indicates what effect size the design could detect with 80 percent power. The equivalence test asks whether the confidence interval is narrow enough to reject effects larger than a substantively meaningful margin. We use margins of 2, 3, and 5 percentage points, with 3 percentage points as the main benchmark.
+
+\subsection{Beliefs and homogeneous indices}
+
+The preregistered design includes exploratory characterization of harsher teachers. In early exploratory work, we combined several belief variables into a broad strictness battery. We now treat that broad index as appendix material because it mixes conceptually distinct dimensions and has low internal consistency.
+
+The main belief index in the paper is instead a two-item resource-skepticism index. It averages standardized responses to two items: whether too many resources are devoted to repeating students, and whether resources for repeating students are ineffective. This index has alpha = 0.65 and is conceptually narrower than the broad strictness battery. It captures skepticism about remediation resources rather than ideology in general.
+
+All belief results are interpreted as correlational. These beliefs are not randomly assigned and may be jointly determined with teachers' views on repetition.
+
+\section{Results}
+
+\subsection{Teachers use stable and academically interpretable decision rules}
+
+The card-level data reveal a clear decision rule. Teachers are much more likely to recommend repetition when a student has failed subjects or lacks core competencies. Within-teacher estimates show that failed subjects increase the probability of repetition by 54.6 percentage points and low competence by 27.1 percentage points. Absenteeism and disruptive behavior matter, but much less: 6.4 and 4.6 percentage points, respectively. Gender has no meaningful effect, and complex or migrant background has a small negative association.
+
+\begin{table}[htbp]
+\centering
+\caption{Within-teacher weights on student-card attributes}
+\begin{tabular}{lcc}
+\toprule
+Student-card signal & Effect on repetition & Interpretation \\
+\midrule
+Failed subjects & +54.6 pp & Dominant signal \\
+Low competence & +27.1 pp & Very important \\
+Absenteeism & +6.4 pp & Moderate \\
+Disruptive behavior & +4.6 pp & Small to moderate \\
+Complex/migrant background & -1.9 pp & Small negative \\
+Male student & +0.3 pp & No meaningful effect \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This result is important for interpretation. The experimental null effects do not arise because the task is meaningless or because teachers respond randomly. Teachers apply a coherent rule, but that rule is difficult to move.
+
+\subsection{Policy exposure does not meaningfully change repetition decisions}
+
+The preregistered treatment contrasts produce small and statistically insignificant effects on teacher harshness. The card-level extension confirms this. Policy treatment versus Control changes repetition by -0.18 percentage points. Revelation versus Policy changes repetition by -0.83 percentage points. Awareness versus Revelation changes repetition by -1.33 percentage points.
+
+\begin{table}[htbp]
+\centering
+\caption{Card-level treatment contrasts}
+\begin{tabular}{lccc}
+\toprule
+Contrast & Estimate & MDE80 & 3 pp equivalence \\
+\midrule
+Policy treatment vs Control & -0.18 pp & 3.75 pp & Yes \\
+Revelation vs Policy treatment & -0.83 pp & 2.64 pp & Yes \\
+Awareness vs Revelation & -1.33 pp & 2.70 pp & Yes \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The equivalence results are substantively informative. With a 3 percentage point margin, all three contrasts are statistically equivalent to zero. With a tighter 2 percentage point margin, not all contrasts pass. Thus, the correct conclusion is not that the study proves the effect is exactly zero. Rather, the design rules out medium-small behavioral effects around 3 percentage points, while leaving open the possibility of very small effects.
+
+Treatment-by-attribute models show little evidence that treatments change the weight placed on student characteristics. Teachers exposed to policies do not appear to become more or less sensitive to failed subjects, competence, absenteeism, disruptive behavior, gender, or complex background. The intervention does not change either the average decision or the decision rule.
+
+\subsection{Preference alignment does not move harshness}
+
+The preregistered hypotheses emphasized whether teachers become harsher when assigned to policies that do or do not align with their preferences. The evidence does not support that mechanism. In the updated alignment models, among treated teachers and controlling for treatment arm and favorite policy, being assigned to one's favorite policy rather than a middle-ranked policy increases repetition by 0.70 percentage points at the card level. Being assigned to one's least favorite policy increases repetition by 1.08 percentage points. Neither estimate is statistically significant. Teacher-level estimates are similar: +0.85 percentage points for favorite assignment and +0.80 percentage points for least-favorite assignment.
+
+This finding clarifies the interpretation of the preregistered alignment hypotheses. It is not the momentary fit between assigned policy and stated preference that shifts behavior. Teachers do not become meaningfully softer when assigned to a policy they like, nor harsher when assigned to a policy they dislike.
+
+\subsection{Policy preferences identify harsher teachers}
+
+Although alignment does not move behavior, stated policy preferences strongly predict harshness. Relative to teachers whose favorite policy is reinforcement, teachers who prefer promotion criteria are about 4.5 to 5.4 percentage points more likely to recommend repetition, depending on the specification. Teachers who prefer teacher training are about 4.0 percentage points less likely to recommend repetition.
+
+This distinction is central. Policy preferences matter, but not because the assigned policy changes behavior through alignment or misalignment. Rather, preferences appear to reveal stable priors or professional orientations. Teachers who favor stricter promotion criteria are harsher regardless of whether the experimental assignment aligns with that preference.
+
+There is also evidence that stated preferences themselves are somewhat malleable. In the preregistered preference analysis, being assigned to Policy 3 increases the likelihood that teachers later rank it as their favorite and reduces the likelihood that they rank it as least favorite. This suggests that exposure can move stated preferences even when it does not move repetition decisions.
+
+\subsection{Resource-skepticism beliefs predict harsher decisions}
+
+The broad strictness battery is too heterogeneous to serve as the main belief measure. Its alpha is 0.36. By contrast, the two-item resource-skepticism index has alpha = 0.65 and is conceptually coherent. A one standard deviation increase in this index predicts a 1.43 percentage point increase in the probability of repetition in the card-level model with card fixed effects and controls. At the teacher level, the estimate is 1.45 percentage points.
+
+The within-teacher decision-rule model adds nuance. Resource skepticism increases the weight placed on failed subjects by 2.77 percentage points per standard deviation, but reduces the additional weight placed on low competence by 2.58 percentage points. It does not meaningfully change the weight placed on gender, complex background, absenteeism, or disruptive behavior. This suggests that resource-skeptical teachers are not simply harsher toward every negative student attribute. Their stricter decisions are concentrated around the interpretation of academic failure.
+
+\section{Discussion}
+
+The results point to a gap between stated malleability and behavioral rigidity. Teachers' declared policy preferences can move with exposure, and policy preferences and beliefs reveal meaningful differences across teachers. Yet actual repetition decisions do not respond to policy exposure, preference revelation, or explicit preference-policy alignment.
+
+This pattern is substantively important. It suggests that repetition decisions are not primarily a problem of missing information about policy options. Nor are they easily shifted by making teachers aware that a policy matches or conflicts with their stated preferences. Instead, the decision appears to be anchored in stable professional rules. Teachers assign very large weight to failed subjects and low competence, and the experimental treatments do not alter those weights.
+
+The evidence also cautions against a simple "ideology causes bias" interpretation. Beliefs and preferences matter, but the belief measure that survives conceptual scrutiny is narrower than ideology. Resource skepticism predicts harshness, but this does not establish a causal effect of ideology on repetition decisions. A more precise interpretation is that teachers' views about remediation and resources are associated with stricter decision thresholds.
+
+The findings have implications for policy. If policy-makers seek to reduce unnecessary grade repetition, light-touch policy exposure may be insufficient. Interventions may need to target the institutional rules, accountability environment, and concrete alternatives teachers can use when students fail subjects or lack core competencies. Teachers may not oppose alternatives in the abstract, but when facing a concrete student profile, the decision rule remains anchored in academic failure. Changing behavior may therefore require changing the available decision architecture rather than merely changing stated attitudes.
+
+\section{Limitations}
+
+Several limitations should be emphasized. First, the repetition task uses hypothetical profiles. This allows experimental control, but real repetition decisions involve additional information, institutional constraints, parental interactions, and school-level deliberation. Second, belief measures are correlational and partly measured after the experimental task. They should not be interpreted causally. Third, the design tests light-touch policy exposure and preference-alignment cues; it does not test more intensive interventions such as training, structured decision protocols, or changes in promotion rules. Fourth, the sample comes from teachers who responded to the survey invitation, which may limit representativeness.
+
+These limitations do not weaken the main conclusion, but they define its scope. The paper shows that under experimentally controlled policy exposure and alignment cues, teachers' repetition decisions are stable. It does not show that teacher behavior is impossible to change.
+
+\section{Conclusion}
+
+This paper studies the decision process behind grade repetition. In a large survey experiment with teachers in Spain, policy exposure, preference elicitation, and explicit preference-policy alignment do not meaningfully change repetition decisions. Card-level analyses show that teachers follow stable and academically interpretable decision rules, dominated by failed subjects and low competence. Treatments do not shift those rules.
+
+At the same time, teachers differ systematically. Stated policy preferences and resource-skepticism beliefs predict who is harsher. The evidence therefore points to a distinction between policy exposure and underlying decision thresholds. Preferences and beliefs identify stricter teachers, but brief interventions do not move their behavior.
+
+The central message is not that teachers are simply stubborn or biased. It is that high-stakes professional judgments can be resistant to light-touch policy interventions, especially when decisions are anchored in stable interpretations of academic failure. Understanding and changing grade repetition requires engaging with those decision rules directly.
+
+\begin{thebibliography}{99}
+
+\bibitem[Alet et al.(2013)]{alet2013}
+Alet, E., Bonnal, L., and Favard, P. (2013).
+Repetition: Medicine for a short-run remission.
+\emph{Annals of Economics and Statistics}, 111/112, 227-250.
+
+\bibitem[Allen et al.(2009)]{allen2009}
+Allen, C. S., Chen, Q., Willson, V. L., and Hughes, J. N. (2009).
+Quality of research design moderates effects of grade retention on achievement: A meta-analytic, multilevel analysis.
+\emph{Educational Evaluation and Policy Analysis}, 31(4), 480-499.
+
+\bibitem[Cabrera-Hernandez(2022)]{cabrera2022}
+Cabrera-Hernandez, F. (2022).
+Leave them kids alone! The effects of abolishing grade repetition: Evidence from a nationwide reform.
+\emph{Education Economics}, 30(4), 339-355.
+
+\bibitem[Gershenson et al.(2016)]{gershenson2016}
+Gershenson, S., Holt, S. B., and Papageorge, N. W. (2016).
+Who believes in me? The effect of student-teacher demographic match on teacher expectations.
+\emph{Economics of Education Review}, 52, 209-224.
+
+\bibitem[Hanna and Linden(2012)]{hanna2012}
+Hanna, R. N. and Linden, L. L. (2012).
+Discrimination in grading.
+\emph{American Economic Journal: Economic Policy}, 4(4), 146-168.
+
+\bibitem[Jussim and Harber(2005)]{jussim2005}
+Jussim, L. and Harber, K. D. (2005).
+Teacher expectations and self-fulfilling prophecies: Knowns and unknowns, resolved and unresolved controversies.
+\emph{Personality and Social Psychology Review}, 9(2), 131-155.
+
+\bibitem[OECD(2023)]{oecd2023spain}
+OECD. (2023).
+\emph{PISA 2022 Results (Volume I and II): Country Note - Spain}.
+OECD Publishing.
+
+\bibitem[Papageorge et al.(2020)]{papageorge2020}
+Papageorge, N. W., Gershenson, S., and Kang, K. M. (2020).
+Teacher expectations matter.
+\emph{The Review of Economics and Statistics}, 102(2), 234-251.
+
+\bibitem[Tomchin and Impara(1992)]{tomchin1992}
+Tomchin, E. M. and Impara, J. C. (1992).
+Unraveling teachers' beliefs about grade retention.
+\emph{American Educational Research Journal}, 29(1), 199-223.
+
+\end{thebibliography}
+
+\end{document}
