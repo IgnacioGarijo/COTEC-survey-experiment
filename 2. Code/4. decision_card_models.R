@@ -849,7 +849,7 @@ within_resource_skepticism_full_terms <- tidy_cluster_lm(
 
 attribute_labels <- c(
   boy = "Male student",
-  complex_background = "Complex/migrant background",
+  complex_background = "Complex background",
   failed_subjects = "Failed subjects",
   low_competence = "Low competence",
   absent = "Absenteeism",
@@ -1135,7 +1135,7 @@ plot_belief_rules <- card_belief_rules_terms %>%
   dplyr::mutate(
     attribute = dplyr::case_when(
       grepl("boy", term) ~ "Boy",
-      grepl("complex_background", term) ~ "Complex/migrant background",
+      grepl("complex_background", term) ~ "Complex background",
       grepl("failed_subjects", term) ~ "Failed subjects",
       grepl("low_competence", term) ~ "Low competence",
       grepl("absent", term) ~ "Absenteeism",
@@ -1143,7 +1143,7 @@ plot_belief_rules <- card_belief_rules_terms %>%
       TRUE ~ term
     ),
     attribute = factor(attribute, levels = rev(c(
-      "Boy", "Complex/migrant background", "Failed subjects",
+      "Boy", "Complex background", "Failed subjects",
       "Low competence", "Absenteeism", "Disruptive behavior"
     )))
   )

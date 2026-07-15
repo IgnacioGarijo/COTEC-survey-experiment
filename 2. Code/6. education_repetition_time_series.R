@@ -176,9 +176,7 @@ base_plot <- ggplot(repetition_series, aes(x = year_start, y = repetition_rate, 
   labs(
     x = "Academic year",
     y = "Repetition rate",
-    color = NULL,
-    title = "Evolution of school repetition rates in Spain",
-    subtitle = "Average across grades within primary and lower secondary education"
+    color = NULL
   ) +
   theme_minimal(base_size = 12) +
   theme(

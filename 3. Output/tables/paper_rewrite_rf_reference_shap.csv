@@ -1,0 +1,13 @@
+"variable","Variable","Type","Reference","n","estimate_pp","ci_low_pp","ci_high_pp"
+"level","Secondary education","Categorical contrast","Primary education",1068,2.17211926389313,2.09697159547295,2.24265995541148
+"experiencia","Years teaching","Slope per one-unit increase","Same scale as OLS",2156,-0.0441131169776718,-0.0508822431317335,-0.0367811686187357
+"antiguedad3","Years in current school","Slope per one-unit increase","Same scale as OLS",2156,-0.0556133936526723,-0.0638533676942006,-0.0459305414051859
+"female","Female","Categorical contrast","Male",1451,-0.406867601877799,-0.460157010479302,-0.351440328147135
+"edad","Age","Slope per one-unit increase","Same scale as OLS",2156,-0.164090615863663,-0.175979298145064,-0.152222247195573
+"titularidad","Public school","Categorical contrast","Private/charter school",2001,0.0339920201562991,-0.0765761001170936,0.153476851410404
+"indefinido","Temporary contract","Categorical contrast","Permanent contract",852,-0.298127538467775,-0.341843989837034,-0.25531905133737
+"grupos_docencia","Number of teaching groups","Slope per one-unit increase","Same scale as OLS",2156,0.0377452855182364,-0.00391325548925728,0.079795361861787
+"impacto_estudiantes","Perceived impact on students","Slope per one-unit increase","Same scale as OLS",2156,0.0978475292970105,0.0436304545419669,0.150315892359353
+"empatia","Self-reported empathy","Slope per one-unit increase","Same scale as OLS",2156,0.156233571783214,0.0917052816352117,0.224992784856605
+"meritocracia","Belief in effort","Slope per one-unit increase","Same scale as OLS",2156,0.407526705253385,0.369339810470615,0.446124895830495
+"resource_skepticism_index","Resource skepticism index","Slope per one-unit increase","Same scale as OLS",2156,1.69427831087593,1.57998655094694,1.79881327927686

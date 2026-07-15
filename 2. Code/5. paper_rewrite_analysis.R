@@ -250,28 +250,87 @@ char_model_narrow <- lm(
   data = teacher_data
 )
 
-modelsummary::modelsummary(
-  list("X1 covariates" = char_model_x1,
-       "X2 covariates" = char_model_x2,
-       "X2 + resource skepticism" = char_model_narrow),
-  stars = c("*" = .1, "**" = .05, "***" = .01),
-  coef_map = c(
-    "levelSecondary" = "Secondary education",
-    "experiencia" = "Years teaching",
-    "antiguedad3" = "Years in current school",
-    "female1" = "Female",
-    "edad" = "Age",
-    "titularidadPublic" = "Public school",
-    "indefinidoTemporary" = "Temporary contract",
-    "grupos_docencia" = "Number of teaching groups",
-    "impacto_estudiantes" = "Perceived impact on students",
-    "empatia" = "Self-reported empathy",
-    "meritocracia" = "Belief in effort",
-    "resource_skepticism_index" = "Resource skepticism index"
-  ),
-  gof_omit = "AIC|BIC|Log.Lik.|RMSE",
-  output = file.path(tables, "paper_rewrite_characterization_regression.tex")
+char_models <- list(
+  "X1 covariates" = char_model_x1,
+  "X2 covariates" = char_model_x2,
+  "X2 + resource skepticism" = char_model_narrow
 )
+
+char_coef_map <- c(
+  "levelSecondary" = "Secondary education",
+  "experiencia" = "Years teaching",
+  "antiguedad3" = "Years in current school",
+  "female1" = "Female",
+  "edad" = "Age",
+  "titularidadPublic" = "Public school",
+  "indefinidoTemporary" = "Temporary contract",
+  "grupos_docencia" = "Number of teaching groups",
+  "impacto_estudiantes" = "Perceived impact on students",
+  "empatia" = "Self-reported empathy",
+  "meritocracia" = "Belief in effort",
+  "resource_skepticism_index" = "Resource skepticism index"
+)
+
+char_rows <- tibble(Variable = unname(char_coef_map))
+
+for (model_name in names(char_models)) {
+  tidy_model <- broom::tidy(char_models[[model_name]]) %>%
+    mutate(
+      Variable = unname(char_coef_map[term]),
+      coef_cell = fmt_coef(100 * estimate, p.value),
+      se_cell = fmt_se(100 * std.error)
+    ) %>%
+    filter(!is.na(Variable)) %>%
+    select(Variable, coef_cell, se_cell)
+
+  char_rows <- char_rows %>%
+    left_join(tidy_model, by = "Variable") %>%
+    rename(
+      "{model_name}" := coef_cell,
+      "{paste0(model_name, '_se')}" := se_cell
+    )
+}
+
+char_table <- tibble(Variable = character())
+for (v in char_rows$Variable) {
+  coef_row <- char_rows %>%
+    filter(Variable == v) %>%
+    select(Variable, names(char_models))
+  se_row <- char_rows %>%
+    filter(Variable == v) %>%
+    transmute(
+      Variable = "",
+      `X1 covariates` = `X1 covariates_se`,
+      `X2 covariates` = `X2 covariates_se`,
+      `X2 + resource skepticism` = `X2 + resource skepticism_se`
+    )
+  char_table <- bind_rows(char_table, coef_row, se_row)
+}
+
+char_stats <- tibble(
+  Variable = c("Num.Obs.", "R2", "R2 Adj."),
+  `X1 covariates` = c(
+    sprintf("%d", nobs(char_model_x1)),
+    sprintf("%.3f", summary(char_model_x1)$r.squared),
+    sprintf("%.3f", summary(char_model_x1)$adj.r.squared)
+  ),
+  `X2 covariates` = c(
+    sprintf("%d", nobs(char_model_x2)),
+    sprintf("%.3f", summary(char_model_x2)$r.squared),
+    sprintf("%.3f", summary(char_model_x2)$adj.r.squared)
+  ),
+  `X2 + resource skepticism` = c(
+    sprintf("%d", nobs(char_model_narrow)),
+    sprintf("%.3f", summary(char_model_narrow)$r.squared),
+    sprintf("%.3f", summary(char_model_narrow)$adj.r.squared)
+  )
+)
+
+bind_rows(char_table, char_stats) %>%
+  mutate(across(everything(), ~ ifelse(is.na(.x), "", .x))) %>%
+  kableExtra::kbl(format = "latex", booktabs = TRUE, escape = FALSE) %>%
+  kableExtra::kable_styling(latex_options = c("hold_position")) %>%
+  kableExtra::save_kable(file.path(tables, "paper_rewrite_characterization_regression.tex"))
 clean_tex_table(file.path(tables, "paper_rewrite_characterization_regression.tex"))
 
 harshness_plot_data <- teacher_data %>%
@@ -492,7 +551,7 @@ attr_terms <- as.data.frame(fixest::coeftable(attr_model)) %>%
     conf.high = estimate + qt(.975, df = n_distinct(df_card_long$id) - 1) * std.error,
     attribute = case_when(
       term == "male" ~ "Male student",
-      term == "complex_background" ~ "Complex/migrant background",
+      term == "complex_background" ~ "Complex background",
       term == "failed_subjects" ~ "Three or more failed subjects",
       term == "low_competence" ~ "Low math/linguistic competence",
       term == "absent" ~ "Absenteeism",
@@ -560,7 +619,7 @@ group_terms <- bind_rows(group_terms) %>%
   mutate(
     attribute = case_when(
       term == "male" ~ "Male student",
-      term == "complex_background" ~ "Complex/migrant background",
+      term == "complex_background" ~ "Complex background",
       term == "failed_subjects" ~ "Three or more failed subjects",
       term == "low_competence" ~ "Low math/linguistic competence",
       term == "absent" ~ "Absenteeism",
