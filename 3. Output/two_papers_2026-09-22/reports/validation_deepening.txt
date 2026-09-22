@@ -1,0 +1,8 @@
+PASS: unchanged retained sample and unique teacher-card rows.
+PASS: score reconstructed independently and exact response-weighted centering.
+PASS: permutation observed SD equals original SD.
+PASS: academic-category counts and means reconcile.
+PASS: favorite and least distributions each sum to one; N=2546.
+PASS: 1999 finite bootstrap draws.
+PASS: teacher-level total weights equal one.
+Prediction validation executed when prediction file present.
