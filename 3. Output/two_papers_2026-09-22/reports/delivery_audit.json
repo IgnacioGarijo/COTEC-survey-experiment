@@ -1,0 +1,21 @@
+{
+  "frozen_tables_verified": 66,
+  "blue_passages": 10,
+  "prediction_ranges_verified": true,
+  "documents": [
+    {
+      "file": "paper_A_teacher_decisions.pdf",
+      "pages": 21,
+      "tables": 12,
+      "figures": 4,
+      "sha256": "09c22b793cf3b655db2e268d5882a55ee64cc04555c5540c66dad6cd91aa584b"
+    },
+    {
+      "file": "paper_B_policy_scenarios.pdf",
+      "pages": 23,
+      "tables": 18,
+      "figures": 6,
+      "sha256": "7b5f3efa38df8ca7f336bd6199f80422844e26ad05acdec9a85d1d6e7e4d1428"
+    }
+  ]
+}

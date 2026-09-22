@@ -1,0 +1,13 @@
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Method and contrast & 95\% interval & 90\% interval & Within $\pm3$? \\
+\midrule
+Reference: P - C & [-2.03, 3.45] & [-1.74, 3.05] & No \\
+Reference: R - P & [-3.39, 0.55] & [-3.10, 0.27] & No \\
+Reference: A - R & [-3.24, 1.02] & [-2.88, 0.65] & Yes \\
+IPW: P - C & [-2.05, 3.60] & [-1.76, 3.12] & No \\
+IPW: R - P & [-3.36, 0.60] & [-3.09, 0.34] & No \\
+IPW: A - R & [-3.24, 1.01] & [-2.94, 0.62] & Yes \\
+\bottomrule
+\end{tabular}
+\tabnote{Percentile intervals in percentage points from 1,999 teacher resamples of the assignment universe. Every draw reconstructs profile references; IPW also refits the observation logit. Baseline median imputations remain fixed. These intervals evaluate the same observed-composite estimand under additional selection assumptions, not assumption-free full-assignment effects.}

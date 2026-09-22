@@ -1,0 +1,13 @@
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Model & RMSE (pp) & $R^2$ (\%) & Partition range \\
+\midrule
+Baseline & 18.57 & 0.00 & [0.00, 0.00] \\
+OLS X1 & 18.39 & 1.95 & [1.77, 2.18] \\
+OLS X2 & 18.38 & 2.00 & [1.89, 2.14] \\
+OLS X3 & 18.28 & 3.06 & [2.95, 3.29] \\
+RF tuned & 18.43 & 1.48 & [1.19, 1.84] \\
+Ridge & 18.29 & 3.01 & [2.70, 3.26] \\
+\bottomrule
+\end{tabular}
+\tabnote{Five repetitions of five outer teacher folds. Forest and ridge settings selected by three inner folds with all outcome references and resource transformations rebuilt. Full $X_3$ inputs for common-sample forest and ridge; only $X_1$ inputs for available-sample models. Partition ranges are not confidence intervals. N = 2156.}

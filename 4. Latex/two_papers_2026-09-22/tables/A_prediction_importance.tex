@@ -1,0 +1,19 @@
+\begin{tabular}{@{}p{6cm}rr@{}}
+\toprule
+Predictor & Mean absolute SHAP & Permutation $\Delta$ MSE \\
+\midrule
+Resource skepticism (SD) & 1.55 & 5.341 \\
+Age (year) & 1.10 & 3.398 \\
+level & 0.88 & 1.826 \\
+School tenure (year) & 0.75 & -1.130 \\
+Experience (year) & 0.70 & -0.523 \\
+Effort attribution & 0.63 & -0.140 \\
+Teaching groups & 0.47 & 1.200 \\
+Perceived teacher impact & 0.28 & 0.803 \\
+Permanent public appointment & 0.19 & -0.422 \\
+Female teacher & 0.19 & -0.681 \\
+Empathy & 0.16 & -0.591 \\
+Public school & 0.04 & -0.276 \\
+\bottomrule
+\end{tabular}
+\tabnote{Tuned forests from first outer partition. SHAP in percentage points (32 simulations, 128 training-background cases); permutation loss in squared percentage points (20 permutations per variable per fold). Correlated variables share information; these diagnostics are not causal effects.}

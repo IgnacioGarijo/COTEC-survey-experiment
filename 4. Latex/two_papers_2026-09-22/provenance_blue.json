@@ -1,0 +1,52 @@
+[
+  {
+    "paper": "paper_A_teacher_decisions.tex",
+    "verbatim": true,
+    "text": "Before the task, teachers are shown two examples. One is an ideal student with no negative characteristics. The other is a student with all characteristics associated with grade repetition. These examples were included to make the task clear and to work as an attention check. We removed teachers that failed the student with none of the characteristics associated with grade repetition. We decided not to remove teachers that did not fail the student with all before-mentioned characteristics, since there are teachers that do not believe in grade repetition at all."
+  },
+  {
+    "paper": "paper_A_teacher_decisions.tex",
+    "verbatim": true,
+    "text": "The preferred measure defines harshness as the average deviation from other teachers who evaluated the same card. We define it in two steps. First, for each teacher-card decision, we compute the distance between teacher \\(j\\)'s decision for card \\(i\\) and the leave-one-out repetition rate for that same card:"
+  },
+  {
+    "paper": "paper_A_teacher_decisions.tex",
+    "verbatim": true,
+    "text": "\\[\nd_{ij}=R_{ij}-\\bar{R}_{i,-j}.\n\\]"
+  },
+  {
+    "paper": "paper_A_teacher_decisions.tex",
+    "verbatim": true,
+    "text": "Here, \\(R_{ij}\\) equals one if teacher \\(j\\) recommends repetition for card \\(i\\), and zero otherwise. The term \\(\\bar{R}_{i,-j}\\) is the average repetition rate for card \\(i\\) among all other teachers who evaluated that same card, excluding teacher \\(j\\). Second, we average those distances across the cards evaluated by teacher \\(j\\):"
+  },
+  {
+    "paper": "paper_A_teacher_decisions.tex",
+    "verbatim": true,
+    "text": "\\[\nH^b_j=\\frac{1}{n_j}\\sum_{i\\in I_j} d_{ij}.\n\\]"
+  },
+  {
+    "paper": "paper_B_policy_scenarios.tex",
+    "verbatim": true,
+    "text": "A broad literature on motivated reasoning argues that people do not process new information neutrally: prior goals and beliefs shape which arguments they retrieve, accept, and reject (Kunda, 1990). In education, teachers' beliefs are also known to be experience-based and difficult to separate from professional knowledge (Pajares, 1992). Policy implementation research adds that teachers interpret reform messages through local sense-making processes rather than simply applying policy information as written (Spillane, Reiser, and Reimer, 2002)."
+  },
+  {
+    "paper": "paper_B_policy_scenarios.tex",
+    "verbatim": true,
+    "text": "The first is the minimum detectable effect with 80 percent power. This tells us which effect sizes the design was able to detect with reasonable probability. The second is an equivalence test. This asks whether we can reject effects outside a given substantive margin."
+  },
+  {
+    "paper": "paper_B_policy_scenarios.tex",
+    "verbatim": true,
+    "text": "\\textbf{Policy A: Educational reinforcement.} The student will receive educational reinforcement in a small group next school year, with a support teacher, inside or outside the classroom."
+  },
+  {
+    "paper": "paper_B_policy_scenarios.tex",
+    "verbatim": true,
+    "text": "\\textbf{Policy B: Modified promotion criteria.} The promotion criteria will be modified in the Evaluation Board: unanimity for grade retention, secret and anonymous voting."
+  },
+  {
+    "paper": "paper_B_policy_scenarios.tex",
+    "verbatim": true,
+    "text": "\\textbf{Policy C: Teacher training.} All school staff will receive tailored training and teaching support in inclusive teaching methodologies and multi-level classroom management."
+  }
+]
