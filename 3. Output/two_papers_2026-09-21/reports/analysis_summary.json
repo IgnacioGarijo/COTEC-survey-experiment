@@ -1,0 +1,27 @@
+{
+  "n_teachers": 2705,
+  "n_decisions": 22124,
+  "n_control": 281,
+  "n_common": 2156,
+  "hb_mean": -0.0061,
+  "hb_sd": 0.2097,
+  "ha_mean": 0.4839,
+  "decision_weighted_repeat": 0.4762,
+  "weighted_disagreement": 0.2589,
+  "uniform_identifier_disagreement": 0.2601,
+  "raw_assigned": 3274,
+  "resources_correlation": 0.4831,
+  "age_experience_correlation": 0.7936,
+  "zero_repetition_teachers": 169,
+  "n_decisions_distribution": {
+    "1": 118,
+    "2": 16,
+    "3": 18,
+    "4": 6,
+    "5": 14,
+    "6": 10,
+    "7": 154,
+    "8": 633,
+    "9": 1736
+  }
+}

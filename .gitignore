@@ -16,3 +16,11 @@ Thumbs.db
 
 1. Data/raw data/
 1. Data/processed data/
+
+# Local analysis objects containing respondent-level data
+3. Output/two_papers_2026-09-21/reports/*.rds
+
+# LaTeX build intermediates (retain manuscript sources and final PDFs)
+4. Latex/two_papers_2026-09-21/*.aux
+4. Latex/two_papers_2026-09-21/*.log
+4. Latex/two_papers_2026-09-21/*.out
