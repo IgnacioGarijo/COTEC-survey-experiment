@@ -198,3 +198,42 @@ Al aplicar la revisión:
 
 No aplicar todavía: mantener el manuscrito y el PDF de referencia hasta que
 el usuario autorice ejecutar el conjunto de cambios acumulados.
+
+CAMBIO A-004 — SUSTITUIR RESOURCE SKEPTICISM POR «DEMASIADOS RECURSOS»
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN.
+Origen: comparación exploratoria solicitada por el usuario y decisión posterior
+de utilizar únicamente el ítem de exceso de recursos, sin añadir un anexo.
+
+Decisión acordada:
+Sustituir el compuesto de dos ítems por la respuesta a «Se dedican demasiados
+recursos a los estudiantes repetidores». No incluir el ítem de ineficacia ni
+construir un indicador ampliado. NO añadir un anexo ni tablas de comparación
+de indicadores al paper: el usuario considera que no aportan valor.
+Esta decisión sustituye la recomendación de añadir dichas comprobaciones al
+anexo formulada en el informe exploratorio; no afecta al cambio A-001.
+
+Cuando se autorice aplicar los cambios acumulados:
+1. Utilizar la variable individual de acuerdo en escala 0–10, manteniendo la
+   combinación de versiones centro/comunidad ya comprobada. Denominarla con
+   precisión, por ejemplo «Perceived excess resources allocated to repeaters».
+   No seguir llamándola «resource skepticism» ni presentarla como escala latente.
+2. Presentar preferentemente el coeficiente por punto de la escala original,
+   explicitando cualquier estandarización que requiera un análisis concreto.
+3. Actualizar coherentemente las regresiones, modelos predictivos, SHAP,
+   descriptivos, gráficos y tablas existentes que utilicen el compuesto, así
+   como sus generadores y las menciones en métodos, resultados y discusión.
+   Recalcular los resultados afectados: no trasladar al nuevo ítem las cifras
+   del compuesto. Mantener las comparaciones sobre muestras coherentes y el
+   procedimiento de validación sin información de los grupos de evaluación.
+4. Conservar el código y los resultados de la prueba exploratoria en el
+   repositorio como trazabilidad interna, sin incorporarlos como nuevo anexo
+   ni ampliar innecesariamente la discusión del manuscrito.
+
+Referencia interna de la comprobación ya realizada (commit d32b7d4):
+2. Code/23. resource_measure_check.R
+3. Output/resource_measure_check_2026-09-25/informe.md
+La prueba reprodujo el modelo anterior y comparó los ítems en los mismos
+2.156 docentes. No equivale a haber actualizado todos los análisis del paper.
+
+Registrar únicamente la decisión por ahora. No modificar los manuscritos ni
+sus resultados hasta la autorización conjunta de los cambios pendientes.
