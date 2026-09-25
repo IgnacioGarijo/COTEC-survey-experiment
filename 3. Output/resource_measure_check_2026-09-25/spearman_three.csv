@@ -1,0 +1,4 @@
+"item","resources_excess","resources_ineffective","pass_unprepared"
+"resources_excess",1,0.493536004406078,0.0502242580271882
+"resources_ineffective",0.493536004406078,1,0.100136277946345
+"pass_unprepared",0.0502242580271882,0.100136277946345,1
