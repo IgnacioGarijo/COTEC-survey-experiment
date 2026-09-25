@@ -237,3 +237,123 @@ La prueba reprodujo el modelo anterior y comparó los ítems en los mismos
 
 Registrar únicamente la decisión por ahora. No modificar los manuscritos ni
 sus resultados hasta la autorización conjunta de los cambios pendientes.
+
+CAMBIO A-005 — REFORMULAR 4.1: DIAGNÓSTICO Y RESPUESTA EDUCATIVA
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN.
+Localización: sección 4.1 «Common information, differing judgments» y sus
+conexiones con la estrategia empírica, resultados y discusión.
+Origen: revisión del usuario sobre la escasa aportación del modelo actual y
+aceptación del marco conceptual de diagnóstico y respuesta educativa.
+
+Decisión acordada:
+Reemplazar la representación genérica mediante V_j(x) por un marco breve que
+distinga dos componentes: (a) las dificultades que el docente espera si el
+alumno promociona y (b) la conveniencia de repetir frente a promocionar con las
+alternativas disponibles. Considerar que un alumno tiene dificultades no
+equivale a considerar que repetir es la respuesta adecuada. No suponer que
+sean etapas conscientes o necesariamente secuenciales.
+
+La representación mínima propuesta es recomendar repetición cuando
+q_j(x) * g_j(x) > c_j(x): q es la probabilidad percibida de dificultades
+relevantes al promocionar; g, la ganancia percibida de repetir frente a
+promocionar cuando existen esas dificultades; c, los costes o inconvenientes
+percibidos de repetir en una escala compatible. Explicitar la simplificación
+de concentrar los beneficios en los casos con dificultades si se usa la
+ecuación. Desarrollar y fundamentar el argumento antes de decidir su forma
+matemática definitiva. Conservar una ecuación solo si ayuda a comprenderlo;
+si no añade contenido a la explicación verbal, mantener el marco y retirarla.
+
+Implicaciones que deben organizar la lectura:
+1. Dos profesores pueden coincidir en el diagnóstico y discrepar sobre la
+   respuesta educativa. El desacuerdo no implica únicamente pesos distintos
+   de las calificaciones.
+2. Una circunstancia desfavorable puede aumentar la preocupación por un alumno
+   y, a la vez, hacer menos conveniente la repetición. Un coeficiente negativo
+   del contexto social no significa necesariamente que se perciban menos
+   dificultades académicas.
+3. Las diferencias entre grupos en la repetición observada pueden coexistir
+   con diferencias pequeñas, nulas o inversas al comparar perfiles semejantes.
+4. Una propensión media no agota las diferencias de criterio: dos docentes
+   pueden recomendar repetir con igual frecuencia y elegir alumnos distintos.
+
+Retirar theta_j(Q) de 4.1: define un objeto poblacional, pero no aporta un
+mecanismo y añade notación sin uso posterior. Mantener H^b_j en medición,
+explicándolo directamente como propensión relativa sobre las tarjetas
+respondidas. No crear un anexo para theta ni equiparar automáticamente H^b_j
+a una propensión sobre una distribución común de todos los perfiles.
+
+Fundamentar el marco en literatura pertinente al aplicarlo. Presentarlo como
+marco conceptual para interpretar y distinguir explicaciones; no como un
+modelo estructural estimado, pues no observamos por separado q, g y c. No
+atribuir mecanismos a los coeficientes sin evidencia. Tampoco identificar el
+ítem «demasiados recursos» directamente con uno de esos componentes.
+
+Esta decisión reemplaza las propuestas intermedias de basar la contribución
+teórica en una suma de atributos con pesos y umbrales. Esas representaciones
+pueden ayudar a explicar el análisis empírico, pero no deben presentarse por
+sí solas como aportación teórica. No se ha autorizado aquí un nuevo modelo
+estructural ni estimaciones de pesos individuales por profesor.
+
+CAMBIO A-006 — LOS SEIS ATRIBUTOS Y EL CONTRASTE CON DESIGUALDADES REALES
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN.
+Localización: marco conceptual, presentación de contribuciones, resultados de
+atributos y discusión; coordinar con A-002 y A-005.
+Origen: petición del usuario de no relegar los otros atributos al centrar el
+artículo en suspensos y competencias, y de hacer visible la interpretación
+del contraste con las tasas reales por género y contexto social.
+
+Decisión acordada:
+Dar un papel sustantivo explícito a los seis atributos en tres bloques:
+información académica (suspensos y competencias), asistencia y conducta
+(absentismo y problemas disciplinarios), y género y contexto social. Evitar
+que estos últimos aparezcan como meros controles. El conflicto académico es
+una parte destacada de la pregunta general sobre cómo combinan los docentes
+la información para recomendar repetición, no el único resultado relevante.
+
+Explicar que el absentismo y la disciplina tienen peso adicional aun con
+información académica comparable. Distinguir la utilización de esos atributos
+de las explicaciones posibles (preparación, implicación, reglas normativas,
+etc.): no deducir motivaciones internas solo del signo del coeficiente.
+Conectar cada bloque con diagnóstico y valoración de la respuesta educativa,
+sin asignar de forma exclusiva cada atributo a un mecanismo.
+
+Incorporar un párrafo visible sobre género y contexto social, respaldando con
+fuentes pertinentes las diferencias en las tasas reales de repetición. El
+argumento debe contrastarlas con la ausencia de una penalización media
+apreciable por ser varón en nuestras tarjetas y con la reducción de las
+recomendaciones al presentar un contexto social complicado. Esta última es
+compatible con una consideración compensatoria del contexto.
+
+Contenido de referencia acordado (adaptar al inglés y a las fuentes):
+«El contraste con las mayores tasas de repetición observadas entre varones y
+estudiantes de entornos desfavorecidos sugiere que esas diferencias no tienen
+por qué traducirse en una penalización adicional cuando los docentes evalúan
+perfiles comparables. Nuestros resultados son compatibles con que parte de
+esas desigualdades surja de diferencias en las situaciones académicas y
+escolares con las que los estudiantes llegan a la decisión de promoción,
+mientras que la consideración explícita de un contexto desfavorable puede
+moderar la recomendación de repetir».
+
+No ocultar esta interpretación entre cautelas repetitivas: el usuario quiere
+que el lector vea la posibilidad de una explicación distinta de la
+penalización directa por pertenencia al grupo. Precisar su alcance una vez:
+no hemos demostrado ausencia de discriminación en todo el proceso educativo
+ni cuantificado qué parte de las brechas reales explica cada mecanismo.
+Describir recomendaciones observadas, no creencias o intenciones directamente
+medidas. No equiparar automáticamente menos repetición con mayor beneficio
+para el alumno ni interpretar un efecto medio cercano a cero como igualdad
+exacta en todos los perfiles y profesores.
+
+Cifras de referencia actuales del modelo aditivo (puntos porcentuales):
+absentismo +6,37; disciplina +4,56; varón +0,26, IC95% [-0,62; 1,15]; contexto
+complicado -1,88, IC95% [-2,74; -1,02]. Verificar cifras y definición exacta del
+atributo al aplicar la revisión. Son resultados del conjunto de contextos
+experimentales; la estimación de contexto social en control solo es menos
+precisa. No afirmar que el patrón esté demostrado por separado en cada brazo.
+
+Organizar el argumento del paper desde qué información pesa y en qué sentido,
+pasando por qué perfiles dividen a los docentes, hasta las diferencias entre
+profesores y su predictibilidad. Preservar la coherencia con los otros cambios.
+
+Los cambios A-005 y A-006 quedan registrados únicamente. No modificar ahora
+manuscritos, generadores, análisis ni PDF; esperar la autorización conjunta.
