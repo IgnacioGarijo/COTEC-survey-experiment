@@ -1,0 +1,90 @@
+REGISTRO DE CAMBIOS PENDIENTES — MANUSCRITO A
+Creado: 25 de septiembre de 2026
+
+INSTRUCCIÓN DE TRABAJO
+El usuario seguirá señalando cambios sobre el manuscrito. Anotar aquí cada
+indicación, con su localización, contenido y estado. NO ejecutar los análisis,
+modificar el manuscrito ni recompilar el PDF hasta que el usuario indique
+expresamente que se apliquen los ajustes acumulados. Mantener la versión actual
+para que las páginas y anotaciones sigan siendo una referencia estable.
+Actualizar y guardar este registro sí está autorizado. Hacer commits de los
+cambios sustantivos, conforme a la instrucción previa del usuario.
+
+MANUSCRITO DE REFERENCIA
+4. Latex/two_papers_2026-09-22/paper_A_teacher_decisions.pdf
+Fuente: misma carpeta, paper_A_teacher_decisions.tex
+Generador: 2. Code/19. compose_deepened_manuscripts.py
+Estado de referencia: commit b73fa3a; PDF de 21 páginas.
+El primer párrafo comentado de la página 2 YA se sustituyó por el texto que
+comienza «Studying these questions together helps distinguish disagreement
+on individual cases...». Ese cambio está aplicado y no debe confundirse con
+los pendientes siguientes.
+
+CAMBIO A-001 — CONSISTENCIA ENTRE MITADES Y VARIANZA PERMUTADA
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN.
+Origen: segundo párrafo rojo comentado en la página 2, que comienza
+«The dispersion of teachers' relative propensity is not reproduced by
+shuffling answers...», y discusión posterior sobre qué análisis conviene
+presentar de cara a una publicación.
+
+Decisión acordada:
+Priorizar una comprobación de consistencia entre mitades aleatorias repetidas
+como análisis complementario en el anexo. Reducir el protagonismo de la
+permutación de respuestas entre profesores y conservarla como comprobación
+secundaria breve si aporta información adicional. Explicar claramente el
+análisis y acompañarlo de un gráfico. Evitar complejidad que no aporte valor.
+
+Cuando el usuario autorice aplicar los cambios:
+1. Dividir las respuestas de CADA DOCENTE en dos conjuntos aleatorios sin
+   respuestas compartidas y de tamaños lo más parecidos posible. No dividir
+   la muestra de docentes en dos grupos.
+2. Calcular la propensión relativa en cada mitad, ajustando por las tarjetas
+   evaluadas. No utilizar únicamente porcentajes brutos de repetición.
+   Especificar y comprobar cómo se construyen los referentes de tarjeta para
+   evitar que el procedimiento introduzca artificialmente correspondencia
+   entre las mitades.
+3. Calcular la correlación de los dos índices entre docentes y repetir muchas
+   particiones aleatorias. Fijar y documentar semillas, número de particiones,
+   tratamiento de números impares y criterio de respuestas mínimas. No elegir
+   estos detalles buscando un resultado favorable. Explicitar la muestra de
+   esta comprobación sin cambiar la muestra principal ni los terciles acordados.
+4. Mostrar un resumen y un gráfico de las correlaciones entre particiones.
+   No seleccionar una partición especialmente favorable para ilustrar el
+   resultado. Si se presenta un intervalo de confianza de muestreo, remuestrear
+   docentes y repetir dentro de cada remuestreo el procedimiento pertinente.
+   Distinguir esa incertidumbre de la variación debida a las particiones.
+5. Explicar que repetir particiones reduce la dependencia de una división
+   concreta, pero no añade información: siguen siendo pocas tarjetas por
+   profesor. Interpretar el resultado como consistencia dentro del cuestionario,
+   no como estabilidad temporal, rasgo permanente o validez de las decisiones.
+   No aplicar automáticamente una corrección de Spearman–Brown ni interpretar
+   la correlación como fiabilidad del índice completo sin justificar supuestos.
+6. Comparar el resultado con la permutación ya calculada, sin dar por supuesto
+   que ambas comprobaciones conducirán a la misma conclusión. Mantener la
+   elección del análisis principal del anexo aunque la correlación sea modesta.
+7. Si se conserva la permutación secundaria, explicar en lenguaje sencillo que
+   redistribuye respuestas entre docentes dentro de una misma tarjeta y celda
+   de asignación, preservando exposiciones y números de respuestas. El cociente
+   de varianzas no estima qué proporción es un rasgo verdadero del docente.
+8. Reescribir el segundo párrafo de la introducción según los resultados.
+   Retirar de allí el detalle del cociente 2,11, «permuted variance» y demás
+   terminología técnica innecesaria. Separar la evidencia de consistencia de
+   la conclusión sobre la limitada predicción con características observadas.
+   Trasladar la explicación detallada y el gráfico al anexo, con una referencia
+   breve y comprensible desde el cuerpo.
+9. Revisar las menciones relacionadas en resumen, métodos, resultados,
+   discusión y conclusión para que el protagonismo y alcance del análisis
+   sean coherentes. Mantener colores de procedencia, trazabilidad del código
+   y comprobaciones de cifras y PDF cuando se autorice la ejecución.
+
+Referencia metodológica ya consultada:
+Parsons, S. (2021). splithalf: robust estimates of split half reliability.
+Journal of Open Source Software, 6(60), 3041.
+https://doi.org/10.21105/joss.03041
+
+PRÓXIMAS INDICACIONES
+Añadir cada nuevo cambio debajo con identificador A-002, A-003, etc.
+Registrar página/párrafo o texto de referencia, decisión del usuario y estado.
+Si una indicación sustituye otra, dejar constancia de ello en vez de borrar
+silenciosamente el acuerdo anterior. No aplicar los pendientes hasta recibir
+la orden expresa del usuario.
