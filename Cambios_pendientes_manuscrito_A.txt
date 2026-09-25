@@ -147,3 +147,54 @@ https://doi.org/10.1007/s10212-026-01072-7
 
 Registrar únicamente esta revisión por ahora. No modificar los manuscritos,
 ejecutar análisis ni recompilar los PDF hasta la autorización conjunta.
+
+CAMBIO A-003 — ACLARAR EL PÁRRAFO METODOLÓGICO DE LA REVISIÓN DE LITERATURA
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN.
+Localización: página 3/21 del PDF de referencia, párrafo que comienza
+«Methodologically, the study draws on the logic of multidimensional vignette
+experiments» y termina con la interpretación de SHAP.
+Origen: comentario del usuario sobre falta de claridad y exceso de advertencias
+acerca de limitaciones o interpretaciones causales que el artículo no plantea;
+propuesta de simplificación aceptada por el usuario.
+
+Decisión acordada:
+Sustituir el párrafo por una explicación breve y positiva de qué permite el
+diseño y cómo contribuye a responder las preguntas del artículo. Evitar la
+acumulación de cautelas abstractas, tecnicismos y referencias sin desarrollar.
+
+Propuesta de contenido aceptada (redactar en inglés al aplicar los cambios):
+«Los experimentos con viñetas permiten estudiar cómo distintas características
+de un alumno intervienen conjuntamente en las recomendaciones docentes. En
+nuestro estudio, la variación de los perfiles permite examinar tanto el peso
+de esas características como el desacuerdo entre profesores que evalúan la
+misma información. Complementamos este análisis examinando cuánto ayudan las
+características profesionales y las creencias declaradas a predecir las
+recomendaciones de otros docentes».
+
+Al aplicar la revisión:
+1. Trasladar a métodos la explicación concreta de qué perfiles y ponderaciones
+   intervienen en cada comparación, cuando sea necesaria para interpretar la
+   estimación. No presentarla como un problema detectado sin evidencia.
+2. Retirar de este párrafo la advertencia de que validaciones de viñetas en
+   otros ámbitos no validan automáticamente nuestras recomendaciones. No
+   refutar afirmaciones que el artículo no hace. Revisar la función de la cita
+   correspondiente antes de conservarla o retirarla.
+3. Describir con precisión que se estudian recomendaciones ante casos
+   hipotéticos y tratar su alcance en el lugar pertinente, sin reiterar
+   advertencias de validez externa a lo largo del argumento.
+4. Explicar en métodos predictivos que los modelos se evalúan con docentes
+   no utilizados para estimarlos: una asociación en la muestra no garantiza
+   capacidad de predecir nuevas observaciones. Mantener esa distinción de
+   forma comprensible y conectada con el propósito del análisis.
+5. Trasladar la justificación de random forests y la descripción de SHAP a la
+   sección del análisis predictivo. Explicar qué aportan y cómo se interpretan,
+   sin enumerarlos aquí ni terminar con otra advertencia genérica de causalidad.
+6. Revisar las menciones relacionadas, incluido el párrafo inmediatamente
+   anterior, para evitar repetir que las características y creencias docentes
+   no tienen interpretación causal cuando ya se presentan como descriptivas
+   o predictivas. Definir una vez el objetivo y mantener lenguaje coherente.
+   Preservar las precisiones sustantivas necesarias y distinguir estos análisis
+   del estudio experimental de los atributos de las tarjetas.
+
+No aplicar todavía: mantener el manuscrito y el PDF de referencia hasta que
+el usuario autorice ejecutar el conjunto de cambios acumulados.
