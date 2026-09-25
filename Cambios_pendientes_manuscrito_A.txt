@@ -88,3 +88,62 @@ Registrar página/párrafo o texto de referencia, decisión del usuario y estado
 Si una indicación sustituye otra, dejar constancia de ello en vez de borrar
 silenciosamente el acuerdo anterior. No aplicar los pendientes hasta recibir
 la orden expresa del usuario.
+
+CAMBIO A-002 — DIFERENCIACIÓN RESPECTO A KLAPPROTH Y BEYTE (2026)
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN.
+Localización: revisión de literatura y presentación de la contribución del
+paper A; armonizar las menciones relacionadas cuando se apliquen los cambios.
+Origen: instrucción del usuario tras la lectura y comparación del artículo.
+
+Decisión acordada:
+Hacer explícitas las siguientes diferencias y explicar qué permiten aportar,
+integrándolas en el argumento de la revisión de literatura, no como una mera
+enumeración de ventajas ni como una afirmación de superioridad general.
+
+1. Muestra mayor y más directamente pertinente para estudiar decisiones de
+   docentes en ejercicio: nuestra muestra analítica general incluye 2.705
+   profesores, frente a 146 participantes en Klapproth y Beyte, de los cuales
+   108 estaban en formación y 38 ejercían. Precisar la muestra de cada análisis.
+   El tamaño aporta precisión y posibilidades analíticas; no garantiza por sí
+   mismo representatividad ni elimina las limitaciones del diseño.
+2. Más características del alumno: además del género y la información
+   académica, incorporamos contexto familiar, absentismo y comportamiento.
+   Explicar cómo esto permite estudiar el peso de información conductual o
+   actitudinal del alumno en las recomendaciones. Distinguir esos atributos
+   observados en las tarjetas de las creencias y actitudes del profesor.
+3. Separación entre suspensos y competencias: destacar que permite examinar
+   decisiones y disparidad de opiniones cuando las señales académicas apuntan
+   en direcciones distintas, especialmente varios suspensos con competencias
+   adecuadas. Conectar esta diferencia con el análisis de desacuerdo ante
+   perfiles comparables. Ellos distinguen nota media y ámbito de los suspensos
+   (lenguas frente a matemáticas/ciencias), una pregunta distinta que nuestro
+   diseño no reproduce directamente.
+4. Más características del profesor: describir la mayor amplitud de información
+   profesional y personal disponible y su utilidad para caracterizar y tratar
+   de predecir diferencias entre docentes.
+5. Creencias no necesariamente referidas a la repetición: explicar que nuestro
+   estudio considera creencias educativas más amplias, mientras que ellos
+   emplean una escala específica de 16 ítems de actitud hacia la repetición.
+   Presentar esta amplitud como una diferencia de alcance; reconocer que su
+   instrumento mide con mayor detalle ese constructo específico. No interpretar
+   nuestra limitada predicción como refutación de su asociación entre actitud
+   hacia la repetición y decisiones, ni como prueba de que las creencias no
+   importan. Distinguir asociación en la muestra de predicción fuera de ella.
+
+Reconocer expresamente el antecedente compartido: ambos usan viñetas para
+estudiar recomendaciones de repetición y consideran atributos del alumno e
+información del docente. No reivindicar como novedad aislada que el rendimiento
+académico importa o que las actitudes se relacionan con las recomendaciones.
+Articular la aportación propia en torno a las preguntas que las diferencias
+anteriores permiten responder, con especial atención a competencias frente a
+suspensos, desacuerdo entre docentes y capacidad predictiva de la información
+disponible. No incorporar resultados de análisis todavía pendientes.
+
+Referencia:
+Klapproth, F., y Beyte, C. (2026). GPA, student gender, school subject, and
+teacher attitudes in grade retention decisions: an experimental study.
+European Journal of Psychology of Education, 41, artículo 24.
+https://doi.org/10.1007/s10212-026-01072-7
+
+Registrar únicamente esta revisión por ahora. No modificar los manuscritos,
+ejecutar análisis ni recompilar los PDF hasta la autorización conjunta.
