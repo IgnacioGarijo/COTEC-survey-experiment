@@ -357,3 +357,129 @@ profesores y su predictibilidad. Preservar la coherencia con los otros cambios.
 
 Los cambios A-005 y A-006 quedan registrados únicamente. No modificar ahora
 manuscritos, generadores, análisis ni PDF; esperar la autorización conjunta.
+
+CAMBIO A-007 — RESULTADOS EN TRES CONTRIBUCIONES Y PROTAGONISMO DE HARSHNESS
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN. Registrado el 26/09/2026.
+Origen: discusión sobre las últimas subsecciones de métodos y reorganización
+de los resultados, seguida de las precisiones sobre harshness, mitades,
+efectos fijos y heterogeneidad docente. Complementa A-001, A-005 y A-006.
+
+Decisión general:
+Hacer corresponder introducción, marco conceptual, métodos y resultados con
+tres contribuciones: (1) variación de recomendaciones dentro de profesor ante
+atributos del alumno; (2) diferencias entre docentes ante información comparable;
+(3) caracterización y capacidad predictiva de las características docentes.
+Recuperar H^b (harshness) como medida central que conecta los bloques 2 y 3,
+sin convertirla en una medida directa de todos los componentes del juicio.
+
+BLOQUE 1 — CÓMO CAMBIAN LAS RECOMENDACIONES DENTRO DE PROFESOR
+Reunir los efectos de los seis atributos y las combinaciones/interacciones
+pertinentes. Conservar el protagonismo de suspensos y competencias, pero dar
+interpretación sustantiva al absentismo, disciplina, género y contexto social,
+según A-006. Distinguir la pregunta sobre qué información pesa de la pregunta
+sobre dónde discrepan los docentes. Presentar las combinaciones académicas
+donde mejor sostengan ese argumento, sin duplicar tablas o explicaciones entre
+bloques. El contraste con las desigualdades reales debe seguir siendo visible.
+
+BLOQUE 2 — DIFERENCIAS ENTRE DOCENTES ANTE INFORMACIÓN COMPARABLE
+La última propuesta acordada cambia el orden inicialmente sugerido:
+1. Introducir PRIMERO H^b y su distribución. Explicar de manera directa que
+   compara cada respuesta con las de otros docentes ante la misma tarjeta y
+   promedia las diferencias por profesor. Un valor de 0,10 significa diez
+   puntos porcentuales por encima de las referencias de las tarjetas recibidas.
+   Hacer que la distribución sea una pieza principal de la exposición, no un
+   resultado secundario entre muchas medidas. Mantener un nombre neutral y
+   consistente (propensión relativa a recomendar repetición), explicando su
+   correspondencia con la harshness del trabajo anterior.
+2. Conectar esa distribución con la comprobación de consistencia entre mitades
+   aleatorias repetidas ya acordada en A-001. Mantener método detallado y gráfico
+   de esa comprobación en el anexo, con referencia y explicación breve en el
+   cuerpo. La comprobación NO se ha ejecutado todavía: redactar la conclusión
+   según los resultados que se obtengan.
+3. Distinguir claramente dos funciones: el ajuste por referencia de tarjeta
+   atiende a los casos observados que recibió cada profesor; las mitades
+   comprueban si su posición relativa se reproduce en subconjuntos diferentes
+   de sus respuestas. No decir que las mitades, por sí solas, eliminan todo
+   efecto de asignación de perfiles o demuestran que la dispersión es un rasgo
+   estable. Respetar el cuidado sobre referentes compartidos recogido en A-001.
+4. Mantener el análisis de desacuerdo ante una tarjeta idéntica y su localización
+   por perfiles dentro de este bloque. Explicar su complementariedad con H^b:
+   uno indica qué casos dividen a los docentes; el otro resume en qué dirección
+   se aparta cada docente de sus compañeros a través de los casos respondidos.
+   Dos docentes pueden tener la misma propensión media y discrepar sobre qué
+   alumnos deberían repetir. No presentar ambos objetos como equivalentes.
+5. Los terciles pueden servir de descripción accesible, con H^b continuo como
+   medida principal. Evitar que la permutación eclipse la contribución
+   sustantiva; aplicar su tratamiento secundario conforme a A-001.
+
+BLOQUE 3 — CARACTERÍSTICAS DOCENTES, ASOCIACIONES Y PREDICCIÓN
+Usar H^b explícitamente como resultado principal y distinguir caracterización
+(qué características y creencias se relacionan con mayor propensión) de
+predicción en docentes no utilizados para estimar el modelo. Las otras
+definiciones del resultado quedan como comprobaciones secundarias existentes.
+Actualizar los modelos afectados por el cambio a «demasiados recursos» (A-004).
+Explicar primero la pregunta y luego el procedimiento; trasladar al anexo
+técnico existente los detalles que no ayudan a seguir el argumento principal.
+No atribuir al marco teórico una predicción de alta o baja capacidad explicativa
+de las características observadas: esa capacidad es una pregunta empírica.
+
+REORGANIZACIÓN CORRESPONDIENTE DE MÉTODOS
+Separar el análisis de combinaciones de atributos del análisis predictivo:
+la actual 4.5 «Conflicting signals and prediction» mezcla dos preguntas.
+La actual 4.4 contiene la permutación, cuyo tratamiento cambia según A-001.
+En el PDF de referencia no hay 4.6; identificar contenidos por título para
+evitar confusiones cuando cambie la numeración. Explicar cada análisis por su
+propósito y organizarlo en correspondencia con los tres bloques de resultados.
+
+CAMBIO A-008 — CARACTERÍSTICAS DOCENTES Y HETEROGENEIDAD EN EL MARCO
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN. Registrado el 26/09/2026.
+Complementa A-005 y conecta el marco con la estructura de A-007.
+
+Incorporar explícitamente que diagnóstico, ganancia percibida y costes de la
+repetición dependen tanto del perfil del alumno como del profesor. Conservar
+preferentemente la notación ya usada: i para tarjeta/alumno, j para profesor;
+x_i para atributos del alumno y z_j para características y creencias docentes
+observadas. La propuesta conceptual puede representarse como:
+q_j(x_i) = q(x_i, z_j, eta_j^q),
+g_j(x_i) = g(x_i, z_j, eta_j^g),
+c_j(x_i) = c(x_i, z_j, eta_j^c).
+Mantener la regla q_j(x_i) * g_j(x_i) > c_j(x_i) con los supuestos de A-005.
+No es necesario mostrar las tres ecuaciones auxiliares: preferir explicación
+verbal si resulta más clara. No identificar cada covariable docente con un
+solo componente del marco ni introducir ecuaciones meramente decorativas.
+
+Explicar que las características medidas no agotan las diferencias de juicio.
+Los términos eta representan heterogeneidad no observada en el proceso de
+decisión; H^b resume la propensión observada resultante de ese proceso.
+Conceptualmente, eta contribuiría a lo que queda sin explicar en una regresión
+H^b_j = m(z_j) + e_j, más que corresponder al propio H^b. No igualar eta y e:
+el residuo incluye también ruido por pocas respuestas y relaciones que el
+modelo no recoge. Parte de eta puede cambiar qué alumnos se hacen repetir sin
+alterar la propensión media, y por ello no estar resumida en H^b ni en e.
+Esta distinción debe orientar la interpretación, sin obligar a incluir otra
+ecuación en el artículo.
+
+EFECTOS FIJOS: CONEXIÓN CONCEPTUAL Y DIAGNÓSTICO INTERNO YA REALIZADO
+El efecto fijo alpha_j del modelo de atributos recoge diferencias de nivel
+entre docentes, tanto relacionadas con sus características observadas como no
+observadas y con contextos constantes dentro de docente. No aisla eta, y un
+intercepto no recoge toda heterogeneidad en los pesos de los atributos.
+
+Se compararon H^b y efectos fijos en los mismos 2.587 docentes del modelo
+(22.006 respuestas): Pearson 0,9984 y Spearman 0,9768. Con al menos ocho
+respuestas, Pearson 0,9984 (2.369 docentes). La comparación centra las dos
+medidas en la misma muestra y mantiene las referencias originales de H^b.
+Resultados y gráficos internos, commit 96480e9:
+2. Code/24. harshness_fixed_effect_check.R
+3. Output/harshness_fixed_effect_check_2026-09-26/nota_interna.md
+
+Conservar este diagnóstico para comprensión interna, como indicó el usuario.
+NO añadir por defecto una distribución de efectos fijos, el gráfico de
+correlación o un nuevo anexo al paper: duplicarían casi la información de H^b.
+La alta correlación no es validación independiente ni prueba de fiabilidad,
+pues ambos indicadores utilizan las mismas respuestas. No sustituye la
+comprobación pendiente entre mitades.
+
+Los cambios A-007 y A-008 quedan solo registrados. No ejecutar todavía las
+revisiones, recompilar ni alterar los manuscritos/PDF de referencia. Mantener
+la trazabilidad de decisiones anteriores y esperar autorización conjunta.
