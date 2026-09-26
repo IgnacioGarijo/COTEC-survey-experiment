@@ -666,3 +666,30 @@ propuesta condicional de conservar o retirar la tabla por terciles y las
 curvas: la tabla SE INCLUYE en resultados y las curvas SE RETIRAN.
 Registrar únicamente por ahora. No modificar manuscritos, análisis ni PDF
 hasta la autorización conjunta para aplicar los ajustes acumulados.
+
+CAMBIO A-013 — COMPLETAR EL APÉNDICE DE MUESTRA, FLUJO Y ABANDONO DEL PAPER A
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN. Registrado el 26/09/2026.
+Completar el apéndice existente de muestra y diseño con un diagrama de flujo
+claro de registros iniciales, exclusiones, decisiones disponibles, número de
+respuestas por docente y muestra de caracterización/predicción. Separar
+abandono, exclusión por filtro y falta de covariables; no interpretar todos
+los registros sin resultado como abandonos ni forzar etapas no anidadas.
+Examinar dónde dejan de observarse respuestas y, si la información lo permite,
+la evolución de tiempos y falta de respuesta durante la tarea como posibles
+indicios de agotamiento. Disponibilidad, duración total y alternancia de
+decisiones no equivalen a demostrar fatiga. Examinar especialmente quién
+alcanza y responde las creencias finales, relevantes para la muestra predictiva.
+Aprovechar el análisis de selección ya realizado para B, pero adaptarlo a la
+muestra y preguntas de A; no duplicar sus contrastes de políticas ni crear
+otro anexo desconectado. Describir en el cuerpo solo lo necesario para entender
+la muestra, con flujo visual y detalles en el apéndice existente.
+
+ENCARGO INTERNO SEPARADO — SIMULACRO DE COMPARACIÓN CON POBLACIÓN DOCENTE
+El usuario autoriza ahora analizar el Excel de Downloads «1. PROFESORADO
+RÉGIMEN GENERAL (1).xlsx», tratándolo hipotéticamente como referencia oficial,
+y elaborar un PDF aparte comparando variables compatibles con nuestra muestra.
+Este ejercicio es experimental: NO incorporar al paper ni concluir validación
+de representatividad. Registrar fuente, ámbito, periodo, denominadores y
+correspondencia de categorías. El usuario decidirá posteriormente su inclusión
+y proporcionará, si procede, el Excel real. Esta autorización no implica
+ejecutar ahora A-013 ni los demás cambios acumulados de los manuscritos.
