@@ -483,3 +483,52 @@ comprobación pendiente entre mitades.
 Los cambios A-007 y A-008 quedan solo registrados. No ejecutar todavía las
 revisiones, recompilar ni alterar los manuscritos/PDF de referencia. Mantener
 la trazabilidad de decisiones anteriores y esperar autorización conjunta.
+
+CAMBIO A-009 — CONSERVAR EDAD Y EXPERIENCIA; RETIRAR SCHOOL TENURE
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN. Registrado el 26/09/2026.
+Localización: especificación de características docentes del paper A y todos
+los análisis, tablas y menciones afectados.
+
+Decisión acordada:
+Mantener edad y experiencia docente y retirar antigüedad en el centro
+(school tenure, variable antiguedad3) de la especificación principal. Aplicar
+coherentemente esta selección a los conjuntos de predictores X1, X2 y X3 del
+paper A y a sus análisis de caracterización y predicción. No extender por
+defecto este cambio a estimaciones del paper B que respondan a otros objetivos.
+
+Justificación conceptual:
+La experiencia recoge trayectoria profesional acumulada; la edad permite
+considerar diferencias generacionales y de trayectoria vital. La antigüedad
+en un centro tendría más interés para una pregunta sobre integración en el
+claustro y normas institucionales, poco desarrollada en este paper y no medida
+directamente por los años de permanencia. Retirarla por parsimonia y menor
+relevancia para el argumento, no por su falta de significación ni por una
+regla automática de correlación.
+
+Interpretar los coeficientes conjuntos con claridad: experiencia compara
+docentes de igual edad con distinta trayectoria profesional; edad compara
+docentes con igual experiencia y distinta edad. Estas comparaciones también
+reflejan diferencias en inicio/interrupción de carrera. No describirlas como
+efectos de envejecer o de acumular experiencia, ni afirmar que esta encuesta
+separa envejecimiento y generación.
+
+Diagnóstico de referencia realizado sobre los 2.156 casos comunes actuales:
+correlaciones edad-experiencia 0,794; experiencia-antigüedad 0,673;
+edad-antigüedad 0,528. VIF en el modelo completo anterior: edad 3,03;
+experiencia 4,68; antigüedad 2,11. El mayor solapamiento es entre edad y
+experiencia, pero no obliga a eliminar una de ellas. La elección se fundamenta
+en el contenido de las variables, no en seleccionar coeficientes significativos.
+
+Al ejecutar los cambios acumulados:
+1. Actualizar conjuntos de predictores, regresiones, modelos predictivos,
+   etiquetas, tablas y generadores afectados, coordinando con A-004.
+2. Comprobar internamente cómo cambian los coeficientes y la predicción.
+   Comparar primero sobre la misma muestra para distinguir el cambio de
+   especificación de posibles cambios de disponibilidad de observaciones.
+   Revisar y documentar los tamaños finales de muestra si retirar este requisito
+   permite recuperar casos; mantener muestras comunes en comparaciones de modelos.
+3. No añadir un anexo de comparación de estas variables. Conservar trazabilidad
+   interna de las comprobaciones y actualizar las cifras del manuscrito.
+
+Registrar únicamente por ahora. No modificar análisis, manuscritos ni PDF
+hasta la autorización conjunta para aplicar los cambios pendientes.
