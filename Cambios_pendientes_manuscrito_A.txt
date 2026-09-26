@@ -532,3 +532,82 @@ Al ejecutar los cambios acumulados:
 
 Registrar únicamente por ahora. No modificar análisis, manuscritos ni PDF
 hasta la autorización conjunta para aplicar los cambios pendientes.
+
+CAMBIO A-010 — SIMPLIFICAR EL CIERRE DE RESULTADOS TRAS LA TABLA 6
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN. Registrado el 26/09/2026.
+Localización: últimos cuatro párrafos de resultados del PDF de referencia,
+desde «The approximate paired comparison...» hasta «Recovered-order
+diagnostics...». Coordinar con la reorganización en A-007.
+
+1. Comparación emparejada entre modelos predictivos:
+   Mantener en el cuerpo solo una frase con la conclusión sustantiva: en los
+   resultados actuales, la regresión completa mejora modestamente la predicción
+   respecto a predecir la media y al bosque; ridge ofrece resultados similares.
+   Dejar las diferencias de error cuadrático (-10,56, 5,48, etc.), sus intervalos
+   y la corrección aproximada por solapamiento en la tabla/explicación técnica
+   del anexo existente. Actualizar la frase según los modelos revisados por
+   A-004 y A-009; no conservar por inercia cifras o comparaciones anteriores.
+2. Predicción con la muestra disponible más amplia:
+   Resumirla en una frase como comprobación secundaria. Mantener cifras y
+   detalles completos en el anexo existente. Su función es comprobar la
+   predicción con características básicas en más docentes; no identifica cómo
+   funcionarían las creencias no respondidas ni permite comparar directamente
+   RMSE entre muestras diferentes. Revisar tamaños al actualizar covariables.
+3. Conexión entre consistencia y predicción:
+   Conservar esta conexión como parte sustantiva del cierre, sustituyendo el
+   protagonismo de la permutación por el de la comprobación entre mitades de
+   A-001. Una posible formulación, SOLO SI los resultados la respaldan, es:
+   «La posición relativa de los docentes muestra cierta consistencia entre
+   subconjuntos de respuestas, aunque sus características profesionales y
+   creencias permiten anticiparla solo modestamente».
+   Las mitades aún no se han ejecutado: adaptar la conclusión al resultado,
+   sin anticipar consistencia positiva. La predicción evalúa H^b construido
+   con pocas respuestas, que incluye ruido de medición. Explicar el alcance
+   con claridad sin reiterar cautelas genéricas.
+4. Orden de las tarjetas y alternancia compensatoria:
+   Quitar del cierre de resultados la frase suelta sobre este análisis.
+   NO mantener una sección de anexo dedicada exclusivamente a él: el actual
+   anexo «Recovered order and sequential dependence» no debe sobrevivir como
+   sección independiente solo por contener esta comprobación.
+   Conservar únicamente una mención breve si encaja de forma natural en otro
+   anexo existente que ya tenga una función propia. Si no encaja, retirar el
+   análisis del manuscrito, sin crear otro anexo ni ampliar artificialmente uno
+   para alojarlo. Conservar código y resultados en el repositorio como registro
+   interno. Revisar referencias cruzadas, tablas y citas que queden sin uso.
+   Si se menciona, concluir ausencia de evidencia convincente de alternancia
+   compensatoria, no ausencia de cualquier efecto de orden. Distinguir esta
+   permutación dentro de secuencias de la comparación de dispersión de H^b.
+
+El cierre debe destacar qué aprendemos sobre las diferencias entre docentes
+y su predictibilidad; las comprobaciones técnicas tienen una función de apoyo.
+
+CAMBIO A-011 — UNIFICAR LA TERMINOLOGÍA EN HARSHNESS (H^b)
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN. Registrado el 26/09/2026.
+Origen: aclaración al usuario de que «propensión relativa a recomendar
+repetición» y harshness H^b son la MISMA medida, no dos resultados distintos.
+
+Definir una vez que denominamos harshness a la propensión relativa del profesor
+a recomendar repetición, medida por H^b como promedio de desviaciones respecto
+a las respuestas de otros profesores ante las mismas tarjetas. Aclarar una vez
+que el nombre no presupone que recomendar repetición sea una decisión incorrecta.
+Después usar de manera consistente «harshness»: distribución de harshness,
+características asociadas a harshness y predicción de harshness. Evitar alternar
+etiquetas que hagan pensar que se analizan indicadores distintos.
+
+Esta decisión precisa y sustituye la preferencia anterior de A-007 por usar
+principalmente una etiqueta neutral. La definición neutral permanece al
+introducir la medida, pero el nombre estable a lo largo del paper será harshness.
+
+El análisis predictivo de la tabla 6 YA utiliza H^b, no el porcentaje bruto
+de recomendaciones. No cambiar el resultado de esos modelos por esta decisión
+terminológica. Durante validación, las referencias de tarjeta se calculan solo
+con docentes de entrenamiento: se excluye la propia respuesta al construir los
+resultados de entrenamiento y se usa la media de entrenamiento para evaluar
+docentes nuevos. Explicar esto como adaptación de la misma lógica de medición
+a la validación, no como un nuevo indicador. Mantener la distinción con H^a,
+H^c y H^d allí donde se presentan las comprobaciones secundarias existentes.
+
+Aplicar la terminología coherente a resumen, introducción, marco, métodos,
+resultados, discusión, conclusión, tablas y figuras afectados, junto con A-007.
+Los cambios A-010 y A-011 quedan registrados únicamente. No ejecutar revisiones
+ni modificar manuscritos o PDF hasta la autorización conjunta del usuario.
