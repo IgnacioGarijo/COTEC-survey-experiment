@@ -611,3 +611,58 @@ Aplicar la terminología coherente a resumen, introducción, marco, métodos,
 resultados, discusión, conclusión, tablas y figuras afectados, junto con A-007.
 Los cambios A-010 y A-011 quedan registrados únicamente. No ejecutar revisiones
 ni modificar manuscritos o PDF hasta la autorización conjunta del usuario.
+
+CAMBIO A-012 — TERCILES EN RESULTADOS; APÉNDICE B SOLO PARA MEDIDAS ALTERNATIVAS
+Estado: ACORDADO, PENDIENTE DE APLICACIÓN. Registrado el 26/09/2026.
+Localización: actual apéndice B «Descriptive terciles and alternative outcomes»
+y segundo bloque de resultados acordado en A-007. Coordinar con A-004,
+A-009 y A-011 al actualizar variables, cifras y terminología.
+
+1. Trasladar al segundo bloque de resultados los terciles de harshness y su
+   descripción, después de introducir H^b y mostrar su distribución. Incluir
+   la tabla de características docentes por tercil (A_tercile_summary) y comentar
+   sus resultados sustantivos, con referencia explícita a la tabla. Explicar
+   magnitud de diferencias y solapamiento de características, preparando el
+   tercer bloque sobre caracterización y predicción. No presentar como hallazgo
+   independiente que el tercil alto repite más, pues interviene en su definición.
+2. Por instrucción expresa del usuario, INCLUIR TAMBIÉN en ese segundo bloque
+   la tabla de regresiones de atributos por tercil (A_terciles). Su propósito
+   es mostrar descriptivamente cómo varía el peso de los atributos en las
+   recomendaciones de docentes con menor, intermedia y mayor harshness.
+   No omitirla ni relegarla por defecto al anexo. La importancia relativa de
+   los atributos no es homogénea en las estimaciones de esos grupos y merece
+   una explicación sustantiva de los patrones observados.
+3. Presentar los terciles como grupos descriptivos de la severidad observada,
+   no como tres tipos de profesor identificados o validados. Precisar una vez
+   que clasificación y coeficientes utilizan las mismas respuestas: los
+   patrones no demuestran por sí solos diferencias estables de preferencias
+   individuales. No deducir diferencias entre coeficientes solo porque uno sea
+   significativo y otro no. Interpretar con cuidado patrones como el signo
+   negativo de disciplina en el tercil alto, considerando selección del grupo
+   y margen de respuesta, sin diluir la exposición con advertencias repetidas.
+   Esta precisión delimita la interpretación, no revoca la inclusión acordada.
+4. Retirar del manuscrito el gráfico de medias de harshness por edad,
+   experiencia, esfuerzo y recursos (characterization_curves, fig:curvesA).
+   El usuario considera que no aporta frente a los coeficientes. No trasladarlo
+   al tercer bloque ni crear otro anexo para conservarlo. Mantener código y
+   archivos históricos como trazabilidad interna, eliminando inclusión y
+   referencias del manuscrito/generador cuando se apliquen los cambios.
+5. Reorganizar y renombrar el apéndice B para dedicarlo a la robustez/sensibilidad
+   respecto a definiciones alternativas de harshness. Explicar brevemente H^a,
+   H^b, H^c y H^d, presentar la tabla comparativa (A_four_outcomes) y comentar
+   qué asociaciones se mantienen y cuáles cambian. Actualizar los modelos
+   según las decisiones sobre recursos y antigüedad en el centro.
+6. No afirmar robustez universal por defecto. H^d ya ajusta por etapa educativa
+   y titularidad al construirse; que disminuya su asociación posterior con
+   esas variables refleja también ese cambio de definición. Explicar este
+   punto de forma concreta para interpretar correctamente las comparaciones.
+7. Asegurar que toda tabla o figura que permanezca tenga referencia explícita
+   y explicación sustantiva en el texto pertinente. Actualizar numeración,
+   referencias cruzadas y generadores, evitando duplicación entre cuerpo y
+   anexo y respetando la estructura de tres contribuciones.
+
+Esta decisión concreta el tratamiento de terciles en A-007 y sustituye la
+propuesta condicional de conservar o retirar la tabla por terciles y las
+curvas: la tabla SE INCLUYE en resultados y las curvas SE RETIRAN.
+Registrar únicamente por ahora. No modificar manuscritos, análisis ni PDF
+hasta la autorización conjunta para aplicar los ajustes acumulados.
