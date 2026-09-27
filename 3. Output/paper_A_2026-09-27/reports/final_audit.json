@@ -1,0 +1,109 @@
+{
+  "checks": "passed",
+  "pages": 25,
+  "tables": 13,
+  "figures": 6,
+  "references": 18,
+  "page_details": [
+    {
+      "page": 1,
+      "characters": 2521
+    },
+    {
+      "page": 2,
+      "characters": 3644
+    },
+    {
+      "page": 3,
+      "characters": 3241
+    },
+    {
+      "page": 4,
+      "characters": 3238
+    },
+    {
+      "page": 5,
+      "characters": 3159
+    },
+    {
+      "page": 6,
+      "characters": 3202
+    },
+    {
+      "page": 7,
+      "characters": 3217
+    },
+    {
+      "page": 8,
+      "characters": 3230
+    },
+    {
+      "page": 9,
+      "characters": 2213
+    },
+    {
+      "page": 10,
+      "characters": 2918
+    },
+    {
+      "page": 11,
+      "characters": 3209
+    },
+    {
+      "page": 12,
+      "characters": 1939
+    },
+    {
+      "page": 13,
+      "characters": 3646
+    },
+    {
+      "page": 14,
+      "characters": 750
+    },
+    {
+      "page": 15,
+      "characters": 3288
+    },
+    {
+      "page": 16,
+      "characters": 312
+    },
+    {
+      "page": 17,
+      "characters": 2059
+    },
+    {
+      "page": 18,
+      "characters": 2348
+    },
+    {
+      "page": 19,
+      "characters": 1577
+    },
+    {
+      "page": 20,
+      "characters": 2431
+    },
+    {
+      "page": 21,
+      "characters": 2731
+    },
+    {
+      "page": 22,
+      "characters": 2519
+    },
+    {
+      "page": 23,
+      "characters": 2567
+    },
+    {
+      "page": 24,
+      "characters": 3357
+    },
+    {
+      "page": 25,
+      "characters": 457
+    }
+  ]
+}

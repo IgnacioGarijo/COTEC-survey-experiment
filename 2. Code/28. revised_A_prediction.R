@@ -39,4 +39,3 @@ export(bind_rows(cmp),'prediction_paired_corrected');sh<-bind_rows(shaps)%>%pivo
 dirs<-list();for(v in o$x3){z<-filter(sh,variable==v);val<-o$t[[v]][match(z$id,o$t$id)];z$group<-if(is.numeric(val)&&length(unique(val))>5)paste0('Q',pmin(4,ceiling(rank(val,ties.method='average')/length(val)*4)))else as.character(val);dirs[[v]]<-z%>%group_by(variable,group)%>%summarise(n=n(),mean_shap=mean(shap),.groups='drop')};export(bind_rows(dirs),'nested_shap_direction')
 ggsave(file.path(out,'figures/nested_shap_direction.png'),ggplot(filter(bind_rows(dirs),variable%in%c('edad','experiencia','resources_excess','meritocracia')),aes(group,100*mean_shap))+geom_col(fill='#215e70')+facet_wrap(~variable)+labs(x='Within-variable quartile (low to high)',y='Mean held-out SHAP contribution (pp)')+theme_minimal(),width=8,height=5,dpi=220,bg='white')
 saveRDS(list(predictions=p,shap=sh),file.path(out,'reports/nested_prediction_objects.rds'));message('Nested prediction complete')
-

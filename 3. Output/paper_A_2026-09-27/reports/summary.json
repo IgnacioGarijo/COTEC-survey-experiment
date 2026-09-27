@@ -1,0 +1,13 @@
+{
+  "n_teachers": 2705,
+  "n_decisions": 22124,
+  "n_common": 2157,
+  "n_x1": 2642,
+  "n_alt": 2157,
+  "hb_mean": -0.0061,
+  "hb_sd": 0.2097,
+  "hb_quantiles": [-0.3028, -0.0882, 0.0315, 0.1437, 0.1718],
+  "tercile_cutoffs": [-0.0685, 0.1315],
+  "n_control": 281,
+  "old_common": 2156
+}
