@@ -27,15 +27,23 @@ labels=set(re.findall(r'\\label\{([^}]+)\}',tex))|set(re.findall(r'\\(?:inputtab
 refs=set(re.findall(r'\\ref\{([^}]+)\}',tex));assert refs<=labels,(refs-labels)
 for label in labels:
  if label.startswith(('tab:','fig:')):assert tex.count(r'\ref{'+label+'}')>=1,('Unmentioned exhibit',label)
-bib=(DOC/'references_A.tex').read_text(encoding='utf-8');keys=set(re.findall(r'\\bibitem\{([^}]+)\}',bib));cites=set(','.join(re.findall(r'\\cite\{([^}]+)\}',tex)).split(','));assert cites<=keys,cites-keys
+bib=(DOC/'references_A.tex').read_text(encoding='utf-8');keys=set(re.findall(r'\\bibitem\[[^\]]+\]\{([^}]+)\}',bib));cites=set(','.join(re.findall(r'\\cite(?:p|t|yearpar)\{([^}]+)\}',tex)).split(','));assert cites<=keys,cites-keys
 assert keys<=cites,('Uncited references',keys-cites)
-log=(DOC/'paper_A_teacher_decisions.log').read_text(encoding='utf-8',errors='replace');assert 'undefined' not in log.lower();assert 'Overfull' not in log
-pdf=DOC/'paper_A_teacher_decisions.pdf';reader=PdfReader(pdf);doc=pdfium.PdfDocument(pdf)
+for forbidden in ['Castilla','Mancha','Toledo','Albacete','Ciudad Real','Cuenca','Guadalajara','migrant status','Recorded support','2.11 times','95 percent interval']:
+ assert forbidden.lower() not in (tex+bib).lower(),('Obsolete or identifying text',forbidden)
+for table in (DOC/'tables').glob('*.tex'):
+ assert '95\\% CI' not in table.read_text(encoding='utf-8'),table
+assert '\\cite{' not in tex,'Numeric citation command remains'
+log=(DOC/'paper_A_teacher_decisions_final.log').read_text(encoding='utf-8',errors='replace');assert 'undefined' not in log.lower();assert 'Overfull' not in log
+pdf=DOC/'paper_A_teacher_decisions_final.pdf';reader=PdfReader(pdf);doc=pdfium.PdfDocument(pdf)
 qa=ROOT/'tmp/paper_A_2026-09-27_QA';qa.mkdir(parents=True,exist_ok=True);thumbs=[];pages=[]
 for i,page in enumerate(doc):
  im=page.render(scale=1.4).to_pil().convert('RGB');im.save(qa/f'page_{i+1:02}.png')
  thumb=ImageOps.contain(im,(280,396));tile=Image.new('RGB',(300,423),'#dddddd');tile.paste(thumb,((300-thumb.width)//2,5));ImageDraw.Draw(tile).text((10,404),f'Page {i+1}',fill='black');thumbs.append(tile)
- text=reader.pages[i].extract_text() or '';assert '??' not in text;pages.append(dict(page=i+1,characters=len(text)))
+ text=reader.pages[i].extract_text() or '';assert '??' not in text
+ for forbidden in ['castilla','mancha','toledo','albacete','ciudad real','cuenca','guadalajara']:
+  assert forbidden not in text.lower(),('Identifying PDF text',i+1,forbidden)
+ pages.append(dict(page=i+1,characters=len(text)))
 for k in range(0,len(thumbs),9):
  grid=Image.new('RGB',(900,423*((min(9,len(thumbs)-k)+2)//3)),'white')
  for j,tile in enumerate(thumbs[k:k+9]):grid.paste(tile,((j%3)*300,(j//3)*423))

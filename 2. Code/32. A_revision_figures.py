@@ -40,7 +40,7 @@ def obs(v,c,cohort):
     a=s[cohort]['marginals'][v];return 100*a['counts'].get(c,0)/a['observed']
 fig=plt.figure(figsize=(10,7.8));gs=fig.add_gridspec(3,2,height_ratios=[1,1.5,1],hspace=.72,wspace=.68)
 ages=['20-24','25-29','30-34','35-39','40-44','45-49','50-54','55-59','60-64','65+'];prov=['Albacete','Ciudad Real','Cuenca','Guadalajara','Toledo']
-panels=[(gs[0,0],'sex',['Women','Men'],['Women','Men'],'A. Sex/gender',100),(gs[0,1],'ownership',['Public','Private'],['Public','Private*'],'B. School ownership',100),(gs[1,0],'age_band',ages,ages,'C. Age',35),(gs[1,1],'province',prov,prov,'D. Province',45),(gs[2,:],'level',['Primary','Secondary'],['Infant/primary','Secondary'],'E. Educational stage (approximation)',100)]
+panels=[(gs[0,0],'sex',['Women','Men'],['Women','Men'],'A. Sex/gender',100),(gs[0,1],'ownership',['Public','Private'],['Public','Private*'],'B. School ownership',100),(gs[1,0],'age_band',ages,ages,'C. Age',35),(gs[1,1],'province',prov,['Province A','Province B','Province C','Province D','Province E'],'D. Province (anonymized)',45),(gs[2,:],'level',['Primary','Secondary'],['Infant/primary','Secondary'],'E. Educational stage (approximation)',100)]
 for spec,v,cats,labels,title,limit in panels:
     ax=fig.add_subplot(spec);y=np.arange(len(cats))
     for k,(cohort,label,col,marker) in enumerate([(None,'Population 2023/24','#7d8791','s'),('main','Teachers with decisions','#215e70','o'),('complete','Complete cases','#b46630','^')]):
@@ -57,9 +57,11 @@ if (OUT/'tables/variance_partition.csv').exists():
         if x>5:axs[0].text(left+x/2,0,f'{x:.1f}%',ha='center',va='center',fontsize=10,color='white' if col in [cols[0],cols[4]] else 'black')
         left+=x
     axs[0].set_xlim(0,100);axs[0].set_yticks([]);axs[0].set_xticks([]);axs[0].set_title('Model-based partition on the linear-response scale',loc='left',fontsize=12)
+    draws=rows('variance_bootstrap_draws')
     for i,(r,col) in enumerate(zip(v,cols)):
-        x,lo,hi=[100*float(r[k]) for k in ('share','lo','hi')];axs[1].plot([lo,hi],[i,i],color=col,lw=2);axs[1].scatter(x,i,color=col,s=40);axs[1].text(max(x,hi)+1,i,f'{x:.2f}%',va='center',fontsize=10)
-    axs[1].set_yticks(range(len(v)),[labels[r['component']] for r in v]);axs[1].invert_yaxis();axs[1].set_xlabel('Share of model-implied variance (%) and teacher-bootstrap 95% intervals');axs[1].set_xlim(0,70);axs[1].grid(axis='x',alpha=.15);fig.tight_layout();save(fig,'variance_partition')
+        x=100*float(r['share']);se=100*np.std([float(d[r['component']]) for d in draws],ddof=1)
+        axs[1].plot([x-se,x+se],[i,i],color=col,lw=2);axs[1].scatter(x,i,color=col,s=40);axs[1].text(x+se+1,i,f'{x:.2f}% (SE {se:.2f})',va='center',fontsize=10)
+    axs[1].set_yticks(range(len(v)),[labels[r['component']] for r in v]);axs[1].invert_yaxis();axs[1].set_xlabel('Share of model-implied variance (%) ± one teacher-bootstrap SE');axs[1].set_xlim(0,75);axs[1].grid(axis='x',alpha=.15);fig.tight_layout();save(fig,'variance_partition')
 # Show the actual dispersion across repeated partitions without an empty zero-to-.4 axis.
 r=np.array([float(row['correlation']) for row in rows('split_half_partitions')])
 fig,ax=plt.subplots(figsize=(7.7,3.6))
