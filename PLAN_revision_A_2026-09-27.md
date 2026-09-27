@@ -1,5 +1,7 @@
 # Revisión integrada del paper A
 
+**Registro histórico de la entrega intermedia.** Se comprobó después que las notas de autores leídas aquí eran una versión antigua sin guardar. La correspondencia con esas respuestas antiguas deja de ser normativa. La revisión vigente, basada en los dos archivos correctos y en los colores respecto de b73fa3a, está documentada en `PLAN_correccion_notas_autores_2026-09-27.md`; el PDF vigente termina en `_final.pdf`.
+
 Autorizada el 27/09/2026. Fuente: `Cambios_pendientes_manuscrito_A.txt` (A-001–A-015) y `cambios_pendientes_manuscrito_A_autores.txt` completo. Las decisiones posteriores explícitas sustituyen las anteriores incompatibles. El paper B y los manuscritos históricos se conservan. Entrega nueva en `4. Latex/paper_A_2026-09-27/`.
 
 ## Plan de ejecución

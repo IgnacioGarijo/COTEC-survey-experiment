@@ -17,4 +17,16 @@ Referencia de comparación y colores: `4. Latex/two_papers_2026-09-22/paper_A_te
 7. Conservar la sustancia de la antigua 5.2: desacuerdo cuando suspensos y competencias divergen, cuatro categorías e interacción académica. Simplificar la exposición técnica en resultados, con explicaciones sustantivas y detalles en anexos.
 8. Revisar colores contra la referencia fijada, coherencia global, menciones de tablas/figuras/anexos, instrucciones no aplicadas y PDF renderizado. Corregir los registros previos que afirmaban cumplimiento con un archivo obsoleto y guardar commits.
 
-Estado: en ejecución.
+Estado: completado. PDF vigente: `4. Latex/paper_A_2026-09-27/paper_A_teacher_decisions_final.pdf`. Tiene 22 páginas, 13 tablas, 7 figuras/diagramas y 17 referencias académicas en APA. Compilación y auditoría correctas, todas las páginas revisadas visualmente.
+
+## Comprobación de cumplimiento
+
+- Generales: APA alfabético y autor-año; anonimización de región, referencia administrativa y provincias; estimaciones con estrellas/SE; retiradas las advertencias causales repetidas; resultados reescritos alrededor de su interpretación. Cada tabla, figura y apéndice tiene una referencia explícita.
+- 3.1: cuestionarios inicial y final ampliados; frase sobre migración y distribución de número de respuestas retiradas. Se recupera en azul la explicación de ejemplos que figuraba en el manuscrito de referencia.
+- 3.2: sección eliminada; no se conserva el antiguo apéndice de soporte ni se traslada su contenido al nuevo A. La definición breve de X1–X3 acompaña ahora a los modelos que los utilizan. Se elimina también la explicación de armonización que las notas pedían retirar.
+- 4.2: atributos del alumno x_i y bloques docentes X1–X3 diferenciados explícitamente. 4.3: último párrafo antiguo retirado; la condición descriptiva de terciles se explica donde se presentan. 4.4: el análisis de permutaciones deja de estructurar los métodos; mitades se explica con su gráfico en B.
+- 5.2: preservadas las cuatro categorías académicas, el desacuerdo ante señales en conflicto y la interacción entre suspensos y competencias. 5.4 antigua: retirada, sin trasladar sus cifras a otros párrafos.
+- A-001–A-015: conservados con la única eliminación posterior de la permutación secundaria, acorde con la nueva instrucción. Siguen el marco conceptual nuevo, los seis atributos, harshness, terciles, recursos como ítem único, edad y experiencia, tres bloques, participación/composición y descomposición multinivel.
+- Colores: referencia inmutable b73fa3a; tres bloques de prosa azul cotejados literalmente. El apéndice nuevo de participación, el procedimiento nuevo de mitades y la descomposición se presentan como incorporaciones respecto a esa referencia.
+
+La entrega anterior y su declaración de cumplimiento se consideran superadas por esta revisión. Los cálculos autorizados por los acuerdos actuales no requerían reestimación: se regeneraron tablas y figuras con SE y se corrigió la selección y exposición del contenido. No se utilizaron las respuestas antiguas como una fuente adicional de instrucciones.

@@ -7,6 +7,7 @@
 \usepackage[section]{placeins}
 \usetikzlibrary{arrows.meta,positioning}
 \usepackage[font=small,labelfont=bf]{caption}
+\usepackage[authoryear,round]{natbib}
 \usepackage[hidelinks]{hyperref}
 \geometry{margin=25mm}
 \setstretch{1.12}
@@ -27,7 +28,7 @@
 \newenvironment{addition}{\begingroup\color{added}}{\endgroup}
 \newcommand{\pp}{percentage points}
 \newcommand{\figroot}{../../3. Output/paper_A_2026-09-27/figures/}
-\newcommand{\draftlegend}{\begin{center}\small\color{black}Coauthor working draft --- 27 September 2026\\\old{Blue: wording retained verbatim.}\quad\rev{Orange: revised existing material.}\\\new{Red: new text or analysis.} Figure frames and captions indicate provenance; plotted colors do not.\end{center}}
+\newcommand{\draftlegend}{\begin{center}\small\color{black}Coauthor working draft --- 27 September 2026\\Reference: reviewed 21-page manuscript, before this round of changes.\\\old{Blue: wording retained verbatim.}\quad\rev{Orange: revised existing material.}\\\new{Red: new text or analysis.} Figure frames and captions indicate provenance; plotted colors do not.\end{center}}
 \newcommand{\authors}{\old{Ignacio Garijo-Campos} \and \old{Antonio Alfonso} \and \old{Pablo Bra\~nas-Garza} \and \old{Diego Jorrat} \and \old{Angel Sanchez}}
 \newcommand{\plot}[4]{\begin{figure}[!htbp]\centering\begingroup\color{#1}\setlength{\fboxsep}{2pt}\fbox{\includegraphics[width=.94\linewidth]{\figroot#2.png}}\caption{\textcolor{#1}{#3}}\label{#4}\endgroup\end{figure}}
 \newcommand{\tabnote}[1]{\par\smallskip{\footnotesize\noindent\textit{Notes:} #1\par}}

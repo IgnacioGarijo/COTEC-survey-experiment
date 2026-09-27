@@ -836,3 +836,16 @@ descomposición es 8,12 % en el modelo lineal y 12,36 % en la sensibilidad logí
 observada: se informa esta dependencia del modelo, no una proporción universal.
 Se revisaron cohesión, cifras, referencias cruzadas, compilación y todas las
 páginas renderizadas. Los manuscritos anteriores y el paper B se conservan.
+
+RECTIFICACIÓN DEL CIERRE — NOTAS DE AUTORES GUARDADAS
+La entrega intermedia anterior leyó una versión antigua del archivo de autores.
+Tras guardarse las notas actuales se ha revisado su contenido completo y se ha
+corregido el manuscrito sin aplicar otra vez aquellas instrucciones antiguas.
+PDF vigente: 4. Latex/paper_A_2026-09-27/paper_A_teacher_decisions_final.pdf.
+El plan y la comprobación vigentes están en PLAN_correccion_notas_autores_2026-09-27.md.
+Se aplica APA, anonimización geográfica, estrellas y SE, eliminaciones solicitadas
+y simplificación narrativa. La petición de retirar la antigua 5.4 sustituye la
+opción de conservar su permutación secundaria. Se mantiene el apéndice NUEVO de
+participación/agotamiento/composición; se elimina el antiguo de soporte de perfiles.
+Los colores se refieren a b73fa3a, la versión de 21 páginas anterior a aplicar
+A-001–A-015 y las notas actuales de autores, no a la entrega intermedia.

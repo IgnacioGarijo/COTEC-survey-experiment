@@ -8,6 +8,10 @@ bib=(DOC/'references_A.tex').read_text(encoding='utf-8')
 items={m.group(1):m.group(0).strip() for m in re.finditer(r'\\bibitem\[[^\]]+\]\{([^}]+)\}.*?(?=\\bibitem|\\end\{thebibliography\})',bib,re.S)}
 assert set(order)==set(items),(set(order)-set(items),set(items)-set(order))
 # Preserve explicit alphabetical APA order rather than first-citation order.
+oldbib=(ROOT/'4. Latex/two_papers_2026-09-22/references_A.tex').read_text(encoding='utf-8')
+oldkeys=set(re.findall(r'\\bibitem\{([^}]+)\}',oldbib))
+bib=re.sub(r'(\\bibitem\[[^\]]+\]\{([^}]+)\})\s*(?:\\color\{(?:revised|added)\}\s*)?',lambda m:m.group(1)+' \\color{'+('revised' if m.group(2) in oldkeys else 'added')+'} ',bib)
+(DOC/'references_A.tex').write_text(bib,encoding='utf-8')
 paths=[ROOT/'Cambios_pendientes_manuscrito_A.txt',ROOT/'cambios_pendientes_manuscrito_A_autores.txt',ROOT/'3. Output/two_papers_2026-09-21/reports/analysis_objects.rds',ROOT/'3. Output/two_papers_2026-09-22/reports/deepened_objects.rds',Path('C:/Users/ignac/Downloads/1. PROFESORADO RÉGIMEN GENERAL (1).xlsx')]
 manifest={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
 (OUT/'reports/input_manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
