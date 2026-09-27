@@ -693,3 +693,33 @@ de representatividad. Registrar fuente, ámbito, periodo, denominadores y
 correspondencia de categorías. El usuario decidirá posteriormente su inclusión
 y proporcionará, si procede, el Excel real. Esta autorización no implica
 ejecutar ahora A-013 ni los demás cambios acumulados de los manuscritos.
+
+CAMBIO A-014 — COMPARACIÓN POBLACIONAL UNIVARIANTE EN EL APÉNDICE COMÚN
+Estado: ACORDADO, PENDIENTE DE INCORPORACIÓN AL MANUSCRITO. 27/09/2026.
+El usuario confirma utilizar por ahora «1. PROFESORADO RÉGIMEN GENERAL (1).xlsx»
+como datos reales de referencia poblacional. Esta decisión sustituye el carácter
+hipotético y la reserva de inclusión del encargo anterior. Incluir la comparación
+en el próximo manuscrito, dentro del MISMO apéndice de muestra, participación,
+abandono y posibles indicios de agotamiento de A-013; no crear otro apéndice.
+
+Conservar únicamente distribuciones univariantes: sexo/género, titularidad,
+edad, provincia y etapa educativa. Una visualización por variable, preferiblemente
+una única figura en grid con cinco paneles, sin tablas que repitan los gráficos.
+Retirar los cruces de mujeres por titularidad y etapa del antiguo A.5 y la tabla
+de distancias entre distribuciones. El objetivo es comparar composición de forma
+directa, no explicar diferencias de género mediante otras características.
+Mostrar población, muestra con decisiones y casos completos con leyenda común,
+denominadores específicos y porcentajes sobre observaciones clasificables.
+Actualizar los casos completos al aplicar las revisiones de covariables.
+
+Integrar la figura con un párrafo breve de resultados y una nota concisa sobre
+fuente, curso 2023/24 frente a encuesta 2025, datos no clasificables y correspondencia
+aproximada de etapas. Mantener trazabilidad de la diferencia entre totales de las
+hojas (35.497 frente a 35.493), sin repetir cautelas a lo largo del apéndice.
+El uso como referencia real no resuelve automáticamente diferencias de universo
+o categorías; describirlas una vez. No añadir calibración ni afirmar representatividad
+en variables no comparadas a partir de la proximidad de estas distribuciones.
+
+Versión compacta preparada aparte: output/pdf/comparacion_distribuciones_docentes_2026-09-27.pdf.
+El documento anterior queda como histórico. Aplicación conjunta de A-013 y A-014
+al manuscrito pendiente de autorización general; no modificar aún los papers.
