@@ -811,3 +811,28 @@ REFERENCIAS METODOLÓGICAS PARA A-015 (incorporar las utilizadas al manuscrito):
 
 Registrar por ahora. No ejecutar modelos ni modificar manuscritos/PDF hasta la
 autorización conjunta de los cambios pendientes.
+
+======================================================================
+CIERRE DE IMPLEMENTACIÓN — 27/09/2026
+======================================================================
+La autorización conjunta posterior permite ejecutar los cambios que arriba
+figuraban como pendientes. A-001 a A-015 quedan incorporados en la NUEVA versión:
+4. Latex/paper_A_2026-09-27/paper_A_teacher_decisions.pdf
+Se han considerado también las notas de cambios_pendientes_manuscrito_A_autores.txt,
+resolviendo contradicciones a favor de las decisiones posteriores del autor.
+
+Se conserva este historial de acuerdos. La correspondencia y el cumplimiento
+constan en PLAN_revision_A_2026-09-27.md; la explicación de las decisiones finales,
+resultados y reproducción está en 4. Latex/paper_A_2026-09-27/LEEME.md.
+
+La versión final tiene 22 páginas y resultados organizados en los tres bloques
+acordados. Incluye terciles en el cuerpo, mitades y alternativas de harshness en
+B, flujo/agotamiento/comparación poblacional en A, y detalles de predicción y
+descomposición en C. Se mantuvieron los colores de procedencia.
+
+Los recálculos utilizan 2.157 docentes en la muestra común, recursos excesivos
+como ítem único y edad más experiencia. El componente docente residual de la
+descomposición es 8,12 % en el modelo lineal y 12,36 % en la sensibilidad logística
+observada: se informa esta dependencia del modelo, no una proporción universal.
+Se revisaron cohesión, cifras, referencias cruzadas, compilación y todas las
+páginas renderizadas. Los manuscritos anteriores y el paper B se conservan.

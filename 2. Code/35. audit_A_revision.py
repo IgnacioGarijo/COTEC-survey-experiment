@@ -40,6 +40,6 @@ for k in range(0,len(thumbs),9):
  grid=Image.new('RGB',(900,423*((min(9,len(thumbs)-k)+2)//3)),'white')
  for j,tile in enumerate(thumbs[k:k+9]):grid.paste(tile,((j%3)*300,(j//3)*423))
  grid.save(qa/f'contact_{k//9+1}.png')
-report=dict(checks='passed',pages=len(reader.pages),tables=len(re.findall(r'\\inputtab\{',tex)),figures=len(re.findall(r'\\plot\{',tex)),references=len(keys),page_details=pages)
+report=dict(checks='passed',pages=len(reader.pages),tables=len(re.findall(r'\\inputtab\{',tex)),figures=len(re.findall(r'\\plot\{',tex))+len(re.findall(r'\\begin\{figure\}',tex)),references=len(keys),page_details=pages)
 (OUT/'reports/final_audit.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
 print(json.dumps(report,indent=2))

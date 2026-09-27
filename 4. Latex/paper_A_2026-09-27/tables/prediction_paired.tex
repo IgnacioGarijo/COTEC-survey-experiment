@@ -1,0 +1,10 @@
+\begin{tabular}{lrr}
+\toprule
+Comparison & MSE difference & 95\% interval \\
+\midrule
+RF\_tuned - OLS\_X3 & 5.07 & [0.86, 9.29] \\
+Ridge - OLS\_X3 & -0.05 & [-2.30, 2.21] \\
+OLS\_X3 - Baseline & -12.83 & [-19.24, -6.42] \\
+\bottomrule
+\end{tabular}
+\tabnote{Differences in squared percentage points. Approximate overlap-corrected intervals over 25 paired folds. Positive forest-minus-OLS values favor OLS.}

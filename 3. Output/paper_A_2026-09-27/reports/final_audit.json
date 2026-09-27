@@ -1,109 +1,97 @@
 {
   "checks": "passed",
-  "pages": 25,
+  "pages": 22,
   "tables": 13,
-  "figures": 6,
+  "figures": 7,
   "references": 18,
   "page_details": [
     {
       "page": 1,
-      "characters": 2521
+      "characters": 2709
     },
     {
       "page": 2,
-      "characters": 3644
+      "characters": 3761
     },
     {
       "page": 3,
-      "characters": 3241
+      "characters": 3572
     },
     {
       "page": 4,
-      "characters": 3238
+      "characters": 2992
     },
     {
       "page": 5,
-      "characters": 3159
+      "characters": 3075
     },
     {
       "page": 6,
-      "characters": 3202
+      "characters": 3690
     },
     {
       "page": 7,
-      "characters": 3217
+      "characters": 3340
     },
     {
       "page": 8,
-      "characters": 3230
+      "characters": 1973
     },
     {
       "page": 9,
-      "characters": 2213
+      "characters": 3109
     },
     {
       "page": 10,
-      "characters": 2918
+      "characters": 3490
     },
     {
       "page": 11,
-      "characters": 3209
+      "characters": 2845
     },
     {
       "page": 12,
-      "characters": 1939
+      "characters": 2178
     },
     {
       "page": 13,
-      "characters": 3646
+      "characters": 3391
     },
     {
       "page": 14,
-      "characters": 750
+      "characters": 3598
     },
     {
       "page": 15,
-      "characters": 3288
+      "characters": 2276
     },
     {
       "page": 16,
-      "characters": 312
+      "characters": 2719
     },
     {
       "page": 17,
-      "characters": 2059
+      "characters": 1604
     },
     {
       "page": 18,
-      "characters": 2348
+      "characters": 2708
     },
     {
       "page": 19,
-      "characters": 1577
+      "characters": 2545
     },
     {
       "page": 20,
-      "characters": 2431
+      "characters": 2887
     },
     {
       "page": 21,
-      "characters": 2731
+      "characters": 2873
     },
     {
       "page": 22,
-      "characters": 2519
-    },
-    {
-      "page": 23,
-      "characters": 2567
-    },
-    {
-      "page": 24,
-      "characters": 3357
-    },
-    {
-      "page": 25,
-      "characters": 457
+      "characters": 2432
     }
   ]
 }

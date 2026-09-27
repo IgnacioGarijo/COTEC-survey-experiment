@@ -26,4 +26,14 @@ Autorizada el 27/09/2026. Fuente: `Cambios_pendientes_manuscrito_A.txt` (A-001�
 
 ## Estado
 
-Plan registrado. Ejecución en curso; completar con resultados y auditoría final.
+Completado el 27/09/2026. Manuscrito nuevo en `4. Latex/paper_A_2026-09-27/paper_A_teacher_decisions.pdf`: 22 páginas, 13 tablas, 7 figuras/diagramas y 18 referencias. Los análisis se finalizaron antes de reescribir el texto; posteriormente se auditó la coherencia y la maquetación.
+
+## Ejecución y resultado
+
+- Pasos 1–2: scripts 27–29 y 36. Muestra común actualizada a 2.157 docentes; recursos excesivos en escala original, edad y experiencia sin antigüedad de centro. Bootstrap de harshness con 999 réplicas, 1.000 particiones de respuestas y 399 réplicas de la descomposición. Mitades: correlación media 0,483; OLS completo: R² predictivo 3,72 %. El efecto de esfuerzo ya no se describe como preciso en la especificación completa.
+- Paso 2 / A-015: la partición lineal suma 100 % y utiliza un reparto por proyección Shapley definido explícitamente. Componente docente residual de 8,12 %; sensibilidad logística observada de 12,36 %. Ambos se explican, distinguiendo modelo mixto, efectos fijos, harshness y predicción fuera de muestra.
+- Paso 3: scripts 30–32. Flujo, disponibilidad, orden/tiempos y comparación poblacional univariante reunidos en el apéndice A. No se inventan denominadores de invitación ni puntos de abandono irrecuperables. Se mantienen los criterios originales de inclusión.
+- Pasos 4–5: marco conceptual nuevo, literatura actualizada y resultados en tres bloques. Terciles con descriptivos y regresiones en el cuerpo; mitades, definiciones alternativas y bootstrap en B; detalles predictivos y partición en C. El resumen, la introducción, la discusión y la conclusión se reescribieron conjuntamente. Las notas de autores se aplicaron conforme a la correspondencia anterior y a las decisiones posteriores.
+- Paso 6: scripts 33–35 y revisión visual de las 22 páginas. Cifras y muestras cotejadas con resultados agregados; toda tabla/figura mencionada; bibliografía utilizada y ordenada; sin referencias indefinidas ni desbordamientos de LaTeX. Detalles en `3. Output/paper_A_2026-09-27/reports/final_audit.json` y explicación para los autores en `4. Latex/paper_A_2026-09-27/LEEME.md`.
+
+Commits sustantivos: `a4d6e1d` (plan y ejecución inicial), `da5b5f8` (resultados recalculados y auditoría estadística), más el commit final de manuscrito, maquetación y cierre del registro.

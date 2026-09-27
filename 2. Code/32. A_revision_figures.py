@@ -60,4 +60,11 @@ if (OUT/'tables/variance_partition.csv').exists():
     for i,(r,col) in enumerate(zip(v,cols)):
         x,lo,hi=[100*float(r[k]) for k in ('share','lo','hi')];axs[1].plot([lo,hi],[i,i],color=col,lw=2);axs[1].scatter(x,i,color=col,s=40);axs[1].text(max(x,hi)+1,i,f'{x:.2f}%',va='center',fontsize=10)
     axs[1].set_yticks(range(len(v)),[labels[r['component']] for r in v]);axs[1].invert_yaxis();axs[1].set_xlabel('Share of model-implied variance (%) and teacher-bootstrap 95% intervals');axs[1].set_xlim(0,70);axs[1].grid(axis='x',alpha=.15);fig.tight_layout();save(fig,'variance_partition')
+# Show the actual dispersion across repeated partitions without an empty zero-to-.4 axis.
+r=np.array([float(row['correlation']) for row in rows('split_half_partitions')])
+fig,ax=plt.subplots(figsize=(7.7,3.6))
+ax.hist(r,bins=30,color='#215e70',edgecolor='white')
+ax.axvline(r.mean(),color='#be713f',lw=1.8,label=f'Mean correlation: {r.mean():.3f}')
+ax.set_xlabel('Correlation between independently referenced response halves')
+ax.set_ylabel('Random partitions');ax.legend(frameon=False);fig.tight_layout();save(fig,'split_half')
 print('Figures written to',FIG)
