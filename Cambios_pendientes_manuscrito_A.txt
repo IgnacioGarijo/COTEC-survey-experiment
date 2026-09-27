@@ -723,3 +723,91 @@ en variables no comparadas a partir de la proximidad de estas distribuciones.
 Versión compacta preparada aparte: output/pdf/comparacion_distribuciones_docentes_2026-09-27.pdf.
 El documento anterior queda como histórico. Aplicación conjunta de A-013 y A-014
 al manuscrito pendiente de autorización general; no modificar aún los papers.
+
+CAMBIO A-015 — DESCOMPOSICIÓN DE LA VARIACIÓN EN DECISIONES Y COMPONENTE DOCENTE
+Estado: ACORDADO, PENDIENTE DE ANÁLISIS E INCORPORACIÓN. 27/09/2026.
+Objetivo: cerrar el tercer bloque de resultados con una descomposición descriptiva
+de la variación en recomendar repetición: atributos del alumno, características
+docentes, actitudes/creencias, componente docente residual y variación restante.
+Estimar el análisis al aplicar los ajustes acumulados. Incorporar la síntesis si
+las estimaciones son interpretables y suficientemente precisas, informando sus
+limitaciones reales sin forzar un resultado positivo ni una aparente robustez.
+
+1. Resultado: decisión binaria por tarjeta, no harshness como variable dependiente.
+   Usar una muestra común y las covariables acordadas (incluidos A-004 y A-009).
+   Incluir los seis atributos y la interacción competencias por suspensos; mantener
+   las interacciones en el bloque de atributos. Distinguir características docentes
+   sociodemográficas/profesionales de sus actitudes y creencias. No llamar a todas
+   las primeras «socioeconómicas» si las variables no corresponden a ese concepto.
+2. Modelo multinivel con intercepto aleatorio por profesor, condicionado a atributos,
+   características y creencias. El componente u_i representa variación común a las
+   respuestas del docente que no recogen esas variables. Es conceptualmente próximo
+   a eta_i del marco y a la parte residual de harshness, pero NO es el mismo indicador
+   H^b ni equivale al error estimado de su regresión. Llamarlo «componente docente
+   residual» y distinguir intercepto aleatorio de efecto fijo individual.
+3. NO incluir el harshness calculado con las mismas respuestas como regresor, ni
+   añadir decisiones anteriores como predictor. El usuario descarta esa extensión
+   predictiva. Esta decisión no elimina por sí misma el chequeo separado de mitad
+   y mitad de A-001/A-007; evita utilizarlo aquí como predictor adicional.
+4. No estimar sin restricciones características docentes constantes junto con todas
+   las dummies de profesor: son colineales. Tampoco interpretar el aumento bruto
+   de R2 al añadir miles de efectos fijos como varianza docente libre de ruido.
+   Estimar la varianza del intercepto del modelo; no sustituirla por la varianza
+   empírica de los interceptos predichos/BLUP, que están contraídos.
+5. Evaluar una especificación lineal mixta como aproximación en escala de respuesta
+   y una logística mixta adecuada al resultado binario. Revisar heterocedasticidad,
+   ajuste, convergencia y sensibilidad a la especificación. Fijar explícitamente
+   escala y denominador antes de presentar porcentajes: el R2 habitual de un logit
+   mixto en escala latente no es porcentaje de varianza observada de los ceros/unos.
+   No comparar ambas escalas como equivalentes ni garantizar de antemano cuál será
+   la presentación principal. Documentar supuestos sobre distribución del intercepto,
+   su relación condicional con covariables y composición de perfiles recibidos.
+6. Separar R2 marginal (variables observadas) y condicional (incluido componente
+   docente). Repartir la parte observada entre bloques con una regla explícita para
+   la información compartida, considerando Shapley. La referencia de Grömping es
+   para modelos lineales: su extensión al mixto debe definirse y comprobarse, no
+   tratarla como una rutina que garantiza automáticamente una partición válida.
+   No sumar R2 semiparciales o inclusivos como si fueran contribuciones disjuntas.
+   Mantener denominador común, definir el valor de cada combinación de bloques y
+   verificar la suma y cualquier contribución negativa antes de usar un gráfico
+   apilado. No truncar ni renormalizar problemas para fabricar un reparto al 100 %.
+7. Tratar el contexto de asignación experimental explícitamente: si forma parte
+   del total, mostrar su contribución como ajuste separado; si se condiciona a él,
+   indicar que el 100 % representa variación restante tras ese ajuste. No repartir
+   silenciosamente su contribución entre atributos o características docentes.
+8. Evaluar incertidumbre de toda la descomposición con un procedimiento que respete
+   el agrupamiento por profesor y reestime componentes (bootstrap docente y/o
+   paramétrico según estimando y supuestos). Comprobar sensibilidad al número de
+   respuestas por docente y a la especificación de atributos. El pequeño número
+   de tarjetas exige distinguir ruido de diferencias docentes; un intercepto
+   aleatorio ayuda a modelarlo, pero no garantiza por sí solo ausencia de sesgo.
+9. Presentación preferida: una figura compacta con contribuciones y resto, junto a
+   un párrafo de interpretación y métodos/detalles en el apéndice pertinente. Los
+   porcentajes describen variación bajo el modelo; no son porcentajes de aciertos,
+   causas de cada decisión o capacidad predictiva fuera de muestra. El resto es
+   «variación no explicada por el modelo», no «inexplicable». No afirmar estabilidad
+   temporal del componente docente con una única tarea de encuesta.
+10. Mantener separado el análisis predictivo del H^b ya acordado: aporta una pregunta
+    distinta. No mezclar sus R2 con los porcentajes de esta descomposición ni sustituir
+    las estimaciones within-teacher del primer bloque por el modelo multinivel.
+
+REFERENCIAS METODOLÓGICAS PARA A-015 (incorporar las utilizadas al manuscrito):
+[1] S. Nakagawa, P. C. D. Johnson y H. Schielzeth, «The coefficient of determination
+    R2 and intra-class correlation coefficient from generalized linear mixed-effects
+    models revisited and expanded», Journal of the Royal Society Interface, vol. 14,
+    no. 134, 20170213, 2017. DOI: 10.1098/rsif.2017.0213.
+    https://doi.org/10.1098/rsif.2017.0213
+    Base para R2 marginal/condicional, componentes de varianza y distinción de escalas.
+[2] M. A. Stoffel, S. Nakagawa y H. Schielzeth, «partR2: partitioning R2 in generalized
+    linear mixed models», PeerJ, vol. 9, e11414, 2021. DOI: 10.7717/peerj.11414.
+    https://doi.org/10.7717/peerj.11414
+    Partición por predictores/bloques, información compartida e incertidumbre;
+    los R2 parciales/inclusivos no son automáticamente una partición aditiva.
+[3] U. Grömping, «Relative Importance for Linear Regression in R: The Package
+    relaimpo», Journal of Statistical Software, vol. 17, no. 1, pp. 1-27, 2006.
+    DOI: 10.18637/jss.v017.i01. https://doi.org/10.18637/jss.v017.i01
+    Reparto del R2 promediando órdenes de entrada (LMG/Shapley) en modelos lineales;
+    explicitar y validar su adaptación si se aplica a componentes del modelo mixto.
+
+Registrar por ahora. No ejecutar modelos ni modificar manuscritos/PDF hasta la
+autorización conjunta de los cambios pendientes.
