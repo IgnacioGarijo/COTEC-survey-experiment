@@ -1,0 +1,457 @@
+# Revisión editorial y metodológica
+## The Decision to Hold Back: Teacher and Student Determinants of Grade Repetition
+
+**Fecha:** 20 de septiembre de 2026. **Documento de trabajo para los coautores.**
+
+Este informe evalúa todas las propuestas de `Revisiones.txt`, las anotaciones del PDF y los problemas adicionales que considero relevantes como revisor. Incorpora la aclaración de Ignacio: el documento llamado prerregistro se utilizará como plan inicial; la nueva pregunta y los análisis pueden cambiar. No propongo supeditar el mejor artículo a ese plan, sino describir con precisión qué se había previsto y qué se ha desarrollado después.
+
+He leído el manuscrito comentado de 32 páginas, el plan inicial de 37 páginas con sus cuestionarios y políticas, el LaTeX, los scripts de limpieza y análisis pertinentes, las tablas y varios informes anteriores. He contrastado los enunciados del cuestionario con las etiquetas del Excel original y realizado una auditoría independiente de los dos parquet. La ruta disponible del manuscrito es `4. Latex/paper_preregistered_rewrite_comentarios.pdf`, no la estructura de subcarpetas indicada inicialmente. Al final aparecen las fuentes y los archivos para reproducir las comprobaciones.
+
+**Alcance:** esto es una revisión crítica con comprobaciones dirigidas, no una reconstrucción definitiva del experimento ni una réplica completa de todos los modelos R. No he modificado el manuscrito, los datos ni los resultados originales. Las sensibilidades nuevas están identificadas como exploratorias. El cuestionario del plan inicial no contiene toda la lógica ejecutable de Qualtrics; donde esa diferencia importa, la conclusión queda expresamente condicionada.
+
+## 1. Dictamen y recomendación principal
+
+**Recomiendo una reescritura sustancial centrada en las reglas de recomendación de repetición que revelan las viñetas.** Mantendría las características docentes como análisis secundario, con énfasis en su limitada capacidad explicativa y en la incertidumbre de la medida individual. Reduciría la sección de políticas a un resultado acotado, acompañado de un anexo completo. No decidiría todavía que necesariamente tiene que convertirse en un segundo artículo.
+
+El núcleo más prometedor es distinguir tres cuestiones: qué información del alumno cambia las recomendaciones; cuánto desacuerdo entre docentes existe ante información comparable; y cuánto de ese desacuerdo se puede anticipar con las características observadas. Son preguntas diferentes. La versión actual salta demasiado rápidamente de respuestas a ocho viñetas a rasgos estables, sesgos ideológicos y recomendaciones sobre reformas educativas.
+
+**Como editor, no enviaría esta versión a una revista exigente sin resolver primero la construcción de la muestra y de las tarjetas.** Como revisor de un trabajo todavía en preparación, veo una base aprovechable: una muestra amplia de profesionales y decisiones repetidas sobre perfiles controlados. La mejora decisiva no es añadir más regresiones; es hacer coincidir el diseño administrado, el estimando, el análisis y el lenguaje de las conclusiones.
+
+La contribución tampoco puede ser simplemente que el rendimiento académico influye en la repetición. Ya existe evidencia experimental cercana: Klapproth y Beyte estudian decisiones de promoción con viñetas y encuentran un papel dominante del desempeño académico [1]. Para superar una contribución incremental, este artículo debe explotar bien la comparación entre déficits académicos, comportamiento y contexto social, y medir de forma convincente la heterogeneidad entre docentes.
+
+**Orden de trabajo recomendado:** reconstruir muestra y perfiles; consolidar los efectos de atributos; validar la medida de propensión; reformular heterogeneidad y predicción; reestimar las políticas con estimandos claros; escribir la nueva historia. Elegir el relato antes de esa auditoría sería prematuro.
+
+## 2. Hallazgos que cambian la prioridad de las revisiones
+
+### 2.1. El código puede estar contando una respuesta adicional junto a las ocho tarjetas del experimento
+
+**La cuestión no es si se debe excluir al profesor que hace repetir al alumno de filtro. La cuestión es qué respuestas del profesor que supera el filtro entran después en el análisis.** Son dos operaciones distintas y mi redacción anterior no las separaba bien.
+
+Según la aclaración de Ignacio, el procedimiento previsto es: presentar una tarjeta inicial de un alumno sin características negativas, excluir a quien recomienda repetición en esa tarjeta y analizar las ocho tarjetas experimentales de quienes superan el filtro. Esa es la referencia para esta comprobación. No estoy proponiendo suprimir el filtro ni conservar a quienes lo incumplen.
+
+**Qué he comprobado en el código.** El script de análisis elimina dos columnas, llamadas `alumno_1_1` y `alumno_2_1`, y cuenta todas las demás respuestas de tarjetas que encuentre para cada profesor. No comprueba en ese paso que las respuestas restantes sean precisamente las ocho tarjetas experimentales que le correspondían. Con esa regla, obtiene nueve respuestas para 1.736 profesores. Esto describe lo que cuenta el programa, no una afirmación de que se hubieran diseñado nueve tarjetas experimentales.
+
+**Un caso real del archivo, sin identificar al participante.** Este profesor supera el filtro y tiene las siguientes respuestas guardadas:
+
+| Respuestas guardadas | Lo que respondió | Lo que hace el análisis actual |
+|---|---|---|
+| `alumno_1_1`, tarjeta favorable utilizada como filtro | Promoción | La excluye del cálculo |
+| Las ocho tarjetas `alumno_4_1` a `alumno_4_8` | Promoción en seis y repetición en dos | Cuenta las ocho |
+| Una respuesta adicional, `alumno_3_8` | Repetición | También la cuenta |
+
+Por tanto, para este caso, el programa cuenta **tres recomendaciones de repetición entre nueve respuestas**, en lugar de **dos entre las ocho tarjetas de su conjunto**. Para el porcentaje simple de repetición, es la diferencia entre 33,3% y 25%. El índice relativo de severidad tiene otra fórmula, pero también utiliza esa respuesta adicional.
+
+**Qué sé y qué falta por aclarar sobre la respuesta adicional.** Su presencia en los datos y su inclusión en el análisis están verificadas. No he verificado la pantalla exacta de la que procede. El plan inicial describe, en la página 7, un ejemplo favorable y otro desfavorable antes de la tarea; además, la respuesta adicional cambia sistemáticamente con el campo denominado `Ejemplo`. Por eso mi hipótesis es que se está contando también un ejemplo desfavorable. Pero, dado que Ignacio describe una tarjeta inicial de filtro, debo mantener explícita la diferencia: **el archivo contiene esa respuesta adicional; su función en la encuesta administrada debe confirmarse antes de decidir cómo tratarla.** El documento del plan y el archivo de respuestas no bastan para asegurar por sí solos qué pantalla se mostró en cada caso.
+
+**Qué son `grupo1`–`grupo8`.** Son nombres de campos que ya existen en el archivo exportado de la encuesta, no categorías de profesores que yo haya inventado. Por el patrón de respuestas, indican cuál de los ocho conjuntos de tarjetas le correspondió al participante. Por ejemplo, los 319 profesores con `grupo4` informado tienen respuestas a las ocho tarjetas `alumno_4_1`–`alumno_4_8`, además de respuestas guardadas fuera de ese conjunto. No me refiero a los grupos de tratamiento de políticas: son campos distintos. Utilicé esos nombres técnicos sin explicarlos, lo que hizo innecesariamente confuso el informe.
+
+**Por qué importa.** Si esa respuesta adicional es un ejemplo y no una decisión de la tarea, no debe contar como una novena observación experimental. Puede cambiar el porcentaje de repetición y el índice de severidad. Si el ejemplo se responde antes de recibir la política, incluirlo también mezcla una respuesta anterior al tratamiento con las respuestas que se quieren utilizar para medir su efecto. Esto señala un posible problema de selección de respuestas en el código, no un fallo de la idea de utilizar una tarjeta de filtro.
+
+**La solución concreta es separar las dos operaciones:**
+
+1. **Seleccionar participantes:** aplicar vuestra regla de exclusión utilizando la respuesta al alumno favorable que efectivamente desempeñó la función de filtro.
+2. **Seleccionar respuestas:** para quienes superan el filtro, identificar y conservar las ocho decisiones experimentales, dejando fuera cualquier respuesta de ejemplo. No basta con quitar dos nombres de columna de toda la base si una misma pregunta puede aparecer en funciones distintas.
+3. **Verificar el resultado:** cada participante que termina la tarea debe aportar ocho decisiones. Quien abandona puede aportar menos, pero eso debe distinguirse expresamente. Si el archivo reutiliza una pregunta en el ejemplo y en la tarea, hay que aclarar qué respuesta conserva antes de reconstruirlo.
+4. **Recalcular:** volver a calcular los índices y modelos con esas respuestas correctamente identificadas y comparar con los resultados actuales.
+
+No recomiendo borrar automáticamente `alumno_3_8` y `alumno_2_8` de todos los profesores: podrían ser ejemplos para algunos y tarjetas experimentales para otros. Tampoco afirmo que cualquier respuesta favorable dentro de la tarea deba tratarse como filtro inicial. Lo relevante es la función de esa presentación, no solo el contenido del perfil o el nombre de su columna.
+
+**Qué comprobación provisional hice.** Conservé solo las respuestas cuyo nombre coincide con el conjunto indicado en `grupo1`–`grupo8`. Así encontré 2.511 profesores con ocho respuestas de su conjunto. Es una comprobación de sensibilidad, no una muestra definitiva: mantiene los filtros previos y no resuelve una posible reutilización de preguntas. Los efectos principales de suspensos y competencias apenas cambian en ella:
+
+| Atributo | Análisis actual, p.p. | Solo conjuntos con ocho respuestas, provisional |
+|---|---:|---:|
+| Tres o más suspensos | 54,62 | 55,04 |
+| Carencias competenciales | 27,07 | 27,28 |
+
+Esto sugiere que esos dos resultados no dependen mucho de la respuesta adicional, pero aún no verifica qué sucede con la severidad individual o con los efectos de políticas. Los detalles de las demás sensibilidades siguen disponibles en `sensibilidad_tarjetas.csv`.
+
+**Conclusión del punto:** vuestra regla de filtro y esta observación son compatibles. Un profesor puede superar correctamente el filtro y, aun así, acabar aportando nueve respuestas al cálculo por cómo el código recoge las columnas. Lo que hay que verificar y, si procede, corregir es esa recogida de respuestas.
+
+### 2.2. Las 64 columnas no representan 64 combinaciones distintas en la codificación utilizada
+
+Los seis vectores de `0. main.R` producen **56 perfiles distintos para 64 identificadores**. Hay ocho pares duplicados. Por ejemplo, `alumno_1_1` y `alumno_8_1` tienen los seis valores iguales; `alumno_1_7` y `alumno_5_8` también coinciden. El absentismo aparece en 24 de las 64 columnas y la infracción en 28, frente a 32 para los otros cuatro atributos. Suspensos y competencias presentan correlación de 0,25 en este catálogo.
+
+No puedo concluir solo con esto si el error está en los vectores R, en el material administrado o en la descripción del diseño. **Sí puedo concluir que el código analizado no implementa un catálogo factorial completo de seis atributos binarios con todas las combinaciones una vez.** Las banderas de grupos y los campos de orden sugieren, además, un diseño de bloques de ocho tarjetas, que no debe describirse automáticamente como seis sorteos independientes en cada tarjeta.
+
+La consecuencia es sustantiva: la asignación aleatoria de un bloque no convierte sin más cada coeficiente de una regresión aditiva en el efecto de variar aisladamente un atributo sobre todas las demás combinaciones. Hay que comprobar soporte, probabilidades, restricciones y posibles interacciones. La literatura sobre efectos de componentes en diseños factoriales explica por qué importa especificar la distribución sobre la que se promedia [2].
+
+**Acción necesaria:** comparar las 64 tarjetas reales con `inventario_tarjetas.csv`; explicar la unidad de aleatorización de perfiles; comprobar qué contrastes tienen soporte; definir los efectos sobre ese soporte. Si hay restricciones reales, estimar contrastes entre perfiles comparables o explicitar las hipótesis funcionales. No corregir los vectores para que “parezcan” un factorial sin consultar las tarjetas.
+
+### 2.3. Las preferencias posteriores al tratamiento no son controles inocuos
+
+En Control y Policy, la política favorita se obtiene después de la tarea; en Revelation y Awareness se obtiene antes de la asignación de política. Sin embargo, varios modelos controlan por favorita, crean submuestras de alineamiento y eliminan a quien no tiene favorita.
+
+La tabla 18 del propio paper muestra que recibir la política 3 se asocia significativamente con declararla favorita después: coeficiente logit 0,424, con error 0,158. Ese coeficiente está en **log-odds**, no en puntos porcentuales; su odds ratio aproximada es 1,53. No es una prueba definitiva de todo el mecanismo, pero contradice tratar las preferencias posteriores como claramente inmutables.
+
+Controlar por una variable afectada por la intervención puede sesgar un experimento; restringir la muestra con esa variable también [3]. Por tanto:
+
+- Los ITT principales deben utilizar asignación aleatoria y covariables genuinamente previas; no deben exigir completar el ranking posterior para incluir decisiones ya observadas.
+- El contraste Policy–Control condicionado por favorita no debe presentarse como el efecto total limpio de política.
+- Las comparaciones de “asignados a favorita” entre Policy y Revelation mezclan preferencias medidas en momentos diferentes. No identifican limpiamente el efecto de satisfacción con una preferencia basal común.
+- Revelation/Awareness permiten análisis más defendibles de alineamiento con preferencias previas a la política. Aun así, hay que separar identidad de política y posición en el ranking, comprobar las probabilidades y tener presente que la preferencia se mide después de entrar en un brazo de encuesta.
+
+El hecho de que una especificación estuviera en el plan inicial no corrige este problema. La propuesta adecuada es cambiarla, justificarlo y presentar los resultados antiguos como referencia si ayudan a la transparencia.
+
+### 2.4. Hay una inversión de signo comprobable y resultados que impiden decir que ninguna política afecta
+
+En la tabla 13, el contraste impreso es **Policy treatment − Revelation treatment**. Para Policy 2 vale +0,030, p = 0,068. El texto de la página 24 dice que Revelation es más severo. **El contraste dice lo contrario: Policy es aproximadamente tres puntos más severo.** El script toma la salida de `emmeans` y después rotula ese mismo número como Revelation versus Policy en las tablas de MDE/equivalencia, sin invertirlo. Lo mismo sucede con las etiquetas de H3|2: los contrastes originales son Revelation − Awareness.
+
+Además, la tabla 12 contiene un coeficiente de +0,044 para Policy 2 frente a Policy 1 dentro del brazo Policy, significativo al 1% en la especificación ajustada. Es un contraste distinto de Policy 2 frente a Control. Que cada política por separado no sea significativamente distinta de Control no implica que las políticas sean iguales entre sí.
+
+Esto **no justifica construir una historia nueva a partir de una estrella**: hay multiplicidad, preferencias posteriores, problemas de muestra y contrastes con distinta interpretación. Sí obliga a retirar “policies do not affect retention decisions in any way”. Hacen falta medias por celda, contrastes de políticas dentro de brazo, contrastes de brazos dentro de política, pruebas conjuntas e intervalos. Las afirmaciones de equivalencia deben reevaluarse después de corregir la muestra.
+
+### 2.5. La lectura más defendible de la tabla 4 es baja capacidad explicativa, no igualdad
+
+El R² pasa de 0,023 con X1 a 0,031 con X2 y 0,042 añadiendo escepticismo sobre recursos. X1 y X2 usan muestras distintas: 2.487 frente a 2.156. No se puede atribuir íntegramente ese cambio a los nuevos regresores sin repetir todos los modelos sobre una muestra común.
+
+El archivo `paper_rewrite_rf_summary.csv` añade información muy importante que falta en el relato: RMSE fuera de bolsa ≈ 0,1876 y desviación estándar del resultado ≈ 0,1855. El cociente es 1,011. La aproximación `1 − (RMSE/SD)²` da −0,022: ese bosque no mejora aproximadamente el predictor constante de la media. Es una comprobación diagnóstica, no una comparación formal con un baseline validado en idénticos folds. Tampoco es el rendimiento del bosque de SHAP, que procede de otro script y usa escalas diferentes.
+
+**Conclusión provisional apropiada:** “Las características observadas explican una fracción pequeña de la variación de la propensión medida; existen algunas asociaciones, pero la capacidad predictiva individual es limitada”. No “los profesores son iguales”, no “las decisiones son impredecibles” y no “solo importa la ideología”.
+
+### 2.6. Existe un error de interpretación de literatura
+
+La página 4 atribuye a Allen et al. (2009) resultados más favorables a la repetición en diseños débiles. El artículo encuentra efectos **menos negativos en los diseños de mayor calidad**, en comparación con los de menor calidad [4]. Hay que corregir el sentido de esa frase.
+
+La introducción tampoco debería partir de una condena de la repetición y utilizar el experimento para diagnosticar quién la recomienda “mal”. La revisión de Goos, Pipa y Peixoto documenta un efecto medio aproximadamente nulo y heterogeneidad según contexto, comparación y resultado [5]. Eso motiva estudiar la decisión sin establecer un óptimo universal que este experimento no identifica.
+
+## 3. Evaluación de todas las propuestas de la reunión
+
+### Revisiones mayores
+
+**1. Desarrollar teoría y propiedades del índice — Sí, con dos piezas separadas.**
+
+Las anotaciones del PDF aclaran que interesa una teoría de las propiedades del índice. La sección 4 de este informe desarrolla esas propiedades. Es útil porque obliga a explicar qué mide y qué no mide. La teoría de decisión debe ser breve y generar contrastes: no añadir un modelo ornamental que pueda racionalizar cualquier resultado. Su función sería distinguir umbral de recomendación, ponderación de señales y ruido, sin afirmar que las ocho respuestas identifican por separado todas esas dimensiones.
+
+**2. Sacar las políticas y concentrarse en tarjetas y docentes — Sí al foco; no a eliminar el diseño del relato.**
+
+Mi preferencia es un artículo principal sobre reglas de decisión, con una sección corta y un anexo sobre contextos de política. Las tarjetas se respondieron bajo esos contextos; incluso si dejan de ser el objeto central, deben describirse y debe aclararse si los efectos promedian sobre todos los brazos. Presentaría la estimación conjunta y la del control como sensibilidad, sabiendo que el control tiene una muestra menor.
+
+Un segundo paper de políticas solo tendría sentido si, después de la auditoría, tiene una pregunta independiente, resultados interpretables y una contribución suficiente. Separar un conjunto de nulos poco precisos no mejora automáticamente las opciones de publicación. Una eventual segunda recogida que manipule consecuencias reales o una regla decisoria vinculante sería una base más convincente que dividir por tablas el mismo estudio. Si hay dos artículos, deben explicar el solapamiento de muestra, diseño y análisis.
+
+**3. Enfatizar similitud de profesores y escasa predictibilidad — Sí, reformulado.**
+
+La evidencia favorece un relato de **heterogeneidad observada que las covariables explican poco**, no un relato de ausencia de heterogeneidad. Presentaría R², rendimiento fuera de muestra y comparación con la media antes del ranking de variables importantes. Mantendría las asociaciones de etapa, edad y creencias con sus intervalos. Un R² pequeño puede coexistir con diferencias de tres o cuatro puntos relevantes para una decisión educativa.
+
+La mala predicción puede reflejar características omitidas, medición ruidosa con pocas tarjetas, mala especificación, o heterogeneidad real difícil de anticipar. No permite elegir entre esas explicaciones. Tampoco basta con observar muchos p > 0,05 para declarar equivalentes dos grupos.
+
+### Revisiones medianas
+
+**4. Explicar la ventaja respecto a datos observacionales — Sí; cambiar la formulación.**
+
+No escribiría “mejor que algo empírico”: el experimento también es empírico. Su ventaja es reducir la confusión por la asignación de alumnos a docentes y por la covariación de atributos, **en la medida en que lo permite el diseño realmente administrado**. No todos los docentes ven todas las realidades posibles: cada uno evalúa una selección pequeña. La validez de recomendaciones hipotéticas para decisiones escolares reales requiere evidencia adicional; existen trabajos que validan viñetas contra conducta real, pero esa validación no se transfiere automáticamente a este contexto [6].
+
+Texto propuesto, una vez auditado el diseño: “By assigning standardized student profiles to teachers, the experiment reduces confounding from the sorting of students across teachers and schools. The estimates describe responses to the experimentally supported profile contrasts; they do not directly measure actual retention decisions.”
+
+**5. Mostrar resultados con una, dos, tres características desfavorables — Sí como descripción; cambiar el análisis propuesto.**
+
+Contar atributos no distingue su contenido: dos señales académicas no equivalen a absentismo más una infracción. El contexto social no es un “error” del alumno y, con la codificación actual, tiene un efecto negativo sobre la recomendación. El género no debe entrar en ese recuento.
+
+Preferiría una figura de probabilidades para: sin señales académicas; solo suspensos; solo carencias; ambas señales académicas. Dentro de cada configuración, mostrar cómo cambia la recomendación con señales conductuales y contexto social, siempre que haya soporte. Una figura adicional por número de señales puede ser descriptiva, con composición y N explícitos.
+
+Hay un problema algebraico con estimar una regresión separada a K = 1, K = 2, etc. e incluir todos los indicadores que suman K: con intercepto/efectos fijos aparece dependencia lineal. Además, al mantener K fijo, cambiar un atributo implica sustituir otro. Ese coeficiente no es el efecto de añadir una característica manteniendo las demás constantes. Si interesa “añadir otra señal”, debe compararse K con K+1 sobre pares realmente comparables.
+
+**6. Por qué la tabla 12 tiene interacciones y la 6 no — La diferencia es parcialmente correcta; hay que comparar preguntas equivalentes.**
+
+La tabla 6 trata H1|3, alineamiento frente a Control, que no recibe ninguna política. La tabla 12 trata H2|2, brazo × identidad de política, entre dos brazos en los que todos reciben una política. No son la misma hipótesis. La comparación más natural es tabla 5 con tabla 12 para identidad de política, y tabla 6 con tabla 14 para alineamiento.
+
+En Study I, la política asignada ya codifica ser tratado: Control/Policy 1/Policy 2/Policy 3. No se puede añadir sin restricciones todos los indicadores de tratado, política y sus interacciones, porque algunas columnas son redundantes y no existe la celda “Control asignado a Policy 2”. En Studies II/III sí existe un cruce 2 × 3. La homogeneidad visual debe lograrse con paneles de contrastes y categorías de referencia claras, no forzando idénticas fórmulas sobre diseños distintos.
+
+### Revisiones menores y adiciones
+
+**7. Anexo de attrition, abandono por política y balance — Es esencial; lo subiría a prioridad máxima.**
+
+Usaría un diagrama de flujo y una curva de retención por etapa de encuesta, con el denominador de personas que alcanzan cada etapa. Una razón de riesgos de Cox no es la opción inicial adecuada: aquí el orden de las tareas cambia entre brazos, la encuesta puede retomarse días después y la duración de una página no equivale a un instante calendario.
+
+Separaría: invitación/entrada, consentimiento y elegibilidad, primer cuestionario, ejemplos, asignación, inicio de tarea, ocho decisiones, ranking cuando corresponda y cuestionario final. La asignación y los ejemplos deben situarse según el flujo efectivamente administrado. Compararía, desde el momento de aleatorización, la probabilidad de disponer del resultado bajo cada brazo y política. No atribuiría a políticas asignadas después una salida que ocurrió antes.
+
+Para quienes revelan preferencias previamente, analizaría además abandono por política asignada y alineamiento, sin condicionar por preferencias recogidas tras la salida potencial. El balance de quienes terminan y quienes no solo puede incluir variables observadas para ambos. Las medidas conductuales del cuestionario final no están disponibles precisamente para muchos abandonos; no pueden funcionar como prueba general de balance del abandono.
+
+Si hay selección diferencial: estimaciones que aprovechen respuestas parciales bajo supuestos explícitos, ponderación por observación con análisis de sensibilidad, y cotas. Las cotas de Lee requieren monotonicidad de la selección y no deben aplicarse mecánicamente a diez brazos [7]. Aun sin significación estadística en abandono, informar magnitudes e intervalos; “no significativo” no garantiza ignorabilidad.
+
+**8. Acortar el párrafo de políticas en la introducción — Sí.**
+
+Con el foco recomendado bastan dos frases: “The survey also randomized policy scenarios and the timing and salience of policy preferences. We use these variations to examine whether short hypothetical policy prompts alter retention recommendations.” La secuencia completa pertenece al diseño. Si las políticas salen del cuerpo principal, conservar una frase y remitir al anexo.
+
+**9. Reescribir el párrafo sobre ausencia de efectos — Sí, cambiando la afirmación, no solo el estilo.**
+
+El texto actual mezcla exposición, política concreta, alineamiento y recordatorio, y convierte falta de rechazo en ausencia absoluta. Una formulación provisional sería: “Average contrasts between the broad survey arms are small in the current analysis. The evidence is less precise for individual policy and preference-alignment contrasts, and the estimates concern hypothetical recommendations rather than policy implementation.” No añadiría la equivalencia numérica definitiva hasta reconstruir el resultado y la muestra.
+
+**10. Cambiar Theoretical framework por Related literature — Sí.**
+
+La sección actual es literatura relacionada. Si se adopta la propuesta conceptual de la sección 4, usaría una subsección breve “Decision framework and measurement” separada. Fusionaría los párrafos redundantes sobre decisiones y creencias docentes. Corregiría Allen et al. y explicaría con precisión la cercanía y diferencias frente a Klapproth y Beyte.
+
+**11. Timeline horizontal — Sí.**
+
+Debe mostrar un único contacto con varios módulos, no dos olas longitudinales: consentimiento/elegibilidad → cuestionario inicial → ejemplos → secuencia experimental específica del brazo → cuestionario final. El ranking cambia de posición. Marcaría gráficamente qué covariables son anteriores a la política y cuáles se miden tras las decisiones. El diagrama es importante para identificación, no solo para facilitar lectura.
+
+**12. Esquema vertical, recordatorio separado y probabilidades — Sí, con una precisión.**
+
+El Control tiene probabilidad total 0,1. Cada uno de los tres brazos tiene 0,3; dentro de cada brazo, cada política tiene probabilidad condicional 1/3, produciendo celdas con probabilidad total 0,1. No confundir ambas probabilidades. El recordatorio de Awareness es una pantalla separada cuyo contenido depende del ranking y la asignación; no dibujar una nueva moneda aleatoria salvo que realmente exista. Añadir N asignado y N analizado por celda después de la auditoría. Si se utilizó un aleatorizador con balance forzado, describir ese mecanismo.
+
+**13. Describir Control como opción “virgen” — Sí a la precisión; no a esa palabra.**
+
+Es el grupo sin escenario de política asignado ni ranking de políticas previo a la tarea. Ya ha respondido preguntas y visto ejemplos; vive bajo instituciones y tiene conocimientos previos. “No-policy-assignment control” es más exacto que “unprimed” o “policy-free”. Este punto también limita interpretar diferencias respecto al Control como efectos de una política real.
+
+**14. Incluir N de tarjetas en tabla 2 — Sí, junto con N de docentes y perfiles.**
+
+Añadir número total de decisiones, profesores, perfiles distintos, distribución de decisiones por docente, efectos fijos, agrupación de errores y categorías de referencia. No sustituir la auditoría por el número 22.124: ese es el conteo de la especificación actual, todavía cuestionado. La anotación adicional “meter efectos fijos” ya está satisfecha por `fixest::feols(... | id)`; lo que falta es visibilidad y verificar la población sobre la que se aplica.
+
+**15. Escala de tabla 4 y homogeneidad entre tablas — La tabla 4 ya está multiplicada por 100; las demás no todas.**
+
+En tabla 4, 3,354 para Secundaria son 3,354 puntos porcentuales de propensión relativa frente a Primaria. −0,302 en edad son −0,302 puntos por año manteniendo experiencia y demás controles constantes; diez años equivalen a −3,02 puntos en esa proyección. 0,462 en esfuerzo es por un punto de la escala 1–10, y 2,058 en recursos es por una desviación estándar del índice.
+
+En tabla 2, 0,546 significa 54,6 puntos; en tablas 5/6, −0,004 significa −0,4 puntos. La tabla 18 usa log-odds. Recomiendo expresar resultados lineales e intervalos en puntos porcentuales en todo el artículo, con unidades de cada regresor en notas. Para logits de preferencias, presentar probabilidades o efectos marginales y relegar log-odds al anexo. No confundir puntos porcentuales con cambios porcentuales relativos.
+
+**16. Unir tablas 5 y 6, añadiendo asignación favorita/menos favorita — Sí a agrupar paneles; no a una regresión indiscriminada.**
+
+Son estimandos y muestras distintos. Se pueden reunir exposición, identidad y alineamiento en una tabla con paneles, N y referencia propios. La menor N de la tabla 6 no se debe a que se haya quitado el Control: **el Control sí está incluido**. Se eliminan tratados asignados a la política intermedia; además hay selección previa por ranking disponible. No añadiría favorita y menos favorita como controles posteriores al tratamiento al modelo causal principal. Tampoco confundiría “política favorita” con “haber recibido la favorita”.
+
+**17. Revisar las interacciones de tablas 12 y 15 — Sí; es una cuestión sustantiva mayor.**
+
+Mostraría un gráfico de las nueve celdas tratadas más Control y otro de contrastes con intervalos. En un modelo `H = a + bD + c₂P₂ + c₃P₃ + d₂DP₂ + d₃DP₃`, el efecto del brazo es `b` en Policy 1, `b+d₂` en Policy 2 y `b+d₃` en Policy 3. `c₂` compara políticas dentro del brazo de referencia; `d₂` compara ese contraste entre brazos. Ninguna fila aislada resume todos los efectos.
+
+Contrastes que exigiría: política 2−1 y 3−1 dentro de cada brazo; Revelation−Policy y Awareness−Revelation dentro de cada política; prueba conjunta de interacciones; prueba conjunta de los contrastes de interés. Para alineamiento, usar el ranking temporalmente válido y estimar la interacción correspondiente. Corregiría signos y multiplicidad antes de proponer mecanismos. Dada la auditoría, los valores actuales solo orientan qué revisar.
+
+### Anotación adicional: “¿Son los jóvenes más meritocráticos? ¿Deciden distinto?”
+
+Es una pregunta exploratoria legítima, pero no convertiría edad → meritocracia → repetición en una mediación causal. La edad no está aleatorizada, las creencias se miden después y edad y experiencia están fuertemente relacionadas conceptualmente. En una comprobación bivariada del parquet limpio, entre 2.384 docentes con decisiones y ambas variables, la correlación edad–escala de esfuerzo es **+0,085**. No respalda de entrada la idea de que los más jóvenes puntúen más alto en esfuerzo; tampoco resuelve relaciones condicionales o no lineales.
+
+Compararía primero relaciones flexibles edad–creencias por etapa y, después, interacciones de atributos con edad y creencias, mostrando incertidumbre. El efecto de un atributo aleatorizado dentro de un grupo de edad puede tener interpretación causal bajo el diseño; la diferencia entre grupos no es el efecto causal de envejecer ni de cambiar las creencias. Evitaría buscar cortes de edad hasta obtener una interacción significativa.
+
+## 4. Propuesta de marco conceptual y propiedades de la medida
+
+### 4.1. Qué decisión se observa
+
+Llamaría al resultado **recomendación declarada de repetición**. Un docente puede recomendarla por considerar que favorece al alumno, por estándares de promoción, por costes percibidos o por disciplina. El experimento observa la decisión, pero no identifica por sí solo esas motivaciones. Bonvin ya sitúa actitudes y juicios docentes en este problema [8].
+
+Una representación conceptual suficiente sería:
+
+\[
+Y_{jc}=1\{a_j + A_c'\beta_j+B_c'\gamma_j+S_c'\eta_j+\lambda_j(Z_j,c)+u_{jc}>0\}.
+\]
+
+`A` recoge señales académicas; `B`, comportamiento/absentismo; `S`, contexto social y género; `Z`, el contexto de política. `a_j` es una propensión general relativa a la escala elegida; los vectores de pendientes representan diferencias en la respuesta a señales. Esta ecuación es una **organización conceptual propuesta después de observar resultados**, no un modelo estructural identificado por el estudio.
+
+Permite formular comparaciones que aún deben evaluarse: si las dos señales académicas se refuerzan o sustituyen; si el comportamiento importa cuando no hay déficits académicos; si el contexto social modifica la respuesta a señales académicas; y si etapa docente modera esas respuestas. Recomendaría pocas interacciones, elegidas por pregunta sustantiva y soporte, con resultados exploratorios claramente identificados.
+
+No identificaría “regla académica”, “castigo” o “compensación social” solo por el signo de una pendiente. La misma elección puede responder a juicios distintos sobre beneficios, costes y obligaciones. Para discriminar mecanismos sería necesario medir razones, beneficios esperados de repetir/promocionar o manipularlos en otra recogida.
+
+### 4.2. El objeto que realmente interesa
+
+Definamos `m_j(c,z)` como la probabilidad de recomendación del profesor j para un perfil c en un contexto z, y `Q(c)` como una distribución explícita de perfiles objetivo. La propensión estandarizada es:
+
+\[
+S_j(Q,z)=\sum_c Q(c)m_j(c,z).
+\]
+
+Una versión relativa a la población de referencia es:
+
+\[
+H_j^*(Q,z)=\sum_c Q(c)\{m_j(c,z)-m_{ref}(c,z)\}.
+\]
+
+Esto aclara por qué “severidad” no es una propiedad universal: depende de los perfiles y del contexto sobre los que se compara. Con docentes cuyas reglas se cruzan, uno puede recomendar más repetición en un conjunto de perfiles y menos en otro. El índice no debe usarse para ordenar individuos fuera de ese dominio.
+
+### 4.3. Propiedades demostrables del índice leave-one-out actual
+
+Para N_c decisiones de profesores distintos sobre una misma tarjeta, sea `p̄_c` la media que incluye al profesor. Entonces:
+
+\[
+d_{jc}=Y_{jc}-\bar Y_{c,-j}
+=\frac{N_c}{N_c-1}(Y_{jc}-\bar Y_c),
+\qquad H_j=\frac{1}{n_j}\sum_{c\in C_j}d_{jc}.
+\]
+
+**P1. Interpretación y rango.** Cada diferencia y su promedio están entre −1 y 1. Un valor de 0,10 significa recomendar repetición diez puntos más que el referente de esas tarjetas, en promedio. No significa que el profesor se equivoque diez puntos más. El promedio de otros docentes no es un criterio de corrección normativa.
+
+**P2. Centración exacta.** Para cada tarjeta, la suma de diferencias leave-one-out es cero. Por tanto `Σ_j n_j H_j = 0` en el universo usado para construir los referentes. Si todos responden el mismo número, también `Σ_j H_j = 0`. Con n_j desiguales, la media no ponderada puede diferir de cero. En la construcción actual, la suma por decisiones es numéricamente cero y la media no ponderada por profesor es −0,0061. Un histograma centrado cerca de cero es parcialmente una propiedad de construcción, no un descubrimiento psicológico.
+
+**P3. Monotonicidad individual, manteniendo el referente.** Cambiar una decisión propia de promoción a repetición aumenta el índice propio en `1/n_j`, porque el referente leave-one-out no incluye esa decisión. Sí modifica los referentes de otros docentes que vieron esa tarjeta. Los índices no son observaciones completamente independientes generadas sin error.
+
+**P4. Ajuste por composición, con condiciones.** Si los perfiles se muestrean de una distribución común Q, los referentes estiman sus probabilidades poblacionales y la selección de respuestas es ignorable, el promedio aproxima una diferencia estandarizada. Si cada docente ve un bloque diferente, el índice realizado refleja también qué bloque le tocó y cómo su regla interactúa con él. La aleatorización de bloques ayuda en promedio, pero ocho tarjetas no eliminan la incertidumbre individual ni justifican una clasificación precisa.
+
+**P5. Relatividad.** Si cambian de manera comparable todas las recomendaciones y sus referentes, la comparación relativa puede permanecer estable. El índice no mide el nivel absoluto del sistema. Si el referente se calcula por separado dentro de cada brazo, se elimina precisamente la diferencia media de brazo que se quería estudiar. El código actual utiliza un referente conjunto; conviene mantener claro ese hecho y usar el resultado binario directo para los ITT principales.
+
+**P6. Precisión limitada.** Ocho decisiones son pocas para medir un rasgo individual. En una simplificación con referente conocido y errores Bernoulli independientes, la varianza del promedio es `Σ_c p_jc(1−p_jc)/n_j²`, acotada por `1/(4n_j)`. Para n=8, la desviación estándar máxima de ese componente es aproximadamente 0,177. Es una ilustración, no la estimación de fiabilidad de esta muestra: el muestreo de perfiles, la dependencia y la estimación del referente añaden otras consideraciones.
+
+Estas propiedades bastan para un anexo metodológico breve. No hace falta prometer una innovación estadística inédita. Su utilidad es hacer explícitos los supuestos y evitar interpretar el índice como diagnóstico estable de cada profesor.
+
+### 4.4. La distribución y los terciles no demuestran por sí solos tipos estables
+
+Incluso profesores con la misma probabilidad de respuesta pueden producir índices distintos por ruido y perfiles diferentes. El histograma no “confirma subjetividad” por sí solo. Tampoco decidir promoción en todas las tarjetas demuestra que alguien se oponga siempre a la repetición.
+
+El problema de la tabla 3 es adicional: el tercil se define con las mismas respuestas que después se usan para estimar sus pendientes. Se condiciona en una función del resultado y de los atributos. Esto puede crear patrones mecánicos y selección; las pendientes negativas de comportamiento en el grupo severo no validan por sí solas una regla académica distinta.
+
+**Análisis preferido:** modelo jerárquico de respuestas con interceptos docentes y pocas pendientes aleatorias, acompañado de simulaciones y validación predictiva. Como sensibilidad intuitiva, dividir aleatoriamente las tarjetas de cada docente: construir la clasificación con una mitad y evaluar con la otra, alternando mitades y repitiendo particiones. Debe respetarse el soporte del diseño; con cuatro respuestas por mitad habrá mucho ruido. No presentar la clasificación cruzada como solución mágica ni elegir la partición que favorece la historia.
+
+Para mostrar heterogeneidad más allá del ruido, comparar la dispersión/covarianza entre respuestas con lo que produce un modelo común de perfiles bajo el diseño observado. Una simulación bajo independencia condicional debe reconocerse como dependiente de ese supuesto. Un modelo jerárquico permite contracción e intervalos; tampoco convierte ocho respuestas en una medición clínica individual.
+
+## 5. Comentarios adicionales como revisor
+
+### 5.1. Identificación y contexto institucional
+
+**El umbral de tres suspensos necesita contexto.** En ESO, el artículo 16 del RD 217/2022 establece promoción con una o dos materias no superadas y prevé decisiones colegiadas y excepciones; no establece que tres suspensos obliguen automáticamente a repetir. En Primaria, el artículo 15 del RD 157/2022 sitúa la promoción al final de ciclo y la permanencia como decisión excepcional [9], [10]. El coeficiente de “tres o más” puede reflejar en parte una frontera institucional, no solo una preferencia académica general. Hay que añadir normativa autonómica y curso escolar aplicables al trabajo de campo antes de cerrar la sección institucional.
+
+Separaría Primaria y Secundaria en las comparaciones principales de atributos. Esas etapas no son dos etiquetas intercambiables de un docente que evalúa exactamente la misma decisión real. También verificaría a qué curso, edad, historial de repetición y condiciones de apoyo remitían las instrucciones. Si no se especificaron, reconocer la ambigüedad: distintas interpretaciones del alumno hipotético pueden generar parte de la heterogeneidad.
+
+**Unanimidad no equivale a preferencia individual.** La política B cambia una regla colectiva de decisión. Si se sigue preguntando “¿le haría repetir usted?”, la política puede no modificar la recomendación individual y, aun así, cambiar la decisión colectiva. La política A promete apoyo futuro y la C formación; ninguna implica que ese apoyo o formación se haya implementado. Este desajuste entre intervención y resultado hace especialmente impropia la extrapolación a “las políticas educativas no funcionan”.
+
+**No extraería efectos causales de reformas nacionales de la serie temporal.** El gráfico muestra tendencias, cambios de nivel y una ruptura alrededor de la pandemia, sin contrafactual. No evalúa reformas. Lo quitaría del argumento sobre eficacia; si se mantiene, usarlo solo como contexto y documentar fuente, denominadores y series. El porcentaje de alumnos de 15 años que repitieron alguna vez no es la tasa anual por curso.
+
+### 5.2. Medición y cuestionario
+
+**Resolver “migrante” frente a “contexto complejo”.** El plan inicial llama Migrant al atributo; el código conserva `vector_extranjero`; el manuscrito dice Complex background. No son intercambiables. El cuestionario exportado no incluye en su etiqueta el texto íntegro de cada tarjeta. Debe reproducirse el enunciado administrado. Hasta entonces, no escribir que los docentes “compensan desventaja socioeconómica”, ni que el experimento mide discriminación por origen: son constructos distintos.
+
+**Medidas posteriores, lenguaje prudente.** La escala suerte–esfuerzo pregunta por la posición económica en España, no directamente por ideología educativa o por la causalidad de la repetición. Autodeclararse empático no equivale a conducta empática observada. Los ítems de impacto y recursos no constituyen por sí solos una escala validada de burnout; aunque el plan use esa etiqueta, no la usaría para resultados.
+
+**El índice de recursos combina dos ideas diferentes.** “Se dedican demasiados recursos” es un juicio distributivo; “los recursos adicionales no son efectivos” es una creencia de eficacia. Mostraría los ítems separados, su correlación, distribución y justificación conceptual antes de sintetizarlos. La consistencia interna no demostraría unidimensionalidad ni validez. La estandarización del promedio está implementada en el código y debe explicarse.
+
+**Variaciones de instrumento.** El Excel distingue preguntas sobre el propio centro y sobre la comunidad autónoma; el código las combina con `coalesce`. También transforma empatía de escalas 0–100 y 1–5 mediante intervalos. No asumir equivalencia de medición. Explicar las variantes y su asignación, comprobar resultados por versión o incluir indicadores del marco de pregunta. La transformación de escala no elimina diferencias de interpretación.
+
+**Edad y experiencia.** En tabla 4, edad se interpreta manteniendo experiencia constante. No es el gradiente descriptivo general de juventud. Mostraría modelos y gráficos que distingan etapa, edad y experiencia, sin atribuir causalidad a edad ni a reformas de formación. El script de discontinuidad de Bolonia existente en el proyecto no debería incorporarse como evidencia causal sin una regla de exposición y un diseño de identificación defendibles.
+
+### 5.3. Inferencia y análisis
+
+**Dos aleatorizaciones, dos modelos.** Para atributos: comparación intraprofesor y errores agrupados por docente, con soporte auditado. Para políticas: asignación entre profesores, resultado binario o promedio estandarizado y control por perfil cuando proceda. Los efectos fijos de profesor absorberían el efecto principal de una política constante dentro de profesor; no pueden añadirse indiscriminadamente a ese ITT.
+
+**Muestra para cada objetivo.** Los efectos de atributos y políticas no deben perder a quien no completa el segundo cuestionario si sus decisiones son utilizables. La caracterización sí puede requerir covariables, pero debe informar missingness y repetir especificaciones sobre muestra común. El `drop_na(favorite)` general de `teacher_data` selecciona también análisis para los que favorita no hace falta.
+
+**Errores estándar.** Los modelos de políticas y caracterización se ajustan con `lm`; las llamadas mostradas a `modelsummary` no especifican una matriz robusta/agrupada. El plan inicial proponía agrupación por centro. No exijo mantenerla por haber estado prevista: exijo justificar la inferencia según diseño, muestreo y dependencia. Usaría como mínimo errores robustos a heterocedasticidad en modelos a nivel docente y evaluaría agrupación por centro si hay identificador fiable. Un código postal no equivale automáticamente a un centro, y uno inferido por rasgos puede introducir errores. Para el índice generado, un bootstrap apropiado debe reconstruir el referente, no tratarlo como conocido.
+
+**Nulos y equivalencia.** Es valioso que existan TOST. Un margen ±3 p.p. debe tener justificación sustantiva y se debe declarar que se escogió después si así fue. La equivalencia al 5% corresponde a un intervalo del 90% contenido en el margen; no hay contradicción automática con que el intervalo del 95% lo roce o lo rebase. El cálculo actual usa prácticamente una aproximación normal con `df=100000`; conviene hacerlo coherente con la inferencia final. Un MDE basado en el error observado describe precisión aproximada, no prueba que una política carezca de efecto [11].
+
+Equivalencia de medias amplias no implica equivalencia para todas las políticas ni invariancia de la regla de decisión. Podrían compensarse efectos de signo distinto entre perfiles. Presentar interacciones acotadas con intervalos y pruebas conjuntas; no convertir cientos de búsquedas en confirmación de mecanismos. Para varias afirmaciones individuales, informar una estrategia de multiplicidad. La prueba conjunta de que todos los efectos están dentro de márgenes es una cuestión distinta de seleccionar cuáles pasaron TOST.
+
+**Random forest y SHAP.** La importancia de una variable no demuestra que el modelo prediga bien. El script 5 categoriza continuas en terciles y usa 50 bosques; el script 8 usa escalas originales y otro bosque. No presentarlos como una sola estimación. El bootstrap SHAP re-muestrea contribuciones de un modelo ya entrenado; sus intervalos no incluyen toda la incertidumbre de entrenar el modelo. Deben etiquetarse como condicionales al modelo, o reentrenar dentro del remuestreo si se busca incertidumbre del procedimiento. Haría una validación por profesor —y por centro si procede— con baseline y sin fuga de información; construiría los referentes/transformaciones dentro del procedimiento de validación cuando corresponda.
+
+**Orden de presentación.** El manuscrito afirma que no hay secuencia validada. Es correcto no confundir número de tarjeta con orden. Pero el parquet bruto contiene **256 columnas de orden de tarjetas**, con información para 2.981 registros, que la limpieza elimina. La afirmación adecuada es “el archivo analítico no conserva una secuencia validada”, no que el dato sea irrecuperable. Recuperaría esos campos, verificaría secuencias sin duplicados y examinaría fatiga/posición. Aun con orden, una regresión de decisión actual sobre decisión previa no identifica automáticamente licencia moral: persistencia docente y características de tarjetas previas pueden generar asociación.
+
+### 5.4. Presentación y transparencia
+
+El cuerpo principal no necesita 19 tablas ni el lenguaje H1|1, H1|2, etc. Organizar por preguntas. Cada figura/tablas debe tener título sustantivo, categorías de referencia, escala, N y población. Eliminar códigos de variables como `DPolicy treatment` de las tablas de lectura principal.
+
+El salto de página que deja la sección 5.2 casi sola en la página 12, el abuso de `[H]` y las tablas encogidas dificultan la lectura. Simplificar resultados y permitir flotantes antes de maquetar. Completar abstract y conclusión después de la auditoría; eliminar texto de colores y recordatorios internos. Sustituir expresiones como “exogenous biases”, “always determinant”, “do not affect in any way” y “predetermined beliefs” por formulaciones que correspondan al diseño y al momento de medición.
+
+El PDF del plan inicial lleva fecha de junio de 2026; los datos brutos tienen fechas de inicio entre marzo y abril de 2025. Eso **no demuestra** que el plan no existiera antes: puede ser una recompilación. Tras la aclaración de Ignacio, recomiendo simplemente describir el documento como plan inicial salvo que haya un registro previo verificable. No hace falta que lo hubiera aceptado una revista para que exista un preregistro público; son cosas distintas. El nuevo artículo puede ser exploratorio y riguroso. La descripción debe reflejar la cronología real.
+
+Añadir fechas de campo, marco de invitación, elegibilidad, consentimiento, revisión ética si la hubo, incentivos y papel de las entidades colaboradoras. No calificar la muestra como representativa por haber distribuido una invitación amplia: la participación y el reenvío por centros generan selección. Contrastar composición de la muestra con estadísticas regionales puede ayudar a valorar alcance; una ponderación no resuelve automáticamente autoselección no observada.
+
+## 6. Arquitectura propuesta para el nuevo paper
+
+**Título posible:** *How Teachers Recommend Grade Retention: Evidence from a Student-Profile Experiment*. Evita anunciar efectos sobre repetición real o sesgos demostrados. Una alternativa centrada en heterogeneidad solo sería apropiada si la validación del índice la sostiene.
+
+**Pregunta principal:** ¿Cómo combinan los docentes señales académicas, conductuales y de contexto al recomendar repetición en situaciones estandarizadas?
+
+**Preguntas secundarias:** ¿Cuánto desacuerdo persiste ante perfiles comparables y qué parte es estable? ¿Cuánto pueden predecir las características observadas de los docentes? ¿Cambian las recomendaciones ante los escenarios de política ensayados?
+
+Propondría este orden:
+
+1. **Introducción breve:** importancia de la decisión, laguna concreta frente a evidencia previa, diseño, contribución y resultados que sobrevivan a la auditoría.
+2. **Instituciones y marco conceptual:** Primaria/ESO, decisión individual/colegiada, umbral y ponderación de señales.
+3. **Diseño y muestra:** material real, aleatorización de bloques y políticas, flujo y selección, temporalidad de covariables.
+4. **Efectos de atributos:** estimando, efectos medios e interacciones académicas prioritarias, heterogeneidad por etapa.
+5. **Desacuerdo entre docentes y predictibilidad:** definición de propensión, incertidumbre, fiabilidad y predicción fuera de muestra; asociaciones como secundarias.
+6. **Contextos de política:** síntesis prudente o sección corta, con resultados completos en suplemento.
+7. **Discusión:** qué identifica la tarea, qué exige validación externa, implicaciones que siguen de los datos y preguntas abiertas.
+
+**Exhibiciones principales:** un diseño/timeline; un flujo muestral; una figura de efectos de atributos con intervalos y paneles por etapa; una figura de perfiles académicos y señales adicionales; una tabla breve de caracterización/predicción; y, si aporta, un gráfico de contrastes de políticas. Reducir antes de añadir.
+
+No vendería una competición abstracta “alumnos frente a profesores”: los atributos del alumnado están manipulados y las características docentes no. Tampoco compararía directamente sus R² como porcentajes causales de responsabilidad.
+
+## 7. Qué elevaría más las posibilidades de publicación
+
+### Prioridad 0: resolver antes de escribir conclusiones
+
+- Reconstruir ejemplos y decisiones, perfiles y bloques, y cuantificar exactamente la selección.
+- Corregir signos de contrastes y el resumen de Allen et al.
+- Retirar controles/selecciones posteriores del ITT principal y documentar la temporalidad del ranking.
+- Volver a estimar tablas principales, índices, intervalos y equivalencia sobre la base validada.
+
+### Prioridad 1: consolidar la contribución con lo ya recogido
+
+- Efectos de atributos y pocas interacciones sustantivas sobre soporte real; análisis por etapa.
+- Medir fiabilidad y sensibilidad del índice; sustituir los terciles endógenos como evidencia principal.
+- Comparar X1, X2 y recursos sobre muestra común; presentar rendimiento predictivo frente a baseline.
+- Diagrama de abandono y sensibilidad a exclusiones/medidas; resultados completos de políticas accesibles.
+- Archivo único de procedencia: cada resultado vinculado con datos, especificación, muestra y versión.
+
+### Prioridad 2: ampliaciones si se busca un salto importante de contribución
+
+**Mi primera elección sería validación externa o temporal**, más que otro algoritmo: relacionar la tarea con recomendaciones reales comparables, o repetir un conjunto de viñetas en otro momento con perfiles ancla. La primera conecta con conducta; la segunda permite evaluar estabilidad. Una tasa real autorreportada por docente puede aportar validez descriptiva, pero depende de la composición de alumnos y no valida por sí sola severidad causal.
+
+**Una nueva recogida de perfiles** podría asegurar contrastes completos, suficientes decisiones sin fatiga y soporte para reglas académicas y conductuales. Más observaciones por docente mejoran precisión individual, pero hay que pilotar carga y orden.
+
+**Si se quiere un paper de políticas**, diseñaría una intervención congruente con el resultado: por ejemplo, simular una decisión colegiada bajo reglas distintas, o aportar información concreta sobre beneficios/costes del apoyo y medir comprensión y actualización. Un pequeño texto sobre una regla colectiva frente a una recomendación individual tiene un techo interpretativo que una reescritura no elimina.
+
+Estas ampliaciones serían nuevos estudios; no son condiciones para hacer un artículo honesto y valioso con los datos actuales. Sí podrían justificar aspirar a una contribución más general.
+
+### Posicionamiento editorial
+
+No recomendaría ahora invertir tiempo en una revista generalista de economía de máxima selectividad: falta todavía una contribución causal o teórica de alcance más amplio y una base analítica cerrada. Es un juicio editorial sobre el contenido, no una predicción de aceptación.
+
+Tras la revisión, **Economics of Education Review** es una candidata si el foco es decisión educativa e identificación; **Educational Evaluation and Policy Analysis** si se conecta bien con instituciones e implicaciones de evaluación; **European Journal of Psychology of Education** si el foco acaba siendo juicio docente y medición. La cercanía del estudio de Klapproth y Beyte hace especialmente importante precisar la aportación para esta última. Consultaría alcance e instrucciones vigentes al seleccionar destino; no propongo una jerarquía de impacto ni porcentajes de éxito. Las guías de EEPA y el alcance de EJPE se consultaron en fuentes editoriales [12], [13].
+
+## 8. Formulaciones que sí y que no sostendría
+
+| Evitar | Sustituir por |
+|---|---|
+| “Las políticas educativas no afectan a la repetición” | “Los contrastes medios entre ciertos escenarios hipotéticos son pequeños; el alcance depende de sus intervalos y del resultado medido”. |
+| “Los profesores tienen sesgos exógenos” | “Observamos diferencias de recomendación y asociaciones con características docentes”. |
+| “El histograma demuestra severidad estable” | “La medida resume desviaciones respecto a otros docentes; su dispersión combina heterogeneidad y error”. |
+| “Los severos valoran más los suspensos” a partir de terciles actuales | “La descripción por terciles es exploratoria y requiere validación con decisiones independientes”. |
+| “Los profesores son iguales e impredecibles” | “Las covariables explican poco la variación medida y su rendimiento predictivo debe evaluarse fuera de muestra”. |
+| “El contexto complejo reduce discriminación” | “El contraste del atributo textual administrado reduce la recomendación en esta tarea, una vez validada la codificación”. |
+| “La formación docente funcionaría mejor que las reformas” | “El experimento no permite comparar la eficacia de formación implementada y reformas reales”. |
+
+**Mi recomendación a los coautores:** avanzar con el paper de reglas de decisión, pero dejar que la auditoría determine qué heterogeneidad es defendible. La magnitud y la estabilidad provisional de las respuestas a señales académicas ofrecen una base; convertir esa base en el mejor artículo exige medir cuidadosamente el desacuerdo, no sobrerrepresentar las creencias ni utilizar nulos de escenarios breves como juicio sobre la política educativa.
+
+## 9. Referencias verificadas y para qué sirven
+
+La búsqueda fue dirigida a las decisiones de esta revisión; no es una revisión sistemática exhaustiva. Las fuentes académicas se verificaron en editoriales, repositorios de autores/instituciones o el texto de los artículos. Las normas y guías editoriales son fuentes primarias no académicas. Los desarrollos matemáticos anteriores son propuestas/derivaciones de este informe, no resultados atribuidos a estas referencias.
+
+[1] F. Klapproth y C. Beyte, “GPA, student gender, school subject, and teacher attitudes in grade retention decisions: an experimental study,” *European Journal of Psychology of Education*, vol. 41, art. 24, 2026. [Artículo y DOI](https://doi.org/10.1007/s10212-026-01072-7). **Uso:** antecedente experimental próximo; revisar la novedad. El estudio analiza 146 participantes en su muestra final; el efecto principal medio de género no es significativo, aunque analiza interacciones. No resumirlo simplemente como prueba de un efecto general de género.
+
+[2] J. Hainmueller, D. J. Hopkins y T. Yamamoto, “Causal Inference in Conjoint Analysis: Understanding Multidimensional Choices via Stated Preference Experiments,” *Political Analysis*, vol. 22, no. 1, pp. 1–30, 2014. [DOI](https://doi.org/10.1093/pan/mpt024). **Uso:** definir efectos de componentes y su distribución de referencia; no es un aval automático del diseño codificado aquí.
+
+[3] J. M. Montgomery, B. Nyhan y M. Torres, “How Conditioning on Posttreatment Variables Can Ruin Your Experiment and What to Do about It,” *American Journal of Political Science*, vol. 62, no. 3, pp. 760–775, 2018. [DOI](https://doi.org/10.1111/ajps.12357). **Uso:** controles, submuestras y selección posteriores al tratamiento.
+
+[4] C. S. Allen, Q. Chen, V. L. Willson y J. N. Hughes, “Quality of Research Design Moderates Effects of Grade Retention on Achievement: A Meta-Analytic, Multilevel Analysis,” *Educational Evaluation and Policy Analysis*, vol. 31, no. 4, pp. 480–499, 2009. [Texto](https://pmc.ncbi.nlm.nih.gov/articles/PMC2921809/); [DOI](https://doi.org/10.3102/0162373709352239). **Uso:** corregir el sentido de la relación entre calidad de diseño y efectos estimados.
+
+[5] M. Goos, J. Pipa y F. Peixoto, “Effectiveness of grade retention: A systematic review and meta-analysis,” *Educational Research Review*, vol. 34, art. 100401, 2021. [Artículo](https://www.sciencedirect.com/science/article/pii/S1747938X21000245). **Uso:** presentación equilibrada de efectos medios y heterogeneidad de la repetición.
+
+[6] J. Hainmueller, D. Hangartner y T. Yamamoto, “Validating vignette and conjoint survey experiments against real-world behavior,” *Proceedings of the National Academy of Sciences*, vol. 112, no. 8, pp. 2395–2400, 2015. [DOI](https://doi.org/10.1073/pnas.1416587112). **Uso:** motivar validación externa propia; su aplicación original no trata repetición escolar.
+
+[7] D. S. Lee, “Training, Wages, and Sample Selection: Estimating Sharp Bounds on Treatment Effects,” *Review of Economic Studies*, vol. 76, no. 3, pp. 1071–1102, 2009. [Ficha del autor y versión publicada en NBER](https://www.nber.org/papers/w11721). **Uso:** sensibilidad a selección; exige supuestos que deben explicarse.
+
+[8] P. Bonvin, “The Role of Teacher Attitudes and Judgement in Decision-Making: The Case of Grade Retention,” *European Educational Research Journal*, vol. 2, no. 2, pp. 277–294, 2003. [DOI](https://doi.org/10.2304/eerj.2003.2.2.6). **Uso:** antecedentes de actitudes y juicio; evita presentar la perspectiva docente como completamente nueva.
+
+[9] España, Real Decreto 217/2022, de 29 de marzo, art. 16, enseñanzas mínimas de ESO. [BOE](https://www.boe.es/buscar/act.php?id=BOE-A-2022-4975). **Uso:** contexto institucional estatal; completar con normativa autonómica aplicable.
+
+[10] España, Real Decreto 157/2022, de 1 de marzo, art. 15, enseñanzas mínimas de Primaria. [BOE](https://www.boe.es/eli/es/rd/2022/03/01/157/dof/spa). **Uso:** promoción y permanencia en Primaria; no intercambiar con el marco de ESO.
+
+[11] D. Lakens, “Equivalence Tests: A Practical Primer for t Tests, Correlations, and Meta-Analyses,” *Social Psychological and Personality Science*, vol. 8, no. 4, pp. 355–362, 2017. [DOI](https://doi.org/10.1177/1948550617697177). **Uso:** diferenciar ausencia de rechazo y evidencia de equivalencia.
+
+[12] SAGE/AERA, “Submission guidelines: Educational Evaluation and Policy Analysis,” consulta: 20-09-2026. [Guías editoriales](https://journals.sagepub.com/author-instructions/epa).
+
+[13] Springer Nature, “Aims and scope: European Journal of Psychology of Education,” consulta: 20-09-2026. [Alcance editorial](https://link.springer.com/journal/10212/aims-and-scope).
+
+## 10. Trazabilidad local y reproducción
+
+**Material evaluado:**
+
+- [Revisiones de la reunión](<C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/Revisiones.txt>).
+- [Manuscrito comentado](<C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/4. Latex/paper_preregistered_rewrite_comentarios.pdf>), especialmente pp. 6–9, tablas 2–6 y 10–19.
+- [Plan inicial y cuestionarios](<C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/4. Latex/Pre_registration.pdf>), especialmente pp. 7, 14–18, 25–36.
+- [Codificación de atributos](<C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/2. Code/0. main.R:78>).
+- [Limpieza y exclusiones](<C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/2. Code/1.limpieza_datos.R:864>).
+- [Script principal de la versión revisada](<C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/2. Code/5. paper_rewrite_analysis.R:17>); ver también creación de `teacher_data`, modelos de atributos, terciles y sección de contrastes.
+- [SHAP y bootstrap condicional al modelo](<C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/2. Code/8. rf_shap_directional_summary.R:160>).
+
+**Archivos nuevos que acompañan este informe:**
+
+- `auditoria_reproducible.py`: comprobaciones independientes y sensibilidades; no modifica fuentes.
+- `auditoria.json`: conteos, comprobación de perfiles, diagnóstico RF y correlación exploratoria.
+- `inventario_tarjetas.csv`: los seis atributos tal como están codificados, por identificador, con duplicados marcados.
+- `sensibilidad_tarjetas.csv`: coeficientes y errores agrupados de las tres construcciones comparadas.
+
+La auditoría requiere Python con pandas, pyarrow, numpy y statsmodels. Localiza el proyecto a partir de su propia ubicación y puede ejecutarse sin cambiar el directorio de trabajo. No exporta identificadores de participantes ni respuestas individuales. **No sustituye la validación del instrumento administrado**, y sus muestras provisionales no deben trasladarse al paper como definitivas.
