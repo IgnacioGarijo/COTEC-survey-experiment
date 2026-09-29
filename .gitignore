@@ -1,34 +1,39 @@
-# R
-.Rproj.user
+# Local data and respondent-level analysis objects
+1. Data/raw data/
+1. Data/processed data/
+3. Output/**/reports/*.rds
+
+# R and local dependency runtime
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
-
-# renv
 renv/library/
 renv/python/
+renv/staging/
 
-# OS
+# Temporary QA and generated caches
+tmp/
+**/.quarto/
+**/__pycache__/
+*.pyc
+.Rproj.user
+
+# LaTeX build intermediates; current PDF outputs remain tracked
+*.aux
+*.log
+*.out
+*.bcf
+*.bbl
+*.blg
+*.nav
+*.snm
+*.toc
+*.run.xml
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# OS files
 .DS_Store
 Thumbs.db
-
-# data
-
-1. Data/raw data/
-1. Data/processed data/
-
-# Local analysis objects containing respondent-level data
-3. Output/two_papers_2026-09-21/reports/*.rds
-
-# LaTeX build intermediates (retain manuscript sources and final PDFs)
-4. Latex/two_papers_2026-09-21/*.aux
-4. Latex/two_papers_2026-09-21/*.log
-4. Latex/two_papers_2026-09-21/*.out
-3. Output/two_papers_2026-09-22/reports/*.rds
-4. Latex/two_papers_2026-09-22/*.aux
-4. Latex/two_papers_2026-09-22/*.log
-4. Latex/two_papers_2026-09-22/*.out
-3. Output/paper_A_2026-09-27/reports/*.rds
-4. Latex/paper_A_2026-09-27/*.aux
-4. Latex/paper_A_2026-09-27/*.log
-4. Latex/paper_A_2026-09-27/*.out

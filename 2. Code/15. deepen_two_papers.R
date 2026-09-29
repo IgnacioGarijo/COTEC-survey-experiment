@@ -2,25 +2,14 @@
 options(stringsAsFactors=FALSE);Sys.setlocale('LC_CTYPE','Spanish_Spain.utf8')
 suppressPackageStartupMessages({library(dplyr);library(tidyr);library(fixest);library(sandwich);library(ggplot2)})
 setFixest_nthreads(2)
-src<-'3. Output/two_papers_2026-09-21';out<-'3. Output/two_papers_2026-09-22'
+src<-'3. Output/shared';out<-'3. Output/paper_B'
 for(s in c('tables','figures','reports'))dir.create(file.path(out,s),recursive=TRUE,showWarnings=FALSE)
-for(s in c('tables','figures'))file.copy(list.files(file.path(src,s),full.names=TRUE),file.path(out,s),overwrite=TRUE)
+for(n in c('policy_broad','policy_cells','availability_by_arm')) stopifnot(file.copy(file.path(src,'figures',paste0(n,'.png')),file.path(out,'figures'),overwrite=TRUE))
 o<-readRDS(file.path(src,'reports/analysis_objects.rds'));t<-o$t;l<-o$long;r<-o$rawt
 attrs<-c('male','background','failed','competence','absent','disruptive');broad<-list(c('Policy','Control'),c('Revelation','Policy'),c('Awareness','Revelation'))
-export<-function(x,n)write.csv(x,file.path(out,'tables',paste0(n,'.csv')),row.names=FALSE)
+export<-function(x,n)if (n %in% jsonlite::read_json('2. Code/artifact_manifest.json')$paper_B$tables) write.csv(x,file.path(out,'tables',paste0(n,'.csv')),row.names=FALSE)
 tidy<-function(m,label,fe=FALSE){V<-if(fe)vcov(m)else vcovHC(m,type='HC3');b<-coef(m)[rownames(V)];s<-sqrt(diag(V));df<-if(fe)fixest::degrees_freedom(m,type='t') else df.residual(m);data.frame(model=label,term=names(b),estimate=b,se=s,lo=b-qt(.975,df)*s,hi=b+qt(.975,df)*s,p=2*pt(-abs(b/s),df),n=nobs(m),row.names=NULL)}
-saveplot<-function(p,n,w=8,h=5)ggsave(file.path(out,'figures',paste0(n,'.png')),p,width=w,height=h,dpi=220,bg='white')
-
-# Exchangeability benchmark: fixed exposures, shuffled answers within identifier x assignment cell.
-coherence<-function(z,label,B=1999){
- ids<-match(z$id,unique(z$id));cards<-match(z$card,unique(z$card));ni<-tabulate(ids);nc<-tabulate(cards);sc<-as.numeric(rowsum(z$y,cards,reorder=FALSE))[order(unique(cards))]
- score<-function(y)as.numeric(rowsum(y-(sc[cards]-y)/(nc[cards]-1),ids,reorder=TRUE))/ni
- groups<-split(seq_len(nrow(z)),interaction(z$card,z$cell,drop=TRUE));actual<-var(score(z$y));set.seed(92201)
- null<-replicate(B,{yp<-z$y;for(g in groups)yp[g]<-yp[g[sample.int(length(g))]];var(score(yp))})
- data.frame(sample=label,n_teachers=length(ni),observed_sd=sqrt(actual),null_sd=sqrt(mean(null)),null_lo=sqrt(quantile(null,.025)),null_hi=sqrt(quantile(null,.975)),excess_variance=actual-mean(null),variance_ratio=actual/mean(null),p=(1+sum(null>=actual))/(B+1),replicates=B)
-}
-export(bind_rows(coherence(l,'All retained'),coherence(filter(l,id%in%t$id[t$n_cards>=8]),'At least eight'),coherence(filter(l,arm=='Control'),'Control only')),'coherence_permutation')
-message('Coherence finished')
+saveplot<-function(p,n,w=8,h=5)if (n %in% jsonlite::read_json('2. Code/artifact_manifest.json')$paper_B$figures) ggsave(file.path(out,'figures',paste0(n,'.png')),p,width=w,height=h,dpi=220,bg='white')
 
 # Four observed academic categories; no extrapolated complete factorial profiles.
 l$academic<-factor(paste0(l$failed,l$competence),levels=c('00','01','10','11'),labels=c('Few failures / adequate competence','Few failures / low competence','Many failures / adequate competence','Many failures / low competence'))
@@ -36,12 +25,6 @@ saveplot(ggplot(ag,aes(100*estimate,reorder(academic,estimate)))+geom_errorbar(a
 stopifnot('titularidad'%in%names(t));l$ownership<-t$titularidad[match(l$id,t$id)]
 gd<-glm(reformulate(c(attrs,'level','ownership'),'y'),data=l,family=binomial(),na.action=na.exclude)
 l$hd_dev<-l$y-predict(gd,newdata=l,type='response');hd<-l%>%group_by(id)%>%summarise(hd=if(all(is.na(hd_dev)))NA_real_ else mean(hd_dev,na.rm=TRUE),.groups='drop');t<-left_join(t,hd,by='id')
-cc<-t[complete.cases(t[,c(o$x3,'ha','hb','hc','hd')]),]
-export(bind_rows(lapply(c('ha','hb','hc','hd'),function(y)tidy(lm(reformulate(o$x3,y),cc),y))),'four_outcomes')
-export(data.frame(n=nrow(cc),cor(cc[,c('ha','hb','hc','hd')])),'outcome_correlations')
-curve<-bind_rows(lapply(c('edad','experiencia','meritocracia','resources'),function(v){z<-t[!is.na(t[[v]]),];z$bin<-pmin(10,ceiling(rank(z[[v]],ties.method='average')/nrow(z)*10));z%>%group_by(bin)%>%summarise(x=mean(.data[[v]]),mean=mean(hb),se=sd(hb)/sqrt(n()),n=n(),.groups='drop')%>%mutate(variable=v)}))
-export(curve,'characterization_curves');saveplot(ggplot(curve,aes(x,100*mean))+geom_errorbar(aes(ymin=100*(mean-1.96*se),ymax=100*(mean+1.96*se)),width=0)+geom_point(color='#215e70')+facet_wrap(~variable,scales='free_x')+labs(x=NULL,y='Mean relative propensity (percentage points)')+theme_minimal(),'characterization_curves',9,6)
-
 # Treatment changes in academic slopes, teacher FE absorb arm main effects.
 slopes<-list();joints<-list()
 for(pair in broad){z<-filter(l,arm%in%pair);z$treated<-as.integer(z$arm==pair[1]);m<-feols(y~male+background+failed+competence+absent+disruptive+treated:failed+treated:competence|id,z,cluster=~id)

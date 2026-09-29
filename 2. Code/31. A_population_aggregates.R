@@ -2,9 +2,9 @@
 options(stringsAsFactors=FALSE)
 invisible(Sys.setlocale('LC_CTYPE','Spanish_Spain.utf8'))
 suppressPackageStartupMessages({library(dplyr);library(jsonlite)})
-out<-'3. Output/paper_A_2026-09-27/reports'
+out<-'3. Output/paper_A/reports'
 dir.create(out,recursive=TRUE,showWarnings=FALSE)
-o<-readRDS('3. Output/paper_A_2026-09-27/reports/analysis_objects.rds')
+o<-readRDS('3. Output/paper_A/reports/analysis_objects.rds')
 d<-o$t
 stopifnot(nrow(d)==2705)
 age_labels<-c('20-24','25-29','30-34','35-39','40-44','45-49','50-54','55-59','60-64','65+')
@@ -24,7 +24,7 @@ summ<-function(z){
  strata<-bind_rows(lapply(c('Public','Private','Primary','Secondary'),function(s){a<-if(s%in%c('Public','Private'))z[z$ownership==s&!is.na(z$ownership),] else z[z$level==s&!is.na(z$level),];data.frame(stratum=s,n=nrow(a),women=sum(a$sex=='Women',na.rm=TRUE),sex_n=sum(!is.na(a$sex)),public=sum(a$ownership=='Public',na.rm=TRUE),ownership_n=sum(!is.na(a$ownership)))}))
  list(n=nrow(z),marginals=marg,strata=strata,cp_status=counts(z$cp_status),age=list(mean=mean(z$edad,na.rm=TRUE),median=median(z$edad,na.rm=TRUE),min=min(z$edad,na.rm=TRUE),max=max(z$edad,na.rm=TRUE)),dates=range(as.character(z$start),na.rm=TRUE),infantil_selected=sum(!is.na(z$infantil)))
 }
-ans<-list(main=summ(d),complete=summ(d[complete.cases(d[,o$x3]),]),notes='Revised manuscript cohorts, 27 September 2026. Postal code is cleaned reported school code, not cp_imputado or geolocation.',input_md5=unname(tools::md5sum('3. Output/paper_A_2026-09-27/reports/analysis_objects.rds')))
+ans<-list(main=summ(d),complete=summ(d[complete.cases(d[,o$x3]),]),notes='Revised manuscript cohorts, 27 September 2026. Postal code is cleaned reported school code, not cp_imputado or geolocation.',input_md5=unname(tools::md5sum('3. Output/paper_A/reports/analysis_objects.rds')))
 stopifnot(ans$complete$n==nrow(o$common))
 write_json(ans,file.path(out,'sample_aggregates.json'),pretty=TRUE,auto_unbox=TRUE,na='null')
 cat(toJSON(list(main_n=ans$main$n,complete_n=ans$complete$n,main=ans$main$marginals,cp=ans$main$cp_status,dates=ans$main$dates),pretty=TRUE,auto_unbox=TRUE))

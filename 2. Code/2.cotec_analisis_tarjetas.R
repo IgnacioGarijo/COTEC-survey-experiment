@@ -83,13 +83,10 @@ ggsave_excel <- function(plot,
 
 
 
-github<- "C:/Users/ignac/OneDrive/Documentos/GitHub/COTEC-survey-experiment/"
-salidas<- paste0("C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Enviar a COTEC/graficos/")
-setwd(github)
-
-df<-read_parquet("1. Data/processed data/cleandata.parquet")
-
-df<-read_parquet("C:/Users/ignac/OneDrive - Universidad Loyola Andalucía/Trabajo/Universidad/Phd/RCT/Datos y codigo/clean_data.parquet")
+# Run from the repository root; this presentation uses its historical data snapshot.
+salidas <- "5. Presentation/COTEC/graficos/"
+dir.create(salidas,recursive=TRUE,showWarnings=FALSE)
+df <- read_parquet("1. Data/raw data/cotec_presentation_clean.parquet")
 
 theme_set(theme_minimal()+
             theme(axis.text = element_text(face="bold", color="#404040"),

@@ -1,7 +1,7 @@
 # Model-based variance partition. Shapley projection allocates fitted systematic variance.
 options(stringsAsFactors=FALSE);invisible(Sys.setlocale('LC_CTYPE','Spanish_Spain.utf8'))
 suppressPackageStartupMessages({library(dplyr);library(lme4);library(jsonlite)})
-out<-'3. Output/paper_A_2026-09-27';o<-readRDS(file.path(out,'reports/analysis_objects.rds'))
+out<-'3. Output/paper_A';o<-readRDS(file.path(out,'reports/analysis_objects.rds'))
 export<-function(x,n)write.csv(x,file.path(out,'tables',paste0(n,'.csv')),row.names=FALSE,na='')
 attrs<-c('male','background','failed','competence','absent','disruptive')
 z<-o$long[,c('id','y',attrs)];z<-left_join(z,o$common[,c('id',o$x3,'cell','n_cards')],by='id');z<-z[complete.cases(z),];z$id<-factor(z$id)

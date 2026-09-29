@@ -1,8 +1,8 @@
 options(stringsAsFactors=FALSE);Sys.setlocale('LC_CTYPE','Spanish_Spain.utf8')
 suppressPackageStartupMessages({library(arrow);library(dplyr);library(tidyr);library(fixest);library(sandwich)})
-setFixest_nthreads(2);out<-'3. Output/two_papers_2026-09-21';o<-readRDS(file.path(out,'reports/analysis_objects.rds'));t<-o$t;l<-o$long;r<-o$rawt
+setFixest_nthreads(2);out<-'3. Output/shared';o<-readRDS(file.path(out,'reports/analysis_objects.rds'));t<-o$t;l<-o$long;r<-o$rawt
 raw<-as.data.frame(read_parquet('1. Data/raw data/df_named.parquet'))
-export<-function(x,n)write.csv(x,file.path(out,'tables',paste0(n,'.csv')),row.names=FALSE)
+export<-function(x,n)if (n %in% jsonlite::read_json('2. Code/artifact_manifest.json')$shared$tables) write.csv(x,file.path(out,'tables',paste0(n,'.csv')),row.names=FALSE)
 tidy<-function(m,label){V<-vcovHC(m,type='HC3');b<-coef(m)[rownames(V)];s<-sqrt(diag(V));data.frame(model=label,term=names(b),estimate=b,se=s,lo=b-qt(.975,df.residual(m))*s,hi=b+qt(.975,df.residual(m))*s,p=2*pt(-abs(b/s),df.residual(m)),n=nobs(m),row.names=NULL)}
 ri<-raw[match(r$id,raw$ResponseId),];r$favorite<-factor(ifelse(ri$R1_1==1,1,ifelse(ri$R1_2==1,2,ifelse(ri$R1_3==1,3,NA))),levels=1:3)
 r$least<-factor(ifelse(ri$R1_1==3,1,ifelse(ri$R1_2==3,2,ifelse(ri$R1_3==3,3,NA))),levels=1:3)

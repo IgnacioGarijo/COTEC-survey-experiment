@@ -1,0 +1,130 @@
+{
+  "shared": {
+    "tables": [
+      "alignment",
+      "alignment_preassignment",
+      "attributes",
+      "attributes_by_tercile",
+      "attrition_alignment_rates",
+      "attrition_balance",
+      "attrition_contrasts",
+      "attrition_policy_alignment",
+      "card_disagreement",
+      "flow_by_arm",
+      "flow_by_policy",
+      "policy_card_level",
+      "policy_cell_means",
+      "policy_contrasts",
+      "policy_duration_trim",
+      "policy_equivalence",
+      "policy_identity_joint_tests",
+      "policy_ipw",
+      "policy_joint_tests",
+      "preference_arm_contrasts",
+      "preference_effects_all_rankings",
+      "selection_effect_bounds",
+      "selection_outcome_bounds",
+      "sequence_lag_permutation",
+      "sequence_summary"
+    ],
+    "figures": [
+      "availability_by_arm",
+      "policy_broad",
+      "policy_cells"
+    ],
+    "reports": [
+      "analysis_objects.rds",
+      "analysis_summary.json",
+      "R_session.txt"
+    ]
+  },
+  "paper_B": {
+    "tables": [
+      "academic_categories",
+      "academic_interactions",
+      "alignment_precision_complete",
+      "missing_outcome_grid",
+      "policy_academic_joint",
+      "policy_academic_robustness",
+      "policy_academic_slopes",
+      "policy_bootstrap_refitted",
+      "policy_teacherweighted_profiles",
+      "ranking_complete_contrasts",
+      "ranking_complete_shares"
+    ],
+    "figures": [
+      "availability_by_arm",
+      "missing_outcome_grid",
+      "policy_broad",
+      "policy_cells"
+    ],
+    "reports": [
+      "deepened_objects.rds",
+      "R_session_deepening.txt"
+    ]
+  },
+  "paper_A": {
+    "tables": [
+      "academic_categories",
+      "academic_interactions",
+      "attributes",
+      "attributes_by_tercile",
+      "belief_selection",
+      "card_disagreement",
+      "characterization",
+      "characterization_bootstrap",
+      "covariate_availability",
+      "four_outcomes",
+      "logit_observed_variance",
+      "module_availability",
+      "nested_permutation_importance",
+      "nested_prediction_repeats",
+      "nested_prediction_summary",
+      "nested_shap",
+      "nested_tuning",
+      "prediction_paired_corrected",
+      "progression_support",
+      "sample_flow",
+      "sequence_lag_permutation",
+      "sequence_summary",
+      "split_half_partitions",
+      "split_half_summary",
+      "split_reference_support",
+      "task_progression",
+      "tercile_descriptives",
+      "timing_slope",
+      "variance_bootstrap_draws",
+      "variance_bootstrap_status",
+      "variance_diagnostics",
+      "variance_partition",
+      "variance_sensitivity"
+    ],
+    "figures": [
+      "harshness_distribution",
+      "population_grid",
+      "sample_flow",
+      "split_half",
+      "task_progression",
+      "variance_partition"
+    ],
+    "reports": [
+      "analysis_objects.rds",
+      "nested_prediction_objects.rds",
+      "variance_models.rds",
+      "summary.json",
+      "sample_aggregates.json",
+      "flow_summary.json",
+      "final_audit.json",
+      "input_manifest.json",
+      "R_session_core.txt",
+      "R_session_variance.txt"
+    ]
+  },
+  "population": {
+    "files": [
+      "comparison.csv",
+      "distribution_distances.csv",
+      "workbook_cell_audit.csv"
+    ]
+  }
+}

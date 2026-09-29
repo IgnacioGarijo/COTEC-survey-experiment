@@ -6,7 +6,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'3. Output/paper_A_2026-09-27';FIG=OUT/'figures'
+OUT=ROOT/'3. Output/paper_A';FIG=OUT/'figures'
 def rows(name):
     with (OUT/'tables'/f'{name}.csv').open(encoding='utf-8-sig') as f:return list(csv.DictReader(f))
 plt.rcParams.update({'font.size':11,'axes.spines.top':False,'axes.spines.right':False,'font.family':'DejaVu Sans'})
@@ -34,7 +34,7 @@ axs[1].plot(pos,[float(r['median_seconds']) for r in p],'o-',color='#215e70');ax
 fig.tight_layout();save(fig,'task_progression')
 # Population margins, current common cases. Reference unchanged audited workbook.
 s=json.loads((OUT/'reports/sample_aggregates.json').read_text(encoding='utf-8'))
-with (ROOT/'3. Output/population_comparison_simulation_2026-09-26/comparison.csv').open(encoding='utf-8-sig') as f:rr=[r for r in csv.DictReader(f) if r['cohort']=='main']
+with (ROOT/'3. Output/population/comparison.csv').open(encoding='utf-8-sig') as f:rr=[r for r in csv.DictReader(f) if r['cohort']=='main']
 def ref(v,c):return next(float(r['reference_pct']) for r in rr if r['variable']==v and r['category']==c)
 def obs(v,c,cohort):
     a=s[cohort]['marginals'][v];return 100*a['counts'].get(c,0)/a['observed']

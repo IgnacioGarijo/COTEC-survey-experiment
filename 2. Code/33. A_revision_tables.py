@@ -1,7 +1,7 @@
 """Generate manuscript tables and numerical tokens directly from revised aggregate results."""
 from pathlib import Path
 import csv,json,shutil,math
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'3. Output/paper_A_2026-09-27';DEST=ROOT/'4. Latex/paper_A_2026-09-27';TAB=DEST/'tables';TAB.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'3. Output/paper_A';DEST=ROOT/'4. Latex/paper_A';TAB=DEST/'tables';TAB.mkdir(parents=True,exist_ok=True)
 def rows(n):
  with (OUT/'tables'/f'{n}.csv').open(encoding='utf-8-sig') as f:return list(csv.DictReader(f))
 def n(x,d=2):return f'{float(x):.{d}f}'

@@ -1,7 +1,0 @@
-All numeric validation checks passed.
-Validated: 2026-09-21 01:37:46.89348
-2705 teachers / 22124 retained recommendations; 22006 observations identify the within-teacher slopes.
-2156 complete-case teachers; three five-fold partitions; no teacher appears twice per repeat/model.
-Contrasts equal direct arm-mean differences; card-weighted relative score sums to zero.
-Prediction references and resource scaling fitted exclusively on training folds.
-Output in-sample characterization and out-of-fold prediction refer to different reference constructions, as documented.

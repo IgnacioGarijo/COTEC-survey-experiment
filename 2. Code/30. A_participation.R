@@ -1,7 +1,7 @@
 # Aggregate flow, module availability, recorded task progression; no new exclusions.
 options(stringsAsFactors=FALSE);invisible(Sys.setlocale('LC_CTYPE','Spanish_Spain.utf8'))
 suppressPackageStartupMessages({library(arrow);library(dplyr);library(tidyr);library(fixest);library(jsonlite)})
-out<-'3. Output/paper_A_2026-09-27';o<-readRDS(file.path(out,'reports/analysis_objects.rds'));t<-o$t
+out<-'3. Output/paper_A';o<-readRDS(file.path(out,'reports/analysis_objects.rds'));t<-o$t
 r<-as.data.frame(read_parquet('1. Data/raw data/df_named.parquet'));clean<-as.data.frame(read_parquet('1. Data/processed data/cleandata.parquet'))
 export<-function(x,n)write.csv(x,file.path(out,'tables',paste0(n,'.csv')),row.names=FALSE,na='')
 filt<-c('Grupo 1.1_1','Grupo 2.1_1','Grupo 5.1_1','Grupo 8.1_1')

@@ -1,8 +1,0 @@
-{
-  "baseline_commit": "b73fa3a",
-  "baseline_path": "4. Latex/two_papers_2026-09-22/paper_A_teacher_decisions.tex",
-  "baseline_sha256": "e1d89594ab19e2d8a887cc086684bf58819f056b316dc5ae7928b7d3cecc72f6",
-  "blue_prose_blocks_verified": 3,
-  "notes_sha256": "d4946ad7cb4ed010bd11f40f569c08cdc38cba0f032647d9bf55c4a99598db44",
-  "rule": "Blue verbatim text; orange revised material; red additions relative to reviewed baseline, not intermediate delivery."
-}

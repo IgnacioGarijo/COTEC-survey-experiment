@@ -4,7 +4,7 @@ import csv,json,re
 from pypdf import PdfReader
 import pypdfium2 as pdfium
 from PIL import Image,ImageOps,ImageDraw
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'3. Output/paper_A_2026-09-27';DOC=ROOT/'4. Latex/paper_A_2026-09-27'
+ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'3. Output/paper_A';DOC=ROOT/'4. Latex/paper_A'
 def rows(name):
  with (OUT/'tables'/f'{name}.csv').open(encoding='utf-8-sig') as f:return list(csv.DictReader(f))
 flow={r['stage']:int(r['n']) for r in rows('sample_flow')}
@@ -34,8 +34,8 @@ for forbidden in ['Castilla','Mancha','Toledo','Albacete','Ciudad Real','Cuenca'
 for table in (DOC/'tables').glob('*.tex'):
  assert '95\\% CI' not in table.read_text(encoding='utf-8'),table
 assert '\\cite{' not in tex,'Numeric citation command remains'
-log=(DOC/'paper_A_teacher_decisions_final.log').read_text(encoding='utf-8',errors='replace');assert 'undefined' not in log.lower();assert 'Overfull' not in log
-pdf=DOC/'paper_A_teacher_decisions_final.pdf';reader=PdfReader(pdf);doc=pdfium.PdfDocument(pdf)
+log=(DOC/'paper_A_teacher_decisions.log').read_text(encoding='utf-8',errors='replace');assert 'undefined' not in log.lower();assert 'Overfull' not in log
+pdf=DOC/'paper_A_teacher_decisions.pdf';reader=PdfReader(pdf);doc=pdfium.PdfDocument(pdf)
 qa=ROOT/'tmp/paper_A_2026-09-27_QA';qa.mkdir(parents=True,exist_ok=True);thumbs=[];pages=[]
 for i,page in enumerate(doc):
  im=page.render(scale=1.4).to_pil().convert('RGB');im.save(qa/f'page_{i+1:02}.png')

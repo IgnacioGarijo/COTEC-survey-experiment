@@ -2,7 +2,7 @@
 # Integrate over the fitted random-intercept distribution independently of observed profiles.
 options(stringsAsFactors=FALSE)
 suppressPackageStartupMessages(library(glmmTMB))
-out<-'3. Output/paper_A_2026-09-27';m<-readRDS(file.path(out,'reports/variance_models.rds'))$logit
+out<-'3. Output/paper_A';m<-readRDS(file.path(out,'reports/variance_models.rds'))$logit
 eta<-as.numeric(predict(m,newdata=m$frame,re.form=NA));tau<-sqrt(as.numeric(VarCorr(m)$cond$id[1]))
 results<-lapply(c(30,60),function(k){
  # Golub-Welsch rule for standard normal: off-diagonal sqrt(1),...,sqrt(k-1).

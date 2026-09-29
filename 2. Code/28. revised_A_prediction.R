@@ -1,8 +1,8 @@
 # A-only updated nested validation. Excess-resource item; no school tenure.
 options(stringsAsFactors=FALSE);Sys.setlocale('LC_CTYPE','Spanish_Spain.utf8')
 suppressPackageStartupMessages({library(dplyr);library(tidyr);library(ranger);library(fastshap);library(ggplot2)})
-o<-readRDS('3. Output/paper_A_2026-09-27/reports/analysis_objects.rds');out<-'3. Output/paper_A_2026-09-27'
-export<-function(x,n)write.csv(x,file.path(out,'tables',paste0(n,'.csv')),row.names=FALSE)
+o<-readRDS('3. Output/paper_A/reports/analysis_objects.rds');out<-'3. Output/paper_A'
+export<-function(x,n)if (n %in% jsonlite::read_json('2. Code/artifact_manifest.json')$paper_A$tables) write.csv(x,file.path(out,'tables',paste0(n,'.csv')),row.names=FALSE)
 prepare<-function(tr,te){
  lr<-o$long[o$long$id%in%tr$id,];le<-o$long[o$long$id%in%te$id,];ref<-lr%>%group_by(card)%>%summarise(s=sum(y),n=n(),.groups='drop');stopifnot(all(le$card%in%ref$card),min(ref$n)>1)
  ht<-left_join(lr,ref,by='card')%>%group_by(id)%>%summarise(target=mean(y-(s-y)/(n-1)),.groups='drop');he<-left_join(le,ref,by='card')%>%group_by(id)%>%summarise(target=mean(y-s/n),.groups='drop')
@@ -37,5 +37,4 @@ cmp<-list();for(pop in unique(fm$population)){z<-filter(fm,population==pop);for(
 export(bind_rows(cmp),'prediction_paired_corrected');sh<-bind_rows(shaps)%>%pivot_longer(-id,names_to='variable',values_to='shap');export(sh%>%group_by(variable)%>%summarise(mean_abs_shap=mean(abs(shap)),.groups='drop'),'nested_shap');export(bind_rows(perms)%>%group_by(variable)%>%summarise(mse_increase=mean(mse_increase),.groups='drop'),'nested_permutation_importance')
 # Directional display: quartile means of SHAP for numeric covariates, level means for factors.
 dirs<-list();for(v in o$x3){z<-filter(sh,variable==v);val<-o$t[[v]][match(z$id,o$t$id)];z$group<-if(is.numeric(val)&&length(unique(val))>5)paste0('Q',pmin(4,ceiling(rank(val,ties.method='average')/length(val)*4)))else as.character(val);dirs[[v]]<-z%>%group_by(variable,group)%>%summarise(n=n(),mean_shap=mean(shap),.groups='drop')};export(bind_rows(dirs),'nested_shap_direction')
-ggsave(file.path(out,'figures/nested_shap_direction.png'),ggplot(filter(bind_rows(dirs),variable%in%c('edad','experiencia','resources_excess','meritocracia')),aes(group,100*mean_shap))+geom_col(fill='#215e70')+facet_wrap(~variable)+labs(x='Within-variable quartile (low to high)',y='Mean held-out SHAP contribution (pp)')+theme_minimal(),width=8,height=5,dpi=220,bg='white')
 saveRDS(list(predictions=p,shap=sh),file.path(out,'reports/nested_prediction_objects.rds'));message('Nested prediction complete')

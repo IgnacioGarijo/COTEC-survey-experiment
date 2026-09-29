@@ -1,4 +1,0 @@
-Quitar migrant de las tablas y texto
-Cambiar el nombre del archivo a manuscript y también el de los output que se generan
-consolidar código en diferentes scripts que tengan sentido y borrar análisis y output que no hayan dado para el paper
-mostrar el gráfico de las reformas educativas quizá
