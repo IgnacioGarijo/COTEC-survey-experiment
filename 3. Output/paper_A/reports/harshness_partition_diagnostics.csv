@@ -1,0 +1,2 @@
+"n_decisions","n_teachers","r2_OLS_without_harshness","r2_OLS_with_harshness","incremental_r2_harshness","fraction_of_remaining_variance","harshness_coefficient","OLS_adjusted_r2","OLS_outside_01"
+18608,2157,0.491620553550354,0.621151445111461,0.129530891561106,0.254791755382141,0.996879948814646,0.620580490833142,0.217325881341359
