@@ -50,6 +50,8 @@ La reducción relativa en esta sensibilidad es 8,35 %. La diferencia absoluta ti
 
 Todos los ajustes devuelven código de optimización cero; el script reintenta con otro optimizador si detecta problemas de convergencia. Hubo 0 ajustes singulares del modelo de intercepto y 0 del modelo ampliado, conservados en la comparación. El mayor gradiente escalado registrado es 0,031833; los mensajes y advertencias de cada ajuste se guardan en el CSV de diagnósticos.
 
+Se reestimaron también los 3 ajustes con mayor gradiente escalado utilizando glmmTMB para el mismo modelo gaussiano con REML, inicializado con las estimaciones de lme4. La mayor variación del error reservado fue 0,00001064. Los ajustes de esta segunda implementación tienen Hessiana positiva y código de optimización cero. Los errores principales de la tabla conservan los ajustes originales; esta auditoría comprueba su estabilidad numérica. La inicialización importa: el primer ajuste glmmTMB con valores iniciales automáticos produjo una Hessiana no positiva. Antes se intentó un refinamiento BOBYQA: dos de los tres ajustes alcanzaron el límite de evaluaciones, aunque apenas cambiaron las predicciones; se conserva ese intento en within_teacher_cv_bobyqa_attempt.csv. Por tanto, esta comprobación acredita concordancia de predicciones con una inicialización informada, no ausencia de sensibilidad numérica a todos los valores iniciales.
+
 ## Consecuencia para el paper
 
 La evidencia conjunta del bootstrap, las sensibilidades de especificación y esta validación permite defender el modelo lineal completo como descomposición descriptiva principal, explicando sus supuestos. La comprobación binomial anterior sigue sin confirmar los porcentajes y debe documentarse; no convierte esta mejora predictiva en una validación del 14,88 % o del 73,14 % como cantidades invariantes al modelo.
@@ -60,6 +62,7 @@ La interpretación concreta es la siguiente: si un profesor parece dar más peso
 
 - `Rscript "2. Code/42. A_within_teacher_validation.R"`: 30 particiones emparejadas. Semilla de particiones 930420 y del bootstrap 930421. El cálculo puede continuar desde el objeto local guardado; verifica la huella de los datos y el calendario.
 - `python "2. Code/43. report_within_teacher_validation.py"`: genera este informe.
+- `Rscript --vanilla "2. Code/44. audit_cv_optimization.R"`: contrasta los tres ajustes con mayor gradiente escalado con otra implementación; guarda `within_teacher_cv_optimizer_audit.csv`.
 - Resultados agregados: `within_teacher_cv_summary.csv`, `within_teacher_cv_uncertainty.csv`, `within_teacher_cv_partitions.csv`, `within_teacher_cv_diagnostics.csv`, `within_teacher_cv_support.csv` y `R_session_within_teacher_cv.txt`.
 - Predicciones y pérdidas individuales permanecen en `within_teacher_cv_objects.rds`, ignorado por Git.
 

@@ -33,11 +33,14 @@ audit_note = ''
 if (OUT / 'within_teacher_cv_optimizer_audit.csv').exists():
     audit = read('within_teacher_cv_optimizer_audit.csv')
     max_error_change = max(abs(float(a['refined_mse']) - float(a['old_mse'])) for a in audit)
-    assert all(float(a['convergence_gradient']) < .002 and float(a['min_hessian_eigenvalue']) > 0 for a in audit)
-    audit_note = (f'Se reestimaron también los {len(audit)} ajustes con mayor gradiente escalado utilizando BOBYQA y una tolerancia más estricta. '
+    assert all(a['optimizer_status'] == '0' and a.get('positive_hessian') == 'TRUE' and float(a['min_hessian_eigenvalue']) > 0 for a in audit)
+    audit_note = (f'Se reestimaron también los {len(audit)} ajustes con mayor gradiente escalado utilizando glmmTMB para el mismo modelo gaussiano con REML, inicializado con las estimaciones de lme4. '
                   f'La mayor variación del error reservado fue {number(max_error_change, 8)}. '
-                  'Los ajustes refinados tienen Hessiana positiva y cumplen el criterio de gradiente combinado de lme4. '
-                  'Los errores principales de la tabla conservan los ajustes originales; esta auditoría comprueba su estabilidad numérica.')
+                  'Los ajustes de esta segunda implementación tienen Hessiana positiva y código de optimización cero. '
+                  'Los errores principales de la tabla conservan los ajustes originales; esta auditoría comprueba su estabilidad numérica. '
+                  'La inicialización importa: el primer ajuste glmmTMB con valores iniciales automáticos produjo una Hessiana no positiva. '
+                  'Antes se intentó un refinamiento BOBYQA: dos de los tres ajustes alcanzaron el límite de evaluaciones, aunque apenas cambiaron las predicciones; se conserva ese intento en within_teacher_cv_bobyqa_attempt.csv. '
+                  'Por tanto, esta comprobación acredita concordancia de predicciones con una inicialización informada, no ausencia de sensibilidad numérica a todos los valores iniciales.')
 recommendation = ('La evidencia conjunta del bootstrap, las sensibilidades de especificación y esta validación permite defender el modelo lineal completo como descomposición descriptiva principal, explicando sus supuestos. '
                   'La comprobación binomial anterior sigue sin confirmar los porcentajes y debe documentarse; no convierte esta mejora predictiva en una validación del 14,88 % o del 73,14 % como cantidades invariantes al modelo.'
                   if positive else
@@ -106,7 +109,7 @@ La interpretación concreta es la siguiente: si un profesor parece dar más peso
 
 - `Rscript "2. Code/42. A_within_teacher_validation.R"`: 30 particiones emparejadas. Semilla de particiones 930420 y del bootstrap 930421. El cálculo puede continuar desde el objeto local guardado; verifica la huella de los datos y el calendario.
 - `python "2. Code/43. report_within_teacher_validation.py"`: genera este informe.
-- `Rscript "2. Code/44. audit_cv_optimization.R"`: refina los tres ajustes con mayor gradiente escalado; guarda `within_teacher_cv_optimizer_audit.csv`.
+- `Rscript --vanilla "2. Code/44. audit_cv_optimization.R"`: contrasta los tres ajustes con mayor gradiente escalado con otra implementación; guarda `within_teacher_cv_optimizer_audit.csv`.
 - Resultados agregados: `within_teacher_cv_summary.csv`, `within_teacher_cv_uncertainty.csv`, `within_teacher_cv_partitions.csv`, `within_teacher_cv_diagnostics.csv`, `within_teacher_cv_support.csv` y `R_session_within_teacher_cv.txt`.
 - Predicciones y pérdidas individuales permanecen en `within_teacher_cv_objects.rds`, ignorado por Git.
 
