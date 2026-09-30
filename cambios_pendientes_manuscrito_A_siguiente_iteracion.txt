@@ -1,0 +1,71 @@
+CAMBIOS PENDIENTES — MANUSCRITO A — SIGUIENTE ITERACIÓN
+Creado: 1 de octubre de 2026
+
+ESTADO Y FORMA DE TRABAJO
+El autor ha aprobado registrar los siguientes cambios para una aplicación conjunta posterior. Este archivo es acumulativo: añadir aquí los nuevos acuerdos hasta que el autor indique que se ejecute la siguiente iteración.
+NO modificar todavía el manuscrito, sus tablas, figuras o PDF por estos acuerdos. Los análisis complementarios ya calculados no equivalen a cambios incorporados al texto.
+Este archivo registra los acuerdos nuevos; no autoriza volver a aplicar listas históricas de correcciones.
+
+1. SUSTITUIR EL MODELO DE DESCOMPOSICIÓN DE VARIANZA
+Estado: aprobado para incorporar en la siguiente iteración; estimación puntual ya realizada.
+
+Especificación acordada:
+- Mantener los seis atributos del alumno: género, contexto social, suspensos, competencias, absentismo y comportamiento.
+- Incluir las 15 interacciones posibles entre pares de esos seis atributos, además de sus efectos principales. No limitarse a suspensos × competencias.
+- Mantener las características profesionales/demográficas y las creencias del modelo vigente.
+- Retirar el bloque de ramas o contexto de asignación experimental de esta descomposición. Este acuerdo no elimina controles de otros análisis del paper ni cambia el paper B.
+- Sustituir el intercepto aleatorio docente u_i por el harshness observado H_i (hb, la medida que ya utiliza el paper), como regresor fijo con coeficiente estimado. No mantener simultáneamente ese intercepto aleatorio.
+- Permitir seis pendientes aleatorias docentes: una sensibilidad para cada atributo, incluyendo género y contexto social, con covarianzas libres entre ellas. Centrar los atributos de la parte aleatoria en sus medias globales.
+- Las 15 interacciones entre atributos son efectos comunes; no se han acordado pendientes aleatorias para esas 15 interacciones, ni interacciones entre harshness y atributos.
+
+Intuición que debe quedar clara en métodos y resultados:
+Los atributos describen al alumno; las pendientes docentes permiten que distintos profesores den distinto peso a un mismo atributo. Un efecto medio pequeño no demuestra ausencia de heterogeneidad entre profesores. Harshness recoge la severidad general observada y las pendientes, diferencias en los criterios. Explicarlo con lenguaje sencillo, sin repetir advertencias causales que no responden a una afirmación del paper.
+
+Regla de reparto:
+Repartir la varianza del predictor fijo completo mediante Shapley de proyecciones entre atributos (incluidas las 15 interacciones), características profesionales/demográficas, creencias y harshness. Añadir la varianza conjunta de las sensibilidades, evaluada sobre los perfiles observados e incluyendo sus covarianzas, y la varianza residual. Normalizar por la suma de estos componentes. No describirlo como diferencias de R² de modelos mixtos reducidos reestimados ni como porcentaje de decisiones acertadas.
+
+Resultados puntuales disponibles (18.608 decisiones, 2.157 profesores):
+- Atributos e interacciones: 48,63 %.
+- Características profesionales/demográficas: 0,18 %.
+- Creencias: 0,17 %.
+- Harshness observado: 12,70 %.
+- Sensibilidades docentes: 17,10 %.
+- Residuo: 21,22 %.
+- Total representado: 78,78 %.
+- Coeficiente de harshness: 0,968477.
+Las sumas pueden diferir una centésima por redondeo.
+
+Interpretación y comprobaciones pendientes antes de publicar cifras definitivas:
+- Presentar una descomposición descriptiva del modelo que incorpora un indicador construido con las mismas respuestas. No convertir el aumento respecto a la especificación anterior en una mejora predictiva demostrada.
+- La cuota de harshness no estima exactamente la antigua varianza de u_i. El denominador es la varianza total construida por cada modelo.
+- La especificación solicitada tiene rango fijo completo, covarianza no singular, Hessiana positiva, código de optimización cero y gradiente combinado inferior a 0,002.
+- La versión intermedia con intercepto aleatorio y seis pendientes resultó singular; conservarla sólo como comparación exploratoria si se utiliza. No confundirla con el modelo aprobado, que sustituye el intercepto por harshness.
+- No trasladar al nuevo modelo los errores estándar o intervalos del anterior. Si se presentan medidas de incertidumbre, calcularlas para esta especificación y reconstruir harshness y sus referencias en el remuestreo correspondiente.
+- La validación anterior de 30 particiones correspondía al modelo de cuatro pendientes, con interacción académica y controles experimentales. No atribuirla automáticamente al modelo nuevo. Una validación predictiva del nuevo modelo requeriría reconstruir harshness y sus referencias exclusivamente con información de entrenamiento.
+- Actualizar de forma coherente métodos, figura de descomposición, resultados, apéndice técnico, introducción, resumen y discusión donde dependan de la especificación anterior. Revisar las afirmaciones sobre sensibilidades binarias/logísticas a la luz de los análisis ya realizados; no conservar afirmaciones antiguas de confirmación que ya no correspondan.
+
+Fuentes reproducibles:
+- 2. Code/45. A_all_attributes_harshness.R
+- 2. Code/46. report_all_attributes_harshness.py
+- 3. Output/paper_A/reports/all_attributes_harshness_report.md
+- 3. Output/paper_A/reports/all_attributes_harshness_*.csv
+- Commit del análisis: 7c1c1a3.
+
+2. TRASLADAR LA TABLA 7 AL APÉNDICE PREDICTIVO EXISTENTE
+Estado: aprobado para incorporar en la siguiente iteración.
+
+Identificación inequívoca:
+Tabla actualmente titulada “Prediction of harshness in held-out teachers”, etiqueta LaTeX tab:prediction, archivo de tabla prediction. Usar esta identificación si la numeración cambia.
+
+Cambios acordados:
+- Mover la tabla completa de predicción del harshness (comparación entre OLS, ridge y random forest) del cuerpo al apéndice predictivo que ya existe. No crear otro apéndice exclusivo para ella.
+- Conservar el análisis: aporta una comprobación de la limitada capacidad para anticipar el harshness de profesores nuevos a partir de sus características y creencias. No es la misma pregunta que la nueva descomposición, que utiliza patrones derivados de las decisiones.
+- Mantener en el cuerpo una frase con el resultado sustantivo y la referencia al apéndice. Formulación orientativa, pendiente de adaptación al inglés y a las cifras vigentes:
+  “Estas asociaciones tienen una capacidad limitada para anticipar el harshness de profesores no utilizados en la estimación: el modelo completo alcanza un R² fuera de muestra del 3,72 %, sin mejoras relevantes mediante regularización o modelos no lineales”.
+- Reducir en métodos y discusión el protagonismo de la comparación de algoritmos; dejar los detalles de validación y comparación en el apéndice.
+- Conservar en el cuerpo la tabla de asociaciones entre características/creencias y harshness (tab:char). No se ha acordado trasladar esa tabla.
+- Organizar el tercer bloque de resultados como: asociaciones con harshness; comprobación predictiva resumida; nueva descomposición como resultado principal de cierre.
+- Revisar referencias cruzadas, numeración y continuidad de la argumentación para que el traslado no deje párrafos desconectados ni tablas sin mencionar.
+
+REGISTRO DE APLICACIÓN
+Pendiente. El autor ha solicitado seguir acumulando cambios antes de modificar el texto.
