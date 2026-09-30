@@ -37,9 +37,12 @@ B = int(unc['Total']['replicates'])
 ok = int(unc['Total']['successful'])
 singular = int(unc['Total']['singular'])
 observed = pct(cal['Four']['observed_rate'])
+later_note = ('Actualización posterior: se ha añadido una validación con respuestas reservadas dentro de profesor, disponible en [within_teacher_cv_report.md](within_teacher_cv_report.md). El dictamen de este documento corresponde a la fase previa a esa comprobación; el nuevo informe integra esa evidencia adicional.\n' if (OUT / 'within_teacher_cv_report.md').exists() else '')
 report = f'''# Comprobación final del modelo con cuatro pendientes docentes
 
 30 de septiembre de 2026. Análisis interno; no modifica el manuscrito.
+
+{later_note}
 
 ## Dictamen
 

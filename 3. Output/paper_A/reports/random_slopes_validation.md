@@ -2,6 +2,9 @@
 
 30 de septiembre de 2026. Análisis interno; no modifica el manuscrito.
 
+Actualización posterior: se ha añadido una validación con respuestas reservadas dentro de profesor, disponible en [within_teacher_cv_report.md](within_teacher_cv_report.md). El dictamen de este documento corresponde a la fase previa a esa comprobación; el nuevo informe integra esa evidencia adicional.
+
+
 ## Dictamen
 
 **La precisión por remuestreo del modelo lineal es razonable, pero la comprobación binomial no valida el reparto de varianza. No recomendaría sustituir todavía la descomposición principal por este modelo presentando el 73,14 % como una cifra robusta a la forma de modelizar la decisión.**

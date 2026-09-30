@@ -1,0 +1,2 @@
+"rounds","n_teachers","n_original_decisions","mse_intercept","mse_four","mse_intercept_clipped","mse_four_clipped","rounds_improved","min_improvement","max_improvement","singular_intercept","singular_four"
+30,2157,18608,0.115386607717178,0.105614479280597,0.112661335267937,0.10325329154897,30,0.00126282827877944,0.0151307274175399,0,0
