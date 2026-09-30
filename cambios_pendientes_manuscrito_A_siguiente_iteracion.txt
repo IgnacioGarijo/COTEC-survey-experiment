@@ -76,5 +76,16 @@ Estado: aprobado para incorporar en la siguiente iteración.
 - Este acuerdo afecta a la presentación de la tabla 1; no implica eliminar los datos del grupo de control de la muestra completa ni modificar otros análisis. No trasladar automáticamente la columna a un nuevo anexo.
 - Registrar solamente por ahora; no modificar todavía tabla, manuscrito ni PDF.
 
+4. SUSTITUIR LA FIGURA 2 POR EL HISTOGRAMA DE BARRAS MÁS ANCHAS Y SÓLIDAS
+Estado: alternativa elegida y aprobada para la siguiente iteración.
+
+- Usar la primera propuesta: barras sólidas de 12,5 puntos porcentuales, con un intervalo centrado en cero, eje vertical en porcentaje de profesores y línea vertical de referencia en cero.
+- Mantener los mismos 2.705 profesores, con igual peso por profesor, sin eliminar extremos ni añadir observaciones simuladas.
+- No superponer curva de densidad ni utilizar bootstrap para rellenar el gráfico.
+- Propuesta visual aprobada: 3. Output/paper_A/reports/harshness_histogram_candidate.png. Código: 2. Code/47. A_harshness_figure_options.R. Pruebas y comprobaciones: harshness_figure_options.txt en esa misma carpeta. Commit de las pruebas: ec4631d.
+- Al integrarla, adaptar título, pie y notas al formato del paper, evitando duplicarlos entre imagen y leyenda. Explicitar el ancho de los intervalos y conservar la interpretación de los valores negativos y positivos de harshness.
+- La forma tiene una cola izquierda más larga. El acuerdo es visual; no se ha estimado ni adoptado una distribución paramétrica normal o Poisson.
+- No sustituir todavía la figura del manuscrito: aplicar junto con el resto de cambios cuando lo indique el autor.
+
 REGISTRO DE APLICACIÓN
 Pendiente. El autor ha solicitado seguir acumulando cambios antes de modificar el texto.
