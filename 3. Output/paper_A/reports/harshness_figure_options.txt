@@ -1,0 +1,37 @@
+PRUEBAS DE PRESENTACIÓN DE LA FIGURA 2 — 1 de octubre de 2026
+
+Estado: alternativas para revisión del autor. No se ha sustituido la figura del manuscrito ni se ha registrado una elección como aprobada.
+
+Muestra y fidelidad
+Se utilizan los mismos 2.705 profesores y los mismos valores hb que la figura vigente, con igual peso por profesor. No se añaden datos simulados, no se eliminan valores extremos y no se selecciona una nueva muestra para las propuestas principales. Fuente: analysis_objects.rds del paper A, objeto t. Script reproducible: 2. Code/47. A_harshness_figure_options.R.
+
+Qué explica la apariencia
+El 87,58 % de los profesores tiene ocho o nueve respuestas registradas. Manteniendo fijas las referencias, cambiar una respuesta modifica su media en 12,5 u 11,11 puntos, respectivamente. Esa resolución y las referencias de las tarjetas ayudan a entender las concentraciones y huecos del índice. Las barras de cinco puntos ponen mucho énfasis en esos picos. La media es -0,61, la mediana 3,15 y la desviación típica 20,97 puntos. Los percentiles 10 y 90 son -30,28 y 17,18. La asimetría muestral es -1,25: no presentar la distribución como una normal.
+
+Pruebas realizadas
+1. Histogramas de 5, 10, 12,5 y 15 puntos, centrados en cero y con escala de densidad común. El panel permite comparar áreas y formas sin confundir alturas de intervalos de diferente ancho.
+2. Desplazamiento de medio intervalo para barras de 12,5 puntos. Cambian los máximos y las alturas concretas; se mantienen la concentración central y la cola izquierda más larga. No interpretar el máximo de una barra como una moda poblacional precisa.
+3. Densidad con núcleo gaussiano: selector Silverman nrd0 (h=3,20676), Sheather-Jones (h=0,53047), y anchos ilustrativos de 5 y 7,5 puntos. Los selectores automáticos conservan picos; las curvas más suaves dependen de una decisión explícita de escala. Un núcleo gaussiano no impone una distribución normal al conjunto de observaciones.
+4. Distribución acumulada empírica, sin agrupación ni ancho de banda, para comprobar que las concentraciones existen en los datos. Es exacta como descripción de esta muestra, aunque menos inmediata para mostrar la forma de la distribución.
+5. Comprobación numérica con al menos ocho respuestas y con exactamente nueve. La asimetría sigue siendo negativa (-0,78 y -0,82). La cola izquierda no se debe exclusivamente a quienes tienen pocas respuestas. Estas restricciones no se aplican a los gráficos propuestos.
+
+Propuesta recomendada para discutir
+Histograma con intervalos de 12,5 puntos, centrados en cero, eje vertical en porcentaje de profesores y referencia vertical en cero. Su ancho facilita la lectura a una escala próxima al cambio de una respuesta entre los docentes con ocho o nueve decisiones. Es una elección expositiva explícita, no un ancho demostrado óptimo: la regla de Freedman-Diaconis sugiere 3,33 puntos y produce mayor detalle. El histograma no debe utilizarse para afirmar normalidad ni un número preciso de modos.
+
+Alternativa visual
+Mismas barras más claras y curva de densidad con h=5 puntos, usando eje vertical de densidad para que ambas capas compartan unidades. La curva ayuda a seguir la forma general, pero añade una elección de suavizado y puede distraer con ondulaciones. Preferencia inicial: barras solas por claridad de lectura y porcentajes directamente interpretables.
+
+Bootstrap
+No se utiliza para rellenar huecos. El remuestreo serviría para estudiar incertidumbre, no para aumentar la información de la distribución observada. Si se quisiera una banda inferencial que incorpore la construcción del indicador, habría que reconstruir sus referencias en los remuestreos adecuados. No se justifica ese añadido para esta figura descriptiva.
+
+Archivos visuales
+- harshness_histogram_candidate.png: propuesta de barras en porcentajes.
+- harshness_density_overlay_candidate.png: alternativa con curva superpuesta.
+- harshness_histogram_options.png: comparación de cuatro anchos.
+- harshness_bin_origin_check.png: sensibilidad al origen de los intervalos.
+- harshness_density_options.png: sensibilidad del suavizado.
+- harshness_ecdf_candidate.png: distribución acumulada empírica.
+
+Documentación de los selectores utilizados
+https://stat.ethz.ch/R-manual/R-devel/library/stats/html/bandwidth.html
+https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/nclass.html
