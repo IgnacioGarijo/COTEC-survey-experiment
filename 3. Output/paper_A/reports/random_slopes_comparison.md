@@ -2,6 +2,8 @@
 
 29 de septiembre de 2026. No modifica el manuscrito ni los resultados principales.
 
+Actualización del 30 de septiembre: la comprobación de incertidumbre y el contraste binomial están en [random_slopes_validation.md](random_slopes_validation.md). La estabilidad del modelo lineal no se ha traducido en una validación del reparto mediante el modelo binomial; la recomendación final de ese informe matiza la valoración exploratoria que sigue.
+
 ## Pregunta y especificaciones
 
 ¿Cuánta variación atribuye el modelo a diferencias entre profesores en cómo responden a suspensos, falta de competencias, absentismo y comportamiento disruptivo, además de su severidad general?

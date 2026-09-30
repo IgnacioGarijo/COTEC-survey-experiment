@@ -1,6 +1,6 @@
 # Nonparametric teacher bootstrap for the four-slope variance partition.
 # Whole teacher clusters are resampled; copies receive distinct IDs.
-# Rscript "2. Code/39. A_random_slopes_bootstrap.R" [replicates=399] [workers=3]
+# Rscript "2. Code/39. A_random_slopes_bootstrap.R" [replicates=199] [workers=6]
 options(stringsAsFactors=FALSE)
 invisible(Sys.setlocale('LC_CTYPE','Spanish_Spain.utf8'))
 suppressPackageStartupMessages({library(dplyr);library(lme4)})
@@ -13,7 +13,8 @@ slopes <- c('failed','competence','absent','disruptive'); sn <- paste0(slopes,'_
 z <- left_join(o$long[,c('id','y',attrs)],o$common[,unique(c('id',o$x3,'cell'))],by='id')
 z <- z[complete.cases(z),];z$id <- factor(z$id)
 for(v in slopes)z[[paste0(v,'_c')]] <- z[[v]]-mean(z[[v]])
-stopifnot(nrow(z)==nobs(main),identical(as.character(z$id),as.character(model.frame(main)$id)))
+stopifnot(nrow(z)==nobs(main),identical(as.character(z$id),as.character(model.frame(main)$id)),
+          isTRUE(all.equal(as.numeric(z$y),as.numeric(model.response(model.frame(main))))))
 form <- formula(main);form_fixed <- nobars(form);initial <- getME(main,'theta')
 idx <- split(seq_len(nrow(z)),z$id)
 partition <- function(m,d){
@@ -55,7 +56,7 @@ one <- function(b){
  },warning=function(e){w<<-c(w,conditionMessage(e));invokeRestart('muffleWarning')}),error=function(e)list(p=setNames(rep(NA_real_,length(point)),names(point)),singular=NA,message=conditionMessage(e)))
  data.frame(draw=b,as.list(ans$p),singular=ans$singular,message=ans$message,warnings=paste(w,collapse=';'),seconds=unname(proc.time()[3]-start),check.names=FALSE)
 }
-args <- commandArgs(TRUE);B <- if(length(args))as.integer(args[1]) else 399L;workers <- if(length(args)>1)as.integer(args[2]) else 3L
+args <- commandArgs(TRUE);B <- if(length(args))as.integer(args[1]) else 199L;workers <- if(length(args)>1)as.integer(args[2]) else 6L
 path <- file.path(out,'random_slopes_bootstrap_draws.csv')
 done <- if(file.exists(path))read.csv(path,check.names=FALSE) else data.frame()
 todo <- setdiff(seq_len(B),if(nrow(done))done$draw else integer())
@@ -63,8 +64,8 @@ if(length(todo)){
  cl <- parallel::makePSOCKcluster(workers)
  parallel::clusterEvalQ(cl,{suppressPackageStartupMessages(library(lme4));NULL})
  parallel::clusterExport(cl,c('z','slopes','sn','form','form_fixed','initial','idx','partition','blocks','point','one'),envir=environment())
- for(batch in split(todo,ceiling(seq_along(todo)/(workers*4)))){
-  got <- parallel::parLapply(cl,batch,one)
+ for(batch in split(todo,ceiling(seq_along(todo)/(workers*2)))){
+  got <- parallel::parLapplyLB(cl,batch,one)
   done <- bind_rows(done,bind_rows(got));write.csv(done,path,row.names=FALSE,na='')
   message('Completed ',sum(done$draw<=B),'/',B,'; median seconds/fit=',round(median(done$seconds),1))
  }
