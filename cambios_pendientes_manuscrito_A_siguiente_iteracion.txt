@@ -67,5 +67,14 @@ Cambios acordados:
 - Organizar el tercer bloque de resultados como: asociaciones con harshness; comprobación predictiva resumida; nueva descomposición como resultado principal de cierre.
 - Revisar referencias cruzadas, numeración y continuidad de la argumentación para que el traslado no deje párrafos desconectados ni tablas sin mencionar.
 
+3. RETIRAR LA COLUMNA CONTROL DE LA TABLA 1
+Estado: aprobado para incorporar en la siguiente iteración.
+
+- En la tabla de respuestas intraprofesor a los atributos (actual tabla 1, etiqueta tab:attr, archivo attributes.tex), quitar la columna “Control” y conservar los resultados de la muestra completa.
+- Adaptar el encabezado y la nota de tabla, retirando de ella el tamaño muestral del grupo de control y cualquier explicación exclusiva de la columna eliminada.
+- Retirar o reformular la frase del cuerpo que compara los coeficientes con los del grupo de control, para que no remita a resultados que ya no se presentan.
+- Este acuerdo afecta a la presentación de la tabla 1; no implica eliminar los datos del grupo de control de la muestra completa ni modificar otros análisis. No trasladar automáticamente la columna a un nuevo anexo.
+- Registrar solamente por ahora; no modificar todavía tabla, manuscrito ni PDF.
+
 REGISTRO DE APLICACIÓN
 Pendiente. El autor ha solicitado seguir acumulando cambios antes de modificar el texto.
