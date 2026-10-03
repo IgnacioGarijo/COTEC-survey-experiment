@@ -1,0 +1,30 @@
+order,last_recorded_stage,n,pct_no_card,elapsed_median_seconds
+0,Sin envío de la introducción ni respuestas,550,29.907558455682437,22.0
+1,Introducción/consentimiento,188,10.22294725394236,28.0
+2,Etapa educativa,89,4.839586731919521,45.0
+3,Cursos y especialidad,78,4.241435562805873,49.0
+4,Experiencia docente,23,1.2506797172376292,87.0
+5,Antigüedad en el centro,24,1.3050570962479608,75.0
+6,Centros anteriores,2,0.10875475802066341,116.0
+7,Género del docente,17,0.924415443175639,110.0
+8,Edad,6,0.3262642740619902,128.5
+9,Tutoría: sí/no,96,5.220228384991843,112.0
+10,Tutoría: curso del grupo,6,0.3262642740619902,155.0
+11,Tutoría: número de alumnos,54,2.936378466557912,137.0
+12,Tutoría: posibles repetidores,29,1.5769439912996193,145.0
+13,Tutoría: repetidores previos,97,5.2746057640021755,170.0
+14,Código postal del centro,4,0.21750951604132682,139.0
+15,Titularidad del centro,13,0.7069059271343121,167.0
+16,Situación laboral (rama pública),11,0.5981511691136487,191.0
+17,Enseñanzas del centro,28,1.5225666122892876,215.5
+18,Líneas de primaria/secundaria,16,0.8700380641653073,204.0
+19,Grupos a los que enseña,39,2.1207177814029365,213.0
+20,Alumnos en el grupo mayor,43,2.3382272974442633,244.0
+21,Horas de guardia,122,6.634040239260468,240.0
+22,Alumnos absentistas,62,3.3713974986405657,264.0
+23,Alumnos conflictivos,6,0.3262642740619902,410.5
+24,Programas del centro,1,0.054377379010331704,360.0
+25,Género de la dirección,12,0.6525285481239804,247.5
+26,Experiencia de la dirección,25,1.3594344752582925,331.0
+27,Porcentaje de desfavorecidos,27,1.468189233278956,318.0
+28,Pantalla de instrucciones posterior,171,9.298531810766722,316.0

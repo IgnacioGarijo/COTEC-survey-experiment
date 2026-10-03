@@ -97,5 +97,16 @@ Fecha: 3 de octubre de 2026. Estado: búsqueda solicitada y propuesta preparada;
 - No afirmar retrospectivamente que estas publicaciones determinaron la selección original si no está documentado. El párrafo preparado fundamenta la pertinencia del diseño. Mantener los antecedentes posteriores a la encuesta, como Klapproth y Beyte (2026), en la comparación de literatura correspondiente.
 - No modificar todavía el texto ni la bibliografía canónica.
 
+6. PRECISAR CUÁNDO SE PIERDEN RESPUESTAS Y REORDENAR LAS EXCLUSIONES POR FILTRO
+Fecha: 3 de octubre de 2026. Análisis complementario solicitado y realizado; incorporar en la siguiente iteración.
+
+- Sustituir la descripción indiferenciada de pérdidas previas a decisiones por el último avance registrado. Entre 1.839 registros sin ninguna respuesta a tarjetas: 550 no envían introducción, 188 solo introducción, 167 etapa/cursos/especialidad, 354 datos personales/tutoría, 382 centro/alumnado y 198 cierre del bloque inicial/instrucciones.
+- Mensaje: 40,1 % no alcanza la primera pregunta sustantiva; 49,2 % como máximo llega a etapa/cursos/especialidad; 50,8 % avanza hasta experiencia o más allá. No describirlos a todos como entradas vacías ni atribuirlos todos a agotamiento. El último envío no identifica necesariamente la pantalla exacta de salida ni su motivo.
+- Reordenar el flujo: 4.942 registros -> 3.103 con alguna decisión registrada (incluidos ejemplos/filtros; 1.839 sin ninguna) -> restar 389 exclusiones por filtro -> 2.714 -> restar 9 con respuesta solo en campos no utilizados como resultados -> 2.705 analizados. Después, mantener 2.203 con creencias y 2.157 con covariables completas. Los 389 no son abandonos; 313 terminan la encuesta.
+- No mover simplemente la caja de 389 después del nodo de 2.705. El nodo anterior a las exclusiones debe incluir las decisiones de ejemplos/filtros. De los excluidos, 7 no tienen decisiones en los campos usados para el análisis. Los antiguos 1.848 sin resultado equivalen a 1.839 sin tarjeta más 9 sin respuesta analizable.
+- Mantener todo en el apéndice existente de participación/agotamiento/representatividad, con texto conciso y un gráfico compacto. No incorporar la tabla interna de 29 etapas. Comprobar coherencia del texto, denominadores y pie del flujo; no cambiar muestras ni la regla de filtro.
+- Código: 2. Code/48. A_survey_exit_audit.py. Informe: 3. Output/paper_A/reports/survey_exit_report.txt. Figuras propuestas: survey_exit_stages.png y survey_flow_candidate.png en esa carpeta. CSV agregados y mapa de campos conservan el detalle auditable.
+- Las figuras se han preparado aparte. El manuscrito y sus figuras canónicas siguen pendientes de la ejecución conjunta de cambios.
+
 REGISTRO DE APLICACIÓN
 Pendiente. El autor ha solicitado seguir acumulando cambios antes de modificar el texto.

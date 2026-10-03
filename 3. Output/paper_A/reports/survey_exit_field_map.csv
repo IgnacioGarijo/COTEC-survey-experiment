@@ -1,0 +1,29 @@
+order,stage,fields
+1,Introducción/consentimiento,time_T0.1_Page Submit | Intro
+2,Etapa educativa,time_1_Page Submit | 1Primaria/Secundaria
+3,Cursos y especialidad,time_1aPrimaria_Page Submit | 1a Primaria_1 | 1a Primaria_2 | 1a Primaria_3 | 1a Primaria_4 | 1a Primaria_5 | 1a Primaria_6 | 1a Primaria_7 | 1a Primaria_8 | 1a Primaria_8_TEXT | time_1aSecundaria_Page Submit | 1aSecundaria_1 | 1aSecundaria_2 | 1aSecundaria_4 | 1aSecundaria_5 | 1aSecundaria_6 | 1aSecundaria_7 | 1aSecundaria_8 | 1aSecundaria_8_TEXT | time_1bSecundaria_Page Submit | 1bSecundaria | 1bSecundaria_18_TEXT
+4,Experiencia docente,time_2_Page Submit | 2.Antiguedad
+5,Antigüedad en el centro,time_3_Page Submit | 3.Aniguedad en Centr
+6,Centros anteriores,time_4_Page Submit | 4.CentrosPrevios
+7,Género del docente,time_5_Page Submit | 5. Género
+8,Edad,time_6_Page Submit | 6. Edad
+9,Tutoría: sí/no,time_7_Page Submit | 7. Tutor
+10,Tutoría: curso del grupo,time_8a1_Page Submit | 8a1Tutores
+11,Tutoría: número de alumnos,time_8a2_Page Submit | 8a2Tutores
+12,Tutoría: posibles repetidores,time_8a3_Page Submit | 8a3Tutores
+13,Tutoría: repetidores previos,time_8a4_Page Submit | 8a4Tutores
+14,Código postal del centro,time_8C.Posta_Page Submit | 8 C.Postal
+15,Titularidad del centro,time_9_Page Submit | 9.Titularidad
+16,Situación laboral (rama pública),time_10Publico_Page Submit | 10.Situación Lab.Pub | 10.Situación Lab.Pub_13_TEXT
+17,Enseñanzas del centro,time_11_Page Submit | 11.EnseñanzasCentro_1 | 11.EnseñanzasCentro_2 | 11.EnseñanzasCentro_3 | 11.EnseñanzasCentro_4 | 11.EnseñanzasCentro_5 | 11.EnseñanzasCentro_6 | 11.EnseñanzasCentro_7 | 11.EnseñanzasCentro_8 | 11.EnseñanzasCentro_8_TEXT
+18,Líneas de primaria/secundaria,time_12A_Page Submit | 12.ALíneas ESO | time_12B_Page Submit | 12.BLíneas Prim.
+19,Grupos a los que enseña,time_13_Page Submit | 13. Grupos Clase
+20,Alumnos en el grupo mayor,time_14_Page Submit | 14.AlumnosClase
+21,Horas de guardia,time_15_Page Submit | 15. Horas Guardia
+22,Alumnos absentistas,time_16_Page Submit | 16.Absentistas
+23,Alumnos conflictivos,time_17_Page Submit | 17. Conflictivos
+24,Programas del centro,time_18_Page Submit | 18. Programas
+25,Género de la dirección,time_19_Page Submit | 19. Género Director
+26,Experiencia de la dirección,time_20_Page Submit...198 | 20. Exp. Director
+27,Porcentaje de desfavorecidos,time_21_Page Submit...203 | 21.%desfavorecidos_1
+28,Pantalla de instrucciones posterior,time_inst_rankingfin_Page Submit

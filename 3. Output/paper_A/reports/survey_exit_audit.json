@@ -1,0 +1,17 @@
+{
+  "raw": 4942,
+  "no_recorded_card": 1839,
+  "any_recorded_card": 3103,
+  "screen_exclusions": 389,
+  "after_screen": 2714,
+  "only_nonanalysis_fields": 9,
+  "analysis_sample": 2705,
+  "screen_with_analysis_fields": 382,
+  "screen_without_analysis_fields": 7,
+  "sample_finished": 2354,
+  "sample_not_finished": 351,
+  "excluded_finished": 313,
+  "sample_final_module": 2442,
+  "sample_before_final_module": 263,
+  "sample_final_module_unfinished": 88
+}

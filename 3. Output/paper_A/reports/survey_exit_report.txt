@@ -1,0 +1,103 @@
+ABANDONO Y AVANCE REGISTRADO EN LA ENCUESTA
+Análisis complementario, 3 de octubre de 2026. No modifica muestras, manuscrito ni figuras canónicas.
+Código reproducible: 2. Code/48. A_survey_exit_audit.py
+
+PREGUNTA Y RESULTADO PRINCIPAL
+Se distingue una entrada que no supera la introducción de una respuesta parcial tras varias preguntas.
+De 4.942 registros, 1.839 no tienen ninguna respuesta a tarjetas, contando ejemplos/filtros como respuestas.
+Entre estos 1.839, 738 (40,1 %) no registran la primera pregunta sustantiva (etapa educativa).
+Si se amplía la definición de arranque mínimo a etapa, cursos y especialidad, son 905 (49,2 %).
+Los restantes 934 (50,8 %) sí han llegado a la pregunta de experiencia docente o más adelante.
+No hay una única explicación: aproximadamente la mitad se pierde al arrancar y la otra mitad tras avanzar.
+
+MÉTODO
+La unidad es el registro con ResponseId único, no una persona única verificada entre distintas entradas.
+Se utiliza el parquet original sin excluir previamente a quienes fallan el filtro.
+Se reconstruye el último bloque con respuesta o campo Page Submit registrado, siguiendo el orden del cuestionario.
+Se unen las alternativas de primaria/secundaria; las preguntas de tutoría y empleo público se tratan como ramas.
+El CSV survey_exit_field_map.csv documenta exactamente los campos de cada etapa. No se exportan datos individuales.
+El último envío indica hasta dónde hay evidencia de avance. La salida puede ocurrir en la siguiente pantalla,
+sin que esta deje una respuesta guardada. Por eso no se atribuye el abandono a una pregunta específica.
+El porcentaje Progress no se usa como reloj ni como número de preguntas: contiene saltos por las ramas.
+El campo Intro presenta faltantes incluso entre personas que completan; se usa también el envío y avance posterior.
+
+ÚLTIMO AVANCE ENTRE LOS 1.839 REGISTROS SIN TARJETAS
+Etapa | n | % sin tarjetas | Mediana de duración registrada (minutos)
+Sin enviar la introducción | 550 | 29,9 | 0,37
+Solo introducción, sin etapa educativa | 188 | 10,2 | 0,47
+Etapa/cursos/especialidad, sin experiencia | 167 | 9,1 | 0,75
+Datos personales y tutoría | 354 | 19,2 | 2,32
+Datos del centro y alumnado | 382 | 20,8 | 4,08
+Fin del bloque inicial / instrucciones | 198 | 10,8 | 5,27
+
+La duración es tiempo transcurrido registrado por la plataforma, no tiempo de atención activa.
+Hay 31 registros sin tarjetas con duración superior a 24 horas; se prefieren medianas y no se eliminan casos.
+Los 550 sin envío inicial tienen mediana de 22 segundos; los 188 con solo introducción, de 28 segundos.
+Los grupos que avanzan por datos personales/tutoría, centro y cierre del bloque tienen medianas de
+2,32, 4,08 y 5,27 minutos, respectivamente. Esto es compatible con participación sustantiva antes de parar.
+
+DETALLE ÚTIL DE LAS PÉRDIDAS POSTERIORES AL ARRANQUE
+- 282 tienen su último registro entre la pregunta de tutoría sí/no y el final de sus preguntas derivadas.
+  No significa que una pregunta de tutoría cause esas salidas: algunos no tenían que ver sus derivadas.
+- 122 tienen su último registro en horas de guardia, antes de guardar la respuesta de absentismo.
+- Otros 62 tienen como último registro absentismo, antes de guardar el de alumnado conflictivo.
+- 198 llegan al final del bloque inicial: 27 se quedan en porcentaje de desfavorecidos y 171 registran
+  también el campo time_inst_rankingfin_Page Submit, pero no guardan ninguna respuesta a tarjetas.
+Estos son puntos de pérdida observada, no motivos de salida. No se puede distinguir fatiga, interrupción,
+falta de tiempo o decisión de no continuar a partir de los campos disponibles.
+
+RETENCIÓN CON DENOMINADORES COMPARABLES
+4.942 entradas -> 4.392 con introducción enviada -> 4.204 con etapa educativa -> 4.037 con experiencia
+-> 3.683 con código postal -> 3.301 al final del bloque inicial -> 3.274 tras instrucciones -> 3.103 con tarjetas.
+Cada hito incluye evidencia de avance posterior. Los hitos son anidados; no se comparan ramas condicionales
+como si todas las personas tuvieran que responderlas. De las 4.204 que empiezan las preguntas sustantivas,
+1.101 (26,2 %) no llegan a guardar una decisión y 3.103 (73,8 %) sí lo hacen.
+Entre quienes llegan a experiencia, 354 de 4.037 (8,8 %) se pierden antes del código postal.
+Entre quienes llegan al código postal, 382 de 3.683 (10,4 %) se pierden antes del final del bloque inicial.
+Entre quienes llegan a ese final, 198 de 3.301 (6,0 %) no llegan a ninguna tarjeta.
+
+DESPUÉS DE ENTRAR EN LAS DECISIONES
+De los 2.705 de la muestra analítica, 2.354 (87,0 %) tienen Finished=True y 351 no.
+Entre estos últimos, 263 no registran el envío de la introducción del módulo final y 88 sí.
+No terminar la encuesta no elimina sus decisiones ya disponibles. Tampoco equivale a carecer de creencias:
+la falta de una creencia puede deberse a omisión/ramificación, no necesariamente a una salida.
+Esta auditoría no redefine la completitud de las ocho tarjetas ni confunde ejemplos con tarjetas experimentales.
+
+FLUJO PROPUESTO: EXCLUSIONES DESPUÉS DE LAS DECISIONES
+4.942 registros
+  - 1.839 sin ninguna respuesta a tarjetas
+  = 3.103 con alguna respuesta a tarjetas, incluidos ejemplos/filtros
+  - 389 excluidos por la regla vigente del filtro
+  = 2.714 con respuesta y sin exclusión
+  - 9 con respuestas únicamente en los dos campos que no se utilizan como resultados
+  = 2.705 profesores en el análisis de decisiones
+  - 502 con alguna creencia seleccionada ausente
+  = 2.203 con creencias completas
+  - 46 con otras covariables ausentes
+  = 2.157 con todas las covariables del análisis.
+
+Los 389 excluidos sí responden alguna tarjeta; 313 incluso terminan toda la encuesta. No son abandonos.
+382 de ellos tienen respuesta en algún campo utilizado para el análisis y 7 solo en campos fuera del análisis.
+Por ello no se debe mover sin más la caja de 389 debajo de la caja de 2.705 ni debajo de una caja de 3.087
+con al menos una decisión analizable. El nodo anterior adecuado es 3.103 con cualquier decisión registrada.
+Los dos campos omitidos del resultado son Grupo 1.1_1 y Grupo 2.1_1, como en la construcción vigente.
+La regla de filtro busca repite en Grupo 1.1_1, Grupo 2.1_1, Grupo 5.1_1 y Grupo 8.1_1.
+No se altera esa regla ni se resuelve aquí la ambigüedad histórica entre ejemplos y perfiles experimentales.
+Los 1.848 del diagrama anterior equivalen a 1.839 sin ninguna tarjeta más 9 sin resultado analizable.
+
+RECOMENDACIÓN EDITORIAL
+Reorganizar el flujo como en survey_flow_candidate.png. Añadir al mismo apéndice una síntesis breve de
+las pérdidas previas a tarjetas, con survey_exit_stages.png o una versión compacta del gráfico.
+Describirlo como participación y abandono observado; reservar agotamiento para una interpretación posible.
+El mensaje central: alrededor de la mitad de las pérdidas anteriores a las tarjetas corresponde a entradas
+con avance mínimo; la otra mitad sucede tras preguntas sustantivas. Quienes llegan a las decisiones suelen
+completar la encuesta. Las exclusiones por filtro son una selección analítica posterior, no falta de participación.
+No hace falta incorporar la tabla de 29 etapas al manuscrito: se conserva para auditoría interna.
+
+COMPROBACIONES
+ResponseId único; 64 campos de tarjetas identificados, incluyendo el nombre excepcional Grupo 6_1.
+Reproducción exacta de los IDs de los 2.705 analizados y las 22.124 decisiones de la base limpia.
+Los 389 excluidos tienen respuesta a tarjetas. Las categorías de avance suman 1.839 sin solapamiento.
+Todas las personas con tarjetas registran el último campo de instrucciones del bloque inicial.
+Ninguna persona sin tarjetas registra los campos posteriores de presentación de política, ranking R1 o módulo final.
+Los 4.942 registros se reconstruyen exactamente con las ramas del diagrama. Sin nuevas exclusiones.

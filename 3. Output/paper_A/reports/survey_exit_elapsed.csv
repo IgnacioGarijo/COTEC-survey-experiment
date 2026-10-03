@@ -1,0 +1,4 @@
+cohort,n,elapsed_q25_seconds,elapsed_q50_seconds,elapsed_q75_seconds,elapsed_q90_seconds,over_24h
+no_card,1839,28.0,119.0,275.5,854.0000000000005,31
+screen_excluded,389,725.0,1039.0,1539.0,2979.2,5
+analysis_sample,2705,788.0,1084.0,1672.0,3812.7999999999997,50
