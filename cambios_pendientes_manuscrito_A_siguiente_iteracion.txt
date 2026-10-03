@@ -87,5 +87,15 @@ Estado: alternativa elegida y aprobada para la siguiente iteración.
 - La forma tiene una cola izquierda más larga. El acuerdo es visual; no se ha estimado ni adoptado una distribución paramétrica normal o Poisson.
 - No sustituir todavía la figura del manuscrito: aplicar junto con el resto de cambios cuando lo indique el autor.
 
+5. FUNDAMENTAR CON LITERATURA LOS SEIS ATRIBUTOS
+Fecha: 3 de octubre de 2026. Estado: búsqueda solicitada y propuesta preparada; redacción concreta pendiente de valoración del autor.
+
+- Preparar un párrafo tras la presentación de los atributos en el diseño, organizando su pertinencia en información académica (suspensos y competencias), asistencia/conducta y características sociodemográficas (género y contexto social).
+- Fuentes y propuesta en inglés: 3. Output/paper_A/reports/literatura_seis_atributos.txt. Referencias verificadas y BibTeX pendiente en literatura_seis_atributos.bib, en la misma carpeta.
+- Referencias principales: Klapproth y Schaltz (2015), Davoudzadeh et al. (2015), Santos y Monteiro (2024), Mattison et al. (2018), González-Betancor y López-Puig (2016). Conservar formato APA en el manuscrito.
+- Distinguir evidencia sobre repetición observada de información declarada por los docentes para decidir. Explicar que separar suspensos y competencias permite estudiar señales académicas discordantes. No presentar estos seis atributos como una lista exhaustiva de causas demostradas ni atribuir a la bibliografía los umbrales exactos de nuestras tarjetas.
+- No afirmar retrospectivamente que estas publicaciones determinaron la selección original si no está documentado. El párrafo preparado fundamenta la pertinencia del diseño. Mantener los antecedentes posteriores a la encuesta, como Klapproth y Beyte (2026), en la comparación de literatura correspondiente.
+- No modificar todavía el texto ni la bibliografía canónica.
+
 REGISTRO DE APLICACIÓN
 Pendiente. El autor ha solicitado seguir acumulando cambios antes de modificar el texto.

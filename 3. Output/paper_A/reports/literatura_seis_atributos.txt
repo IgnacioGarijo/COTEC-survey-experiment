@@ -1,0 +1,58 @@
+JUSTIFICACIÓN BIBLIOGRÁFICA DE LOS SEIS ATRIBUTOS
+3 de octubre de 2026. Búsqueda dirigida para la siguiente iteración; manuscrito sin cambios.
+
+RECOMENDACIÓN
+Organizar la justificación en tres dimensiones: información académica (suspensos y competencias), asistencia y conducta (absentismo y comportamiento), y características sociodemográficas (género y contexto social). Las referencias justifican que sean dimensiones pertinentes para estudiar recomendaciones de repetición; no establecen que sean los únicos seis determinantes ni validan automáticamente cada umbral concreto del cuestionario.
+Ubicar el párrafo inmediatamente después de presentar los atributos en la sección de diseño. La distinción entre suspensos y competencias permite estudiar señales académicas discordantes. No equiparar competencias con inteligencia innata, comportamiento con un rasgo moral ni contexto social complejo con una medida aislada de renta familiar.
+
+EVIDENCIA SELECCIONADA
+
+1. Suspensos / rendimiento formal
+Klapproth y Schaltz (2015) estudian longitudinalmente 9.031 alumnos de secundaria en Luxemburgo mediante modelos de supervivencia e incorporan GPA como indicador de rendimiento. También documentan diferencias de repetición por género y contexto, considerando el rendimiento. Sirve para fundamentar el uso de información académica formal y las dimensiones sociodemográficas; no estudia nuestro umbral exacto de tres suspensos.
+Fuente primaria consultada: resumen y metadatos editoriales de Springer, https://link.springer.com/article/10.1007/s10212-014-0232-7
+
+2. Competencias básicas
+Davoudzadeh et al. (2015) emplean ECLS-K y análisis de supervivencia multinivel desde kindergarten hasta octavo curso. Las destrezas académicas iniciales de lectura, matemáticas y conocimientos generales son predictores especialmente relevantes de repetición. Fundamenta representar el dominio de habilidades además de las notas. Es evidencia de habilidades medidas al inicio de la escolaridad, no validación de la descripción concreta de competencias de nuestras tarjetas.
+Fuentes primarias consultadas: resumen y extractos editoriales de ScienceDirect; registro y resumen del artículo en Arizona State University, https://asu.elsevierpure.com/en/publications/early-school-readiness-predictors-of-grade-retention-from-kinderg/
+
+3. Absentismo
+Santos y Monteiro (2024) encuestan a 194 docentes portugueses sobre decisiones de repetición en segundo curso. Su tabla 3 y sección 3.1 identifican la asistencia como información relevante declarada para decidir; la importancia media de asistencia es 7,1 sobre 10. Es un fundamento directo sobre criterios docentes, no una estimación del efecto de las ausencias injustificadas.
+Fuentes primarias consultadas: resultados editoriales Wiley (sección 3.1 y tabla 3), https://onlinelibrary.wiley.com/doi/abs/10.1002/pits.23130 ; registro institucional y PDF del artículo, https://repositorio.ispa.pt/entities/publication/60b74c11-a4fd-40b1-b95f-9261292e07e8
+
+4. Comportamiento
+Mattison et al. (2018) relacionan valoraciones docentes de conductas externalizantes y dificultades de implicación en el aprendizaje en kindergarten con repetición hasta quinto curso, utilizando 6.750 alumnos del ECLS-K. Ambos indicadores predicen la repetición. Es especialmente pertinente para justificar información conductual; no es un experimento sobre expulsiones ni demuestra un efecto uniforme entre contextos.
+Fuente primaria consultada: resumen editorial Wiley, https://onlinelibrary.wiley.com/doi/abs/10.1002/pits.22192
+
+5. Género
+Klapproth y Schaltz (2015) documentan mayor riesgo de repetición entre varones en secundaria, considerando GPA. Este resultado justifica examinar si el género modifica la recomendación ante información académica y conductual comparable. La diferencia poblacional no obliga a esperar un efecto positivo en nuestras tarjetas.
+
+6. Contexto social complejo
+González-Betancor y López-Puig (2016) analizan 28.708 alumnos de primaria de 874 centros españoles con modelos logísticos multinivel. Documentan asociaciones entre repetición y circunstancias socioeconómicas, incluidas educación y situación laboral de los progenitores. Es un apoyo español para estudiar la dimensión social; nuestro atributo es más amplio que esos indicadores concretos. Klapproth y Schaltz aportan evidencia complementaria de secundaria, con un indicador contextual de nivel socioeconómico de los distritos escolares que no debe presentarse como renta individual.
+Fuente primaria consultada: texto completo PLOS ONE, https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0166431
+
+PÁRRAFO PROPUESTO EN INGLÉS (BORRADOR PARA VALORAR)
+
+The six vignette attributes cover academic standing, school engagement and conduct, and sociodemographic background. Prior research links grade retention to school grades (Klapproth & Schaltz, 2015) and to academic skills (Davoudzadeh et al., 2015). Representing academic standing through separate indicators of failed subjects and basic competences allows us to examine how teachers weigh these signals when they diverge. Attendance and classroom conduct capture additional information relevant to progression decisions: teachers report considering attendance when deciding on retention (Santos & Monteiro, 2024), and longitudinal evidence links teacher-rated externalizing behaviour to subsequent retention (Mattison et al., 2018). Student gender and social background address documented disparities in retention across demographic and socioeconomic groups (González-Betancor & López-Puig, 2016; Klapproth & Schaltz, 2015). Varying these characteristics alongside academic and behavioural information allows us to examine whether they enter recommendations for otherwise comparable student profiles.
+
+REFERENCIAS APA
+
+Davoudzadeh, P., McTernan, M. L., & Grimm, K. J. (2015). Early school readiness predictors of grade retention from kindergarten through eighth grade: A multilevel discrete-time survival analysis approach. Early Childhood Research Quarterly, 32, 183–192. https://doi.org/10.1016/j.ecresq.2015.04.005
+
+González-Betancor, S. M., & López-Puig, A. J. (2016). Grade retention in primary education is associated with quarter of birth and socioeconomic status. PLOS ONE, 11(11), e0166431. https://doi.org/10.1371/journal.pone.0166431
+
+Klapproth, F., & Schaltz, P. (2015). Who is retained in school, and when? Survival analysis of predictors of grade retention in Luxembourgish secondary school. European Journal of Psychology of Education, 30(1), 119–136. https://doi.org/10.1007/s10212-014-0232-7
+
+Mattison, A., Raffaele Mendez, L. M., Dedrick, R., Dickinson, S., Wingate, E., & Hanks, C. (2018). Early elementary teacher ratings of behavior as predictors of grade retention: Race, gender, and socioeconomic status as potential moderators. Psychology in the Schools, 55(10), 1171–1187. https://doi.org/10.1002/pits.22192
+
+Santos, N. N., & Monteiro, V. (2024). Second grade retention: Beliefs, decision-making styles, and factors involved in the decision process. Psychology in the Schools, 61(4), 1646–1666. https://doi.org/10.1002/pits.23130
+
+CRITERIOS DE SELECCIÓN Y VERIFICACIÓN
+Búsqueda dirigida, no revisión sistemática. Se priorizaron investigaciones de repetición y de decisiones docentes, evidencia longitudinal, estudios europeos y evidencia española. Autores, títulos, años de edición, revista, páginas y DOI se contrastaron con las páginas editoriales y registros institucionales enlazados. El artículo de Klapproth y Schaltz apareció online en 2014 y corresponde al volumen de 2015. La comprobación adicional por API de Crossref devolvió HTTP 429; no se presenta como validación completada por esa vía.
+Todas las referencias del párrafo son anteriores a la encuesta de 2025. No afirmar que los autores consultaron originalmente estos artículos si eso no está documentado: el párrafo proporciona una fundamentación sustantiva del diseño. Klapproth y Beyte (2026), ya citado en el paper, es útil para comparación con literatura posterior, no como fuente histórica de la selección.
+
+OTRAS FUENTES LOCALIZADAS
+- Meissner et al. (2025), Grade retention during compulsory school education in Europe: Regulations and practices. Informe de Maastricht University Press sobre 37 sistemas: contempla asistencia y conducta entre los criterios presentes en algunos países. Fuente institucional: https://doi.org/10.26481/mup.rep.alter.2501.en . Complemento contextual; no artículo de revista ni descripción automática de la normativa española.
+- Tomchin y Impara (1992), Unraveling teachers' beliefs about grade retention, American Educational Research Journal, 29(1), 199–223. https://doi.org/10.3102/00028312029001199 . Antecedente ya presente en el manuscrito; no hace falta sobrecargar el nuevo párrafo con él.
+- No utilizar estudios sobre consecuencias de repetir (por ejemplo, absentismo posterior) como si demostraran determinantes previos de la repetición.
+
+No se ha modificado el manuscrito ni su bibliografía canónica. Las referencias BibTeX se guardan separadamente como material pendiente.
