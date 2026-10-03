@@ -21,7 +21,13 @@ cols<-grep('^FL_[0-9]+_DO_Grupo[1-8]\\.[1-8]$',names(r),value=TRUE)
 ord<-r%>%select(id=ResponseId,all_of(cols))%>%pivot_longer(-id,names_to='field',values_to='position')%>%filter(!is.na(position))%>%mutate(position=as.numeric(position),card=sub('^.*_DO_Grupo([1-8])\\.([1-8])$','alumno_\\1_\\2',field))
 valid<-ord%>%group_by(id)%>%summarise(valid=n()==8&n_distinct(card)==8&setequal(position,1:8),.groups='drop')
 ord<-filter(ord,id%in%valid$id[valid$valid]);ord$rawrow<-match(ord$id,r$ResponseId)
-ord$response<-mapply(function(a,c)r[[sub('alumno_([1-8])_([1-8])','Grupo \\1.\\2_1',c)]][a],ord$rawrow,ord$card)
+response_field <- function(c) {
+ if(c=='alumno_3_5')return('Grupo 5_1')
+ if(c=='alumno_6_1')return('Grupo 6_1')
+ sub('alumno_([1-8])_([1-8])','Grupo \\1.\\2_1',c)
+}
+stopifnot(all(vapply(unique(ord$card),response_field,character(1)) %in% names(r)))
+ord$response<-mapply(function(a,c)r[[response_field(c)]][a],ord$rawrow,ord$card)
 ord$seconds<-mapply(function(a,c)as.numeric(r[[sub('alumno_([1-8])_([1-8])','time_grupo\\1.\\2_Page Submit',c)]][a]),ord$rawrow,ord$card)
 ord$retained<-ord$id%in%clean$id
 ord$ambiguous_example<-ord$card%in%c('alumno_1_1','alumno_2_1','alumno_2_8','alumno_3_8','alumno_5_1','alumno_8_1')

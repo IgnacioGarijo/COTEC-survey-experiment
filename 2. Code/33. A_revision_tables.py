@@ -23,8 +23,8 @@ attrs=['failed','competence','absent','disruptive','male','background']
 a=rows('attributes');lookup=lambda rr,**kw:next(r for r in rr if all(r[k]==v for k,v in kw.items()))
 data=[]
 for v in attrs:
- r=lookup(a,model='All',term=v);c=lookup(a,model='Control',term=v);data.append([labels[v],cell(r),cell(c)])
-write('attributes',['Attribute','All','Control'],data,'Coefficients in percentage points from additive teacher fixed-effect models; teacher-clustered SE. Full sample: 22,006 decisions from 2,587 teachers; control: 2,292 from 274.'+stars_note)
+ r=lookup(a,model='All',term=v);data.append([labels[v],cell(r)])
+write('attributes',['Attribute','Coefficient (SE)'],data,'Coefficients in percentage points from additive teacher fixed-effect models; teacher-clustered SE. 22,006 decisions from 2,587 teachers.'+stars_note)
 a=rows('academic_interactions')
 for r in a:
  if r['p_holm']!='NA':r['p']=r['p_holm']
