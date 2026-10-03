@@ -132,5 +132,13 @@ Fecha: 3 de octubre de 2026. Decisión aprobada para la siguiente iteración; no
 - Revisar introducción, métodos, resultados, discusión y referencias cruzadas: retirar o reformular las promesas y conclusiones que dependan de mitades o predicción fuera de muestra y que hayan quedado sin desarrollo en el manuscrito. Reorganizar y renumerar los apéndices para evitar apartados vacíos y referencias a tablas/figuras retiradas. Mantener la narrativa sobre asociaciones con harshness y la descomposición que sí se conservan.
 - Por ahora solo se registra la decisión. Crear el documento separado y efectuar los traslados cuando el autor indique ejecutar conjuntamente la siguiente iteración.
 
+9. EXPLICAR HC3 CON LA SEGUNDA FORMULACIÓN APROBADA
+Fecha: 4 de octubre de 2026. Texto aprobado para la siguiente iteración; no modificar todavía el manuscrito.
+
+- En el párrafo que empieza por All three specifications use the same 2,157 complete cases, utilizar exactamente la segunda formulación propuesta:
+  All three specifications use the same 2,157 complete cases. We use HC3 robust standard errors to allow for differences in residual variability across teachers, with an additional adjustment for unusual combinations of teacher characteristics.
+- Mantener HC3 para los errores estándar de las regresiones de harshness. Retirar de este párrafo la mención al bootstrap de 999 remuestras y el desarrollo de validación predictiva, coherentemente con el traslado al documento separado aprobado en el punto 8.
+- Esta decisión no elimina ni modifica por sí misma el bootstrap utilizado para la descomposición de varianza: es un procedimiento distinto.
+
 REGISTRO DE APLICACIÓN
 Pendiente. El autor ha solicitado seguir acumulando cambios antes de modificar el texto.
