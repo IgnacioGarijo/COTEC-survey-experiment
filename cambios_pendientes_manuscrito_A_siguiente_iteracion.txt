@@ -119,5 +119,18 @@ Fecha: 3 de octubre de 2026. Aclaración solicitada por el autor; error técnico
 - Contraste independiente con el mapeo correcto: denominadores por posición 2712,2688,2704,2719,2672,2704,2700,2714; respuestas 2684,2649,2639,2647,2590,2612,2597,2605. Primera posición 98,9676 %; octava 95,9838 % (el gráfico vigente muestra 96,1312 % en la octava). Actualizar tabla, gráfico y texto al aplicar la revisión. Revisar también los conteos de soporte de tiempos y su regresión usando el mismo mapeo.
 - Gráfico y manuscrito todavía sin modificar. El denominador de 2.981 incluye registros excluidos por filtro: especificarlo o decidir una presentación restringida y coherente cuando se revise el apéndice.
 
+8. TRASLADAR ANÁLISIS FUERA DEL MANUSCRITO Y SIMPLIFICAR LOS APÉNDICES B Y C
+Fecha: 3 de octubre de 2026. Decisión aprobada para la siguiente iteración; no ejecutar todavía.
+
+- Crear un documento separado de análisis que no se incluyen en el manuscrito, conservando su explicación, resultados, tablas/figuras y referencias a código y salidas para poder recuperarlos. No presentarlo como un apéndice del paper ni eliminar los análisis de respaldo.
+- Trasladar B.1 (Construction and repeated response halves) completo, incluidos el procedimiento de mitades repetidas, su gráfico y los detalles de construcción allí desarrollados. Conservar en el paper la definición del harshness necesaria para entender los análisis que permanecen.
+- Trasladar la actual tabla 9 (tab:bootstrap, bootstrap.tex), su explicación del bootstrap con referencias reconstruidas y los resultados correspondientes al documento separado.
+- Trasladar C.1 (Prediction of harshness) completo: validación predictiva, especificaciones y comparaciones de algoritmos, muestra ampliada, pérdidas emparejadas y diagnósticos SHAP/permutación.
+- Esta decisión sustituye el destino acordado en el punto 2 para la actual tabla 7 (tab:prediction): la tabla predictiva principal también debe ir al documento separado, junto con C.1, en vez de trasladarse al apéndice del manuscrito. Conservar la tabla de asociaciones entre características/creencias y harshness (tab:char), que no pertenece a este traslado.
+- Mantener B.2 (Alternative definitions and coefficient uncertainty) únicamente en lo relativo a las definiciones alternativas de harshness y la actual tabla 8 (tab:alternatives). Quitar la tabla 9 y adaptar el título y el texto para que no anuncien un apartado de incertidumbre que ya no contiene.
+- Mantener C.2, reescrita para el nuevo modelo de descomposición aprobado en el punto 1. Sustituir las ecuaciones, cifras, comprobaciones y referencias metodológicas de la especificación anterior por las pertinentes al modelo definitivo; no trasladar automáticamente comprobaciones antiguas.
+- Revisar introducción, métodos, resultados, discusión y referencias cruzadas: retirar o reformular las promesas y conclusiones que dependan de mitades o predicción fuera de muestra y que hayan quedado sin desarrollo en el manuscrito. Reorganizar y renumerar los apéndices para evitar apartados vacíos y referencias a tablas/figuras retiradas. Mantener la narrativa sobre asociaciones con harshness y la descomposición que sí se conservan.
+- Por ahora solo se registra la decisión. Crear el documento separado y efectuar los traslados cuando el autor indique ejecutar conjuntamente la siguiente iteración.
+
 REGISTRO DE APLICACIÓN
 Pendiente. El autor ha solicitado seguir acumulando cambios antes de modificar el texto.
