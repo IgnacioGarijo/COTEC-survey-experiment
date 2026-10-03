@@ -157,6 +157,42 @@ flow.update(sample_final_module=int((sample & final_module).sum()),
 assert flow['raw'] == flow['no_recorded_card'] + flow['any_recorded_card']
 assert flow['any_recorded_card'] == flow['screen_exclusions'] + flow['only_nonanalysis_fields'] + flow['analysis_sample']
 assert flow['no_recorded_card'] + flow['only_nonanalysis_fields'] == 1848
+# The author-approved participation denominator excludes minimal starts, not
+# respondents inferred to have any particular intention or a duplicate identity.
+engaged = last >= 4
+group_end = r[[f'Grupo{i}' for i in range(1,9)]].notna().any(axis=1)
+assert not (group_end & ~any_card).any()
+assert not (finished & ~group_end).any()
+# Validate the end-of-card-block marker against the assigned-card fields.
+# The marker indicates reaching the end, not answering every single card.
+source = (ROOT/'2. Code/1.limpieza_datos.R').read_text(encoding='utf8')
+card_map = {f'{g}.{j}': c for g,j,c in re.findall(r'alumno_(\d)_(\d) = `([^`]+)`',source)}
+assert len(card_map) == 64
+assigned_n = pd.Series(0,index=r.index)
+assigned_answers = assigned_n.copy()
+for c in r:
+    match = re.fullmatch(r'FL_\d+_DO_Grupo([1-8]\.[1-8])',c)
+    if match:
+        assigned_n += r[c].notna().astype(int)
+        assigned_answers += (r[c].notna() & r[card_map[match[1]]].notna()).astype(int)
+assert (assigned_n[group_end] == 8).all()
+assert not ((assigned_answers == 8) & ~group_end).any()
+pd.crosstab([assigned_n,assigned_answers],group_end).to_csv(OUT/'survey_exit_end_marker_check.csv')
+before = engaged & ~any_card
+during = any_card & ~group_end
+passed_end = group_end & ~excluded
+after = passed_end & ~finished
+flow.update(minimal_starts=int((~engaged).sum()), participation_denominator=int(engaged.sum()),
+            before_decisions=int(before.sum()), during_decisions=int(during.sum()),
+            during_also_failed_filter=int((during & excluded).sum()),
+            reached_decision_end=int(group_end.sum()),
+            filter_exclusions_at_decision_end=int((group_end & excluded).sum()),
+            decision_end_passed_filter=int(passed_end.sum()),
+            after_decisions=int(after.sum()), completed_passed_filter=int((passed_end & finished).sum()),
+            end_marker_with_missing_card_answers=int((group_end & (assigned_answers<8)).sum()))
+assert flow['minimal_starts'] == 905 and flow['participation_denominator'] == 4037
+assert engaged.sum() == before.sum() + during.sum() + (group_end & excluded).sum() + after.sum() + (passed_end & finished).sum()
+assert excluded.sum() == (during & excluded).sum() + (group_end & excluded).sum()
 (OUT/'survey_exit_audit.json').write_text(json.dumps(flow, indent=2), encoding='utf8')
 
 # Flag availability is descriptive: these fields are not necessarily page submissions.
@@ -185,22 +221,35 @@ fig.text(.02,.015,'Incluye ejemplos y filtros al identificar decisiones. Último
 fig.tight_layout(rect=(0,.04,1,1))
 fig.savefig(OUT/'survey_exit_stages.png',dpi=190,bbox_inches='tight');plt.close(fig)
 
-fig,ax=plt.subplots(figsize=(11,7))
-ax.set(xlim=(0,11),ylim=(0,7));ax.axis('off')
-def box(x,y,text,side=False):
-    ax.text(x,y,text,ha='center',va='center',fontsize=11,bbox=dict(boxstyle='round,pad=.65',fc='#f5e9df' if side else '#e9f0f3',ec='#215e70'))
+from matplotlib.patches import FancyBboxPatch
+fig,ax=plt.subplots(figsize=(11,9))
+ax.set(xlim=(0,12),ylim=(.8,11));ax.axis('off')
+def box(x,y,title,n,detail='',side=False):
+    ax.add_patch(FancyBboxPatch((x-2.55,y-.58),5.1,1.16,boxstyle='round,pad=.04',
+        facecolor='#f6ede5' if side else '#e9f0f3',edgecolor='#ae754b' if side else '#215e70',lw=1.2))
+    ax.text(x,y+.25,title,ha='center',va='center',fontsize=11)
+    ax.text(x,y-.06,f'{n:,}'.replace(',','.'),ha='center',va='center',fontsize=19,fontweight='bold',color='#215e70')
+    if detail:ax.text(x,y-.40,detail,ha='center',va='center',fontsize=9,color='#555555')
 def arrow(a,b):
     ax.annotate('',xy=b,xytext=a,arrowprops=dict(arrowstyle='->',lw=1.4,color='#215e70'))
-box(3,6.3,'Registros de encuesta\n4.942')
-box(8,6.3,'Sin decisión en ninguna tarjeta\n1.839',True);arrow((4.4,6.3),(6,6.3))
-box(3,4.95,'Con alguna decisión registrada\n3.103 (incluye ejemplos/filtros)');arrow((3,5.85),(3,5.43))
-box(8,4.95,'Exclusiones por filtro\n389',True);arrow((5.05,4.95),(6.6,4.95))
-box(3,3.55,'Con decisiones y sin exclusión por filtro\n2.714');arrow((3,4.46),(3,4.02))
-box(8.2,3.55,'Solo campos fuera del análisis\n9',True);arrow((5.15,3.55),(6.35,3.55))
-box(3,2.15,'Muestra de análisis de decisiones\n2.705');arrow((3,3.07),(3,2.62))
-box(8,2.15,'Creencias seleccionadas incompletas\n502',True);arrow((4.9,2.15),(5.95,2.15))
-box(3,.8,'Creencias completas: 2.203\nCovariables completas: 2.157');arrow((3,1.68),(3,1.28))
-fig.text(.03,.02,'Las 389 exclusiones son una regla de selección, no abandonos. Se conserva la muestra analítica vigente.',fontsize=10)
+main = [(10,'Empiezan a responder la encuesta',flow['participation_denominator'],'Desde la pregunta de experiencia docente'),
+        (8,'Responden alguna tarjeta',flow['any_recorded_card'],'Incluye las tarjetas de ejemplo'),
+        (6,'Llegan al final de las decisiones',flow['reached_decision_end'],''),
+        (4,'Superan el filtro',flow['decision_end_passed_filter'],''),
+        (2,'Terminan la encuesta',flow['completed_passed_filter'],'')]
+branches = [(9,'Abandonan antes de las decisiones',flow['before_decisions'],''),
+            (7,'Abandonan durante las decisiones',flow['during_decisions'],'31 de ellos también fallan el filtro'),
+            (5,'Excluidos por fallar el filtro',flow['filter_exclusions_at_decision_end'],'Entre quienes llegan al final de las decisiones'),
+            (3,'Abandonan después de las decisiones',flow['after_decisions'],'')]
+for y,title,n,box_detail in main:box(2.8,y,title,n,box_detail)
+for y,title,n,box_detail in branches:
+    box(9,y,title,n,box_detail,True)
+    arrow((2.8,y+.38),(2.8,y-.38));arrow((2.8,y),(6.4,y))
+fig.suptitle('Participación y abandono de la encuesta',fontsize=17,fontweight='bold',y=.97)
+fig.text(.04,.085,'Se apartan previamente 905 entradas con avance mínimo; no se cuentan como abandono en este flujo.',fontsize=10)
+fig.text(.04,.058,'Total de fallos del filtro: 389 = 31 entre quienes abandonan durante las decisiones + 358 al final.',fontsize=10)
+fig.text(.04,.031,'La muestra de análisis sigue siendo 2.705: también aprovecha decisiones de encuestas incompletas.',fontsize=10)
+fig.subplots_adjust(top=.91,bottom=.12,left=.02,right=.98)
 fig.savefig(OUT/'survey_flow_candidate.png',dpi=190,bbox_inches='tight');plt.close(fig)
 
 def fmt(x, digits=1):
@@ -210,6 +259,44 @@ report = '''ABANDONO Y AVANCE REGISTRADO EN LA ENCUESTA
 Análisis complementario, 3 de octubre de 2026. No modifica muestras, manuscrito ni figuras canónicas.
 Código reproducible: 2. Code/48. A_survey_exit_audit.py
 
+CRITERIO DE PRESENTACIÓN ACTUALIZADO POR EL AUTOR
+El diagrama empieza en 4.037 registros, después de apartar 905 entradas con avance mínimo.
+El criterio operativo es haber llegado a la pregunta de experiencia docente o más allá.
+Los 905 no se clasifican como agotamiento/abandono dentro de este flujo. De ellos, 167 sí responden
+etapa/cursos/especialidad: por precisión se denominan avance mínimo, no ausencia absoluta de respuestas.
+Una visita exploratoria o una posterior respuesta desde otro dispositivo son posibilidades, no hechos
+verificados: no se ha hecho una identificación ni deduplicación entre personas/dispositivos.
+
+FLUJO ACTUALIZADO
+4.037 empiezan a responder
+  - 934 abandonan antes de registrar ninguna decisión
+3.103 responden alguna tarjeta (incluidos ejemplos)
+  - 175 no alcanzan el final de las decisiones; 31 de ellos también fallan el filtro
+2.928 llegan al final del bloque de decisiones
+  - 358 fallan el filtro
+2.570 llegan al final de las decisiones y superan el filtro
+  - 216 no terminan la encuesta
+2.354 terminan la encuesta y superan el filtro.
+Las ramas son excluyentes: 934 + 175 + 358 + 216 + 2.354 = 4.037.
+Se mantienen las 389 exclusiones originales: 31 en la rama durante + 358 en la rama filtro.
+No restar 389 después de restar los 175: contaría dos veces a 31 participantes.
+Los 216 abandonos posteriores se cuentan entre quienes superan el filtro; hay otros 45 entre los 358
+excluidos por filtro, que se asignan a esa rama para evitar solapamiento. No se afirma que el filtro
+expulsara automáticamente de la encuesta: es una regla de selección del análisis.
+
+IDENTIFICACIÓN DEL FINAL DE LAS DECISIONES
+Se usa la marca de cierre Grupo1--Grupo8: 2.928 tienen exactamente una de ellas.
+Todos tienen ocho posiciones asignadas y toda persona con ocho respuestas en esos campos tiene marca
+de cierre. Todas las encuestas terminadas y todos los registros B2_complet tienen marca de cierre.
+75 de quienes llegan al final no tienen respuesta en los ocho campos asignados: final del bloque no
+equivale a ocho respuestas completas. Por eso la caja dice llegan al final, no contestan las ocho tarjetas.
+El indicador B2_complet (2.785) es posterior y no se utiliza para fijar el final de las tarjetas.
+El CSV survey_exit_end_marker_check.csv conserva el contraste agregado de posiciones, respuestas y marca.
+La muestra de análisis sigue siendo 2.705; el flujo muestra participación, no una nueva muestra de casos completos.
+De los 144 que abandonan durante sin fallar el filtro, 135 aportan decisiones analizables y 9 solo los
+campos excluidos del resultado. Por ello 2.570 + 135 = 2.705 y 2.354 + 216 + 135 = 2.705.
+
+AUDITORÍA COMPLETA DE LAS ENTRADAS (FUERA DEL DIAGRAMA PRINCIPAL)
 PREGUNTA Y RESULTADO PRINCIPAL
 Se distingue una entrada que no supera la introducción de una respuesta parcial tras varias preguntas.
 De 4.942 registros, 1.839 no tienen ninguna respuesta a tarjetas, contando ejemplos/filtros como respuestas.
@@ -268,7 +355,7 @@ No terminar la encuesta no elimina sus decisiones ya disponibles. Tampoco equiva
 la falta de una creencia puede deberse a omisión/ramificación, no necesariamente a una salida.
 Esta auditoría no redefine la completitud de las ocho tarjetas ni confunde ejemplos con tarjetas experimentales.
 
-FLUJO PROPUESTO: EXCLUSIONES DESPUÉS DE LAS DECISIONES
+CONCILIACIÓN CON LA MUESTRA ANALÍTICA (NO ES EL NUEVO DIAGRAMA)
 4.942 registros
   - 1.839 sin ninguna respuesta a tarjetas
   = 3.103 con alguna respuesta a tarjetas, incluidos ejemplos/filtros
@@ -291,12 +378,11 @@ No se altera esa regla ni se resuelve aquí la ambigüedad histórica entre ejem
 Los 1.848 del diagrama anterior equivalen a 1.839 sin ninguna tarjeta más 9 sin resultado analizable.
 
 RECOMENDACIÓN EDITORIAL
-Reorganizar el flujo como en survey_flow_candidate.png. Añadir al mismo apéndice una síntesis breve de
-las pérdidas previas a tarjetas, con survey_exit_stages.png o una versión compacta del gráfico.
-Describirlo como participación y abandono observado; reservar agotamiento para una interpretación posible.
-El mensaje central: alrededor de la mitad de las pérdidas anteriores a las tarjetas corresponde a entradas
-con avance mínimo; la otra mitad sucede tras preguntas sustantivas. Quienes llegan a las decisiones suelen
-completar la encuesta. Las exclusiones por filtro son una selección analítica posterior, no falta de participación.
+Usar survey_flow_candidate.png, que comienza en 4.037, con una nota que informa de las 905 entradas
+apartadas. Mantener la auditoría de las 4.942 entradas y el gráfico de 1.839 solo como respaldo interno.
+En el apéndice, denominarlo participación y abandono observado; no atribuir motivos ni intenciones.
+Las exclusiones por filtro son una selección analítica, no necesariamente abandono. Mencionar el
+solapamiento de 31 casos sin duplicarlos y conservar la muestra analítica de 2.705.
 No hace falta incorporar la tabla de 29 etapas al manuscrito: se conserva para auditoría interna.
 
 COMPROBACIONES

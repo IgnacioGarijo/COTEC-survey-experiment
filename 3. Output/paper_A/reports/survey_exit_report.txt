@@ -2,6 +2,44 @@ ABANDONO Y AVANCE REGISTRADO EN LA ENCUESTA
 Análisis complementario, 3 de octubre de 2026. No modifica muestras, manuscrito ni figuras canónicas.
 Código reproducible: 2. Code/48. A_survey_exit_audit.py
 
+CRITERIO DE PRESENTACIÓN ACTUALIZADO POR EL AUTOR
+El diagrama empieza en 4.037 registros, después de apartar 905 entradas con avance mínimo.
+El criterio operativo es haber llegado a la pregunta de experiencia docente o más allá.
+Los 905 no se clasifican como agotamiento/abandono dentro de este flujo. De ellos, 167 sí responden
+etapa/cursos/especialidad: por precisión se denominan avance mínimo, no ausencia absoluta de respuestas.
+Una visita exploratoria o una posterior respuesta desde otro dispositivo son posibilidades, no hechos
+verificados: no se ha hecho una identificación ni deduplicación entre personas/dispositivos.
+
+FLUJO ACTUALIZADO
+4.037 empiezan a responder
+  - 934 abandonan antes de registrar ninguna decisión
+3.103 responden alguna tarjeta (incluidos ejemplos)
+  - 175 no alcanzan el final de las decisiones; 31 de ellos también fallan el filtro
+2.928 llegan al final del bloque de decisiones
+  - 358 fallan el filtro
+2.570 llegan al final de las decisiones y superan el filtro
+  - 216 no terminan la encuesta
+2.354 terminan la encuesta y superan el filtro.
+Las ramas son excluyentes: 934 + 175 + 358 + 216 + 2.354 = 4.037.
+Se mantienen las 389 exclusiones originales: 31 en la rama durante + 358 en la rama filtro.
+No restar 389 después de restar los 175: contaría dos veces a 31 participantes.
+Los 216 abandonos posteriores se cuentan entre quienes superan el filtro; hay otros 45 entre los 358
+excluidos por filtro, que se asignan a esa rama para evitar solapamiento. No se afirma que el filtro
+expulsara automáticamente de la encuesta: es una regla de selección del análisis.
+
+IDENTIFICACIÓN DEL FINAL DE LAS DECISIONES
+Se usa la marca de cierre Grupo1--Grupo8: 2.928 tienen exactamente una de ellas.
+Todos tienen ocho posiciones asignadas y toda persona con ocho respuestas en esos campos tiene marca
+de cierre. Todas las encuestas terminadas y todos los registros B2_complet tienen marca de cierre.
+75 de quienes llegan al final no tienen respuesta en los ocho campos asignados: final del bloque no
+equivale a ocho respuestas completas. Por eso la caja dice llegan al final, no contestan las ocho tarjetas.
+El indicador B2_complet (2.785) es posterior y no se utiliza para fijar el final de las tarjetas.
+El CSV survey_exit_end_marker_check.csv conserva el contraste agregado de posiciones, respuestas y marca.
+La muestra de análisis sigue siendo 2.705; el flujo muestra participación, no una nueva muestra de casos completos.
+De los 144 que abandonan durante sin fallar el filtro, 135 aportan decisiones analizables y 9 solo los
+campos excluidos del resultado. Por ello 2.570 + 135 = 2.705 y 2.354 + 216 + 135 = 2.705.
+
+AUDITORÍA COMPLETA DE LAS ENTRADAS (FUERA DEL DIAGRAMA PRINCIPAL)
 PREGUNTA Y RESULTADO PRINCIPAL
 Se distingue una entrada que no supera la introducción de una respuesta parcial tras varias preguntas.
 De 4.942 registros, 1.839 no tienen ninguna respuesta a tarjetas, contando ejemplos/filtros como respuestas.
@@ -63,7 +101,7 @@ No terminar la encuesta no elimina sus decisiones ya disponibles. Tampoco equiva
 la falta de una creencia puede deberse a omisión/ramificación, no necesariamente a una salida.
 Esta auditoría no redefine la completitud de las ocho tarjetas ni confunde ejemplos con tarjetas experimentales.
 
-FLUJO PROPUESTO: EXCLUSIONES DESPUÉS DE LAS DECISIONES
+CONCILIACIÓN CON LA MUESTRA ANALÍTICA (NO ES EL NUEVO DIAGRAMA)
 4.942 registros
   - 1.839 sin ninguna respuesta a tarjetas
   = 3.103 con alguna respuesta a tarjetas, incluidos ejemplos/filtros
@@ -86,12 +124,11 @@ No se altera esa regla ni se resuelve aquí la ambigüedad histórica entre ejem
 Los 1.848 del diagrama anterior equivalen a 1.839 sin ninguna tarjeta más 9 sin resultado analizable.
 
 RECOMENDACIÓN EDITORIAL
-Reorganizar el flujo como en survey_flow_candidate.png. Añadir al mismo apéndice una síntesis breve de
-las pérdidas previas a tarjetas, con survey_exit_stages.png o una versión compacta del gráfico.
-Describirlo como participación y abandono observado; reservar agotamiento para una interpretación posible.
-El mensaje central: alrededor de la mitad de las pérdidas anteriores a las tarjetas corresponde a entradas
-con avance mínimo; la otra mitad sucede tras preguntas sustantivas. Quienes llegan a las decisiones suelen
-completar la encuesta. Las exclusiones por filtro son una selección analítica posterior, no falta de participación.
+Usar survey_flow_candidate.png, que comienza en 4.037, con una nota que informa de las 905 entradas
+apartadas. Mantener la auditoría de las 4.942 entradas y el gráfico de 1.839 solo como respaldo interno.
+En el apéndice, denominarlo participación y abandono observado; no atribuir motivos ni intenciones.
+Las exclusiones por filtro son una selección analítica, no necesariamente abandono. Mencionar el
+solapamiento de 31 casos sin duplicarlos y conservar la muestra analítica de 2.705.
 No hace falta incorporar la tabla de 29 etapas al manuscrito: se conserva para auditoría interna.
 
 COMPROBACIONES

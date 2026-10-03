@@ -13,5 +13,16 @@
   "excluded_finished": 313,
   "sample_final_module": 2442,
   "sample_before_final_module": 263,
-  "sample_final_module_unfinished": 88
+  "sample_final_module_unfinished": 88,
+  "minimal_starts": 905,
+  "participation_denominator": 4037,
+  "before_decisions": 934,
+  "during_decisions": 175,
+  "during_also_failed_filter": 31,
+  "reached_decision_end": 2928,
+  "filter_exclusions_at_decision_end": 358,
+  "decision_end_passed_filter": 2570,
+  "after_decisions": 216,
+  "completed_passed_filter": 2354,
+  "end_marker_with_missing_card_answers": 75
 }
