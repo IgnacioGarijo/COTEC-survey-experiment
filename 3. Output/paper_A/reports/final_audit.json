@@ -1,97 +1,81 @@
 {
   "checks": "passed",
-  "pages": 22,
-  "tables": 13,
-  "figures": 7,
-  "references": 17,
+  "pages": 18,
+  "tables": 7,
+  "figures": 6,
+  "references": 15,
   "page_details": [
     {
       "page": 1,
-      "characters": 2780
+      "characters": 2818
     },
     {
       "page": 2,
-      "characters": 3716
+      "characters": 3874
     },
     {
       "page": 3,
-      "characters": 3669
+      "characters": 3388
     },
     {
       "page": 4,
-      "characters": 2879
+      "characters": 3181
     },
     {
       "page": 5,
-      "characters": 3083
+      "characters": 3102
     },
     {
       "page": 6,
-      "characters": 3466
+      "characters": 2998
     },
     {
       "page": 7,
-      "characters": 3109
+      "characters": 3376
     },
     {
       "page": 8,
-      "characters": 1658
+      "characters": 2190
     },
     {
       "page": 9,
-      "characters": 3188
+      "characters": 1795
     },
     {
       "page": 10,
-      "characters": 3337
+      "characters": 2809
     },
     {
       "page": 11,
-      "characters": 1890
+      "characters": 2337
     },
     {
       "page": 12,
-      "characters": 2267
+      "characters": 2383
     },
     {
       "page": 13,
-      "characters": 2838
+      "characters": 3605
     },
     {
       "page": 14,
-      "characters": 3439
+      "characters": 3515
     },
     {
       "page": 15,
-      "characters": 2253
+      "characters": 1994
     },
     {
       "page": 16,
-      "characters": 2295
+      "characters": 2213
     },
     {
       "page": 17,
-      "characters": 1864
+      "characters": 959
     },
     {
       "page": 18,
-      "characters": 1451
-    },
-    {
-      "page": 19,
-      "characters": 2178
-    },
-    {
-      "page": 20,
-      "characters": 2837
-    },
-    {
-      "page": 21,
-      "characters": 2860
-    },
-    {
-      "page": 22,
-      "characters": 2525
+      "characters": 3144
     }
   ]
 }

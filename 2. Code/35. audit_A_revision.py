@@ -11,11 +11,12 @@ flow={r['stage']:int(r['n']) for r in rows('sample_flow')}
 assert flow['Raw survey records']==flow['Screening exclusions']+flow['Retained records']
 assert flow['Retained records']==flow['Retained without decisions']+flow['Teachers with decisions']
 assert flow['Teachers with decisions']==2705 and flow['Complete analysis covariates']==2157
-v=rows('variance_partition');assert abs(sum(float(r['share']) for r in v)-1)<1e-10
+v=rows('final_decomposition');assert abs(sum(float(r['share']) for r in v)-1)<1e-10
 assert all(float(r['share'])>=0 for r in v)
-assert all(int(r['successful'])>=379 for r in v)
-for r in rows('variance_diagnostics'):
- assert r['singular']=='FALSE' and not r['convergence'],r
+assert all(int(r['successful'])>=.95*int(r['requested']) for r in v)
+diag=json.loads((OUT/'reports/final_decomposition_diagnostics.json').read_text())
+assert diag['fixed_rank']==34 and diag['diagnostics']['singular']==0 and diag['diagnostics']['gradient']<.002
+assert abs(float(rows('task_progression')[-1]['response_rate'])-2605/2714)<1e-10
 c=rows('characterization');assert all(r['term'] not in ['resources','antiguedad3'] for r in c)
 assert all(int(r['n'])==2157 for r in c if r['model'].endswith('_common'))
 p=rows('nested_prediction_summary');assert all(int(r['n'])==2157 for r in p if r['population']=='Common')
@@ -36,7 +37,7 @@ for table in (DOC/'tables').glob('*.tex'):
 assert '\\cite{' not in tex,'Numeric citation command remains'
 log=(DOC/'paper_A_teacher_decisions.log').read_text(encoding='utf-8',errors='replace');assert 'undefined' not in log.lower();assert 'Overfull' not in log
 pdf=DOC/'paper_A_teacher_decisions.pdf';reader=PdfReader(pdf);doc=pdfium.PdfDocument(pdf)
-qa=ROOT/'tmp/paper_A_2026-09-27_QA';qa.mkdir(parents=True,exist_ok=True);thumbs=[];pages=[]
+qa=ROOT/'tmp/paper_A_current_QA';qa.mkdir(parents=True,exist_ok=True);thumbs=[];pages=[]
 for i,page in enumerate(doc):
  im=page.render(scale=1.4).to_pil().convert('RGB');im.save(qa/f'page_{i+1:02}.png')
  thumb=ImageOps.contain(im,(280,396));tile=Image.new('RGB',(300,423),'#dddddd');tile.paste(thumb,((300-thumb.width)//2,5));ImageDraw.Draw(tile).text((10,404),f'Page {i+1}',fill='black');thumbs.append(tile)

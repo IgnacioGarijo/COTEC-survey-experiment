@@ -30,5 +30,7 @@ for folder,filename in [('COTEC','ppt_total.qmd'),('Prelim results','ppt.qmd')]:
  for path in re.findall(r"tables_path, '([^']+)'",text):need('3. Output/tables/'+path)
  if folder=='COTEC':need(doc/'graficos/tabla_resumen.rds')
  need(doc/'index.html')
+for name in ['supporting_analyses.tex','supporting_analyses.pdf','references_supporting.tex']:
+ need('4. Latex/paper_A/'+name)
 for path in (ROOT/'2. Code').glob('*.py'):ast.parse(path.read_text(encoding='utf-8-sig'),filename=str(path))
 print('All current paper and presentation dependencies exist; Python syntax checks passed.')

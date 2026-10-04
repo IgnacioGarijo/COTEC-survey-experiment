@@ -97,7 +97,10 @@
       "variance_bootstrap_status",
       "variance_diagnostics",
       "variance_partition",
-      "variance_sensitivity"
+      "variance_sensitivity",
+      "final_decomposition",
+      "final_decomposition_bootstrap",
+      "response_counts"
     ],
     "figures": [
       "harshness_distribution",
@@ -117,7 +120,12 @@
       "final_audit.json",
       "input_manifest.json",
       "R_session_core.txt",
-      "R_session_variance.txt"
+      "R_session_variance.txt",
+      "final_decomposition_model.rds",
+      "final_decomposition_diagnostics.json",
+      "survey_exit_audit.json",
+      "harshness_histogram_candidate.csv",
+      "all_attributes_harshness_partition.csv"
     ]
   },
   "population": {

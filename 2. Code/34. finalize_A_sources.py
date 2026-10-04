@@ -9,8 +9,7 @@ items={m.group(1):m.group(0).strip() for m in re.finditer(r'\\bibitem\[[^\]]+\]\
 assert set(order)==set(items),(set(order)-set(items),set(items)-set(order))
 # Preserve explicit alphabetical APA order rather than first-citation order.
 oldkeys=set(json.loads((DOC/'provenance_review.json').read_text(encoding='utf-8'))['baseline_reference_keys'])
-bib=re.sub(r'(\\bibitem\[[^\]]+\]\{([^}]+)\})\s*(?:\\color\{(?:revised|added)\}\s*)?',lambda m:m.group(1)+' \\color{'+('revised' if m.group(2) in oldkeys else 'added')+'} ',bib)
-(DOC/'references_A.tex').write_text(bib,encoding='utf-8')
+# Provenance colors are assigned by the reviewed-source edit, never recolored by a build.
 paths=[ROOT/'1. Data/raw data/df_named.parquet',ROOT/'1. Data/processed data/cleandata.parquet',ROOT/'1. Data/raw data/teacher_population.xlsx']
 manifest={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
 (OUT/'reports/input_manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
