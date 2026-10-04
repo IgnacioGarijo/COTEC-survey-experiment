@@ -58,15 +58,19 @@ The final questionnaire asks teachers to assess their influence on students, des
 \section{Decision framework and empirical strategy}
 \subsection{Diagnosing difficulty and choosing an educational response}
 
-A recommendation to repeat can reflect both concern about progression and a view about what repetition would accomplish. Let $x_i$ denote student $i$'s profile. Teacher $j$ perceives a probability $q_j(x_i,z_j,\eta_j^q)$ of consequential difficulty if the student progresses, a gain $g_j(x_i,z_j,\eta_j^q)$ from repetition rather than progression when that difficulty occurs, and a cost $c_j(x_i,z_j,\eta_j^q)$ of repetition. A compact decision rule is
+\begin{revision}
+A recommendation to repeat can reflect both concern about progression and a view about what repetition would accomplish. Let $x_i$ denote student $i$'s profile. Teacher $j$ perceives a probability $q(x_i,z_j,\eta_j^q)$ of consequential difficulty if the student progresses, a gain $g(x_i,z_j,\eta_j^g)$ from repetition rather than progression when that difficulty occurs, and a cost $c(x_i,z_j,\eta_j^c)$ of repetition. A compact decision rule is
 \[
-Y_{ij}=\mathbf{1}\{q_j(x_i,z_j,\eta_j^q)g_j(x_i,z_j,\eta_j^q)>c_j(x_i,z_j,\eta_j^q)\}.
+Y_{ij}=\mathbf{1}\{q(x_i,z_j,\eta_j^q)g(x_i,z_j,\eta_j^g)>c(x_i,z_j,\eta_j^c)\}.
 \]
-This representation concentrates benefits in the event of difficulty and measures benefits and costs on a compatible scale. Their judgments may depend on observed characteristics and beliefs $z_j$, as well as unobserved considerations $\eta_j$. For example, $q_j(x_i)=q(x_i,z_j,\eta_j^q)$; the same dependence applies to gains and costs.
+This representation concentrates benefits in the event of difficulty and measures benefits and costs on a compatible scale.
+\end{revision}
+
+\new{Here, $z_j$ collects the teacher characteristics and beliefs measured in the survey. The terms $\eta_j^q$, $\eta_j^g$, and $\eta_j^c$ represent unmeasured aspects of the teacher's judgment concerning the risks of progression, the benefits of repetition, and its costs, respectively. For example, teachers with similar observed characteristics may interpret the same failed subjects differently or disagree about whether another year would address the underlying difficulty. These differences may affect both their overall willingness to recommend repetition and the weight they place on particular student attributes. The framework distinguishes these possible sources of disagreement; our data do not identify the three components separately.}
 
 The distinction supplies three useful implications. First, teachers can agree that a student faces difficulties but disagree about whether repeating is the appropriate response. Second, a difficult social context can increase concern about progression while also increasing the perceived costs of retention or reducing its expected gains. A negative background coefficient therefore need not indicate less concern about the student. Third, a common average tendency does not exhaust differences of judgment: teachers with similar harshness can disagree about which students should repeat.
 
-Academic performance informs both the diagnosis and the possible benefit of repeating. Attendance and disciplinary problems can inform assessments of readiness, engagement and how another year would work. Gender and social circumstances can affect interpretations of the same information. We do not assign any attribute or belief item exclusively to one mechanism. We observe recommendations, not separate measures of $q$, $g$ and $c$. 
+Academic performance informs both the diagnosis and the possible benefit of repeating. Attendance and disciplinary problems can inform assessments of readiness, engagement and how another year would work. Gender and social circumstances can affect interpretations of the same information. 
 
 
 
@@ -131,7 +135,7 @@ The interaction specification in Table~\ref{tab:interactions} shows that failed 
 \inputtab{reused}{interactions}{Combining academic and behavioral information within teachers}{tab:interactions}
 
 \subsection{Between teachers: harshness, contested cases and descriptive terciles}
-Figure~\ref{fig:harshness} introduces the distribution of harshness. The adjustment compares each teacher with peers on the same recorded cards; the unequal numbers of responses explain why the unweighted mean need not be exactly zero. 
+Figure~\ref{fig:harshness} introduces the distribution of harshness. The adjustment compares each teacher with peers on the same recorded cards. Even though the distribution is allocated around the mean (0), there exists a left tail for teachers that deviate much from their peers by being more lenient. We consider these teachers "non-takers" as they do not support grade repetition even when facing student cards with high retention rates among their peers.
 \plot{revised}{harshness_distribution}{Distribution of harshness among 2,705 teachers, using 12.5-percentage-point bins centered on zero and equal weight per teacher. Negative values indicate fewer repetition recommendations than peers evaluating the same cards; positive values indicate more.}{fig:harshness}
 
 
