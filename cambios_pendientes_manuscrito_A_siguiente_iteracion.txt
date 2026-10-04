@@ -2,6 +2,8 @@ CAMBIOS PENDIENTES — MANUSCRITO A — SIGUIENTE ITERACIÓN
 Creado: 1 de octubre de 2026
 
 ESTADO Y FORMA DE TRABAJO
+APLICADO el 4 de octubre de 2026 por petición expresa del autor. Los estados «pendiente» y «no modificar todavía» que siguen se conservan como registro histórico de los acuerdos; ya no describen el estado actual.
+
 El autor ha aprobado registrar los siguientes cambios para una aplicación conjunta posterior. Este archivo es acumulativo: añadir aquí los nuevos acuerdos hasta que el autor indique que se ejecute la siguiente iteración.
 NO modificar todavía el manuscrito, sus tablas, figuras o PDF por estos acuerdos. Los análisis complementarios ya calculados no equivalen a cambios incorporados al texto.
 Este archivo registra los acuerdos nuevos; no autoriza volver a aplicar listas históricas de correcciones.
@@ -141,4 +143,11 @@ Fecha: 4 de octubre de 2026. Texto aprobado para la siguiente iteración; no mod
 - Esta decisión no elimina ni modifica por sí misma el bootstrap utilizado para la descomposición de varianza: es un procedimiento distinto.
 
 REGISTRO DE APLICACIÓN
-Pendiente. El autor ha solicitado seguir acumulando cambios antes de modificar el texto.
+Aplicado el 4 de octubre de 2026.
+- Puntos 1 y 3–9 incorporados. El punto 2 queda sustituido por el punto 8: la tabla predictiva va al documento separado, no al apéndice del manuscrito.
+- Base de colores: versión del autor guardada en 4458742; contenido conservado azul, revisiones naranja, añadidos rojo.
+- Descomposición reestimada con 15 interacciones, harshness y seis sensibilidades; 199/199 remuestras aceptadas, una con covarianza en frontera. Metodología y justificación en el cuerpo.
+- Manuscrito, tablas, figuras, conclusiones y referencias cruzadas revisados conjuntamente.
+- Análisis retirados preservados en 4. Latex/paper_A/supporting_analyses.tex y PDF.
+- Comprobaciones numéricas, bibliográficas y de dependencias superadas; ambos PDF compilados y revisados visualmente.
+- No se han vuelto a aplicar listas históricas ni se ha modificado el paper B.
