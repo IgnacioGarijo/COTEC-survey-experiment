@@ -1,0 +1,92 @@
+AUDIT 19 October 2026. Counts are records, not deduplicated people.
+ORDER
+   
+    TRUE
+  8 2981
+OUTSIDE ORDER
+        card    n male background failed competence absent disruptive
+1 alumno_1_1 1336    0          0      0          0      0          0
+2 alumno_2_1 1287    1          0      0          0      0          0
+3 alumno_2_8 1287    0          1      1          1      1          1
+4 alumno_3_8 1346    1          1      1          1      1          1
+BY EXAMPLE
+  example       card   n
+1       1 alumno_1_1 640
+2       1 alumno_3_8 650
+3       2 alumno_1_1 696
+4       2 alumno_3_8 696
+5       3 alumno_2_1 644
+6       3 alumno_2_8 644
+7       4 alumno_2_1 643
+8       4 alumno_2_8 643
+ANSWERED ORDERED
+
+   0    1    2    3    4    5    6    7    8 
+  24   16   22   12   18   11   11   14 2853 
+completion marker
+   
+       1 <NA>
+  0    0   24
+  1    0   16
+  2    0   22
+  3    0   12
+  4    0   18
+  5    0   11
+  6    0   11
+  7    0   14
+  8 2785   68
+EXTREME ATTRIBUTES
+         card male background failed competence absent disruptive
+1  alumno_1_1    0          0      0          0      0          0
+2  alumno_2_1    1          0      0          0      0          0
+3  alumno_3_1    0          1      0          0      0          0
+4  alumno_4_1    1          1      0          0      0          0
+5  alumno_5_1    1          0      0          0      0          0
+6  alumno_6_1    0          1      0          0      0          0
+7  alumno_7_1    1          1      0          0      0          0
+8  alumno_8_1    0          0      0          0      0          0
+57 alumno_1_8    1          0      1          1      1          1
+58 alumno_2_8    0          1      1          1      1          1
+59 alumno_3_8    1          1      1          1      1          1
+60 alumno_4_8    0          0      1          1      1          1
+Retained valid: 2612  all8: 2511 
+No order with response: 122 
+Shared rows / teachers: 706 533 
+# A tibble: 3 × 2
+  nshared     n
+    <int> <int>
+1       0  2448
+2       1   360
+3       2   173
+all8 no collision: 2350 
+EXTRA original exclusions retained in analysis
+        card    n
+1 alumno_2_8 1287
+2 alumno_3_8 1346
+No-order patterns
+        card  n
+1 alumno_1_1 47
+2 alumno_2_1 61
+3 alumno_2_8 61
+4 alumno_3_8 45
+Repeated text field candidates
+ [1] "Grupo 1.1_1"    "Grupo 1.1_DO_1" "Grupo 3.8_1"    "Grupo 3.8_DO_1"
+ [5] "Grupo 2.1_1"    "Grupo 2.8_1"    "Grupo 1.8_1"    "Grupo 1.8_DO_1"
+ [9] "Grupo 3.1_1"    "Grupo 3.1_DO_1" "Ejemplo"        "Calibracion"   
+Missing order responses despite shared
+# A tibble: 2 × 3
+  shared     n missing
+  <lgl>  <int>   <int>
+1 FALSE  23142     637
+2 TRUE     706       0
+current 2705 validorder 2612 noorder 93 
+current old used example-only observations: 2292 
+current all8 in order: 2511 
+
+INTERPRETATION
+Order identifies the eight allocated cards, not proof of eight completed answers.
+The four outside-order profiles and their association with Ejemplo support the example mapping.
+Shared fields do not reveal whether the saved value came from the example or the later task.
+All 706 shared fields are nonmissing, including partial records: nonmissing is not proof of a later answer.
+The analysis currently retains high-risk example-only responses. Restricting to ordered cards requires reanalysis, not just a count correction.
+No manuscript or canonical data were changed by this audit.
