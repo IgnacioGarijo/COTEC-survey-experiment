@@ -1,0 +1,15 @@
+{
+  "raw_md5": "67ea18340c9b182d5d4755db5724215a",
+  "clean_md5": "ae9a11cc5783fbe19feeaa443e310ff5",
+  "scenario_md5": {
+    "A": "3babb963dc7f536c3cae2fbf32e01b3d",
+    "B": "850cc33eb1f228b1735d81384b32811a",
+    "C": "9faf6a2482a09e8e1e2bfb673edab966",
+    "D": "b300e4e1881bd7c9a8564fc3e3bd02a6",
+    "B_full8": "8b5231c3c13d7825175e1fa985a61dab",
+    "C_full8": "59d53bbdf3726096e970cd8cf559b199",
+    "C_inclusive": "a8bcc2781ee1300cd8c3622631fccbc2"
+  },
+  "R": "R version 4.4.0 (2024-04-24 ucrt)",
+  "seed_policy": "Point estimates deterministic; all stochastic seeds specified in code"
+}

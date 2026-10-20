@@ -1,0 +1,13 @@
+{
+  "scenario": "B",
+  "seed": "1004000 + draw",
+  "requested": 199,
+  "attempted": 199,
+  "accepted": 199,
+  "failed": 0,
+  "boundary_accepted": 199,
+  "acceptance": "optimizer code 0, finite nonnegative allocations; boundary fits retained; no per-draw Hessian, as current script 49",
+  "interpretation": "Descriptive bootstrap spread conditional on the estimator; percentile ranges do not establish calibrated coverage at a boundary",
+  "point_status": "accepted_boundary",
+  "workers": 2
+}

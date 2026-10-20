@@ -1,0 +1,18 @@
+{
+  "status": "accepted_boundary",
+  "diagnostics": {
+    "singular": 1,
+    "gradient": 0.0012,
+    "min_hessian": 51.5228,
+    "optimizer": 0,
+    "min_covariance": -4.571e-18
+  },
+  "max_raw_gradient": 0.0492,
+  "max_scaled_gradient": 0.0012,
+  "combined_gradient_definition": "max(pmin(abs(scaled),abs(raw)))",
+  "final_lme4_messages": "boundary (singular) fit: see help('isSingular')",
+  "logLik": -2515.6066,
+  "covariance_eigenvalues": [0.1262, 0.0382, 0.023, 0.0113, 0.0058, -4.571e-18],
+  "model_formula": "y ~ male + background + failed + competence + absent + disruptive +     male:background + male:failed + male:competence + male:absent +     male:disruptive + background:failed + background:competence +     background:absent + background:disruptive + failed:competence +     failed:absent + failed:disruptive + competence:absent + competence:disruptive +     absent:disruptive + level + experiencia + female + edad +     public + public_permanent + grupos_docencia + impact + empathy +     meritocracia + resources_excess + hb + (0 + male_c + background_c +     failed_c + competence_c + absent_c + disruptive_c | id)",
+  "object_md5": "12f53669cd3d336d869be4a87565b454"
+}

@@ -1,0 +1,22 @@
+{
+  "scenario": "B_full8",
+  "status": "accepted_boundary",
+  "n": 17256,
+  "teachers": 2157,
+  "fixed_rank": 34,
+  "fixed_columns": 34,
+  "covariance_parameters": 21,
+  "diagnostics": {
+    "singular": 1,
+    "gradient": 0.0008,
+    "min_hessian": 74.8663,
+    "optimizer": 0,
+    "min_covariance": 1.3255e-17
+  },
+  "optimizer_used": "nloptwrap",
+  "harshness_coefficient": 0.9604,
+  "outside_01": 0.2742,
+  "elapsed_seconds": 35.7897,
+  "warnings": [],
+  "object_md5": "8b5231c3c13d7825175e1fa985a61dab"
+}

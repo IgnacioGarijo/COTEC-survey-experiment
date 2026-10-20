@@ -1,0 +1,104 @@
+"check","passed","value","tolerance"
+"attributes keys",TRUE,,
+"attributes estimate",TRUE,5.69544411632705e-14,1e-08
+"attributes se",TRUE,9.69710423071035e-16,1e-08
+"attributes lo",TRUE,5.59552404411079e-14,1e-08
+"attributes hi",TRUE,6.0063065632221e-14,1e-08
+"attributes n",TRUE,0,1e-08
+"academic_interactions keys",TRUE,,
+"academic_interactions estimate",TRUE,3.49050649495197e-13,1e-08
+"academic_interactions se",TRUE,6.40112962635442e-15,1e-08
+"academic_interactions lo",TRUE,3.45199563378529e-13,1e-08
+"academic_interactions hi",TRUE,3.5290867450577e-13,1e-08
+"academic_interactions n",TRUE,0,1e-08
+"characterization keys",TRUE,,
+"characterization estimate",TRUE,0,1e-08
+"characterization se",TRUE,0,1e-08
+"characterization lo",TRUE,0,1e-08
+"characterization hi",TRUE,0,1e-08
+"characterization r2",TRUE,0,1e-08
+"characterization n",TRUE,0,1e-08
+"four_outcomes keys",TRUE,,
+"four_outcomes estimate",TRUE,3.28001514837695e-14,1e-08
+"four_outcomes se",TRUE,1.70002900645727e-15,1e-08
+"four_outcomes lo",TRUE,3.61030649820293e-14,1e-08
+"four_outcomes hi",TRUE,3.00037772404949e-14,1e-08
+"four_outcomes r2",TRUE,1.04083408558608e-16,1e-08
+"four_outcomes n",TRUE,0,1e-08
+"attributes_by_tercile keys",TRUE,,
+"attributes_by_tercile estimate",TRUE,2.59792187762287e-14,1e-08
+"attributes_by_tercile se",TRUE,2.20309881449055e-16,1e-08
+"attributes_by_tercile lo",TRUE,2.69784194983913e-14,1e-08
+"attributes_by_tercile hi",TRUE,2.69784194983913e-14,1e-08
+"attributes_by_tercile n",TRUE,0,1e-08
+"academic categories decisions",TRUE,0,1e-10
+"academic categories identifiers",TRUE,0,1e-10
+"academic categories estimate",TRUE,0,1e-10
+"academic categories se",TRUE,1.99493199737333e-17,1e-10
+"academic categories lo",TRUE,1.00613961606655e-16,1e-10
+"academic categories hi",TRUE,0,1e-10
+"academic categories disagreement",TRUE,0,1e-10
+"A mixed shares",TRUE,9.74523024999119e-07,1e-04
+"A unique teacher/card",TRUE,,
+"A all finite scores",TRUE,,
+"A weighted score zero",TRUE,8.71663852208826e-14,1e-08
+"A alternative logit convergence",TRUE,,
+"A fixed rank",TRUE,,
+"A allocation sum",TRUE,0,1e-10
+"B unique teacher/card",TRUE,,
+"B all finite scores",TRUE,,
+"B weighted score zero",TRUE,1.76664238793478e-14,1e-08
+"B at most eight answers",TRUE,8,8
+"B alternative logit convergence",TRUE,,
+"B fixed rank",TRUE,,
+"B allocation sum",TRUE,0,1e-10
+"C unique teacher/card",TRUE,,
+"C all finite scores",TRUE,,
+"C weighted score zero",TRUE,1.40547296023641e-14,1e-08
+"C at most eight answers",TRUE,8,8
+"C no collisions",TRUE,,
+"C alternative logit convergence",TRUE,,
+"C fixed rank",TRUE,,
+"C allocation sum",TRUE,0,1e-10
+"D unique teacher/card",TRUE,,
+"D all finite scores",TRUE,,
+"D weighted score zero",TRUE,1.16157083951407e-14,1e-08
+"D at most eight answers",TRUE,8,8
+"D no collision teachers",TRUE,,
+"D alternative logit convergence",TRUE,,
+"D fixed rank",TRUE,,
+"D allocation sum",TRUE,0,1e-10
+"B_full8 unique teacher/card",TRUE,,
+"B_full8 all finite scores",TRUE,,
+"B_full8 weighted score zero",TRUE,3.500325029826e-14,1e-08
+"B_full8 at most eight answers",TRUE,8,8
+"B_full8 alternative logit convergence",TRUE,,
+"B_full8 fixed rank",TRUE,,
+"B_full8 allocation sum",TRUE,0,1e-10
+"C_full8 unique teacher/card",TRUE,,
+"C_full8 all finite scores",TRUE,,
+"C_full8 weighted score zero",TRUE,2.79880285614098e-14,1e-08
+"C_full8 at most eight answers",TRUE,8,8
+"C_full8 no collisions",TRUE,,
+"C_full8 alternative logit convergence",TRUE,,
+"C_full8 fixed rank",TRUE,,
+"C_full8 allocation sum",TRUE,0,1e-10
+"C_inclusive unique teacher/card",TRUE,,
+"C_inclusive all finite scores",TRUE,,
+"C_inclusive weighted score zero",TRUE,2.38212227721135e-14,1e-08
+"C_inclusive at most eight answers",TRUE,8,8
+"C_inclusive no collisions",TRUE,,
+"C_inclusive alternative logit convergence",TRUE,,
+"C_inclusive fixed rank",TRUE,,
+"C_inclusive allocation sum",TRUE,0,1e-10
+"C_example_screen unique teacher/card",TRUE,,
+"C_example_screen all finite scores",TRUE,,
+"C_example_screen weighted score zero",TRUE,3.53155005239358e-14,1e-08
+"C_example_screen at most eight answers",TRUE,8,8
+"C_example_screen no collisions",TRUE,,
+"C_example_screen alternative logit convergence",TRUE,,
+"C_example_screen fixed rank",TRUE,,
+"C_example_screen allocation sum",TRUE,0,1e-10
+"bootstrap weighted vs expanded clone LOO",TRUE,0,1e-12
+"provenance has 8 rows per valid record",TRUE,,
+"provenance valid positions",TRUE,,

@@ -1,0 +1,2 @@
+"complete_eight","adjacent_pairs","teachers_with_pairs","observed_switch","permutation_mean","permutation_lo","permutation_hi","p","replicates","seed","algorithm"
+2350,19077,2933,0.46322188449848,0.465455668434392,0.458963525835866,0.471796352583587,0.502,999,921,"exact-v1"

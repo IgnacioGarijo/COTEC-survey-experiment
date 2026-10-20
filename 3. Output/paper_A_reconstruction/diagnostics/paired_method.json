@@ -1,0 +1,6 @@
+{
+  "draws": 999,
+  "seed": 20261020,
+  "source_population": 2705,
+  "description": "Union of analytical source records A/B/C/D; same source-teacher multinomial weights in each draw. References rebuilt within each scenario. Scenario sample counts may vary. Weighted within-teacher normal equations reproduce cloned FE point estimates. Paired intervals are sampling summaries, not causal effects of cleaning."
+}

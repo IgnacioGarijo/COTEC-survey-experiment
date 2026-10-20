@@ -1,0 +1,10 @@
+\begin{tabular}{lrr}
+\toprule
+Comparison & MSE difference & SE \\
+\midrule
+RF\_tuned - OLS\_X3 & 5.07$^{*}$ & 2.04 \\
+Ridge - OLS\_X3 & -0.05 & 1.09 \\
+OLS\_X3 - Baseline & -12.83$^{***}$ & 3.11 \\
+\bottomrule
+\end{tabular}
+\tabnote{Differences in squared percentage points. Approximate overlap-corrected SE over 25 paired folds; stars use a t reference with 24 degrees of freedom. Positive forest-minus-OLS values favor OLS. $^{*}p<.05$, $^{**}p<.01$, $^{***}p<.001$.}

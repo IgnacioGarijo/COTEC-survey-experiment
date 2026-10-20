@@ -1,0 +1,18 @@
+{
+  "status": "accepted",
+  "diagnostics": {
+    "singular": 0,
+    "gradient": 0.001,
+    "min_hessian": 165.9329,
+    "optimizer": 0,
+    "min_covariance": 0.004
+  },
+  "max_raw_gradient": 0.0544,
+  "max_scaled_gradient": 0.001,
+  "combined_gradient_definition": "max(pmin(abs(scaled),abs(raw)))",
+  "final_lme4_messages": {},
+  "logLik": -3170.9195,
+  "covariance_eigenvalues": [0.1241, 0.0344, 0.024, 0.0094, 0.0053, 0.004],
+  "model_formula": "y ~ male + background + failed + competence + absent + disruptive +     male:background + male:failed + male:competence + male:absent +     male:disruptive + background:failed + background:competence +     background:absent + background:disruptive + failed:competence +     failed:absent + failed:disruptive + competence:absent + competence:disruptive +     absent:disruptive + level + experiencia + female + edad +     public + public_permanent + grupos_docencia + impact + empathy +     meritocracia + resources_excess + hb + (0 + male_c + background_c +     failed_c + competence_c + absent_c + disruptive_c | id)",
+  "object_md5": "3babb963dc7f536c3cae2fbf32e01b3d"
+}

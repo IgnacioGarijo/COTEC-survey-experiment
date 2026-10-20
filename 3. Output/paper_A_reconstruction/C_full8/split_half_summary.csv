@@ -1,0 +1,2 @@
+"teachers","min_responses","partitions","mean","p025","p975","reference_seed","partition_seed","algorithm"
+2044,8,1000,0.458347733278311,0.436661082584714,0.479536207435465,92702,92703,"exact-v1"

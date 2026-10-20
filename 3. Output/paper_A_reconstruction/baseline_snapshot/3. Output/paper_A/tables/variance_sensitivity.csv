@@ -1,0 +1,25 @@
+"model","component","share"
+"Linear main","Student",0.483635732203552
+"Linear main","Professional",0.00338900969375909
+"Linear main","Beliefs",0.00347998207221876
+"Linear main","Context",0.0010974284045426
+"Linear main","Teacher_residual",0.0812229215242394
+"Linear main","Decision_residual",0.427174926101689
+"At least eight","Student",0.484416295890024
+"At least eight","Professional",0.00389186338989904
+"At least eight","Beliefs",0.00339812685918462
+"At least eight","Context",0.00126896168269092
+"At least eight","Teacher_residual",0.0823920384559169
+"At least eight","Decision_residual",0.424632713722284
+"Additive","Student",0.480634655091371
+"Additive","Professional",0.00339098834569877
+"Additive","Beliefs",0.00349671123161715
+"Additive","Context",0.001101080833167
+"Additive","Teacher_residual",0.0809285446076886
+"Additive","Decision_residual",0.430448019890458
+"Logit latent scale","Student",0.589859639328102
+"Logit latent scale","Professional",0.00665408160800669
+"Logit latent scale","Beliefs",0.00670648452284037
+"Logit latent scale","Context",0.00208565304943749
+"Logit latent scale","Teacher_residual",0.160450091057042
+"Logit latent scale","Decision_residual",0.234244050434572

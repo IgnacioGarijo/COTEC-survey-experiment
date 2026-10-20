@@ -1,0 +1,14 @@
+"metric","value"
+"raw_records",4942
+"unique_ResponseId",4942
+"valid_sequences",2981
+"no_collisions_raw",2448
+"one_collision_raw",360
+"two_collisions_raw",173
+"eight_stored_no_collisions_raw",2350
+"A_with_valid_order",2612
+"A_without_valid_order",93
+"A_adverse_examples_outside_order",2292
+"raw_shared_fields",706
+"raw_shared_records",533
+"current_screen_exclusions",389

@@ -1,0 +1,50 @@
+\input{preamble}
+\title{\new{Supporting Analyses Retained Outside the Manuscript}}
+\author{\authors}
+\begin{document}
+\maketitle\draftlegend\color{reused}
+\new{This companion document preserves analyses removed from the manuscript in the October 2026 revision. It is a research archive rather than an appendix of the paper. It retains the repeated-half check, reconstructed-reference coefficient bootstrap and predictive validation, including their existing results.}
+\section{Construction and repeated response halves}
+For a card answered by $N_i$ teachers, $d_{ij}=N_i(Y_{ij}-\overline Y_i)/(N_i-1)$. Summing these deviations within cards gives zero, and therefore $\sum_j n_jH^b_j=0$. This weighted centering is an algebraic property. Each score lies between $-1$ and 1. Changing a teacher's own answer from promotion to repetition increases that teacher's score by $1/n_j$, holding other responses fixed, but changes the comparison rates of other teachers. The bootstrap therefore rebuilds references instead of assuming the generated scores are entirely independent measurements.
+
+\color{reused}
+The repeated-split procedure follows the rationale of examining many partitions rather than selecting a favorable one \citep{parsons}. Teachers are assigned to five reference folds using seed 92702. For each evaluated fold, all its teachers are excluded from the reference population. The remaining teachers are divided into two disjoint reference pools, with at least two observations per card. One pool supplies card rates for response half A and the other supplies rates for half B. Thus the same estimated reference is not inserted into both halves of a given teacher's score.
+
+Using seed 92703, we randomly partition each of the 2,369 teachers with at least eight responses into halves differing by at most one response. For an odd count, the larger half is randomly assigned. We compute the mean deviation from the appropriate external card rates within each half and correlate the two scores across eligible teachers. Figure~\ref{fig:halves} shows all 1,000 correlations. Their mean is 0.483 and their central partition range is 0.461--0.504. The reference pools are fixed across repetitions; the range measures response-partition sensitivity, not uncertainty from drawing a new teacher sample. No Spearman--Brown correction or claim of temporal reliability is made.
+\plot{reused}{split_half}{Consistency of harshness across nonoverlapping subsets of responses. The histogram contains correlations from 1,000 random partitions; it is not a sampling confidence distribution.}{fig:halves}
+
+
+
+\color{reused}
+\section{Reconstructed-reference bootstrap for harshness associations}
+Table~\ref{tab:bootstrap} reports coefficient estimates with standard errors from 999 teacher resamples. Each resample rebuilds same-card reference rates, constructs harshness and refits the full model. The bootstrap standard errors support the same broad associations as the main HC3 results.
+\inputtab{reused}{bootstrap}{Reconstructed-reference bootstrap for the full harshness model}{tab:bootstrap}
+
+\section{Prediction of harshness}
+We compare a training-mean baseline with OLS, ridge regression and random forests, following \citet{rf} ensemble method. The last two allow, respectively, regularization and flexible nonlinear relationships. Tuning takes place in three inner teacher folds, with card references reconstructed inside each split. Below, SHAP values decompose the forest’s predictions into contributions from the observed characteristics \citep{shap}; they describe how the fitted model uses the information, rather than establishing causal effects. 
+
+These associations yield only modest prediction for new teachers (Table~\ref{tab:prediction}). Full OLS achieves a test $R^2$ of 3.72 percent, compared with 2.02 percent using professional and demographic variables alone. The practical improvement is small: the typical prediction error falls by only about a third of a percentage point. Ridge performs almost identically to full OLS, and the tuned forest does not improve on it. The paired comparisons support this reading; prediction from basic covariates in the larger available sample also remains weak.
+\inputtab{reused}{prediction}{Prediction of harshness in held-out teachers}{tab:prediction}
+
+
+All models within a population share five repetitions of five outer teacher folds. Training outcomes use training-only leave-one-out card means; test outcomes subtract the corresponding training card means. Each teacher appears in one evaluation fold per repetition. Ridge and forest tuning uses three inner teacher folds and reconstructs the target references again inside each inner split. Numeric scaling for ridge is learned in training; the resource item otherwise remains on its original scale.
+
+The forest grid crosses $\lfloor\sqrt p\rfloor$ and $p$ candidate variables with minimum node sizes 5, 20 and 50. Inner fits use 250 trees and final fits 500. Ridge considers ten log-spaced penalties from $10^{-4}$ to $10^2$, with an unpenalized intercept. Performance is measured against the training-mean prediction:
+\[
+R^2_{\mathrm{test}}=1-\frac{\sum_j(H_j^{\mathrm{test}}-\widehat H_j)^2}
+{\sum_j(H_j^{\mathrm{test}}-\overline H_{\mathrm{train}(j)})^2}.
+\]
+Table~\ref{tab:available} reports the secondary evaluation on 2,642 teachers with the basic covariates. The smaller predictive gain remains consistent with the main interpretation. Its RMSE should not be compared directly with that of the complete-case population because both teachers and reference rates differ.
+\inputtab{reused}{prediction_available}{Prediction using the larger available basic-covariate sample}{tab:available}
+
+Table~\ref{tab:paired} gives paired loss differences on the common population. For 25 fold-level differences with variance $s_d^2$, the approximate standard error is $\sqrt{(1/25+1/4)s_d^2}$, with a $t_{24}$ reference \citep{nadeau}. This correction allows for overlap in training samples; the comparison uses the same generated-outcome construction in each fold.
+\inputtab{reused}{prediction_paired}{Paired predictive losses on common teacher folds}{tab:paired}
+
+The forest diagnostics in Table~\ref{tab:importance} use the first outer partition. SHAP values use 128 training-background observations per fold and 32 Monte Carlo simulations with additive adjustment. Permutation importance averages 20 perturbations per variable within each held-out fold. Resource agreement has the largest mean absolute SHAP contribution, followed by age, stage and experience, but the overall forest prediction remains modest. These quantities describe how the fitted model uses information; correlated predictors can share predictive content.
+\inputtab{reused}{prediction_importance}{Held-out information-use diagnostics for the tuned forest}{tab:importance}
+
+
+\section{Reproduction}
+\new{The repeated halves and coefficient bootstrap are generated by \texttt{27. revise\_A\_analysis.R}; predictive validation by \texttt{28. revised\_A\_prediction.R}. Their aggregate outputs remain in the paper A tables directory, and \texttt{32. A\_revision\_figures.py} and \texttt{33. A\_revision\_tables.py} rebuild the exhibits.}
+\clearpage\color{black}\input{references_supporting}
+\end{document}

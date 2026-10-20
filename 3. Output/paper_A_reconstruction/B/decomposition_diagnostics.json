@@ -1,0 +1,22 @@
+{
+  "scenario": "B",
+  "status": "accepted_boundary",
+  "n": 17256,
+  "teachers": 2157,
+  "fixed_rank": 34,
+  "fixed_columns": 34,
+  "covariance_parameters": 21,
+  "diagnostics": {
+    "singular": 1,
+    "gradient": 0.0001,
+    "min_hessian": 75.1306,
+    "optimizer": 0,
+    "min_covariance": 7.0466e-16
+  },
+  "optimizer_used": "bobyqa",
+  "harshness_coefficient": 0.9607,
+  "outside_01": 0.2767,
+  "elapsed_seconds": 81.1298,
+  "warnings": "Model failed to converge with max|grad| = 0.0057312 (tol = 0.002, component 1)",
+  "object_md5": "850cc33eb1f228b1735d81384b32811a"
+}

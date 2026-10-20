@@ -1,0 +1,11 @@
+\begin{tabular}{lrrr}
+\toprule
+Model & RMSE (pp) & $R^2$ (\%) & Partition range \\
+\midrule
+Training mean & 20.74 & 0.00 & [0.00, 0.00] \\
+OLS: professional/demographic & 20.59 & 1.38 & [1.21, 1.55] \\
+Tuned random forest & 20.70 & 0.33 & [-0.04, 0.72] \\
+Ridge: all covariates & 20.60 & 1.34 & [1.20, 1.49] \\
+\bottomrule
+\end{tabular}
+\tabnote{Five repetitions of five teacher folds. Targets and tuning are rebuilt within training samples. Partition ranges describe variation across five repetitions, not confidence intervals. N=2,642.}

@@ -1,0 +1,9 @@
+{
+  "scenario_md5": "3babb963dc7f536c3cae2fbf32e01b3d",
+  "bootstrap_method": "clone-LOO-six-correlated-slopes-v1",
+  "formula": "y ~ male + background + failed + competence + absent + disruptive +     male:background + male:failed + male:competence + male:absent +     male:disruptive + background:failed + background:competence +     background:absent + background:disruptive + failed:competence +     failed:absent + failed:disruptive + competence:absent + competence:disruptive +     absent:disruptive + level + experiencia + female + edad +     public + public_permanent + grupos_docencia + impact + empathy +     meritocracia + resources_excess + hb + (0 + male_c + background_c +     failed_c + competence_c + absent_c + disruptive_c | id)",
+  "seed": "1004000 + draw",
+  "R": "R version 4.4.0 (2024-04-24 ucrt)",
+  "lme4": "1.1.35.3",
+  "point_theta": [0.290042722685586, -0.0337288449680541, -0.00844492122582527, 0.0486084253747295, 0.0316815982974216, -0.0156696369643448, 0.384094523059806, -0.0787076326545336, -0.108595855267114, 0.0765762580255508, 0.140770156227956, 1.21651935695586, -0.757407190957034, 0.0124069241670028, 0.0220187017871948, 0.899584648064794, 0.0294080574128492, -0.124255535809877, 0.420575716028777, -0.351396035089596, 0.608354976382449]
+}

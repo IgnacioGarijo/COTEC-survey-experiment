@@ -1,0 +1,22 @@
+{
+  "scenario": "C",
+  "status": "accepted_boundary",
+  "n": 16714,
+  "teachers": 2157,
+  "fixed_rank": 34,
+  "fixed_columns": 34,
+  "covariance_parameters": 21,
+  "diagnostics": {
+    "singular": 1,
+    "gradient": 0.0012,
+    "min_hessian": 60.2714,
+    "optimizer": 0,
+    "min_covariance": 2.9541e-11
+  },
+  "optimizer_used": "nloptwrap",
+  "harshness_coefficient": 0.9606,
+  "outside_01": 0.27,
+  "elapsed_seconds": 34.7736,
+  "warnings": [],
+  "object_md5": "9faf6a2482a09e8e1e2bfb673edab966"
+}

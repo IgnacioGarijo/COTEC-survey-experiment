@@ -1,0 +1,89 @@
+"scenario","stage","n"
+"A","Registros brutos",4942
+"A","Participación desde experiencia",4037
+"A","Excluidos por filtro",389
+"A","Elegibles por orden/filtro/escenario",4553
+"A","Con respuesta analizable",2705
+"A","Con todas las creencias",2203
+"A","Con covariables completas",2157
+"A","Con respuesta y marca de cierre",2570
+"A","Con respuesta y B2_complet",2452
+"A","Con respuesta y encuesta terminada",2354
+"A","Con respuesta parcial sin marca de cierre",135
+"B","Registros brutos",4942
+"B","Participación desde experiencia",4037
+"B","Excluidos por filtro",389
+"B","Elegibles por orden/filtro/escenario",2612
+"B","Con respuesta analizable",2594
+"B","Con todas las creencias",2203
+"B","Con covariables completas",2157
+"B","Con respuesta y marca de cierre",2566
+"B","Con respuesta y B2_complet",2452
+"B","Con respuesta y encuesta terminada",2354
+"B","Con respuesta parcial sin marca de cierre",28
+"C","Registros brutos",4942
+"C","Participación desde experiencia",4037
+"C","Excluidos por filtro",389
+"C","Elegibles por orden/filtro/escenario",2612
+"C","Con respuesta analizable",2587
+"C","Con todas las creencias",2203
+"C","Con covariables completas",2157
+"C","Con respuesta y marca de cierre",2559
+"C","Con respuesta y B2_complet",2452
+"C","Con respuesta y encuesta terminada",2354
+"C","Con respuesta parcial sin marca de cierre",28
+"D","Registros brutos",4942
+"D","Participación desde experiencia",4037
+"D","Excluidos por filtro",389
+"D","Elegibles por orden/filtro/escenario",2119
+"D","Con respuesta analizable",2101
+"D","Con todas las creencias",1787
+"D","Con covariables completas",1750
+"D","Con respuesta y marca de cierre",2073
+"D","Con respuesta y B2_complet",1994
+"D","Con respuesta y encuesta terminada",1916
+"D","Con respuesta parcial sin marca de cierre",28
+"B_full8","Registros brutos",4942
+"B_full8","Participación desde experiencia",4037
+"B_full8","Excluidos por filtro",389
+"B_full8","Elegibles por orden/filtro/escenario",2511
+"B_full8","Con respuesta analizable",2511
+"B_full8","Con todas las creencias",2203
+"B_full8","Con covariables completas",2157
+"B_full8","Con respuesta y marca de cierre",2511
+"B_full8","Con respuesta y B2_complet",2452
+"B_full8","Con respuesta y encuesta terminada",2354
+"B_full8","Con respuesta parcial sin marca de cierre",0
+"C_full8","Registros brutos",4942
+"C_full8","Participación desde experiencia",4037
+"C_full8","Excluidos por filtro",389
+"C_full8","Elegibles por orden/filtro/escenario",2511
+"C_full8","Con respuesta analizable",2511
+"C_full8","Con todas las creencias",2203
+"C_full8","Con covariables completas",2157
+"C_full8","Con respuesta y marca de cierre",2511
+"C_full8","Con respuesta y B2_complet",2452
+"C_full8","Con respuesta y encuesta terminada",2354
+"C_full8","Con respuesta parcial sin marca de cierre",0
+"C_inclusive","Registros brutos",4942
+"C_inclusive","Participación desde experiencia",4037
+"C_inclusive","Excluidos por filtro",0
+"C_inclusive","Elegibles por orden/filtro/escenario",2981
+"C_inclusive","Con respuesta analizable",2950
+"C_inclusive","Con todas las creencias",2489
+"C_inclusive","Con covariables completas",2437
+"C_inclusive","Con respuesta y marca de cierre",2914
+"C_inclusive","Con respuesta y B2_complet",2785
+"C_inclusive","Con respuesta y encuesta terminada",2667
+"C_inclusive","Con respuesta parcial sin marca de cierre",36
+"C_example_screen","Registros brutos",4942
+"C_example_screen","Participación desde experiencia",4037
+"C_example_screen","Excluidos por filtro",379
+"C_example_screen","Elegibles por orden/filtro/escenario",2622
+"C_example_screen","Con respuesta analizable",2597
+"C_example_screen","Con todas las creencias",2210
+"C_example_screen","Con covariables completas",2164
+"C_example_screen","Con respuesta y marca de cierre",2569
+"C_example_screen","Con respuesta y B2_complet",2460
+"C_example_screen","Con respuesta y encuesta terminada",2362
+"C_example_screen","Con respuesta parcial sin marca de cierre",28
