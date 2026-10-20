@@ -1,0 +1,13 @@
+{
+  "method": "clone-LOO-six-correlated-slopes-v3-original-numerical-criterion",
+  "scenario_md5": "850cc33eb1f228b1735d81384b32811a",
+  "formula": "y ~ male + background + failed + competence + absent + disruptive +     male:background + male:failed + male:competence + male:absent +     male:disruptive + background:failed + background:competence +     background:absent + background:disruptive + failed:competence +     failed:absent + failed:disruptive + competence:absent + competence:disruptive +     absent:disruptive + level + experiencia + female + edad +     public + public_permanent + grupos_docencia + impact + empathy +     meritocracia + resources_excess + hb + (0 + male_c + background_c +     failed_c + competence_c + absent_c + disruptive_c | id)",
+  "seed": "1004000 + draw",
+  "R": "R version 4.4.0 (2024-04-24 ucrt)",
+  "lme4": "1.1.35.3",
+  "initialization": "automatic",
+  "optimizer": "nloptwrap",
+  "maxeval": 30000,
+  "calc_derivs": false,
+  "acceptance": "optimizer0 and finite allocations; singular fits retained; same criterion applied to retained v1/v2"
+}

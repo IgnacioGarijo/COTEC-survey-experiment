@@ -51,7 +51,7 @@ theme_set(theme_minimal(base_size=10)+theme(panel.grid.minor=element_blank(),
  strip.text=element_text(face='bold',hjust=0),plot.margin=margin(12,14,12,12)))
 save_png<-function(p,name,width,height)ggsave(file.path(figdir,paste0(name,'.png')),p,
  width=width,height=height,units='in',dpi=175,bg='white')
-format_count<-function(x)format(round(x),big.mark='.',scientific=FALSE,trim=TRUE)
+format_count<-function(x)format(round(x),big.mark='.',decimal.mark=',',scientific=FALSE,trim=TRUE)
 
 # Attribute effects and teacher-clustered 95% intervals, in percentage points.
 attr_data$attribute<-factor(unname(attr_labels[attr_data$term]),levels=unname(attr_labels))
@@ -80,7 +80,7 @@ p<-ggplot(rectangles)+
  geom_text(data=labels,aes(x=(left+right)/2,y=scenario_pos,label=label,colour=text_colour),size=3.5)+
  scale_colour_identity()+scale_fill_manual(values=comp_colors,breaks=names(comp_labels),labels=unname(comp_labels),drop=FALSE)+
  scale_y_reverse(breaks=seq_along(main),labels=main,limits=c(4.6,.4))+
- scale_x_continuous(limits=c(0,100),expand=expansion(mult=0))+
+ scale_x_continuous(expand=expansion(mult=0))+coord_cartesian(xlim=c(0,100))+
  guides(fill=guide_legend(nrow=2,byrow=TRUE))+
  labs(x='Cuota de la varianza implícita en el modelo (%)',y=NULL,fill=NULL)
 save_png(p,'decomposition_comparison',10.5,4.6)

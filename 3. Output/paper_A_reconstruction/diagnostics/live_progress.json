@@ -1,0 +1,21 @@
+{
+  "time_local": "2026-10-20T17:50:56",
+  "counts": {
+    "B": {
+      "saved_including_fragments": 199,
+      "finalized": true,
+      "accepted": 199
+    },
+    "C": {
+      "saved_including_fragments": 199,
+      "finalized": true,
+      "accepted": 199
+    },
+    "D": {
+      "saved_including_fragments": 199,
+      "finalized": true,
+      "accepted": 199
+    }
+  },
+  "complete": true
+}

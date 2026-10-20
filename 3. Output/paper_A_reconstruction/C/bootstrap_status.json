@@ -1,0 +1,21 @@
+{
+  "scenario": "C",
+  "method": "clone-LOO-six-correlated-slopes-v3-original-numerical-criterion",
+  "seed": "1004000 + draw",
+  "requested": 199,
+  "attempted": 199,
+  "accepted": 199,
+  "failed": 0,
+  "boundary_accepted": 153,
+  "configuration_counts": {
+    "v1-point-start-tight": 44,
+    "v2-automatic-full-derivatives": 39,
+    "v3-automatic-original-bootstrap-criterion": 116
+  },
+  "acceptance": "optimizer0 and finite allocations; singular fits retained; same criterion applied to retained v1/v2",
+  "full_derivatives_rows": 39,
+  "interpretation": "Descriptive estimator spread; not nominal boundary coverage; full Hessian checked at points and in labeled v2 rows, not every draw",
+  "point_status": "accepted_boundary",
+  "workers": 4,
+  "numerical_audit": "start audit, optimizer controls and derivative_flag_audit; B-v1 excluded"
+}

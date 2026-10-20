@@ -2,6 +2,11 @@
 # B-v1 is excluded: warm start trapped the optimizer. C/D-v1 are retained as
 # numerically equivalent configurations and explicitly identified by draw.
 reconstruction_library_mode<-TRUE;source('2. Code/paper_A_reconstruction/reconstruct.R',local=TRUE)
+source_lock<-read_json(file.path(out,'diagnostics','numerical_source_manifest.json'),simplifyVector=TRUE)
+stopifnot(length(source_lock$md5)>0)
+for(nm in names(source_lock$md5))stopifnot(unname(tools::md5sum(file.path('2. Code/paper_A_reconstruction',nm)))==source_lock$md5[[nm]])
+input_lock<-read_json(file.path(out,'diagnostics','inputs.json'),simplifyVector=TRUE)
+stopifnot(input_lock$raw_md5==unname(tools::md5sum('1. Data/raw data/df_named.parquet')),input_lock$clean_md5==unname(tools::md5sum('1. Data/processed data/cleandata.parquet')))
 aa<-commandArgs(TRUE);s<-aa[1];workers<-if(length(aa)>1)as.integer(aa[2])else 4L;B<-199L
 stopifnot(s%in%c('B','C','D'))
 o<-geto(s);pt<-readRDS(file.path(local,paste0('point_',s,'.rds')))

@@ -37,9 +37,12 @@ def main():
             check(s+' recomputed SE '+r.component, abs(x.std(ddof=1)-r.se)<1e-10)
             check(s+' recomputed percentile '+r.component, abs(x.quantile(.025)-r.lo_percentile)<1e-10 and abs(x.quantile(.975)-r.hi_percentile)<1e-10)
         if s=='B':
-            check('B excludes trapped warm-start replicas', d.configuration.eq('v2-automatic-full-derivatives').all())
+            check('B excludes trapped warm-start replicas', d.configuration.str.startswith(('v2-','v3-')).all())
+        common_admission = d.optimizer.eq(0) & d[pp.component.tolist()].map(math.isfinite).all(axis=1)
+        check(s+' common admission rule', d.accepted.eq(common_admission).all())
         if 'derivatives_checked' in d:
             v2 = d[d.configuration.eq('v2-automatic-full-derivatives') & d.accepted]
+            if 'strict_v2_admissible' in v2:v2=v2[v2.strict_v2_admissible.eq(True)]
             check(s+' v2 admitted numerical diagnostics', (v2.gradient.lt(.002) & v2.min_hessian.gt(0) & v2.optimizer.eq(0)).all())
             for r in v2.itertuples():
                 best = max(float(x) for x in str(r.attempt_logLik).split(' | '))
@@ -47,6 +50,9 @@ def main():
     audit = pd.read_csv(OUT/'tables/optimizer_control_audit.csv')
     check('all predefined numerical audit cases', len(audit)==9 and audit.groupby('scenario').draw.apply(set).map(lambda x:x=={1,50,199}).all())
     check('default and tight objectives agree', audit.delta_vs_tight_automatic.abs().max()<.0005)
+    flags = pd.read_csv(OUT/'tables/derivative_flag_audit.csv')
+    check('derivative flag audit complete', len(flags)==9)
+    check('post-fit derivative flag leaves optimization unchanged', flags.delta_logLik.abs().max()<1e-8 and flags.max_share_delta.max()<1e-8)
     point = pd.read_csv(OUT/'tables/B_point_start_audit.csv')
     check('B point no materially better automatic objective', point.automatic_minus_saved_logLik.max()<.0005)
     check('protected files unchanged', json.loads((OUT/'protection_verification.json').read_text())['unchanged'])

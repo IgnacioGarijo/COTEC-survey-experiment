@@ -7,8 +7,23 @@
     "bridges.R": "ac40fc9a17a3491afb88291d8b25195542524b6648d72e3095dede41286834be",
     "bootstrap_start_audit.R": "a1dd1cd9197d02ba7e92c11310d7afc4a3657593e5fde1efb28f2f6fb06864a1",
     "optimizer_audit.R": "d46dfd745b5a16a99f34413b8aff7e04fa2956905aecbbeec50b80eac40c6e53",
-    "bootstrap_v2.R": "6e8ef004e877e8aa0104293046c32c9d95dc578993ee503720819bbc9750e6b1",
-    "point_start_audit.R": "a0cebb1051a51a54be7d750677eeea7a30d042217b7c2957ab3c9700d09850ed"
+    "bootstrap_v2.R": "662186e82f346d92e556fa097ac18482735ad91c18223a3bfd61afd6f2b077d1",
+    "point_start_audit.R": "a0cebb1051a51a54be7d750677eeea7a30d042217b7c2957ab3c9700d09850ed",
+    "bootstrap_v3.R": "8e58953c4c4bb7b8875825acf67994a699b942948dfb4e7e675ff1deaeaf1e60",
+    "derivative_flag_audit.R": "374112592b0bc04e758e11e8636e9e7276ea3e28a9d31d8f817df18ec06ce285"
   },
-  "scope": "Reviewed queue-only optimization; identical per-draw RNG, clone construction and estimator. Added final summary stats::sd qualification and fallback objective protection, also checked retrospectively on saved v2 draws. Fragment CSV reload explicitly normalizes diagnostic text columns and validates draw/configuration keys; statistical draws preserved."
+  "scope": "Reviewed queue-only optimization; identical per-draw RNG, clone construction and estimator. Added final summary stats::sd qualification and fallback objective protection, also checked retrospectively on saved v2 draws. Fragment CSV reload explicitly normalizes diagnostic text columns and validates draw/configuration keys; statistical draws preserved. Added entry-only R source/input checksum guards for direct bootstrap resumes; no per-draw calculation change in running processes. V3 restores original script49 bootstrap admission/derivative policy with automatic initialization; all retained rows rechecked by common optimizer0/finite rule. Full point Hessians preserved; derivative flag audit must agree in nine predefined cases.",
+  "md5": {
+    "reconstruct.R": "ab2a08705a96bee1aef93a0da98e149f",
+    "supplement.R": "3dae83a6b0fdffa346805873e921eb9f",
+    "paired.R": "b9b15fc3c3b62805d5cd0bcccc7188d3",
+    "verify.R": "ed20fb7f336682722dd5cc9721dcca3b",
+    "bridges.R": "9228eb425c931a91c887b18d13ac4539",
+    "bootstrap_start_audit.R": "9279a43979a2be01718e18d6b04ab247",
+    "optimizer_audit.R": "11138a1a66cbad8e8fca9340b08d050f",
+    "bootstrap_v2.R": "413ccce7019234c21202fd35ecdbb4b9",
+    "point_start_audit.R": "27e3655308789f11f6bb5a790909b695",
+    "bootstrap_v3.R": "de386285bb11525ff710e1a525ba8673",
+    "derivative_flag_audit.R": "160ea68b16229b285b0cd891b00195f0"
+  }
 }

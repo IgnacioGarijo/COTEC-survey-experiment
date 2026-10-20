@@ -1,0 +1,869 @@
+check,passed
+aggregate header A\academic_categories.csv,True
+no response identifiers A\academic_categories.csv,True
+aggregate header A\academic_interactions.csv,True
+no response identifiers A\academic_interactions.csv,True
+aggregate header A\assigned_stored_inclusion.csv,True
+no response identifiers A\assigned_stored_inclusion.csv,True
+aggregate header A\attributes.csv,True
+no response identifiers A\attributes.csv,True
+aggregate header A\attributes_by_tercile.csv,True
+no response identifiers A\attributes_by_tercile.csv,True
+aggregate header A\attributes_control.csv,True
+no response identifiers A\attributes_control.csv,True
+aggregate header A\attribute_support.csv,True
+no response identifiers A\attribute_support.csv,True
+aggregate header A\belief_selection.csv,True
+no response identifiers A\belief_selection.csv,True
+aggregate header A\card_disagreement.csv,True
+no response identifiers A\card_disagreement.csv,True
+aggregate header A\characterization.csv,True
+no response identifiers A\characterization.csv,True
+aggregate header A\characterization_bootstrap.csv,True
+no response identifiers A\characterization_bootstrap.csv,True
+aggregate header A\coefficient_bootstrap_status.csv,True
+no response identifiers A\coefficient_bootstrap_status.csv,True
+aggregate header A\composition_categories.csv,True
+no response identifiers A\composition_categories.csv,True
+aggregate header A\covariate_availability.csv,True
+no response identifiers A\covariate_availability.csv,True
+aggregate header A\decomposition.csv,True
+no response identifiers A\decomposition.csv,True
+aggregate header A\decomposition_bootstrap_draws.csv,True
+no response identifiers A\decomposition_bootstrap_draws.csv,True
+aggregate header A\decomposition_covariance.csv,True
+no response identifiers A\decomposition_covariance.csv,True
+aggregate header A\decomposition_fixed_effects.csv,True
+no response identifiers A\decomposition_fixed_effects.csv,True
+aggregate header A\decomposition_point.csv,True
+no response identifiers A\decomposition_point.csv,True
+aggregate header A\decomposition_unnormalized.csv,True
+no response identifiers A\decomposition_unnormalized.csv,True
+aggregate header A\four_outcomes.csv,True
+no response identifiers A\four_outcomes.csv,True
+aggregate header A\harshness_distribution.csv,True
+no response identifiers A\harshness_distribution.csv,True
+aggregate header A\population_comparison.csv,True
+no response identifiers A\population_comparison.csv,True
+aggregate header A\profile_support.csv,True
+no response identifiers A\profile_support.csv,True
+aggregate header A\response_counts.csv,True
+no response identifiers A\response_counts.csv,True
+aggregate header A\sequence_summary.csv,True
+no response identifiers A\sequence_summary.csv,True
+aggregate header A\split_half_partitions.csv,True
+no response identifiers A\split_half_partitions.csv,True
+aggregate header A\split_half_summary.csv,True
+no response identifiers A\split_half_summary.csv,True
+aggregate header A\split_reference_support.csv,True
+no response identifiers A\split_reference_support.csv,True
+aggregate header A\summary.csv,True
+no response identifiers A\summary.csv,True
+aggregate header A\task_progression.csv,True
+no response identifiers A\task_progression.csv,True
+aggregate header A\tercile_descriptives.csv,True
+no response identifiers A\tercile_descriptives.csv,True
+aggregate header A\timing_slope.csv,True
+no response identifiers A\timing_slope.csv,True
+aggregate header B\academic_categories.csv,True
+no response identifiers B\academic_categories.csv,True
+aggregate header B\academic_interactions.csv,True
+no response identifiers B\academic_interactions.csv,True
+aggregate header B\assigned_stored_inclusion.csv,True
+no response identifiers B\assigned_stored_inclusion.csv,True
+aggregate header B\attributes.csv,True
+no response identifiers B\attributes.csv,True
+aggregate header B\attributes_by_tercile.csv,True
+no response identifiers B\attributes_by_tercile.csv,True
+aggregate header B\attributes_control.csv,True
+no response identifiers B\attributes_control.csv,True
+aggregate header B\attribute_support.csv,True
+no response identifiers B\attribute_support.csv,True
+aggregate header B\belief_selection.csv,True
+no response identifiers B\belief_selection.csv,True
+aggregate header B\card_disagreement.csv,True
+no response identifiers B\card_disagreement.csv,True
+aggregate header B\characterization.csv,True
+no response identifiers B\characterization.csv,True
+aggregate header B\characterization_bootstrap.csv,True
+no response identifiers B\characterization_bootstrap.csv,True
+aggregate header B\coefficient_bootstrap_status.csv,True
+no response identifiers B\coefficient_bootstrap_status.csv,True
+aggregate header B\composition_categories.csv,True
+no response identifiers B\composition_categories.csv,True
+aggregate header B\covariate_availability.csv,True
+no response identifiers B\covariate_availability.csv,True
+aggregate header B\decomposition.csv,True
+no response identifiers B\decomposition.csv,True
+aggregate header B\decomposition_bootstrap_draws.csv,True
+no response identifiers B\decomposition_bootstrap_draws.csv,True
+aggregate header B\decomposition_covariance.csv,True
+no response identifiers B\decomposition_covariance.csv,True
+aggregate header B\decomposition_fixed_effects.csv,True
+no response identifiers B\decomposition_fixed_effects.csv,True
+aggregate header B\decomposition_point.csv,True
+no response identifiers B\decomposition_point.csv,True
+aggregate header B\decomposition_unnormalized.csv,True
+no response identifiers B\decomposition_unnormalized.csv,True
+aggregate header B\four_outcomes.csv,True
+no response identifiers B\four_outcomes.csv,True
+aggregate header B\harshness_distribution.csv,True
+no response identifiers B\harshness_distribution.csv,True
+aggregate header B\observation_changes_vs_A.csv,True
+no response identifiers B\observation_changes_vs_A.csv,True
+aggregate header B\population_comparison.csv,True
+no response identifiers B\population_comparison.csv,True
+aggregate header B\profile_support.csv,True
+no response identifiers B\profile_support.csv,True
+aggregate header B\response_counts.csv,True
+no response identifiers B\response_counts.csv,True
+aggregate header B\sequence_summary.csv,True
+no response identifiers B\sequence_summary.csv,True
+aggregate header B\split_half_partitions.csv,True
+no response identifiers B\split_half_partitions.csv,True
+aggregate header B\split_half_summary.csv,True
+no response identifiers B\split_half_summary.csv,True
+aggregate header B\split_reference_support.csv,True
+no response identifiers B\split_reference_support.csv,True
+aggregate header B\summary.csv,True
+no response identifiers B\summary.csv,True
+aggregate header B\task_progression.csv,True
+no response identifiers B\task_progression.csv,True
+aggregate header B\tercile_descriptives.csv,True
+no response identifiers B\tercile_descriptives.csv,True
+aggregate header B\timing_slope.csv,True
+no response identifiers B\timing_slope.csv,True
+aggregate header bridge_A\bridge_summary.csv,True
+no response identifiers bridge_A\bridge_summary.csv,True
+aggregate header bridge_B\bridge_summary.csv,True
+no response identifiers bridge_B\bridge_summary.csv,True
+aggregate header B_full8\academic_categories.csv,True
+no response identifiers B_full8\academic_categories.csv,True
+aggregate header B_full8\academic_interactions.csv,True
+no response identifiers B_full8\academic_interactions.csv,True
+aggregate header B_full8\assigned_stored_inclusion.csv,True
+no response identifiers B_full8\assigned_stored_inclusion.csv,True
+aggregate header B_full8\attributes.csv,True
+no response identifiers B_full8\attributes.csv,True
+aggregate header B_full8\attributes_by_tercile.csv,True
+no response identifiers B_full8\attributes_by_tercile.csv,True
+aggregate header B_full8\attributes_control.csv,True
+no response identifiers B_full8\attributes_control.csv,True
+aggregate header B_full8\attribute_support.csv,True
+no response identifiers B_full8\attribute_support.csv,True
+aggregate header B_full8\belief_selection.csv,True
+no response identifiers B_full8\belief_selection.csv,True
+aggregate header B_full8\card_disagreement.csv,True
+no response identifiers B_full8\card_disagreement.csv,True
+aggregate header B_full8\characterization.csv,True
+no response identifiers B_full8\characterization.csv,True
+aggregate header B_full8\characterization_bootstrap.csv,True
+no response identifiers B_full8\characterization_bootstrap.csv,True
+aggregate header B_full8\coefficient_bootstrap_status.csv,True
+no response identifiers B_full8\coefficient_bootstrap_status.csv,True
+aggregate header B_full8\composition_categories.csv,True
+no response identifiers B_full8\composition_categories.csv,True
+aggregate header B_full8\covariate_availability.csv,True
+no response identifiers B_full8\covariate_availability.csv,True
+aggregate header B_full8\decomposition_covariance.csv,True
+no response identifiers B_full8\decomposition_covariance.csv,True
+aggregate header B_full8\decomposition_fixed_effects.csv,True
+no response identifiers B_full8\decomposition_fixed_effects.csv,True
+aggregate header B_full8\decomposition_point.csv,True
+no response identifiers B_full8\decomposition_point.csv,True
+aggregate header B_full8\decomposition_unnormalized.csv,True
+no response identifiers B_full8\decomposition_unnormalized.csv,True
+aggregate header B_full8\four_outcomes.csv,True
+no response identifiers B_full8\four_outcomes.csv,True
+aggregate header B_full8\harshness_distribution.csv,True
+no response identifiers B_full8\harshness_distribution.csv,True
+aggregate header B_full8\observation_changes_vs_A.csv,True
+no response identifiers B_full8\observation_changes_vs_A.csv,True
+aggregate header B_full8\population_comparison.csv,True
+no response identifiers B_full8\population_comparison.csv,True
+aggregate header B_full8\profile_support.csv,True
+no response identifiers B_full8\profile_support.csv,True
+aggregate header B_full8\response_counts.csv,True
+no response identifiers B_full8\response_counts.csv,True
+aggregate header B_full8\sequence_summary.csv,True
+no response identifiers B_full8\sequence_summary.csv,True
+aggregate header B_full8\split_half_partitions.csv,True
+no response identifiers B_full8\split_half_partitions.csv,True
+aggregate header B_full8\split_half_summary.csv,True
+no response identifiers B_full8\split_half_summary.csv,True
+aggregate header B_full8\split_reference_support.csv,True
+no response identifiers B_full8\split_reference_support.csv,True
+aggregate header B_full8\summary.csv,True
+no response identifiers B_full8\summary.csv,True
+aggregate header B_full8\task_progression.csv,True
+no response identifiers B_full8\task_progression.csv,True
+aggregate header B_full8\tercile_descriptives.csv,True
+no response identifiers B_full8\tercile_descriptives.csv,True
+aggregate header B_full8\timing_slope.csv,True
+no response identifiers B_full8\timing_slope.csv,True
+aggregate header C\academic_categories.csv,True
+no response identifiers C\academic_categories.csv,True
+aggregate header C\academic_interactions.csv,True
+no response identifiers C\academic_interactions.csv,True
+aggregate header C\assigned_stored_inclusion.csv,True
+no response identifiers C\assigned_stored_inclusion.csv,True
+aggregate header C\attributes.csv,True
+no response identifiers C\attributes.csv,True
+aggregate header C\attributes_by_tercile.csv,True
+no response identifiers C\attributes_by_tercile.csv,True
+aggregate header C\attributes_control.csv,True
+no response identifiers C\attributes_control.csv,True
+aggregate header C\attribute_support.csv,True
+no response identifiers C\attribute_support.csv,True
+aggregate header C\belief_selection.csv,True
+no response identifiers C\belief_selection.csv,True
+aggregate header C\card_disagreement.csv,True
+no response identifiers C\card_disagreement.csv,True
+aggregate header C\characterization.csv,True
+no response identifiers C\characterization.csv,True
+aggregate header C\characterization_bootstrap.csv,True
+no response identifiers C\characterization_bootstrap.csv,True
+aggregate header C\coefficient_bootstrap_status.csv,True
+no response identifiers C\coefficient_bootstrap_status.csv,True
+aggregate header C\composition_categories.csv,True
+no response identifiers C\composition_categories.csv,True
+aggregate header C\covariate_availability.csv,True
+no response identifiers C\covariate_availability.csv,True
+aggregate header C\decomposition.csv,True
+no response identifiers C\decomposition.csv,True
+aggregate header C\decomposition_bootstrap_draws.csv,True
+no response identifiers C\decomposition_bootstrap_draws.csv,True
+aggregate header C\decomposition_covariance.csv,True
+no response identifiers C\decomposition_covariance.csv,True
+aggregate header C\decomposition_fixed_effects.csv,True
+no response identifiers C\decomposition_fixed_effects.csv,True
+aggregate header C\decomposition_point.csv,True
+no response identifiers C\decomposition_point.csv,True
+aggregate header C\decomposition_unnormalized.csv,True
+no response identifiers C\decomposition_unnormalized.csv,True
+aggregate header C\four_outcomes.csv,True
+no response identifiers C\four_outcomes.csv,True
+aggregate header C\harshness_distribution.csv,True
+no response identifiers C\harshness_distribution.csv,True
+aggregate header C\observation_changes_vs_A.csv,True
+no response identifiers C\observation_changes_vs_A.csv,True
+aggregate header C\population_comparison.csv,True
+no response identifiers C\population_comparison.csv,True
+aggregate header C\profile_support.csv,True
+no response identifiers C\profile_support.csv,True
+aggregate header C\response_counts.csv,True
+no response identifiers C\response_counts.csv,True
+aggregate header C\sequence_summary.csv,True
+no response identifiers C\sequence_summary.csv,True
+aggregate header C\split_half_partitions.csv,True
+no response identifiers C\split_half_partitions.csv,True
+aggregate header C\split_half_summary.csv,True
+no response identifiers C\split_half_summary.csv,True
+aggregate header C\split_reference_support.csv,True
+no response identifiers C\split_reference_support.csv,True
+aggregate header C\summary.csv,True
+no response identifiers C\summary.csv,True
+aggregate header C\task_progression.csv,True
+no response identifiers C\task_progression.csv,True
+aggregate header C\tercile_descriptives.csv,True
+no response identifiers C\tercile_descriptives.csv,True
+aggregate header C\timing_slope.csv,True
+no response identifiers C\timing_slope.csv,True
+aggregate header C_example_screen\academic_categories.csv,True
+no response identifiers C_example_screen\academic_categories.csv,True
+aggregate header C_example_screen\academic_interactions.csv,True
+no response identifiers C_example_screen\academic_interactions.csv,True
+aggregate header C_example_screen\assigned_stored_inclusion.csv,True
+no response identifiers C_example_screen\assigned_stored_inclusion.csv,True
+aggregate header C_example_screen\attributes.csv,True
+no response identifiers C_example_screen\attributes.csv,True
+aggregate header C_example_screen\attributes_by_tercile.csv,True
+no response identifiers C_example_screen\attributes_by_tercile.csv,True
+aggregate header C_example_screen\attributes_control.csv,True
+no response identifiers C_example_screen\attributes_control.csv,True
+aggregate header C_example_screen\attribute_support.csv,True
+no response identifiers C_example_screen\attribute_support.csv,True
+aggregate header C_example_screen\belief_selection.csv,True
+no response identifiers C_example_screen\belief_selection.csv,True
+aggregate header C_example_screen\card_disagreement.csv,True
+no response identifiers C_example_screen\card_disagreement.csv,True
+aggregate header C_example_screen\characterization.csv,True
+no response identifiers C_example_screen\characterization.csv,True
+aggregate header C_example_screen\characterization_bootstrap.csv,True
+no response identifiers C_example_screen\characterization_bootstrap.csv,True
+aggregate header C_example_screen\coefficient_bootstrap_status.csv,True
+no response identifiers C_example_screen\coefficient_bootstrap_status.csv,True
+aggregate header C_example_screen\composition_categories.csv,True
+no response identifiers C_example_screen\composition_categories.csv,True
+aggregate header C_example_screen\covariate_availability.csv,True
+no response identifiers C_example_screen\covariate_availability.csv,True
+aggregate header C_example_screen\decomposition_covariance.csv,True
+no response identifiers C_example_screen\decomposition_covariance.csv,True
+aggregate header C_example_screen\decomposition_fixed_effects.csv,True
+no response identifiers C_example_screen\decomposition_fixed_effects.csv,True
+aggregate header C_example_screen\decomposition_point.csv,True
+no response identifiers C_example_screen\decomposition_point.csv,True
+aggregate header C_example_screen\decomposition_unnormalized.csv,True
+no response identifiers C_example_screen\decomposition_unnormalized.csv,True
+aggregate header C_example_screen\four_outcomes.csv,True
+no response identifiers C_example_screen\four_outcomes.csv,True
+aggregate header C_example_screen\harshness_distribution.csv,True
+no response identifiers C_example_screen\harshness_distribution.csv,True
+aggregate header C_example_screen\observation_changes_vs_A.csv,True
+no response identifiers C_example_screen\observation_changes_vs_A.csv,True
+aggregate header C_example_screen\population_comparison.csv,True
+no response identifiers C_example_screen\population_comparison.csv,True
+aggregate header C_example_screen\profile_support.csv,True
+no response identifiers C_example_screen\profile_support.csv,True
+aggregate header C_example_screen\response_counts.csv,True
+no response identifiers C_example_screen\response_counts.csv,True
+aggregate header C_example_screen\sequence_summary.csv,True
+no response identifiers C_example_screen\sequence_summary.csv,True
+aggregate header C_example_screen\split_half_partitions.csv,True
+no response identifiers C_example_screen\split_half_partitions.csv,True
+aggregate header C_example_screen\split_half_summary.csv,True
+no response identifiers C_example_screen\split_half_summary.csv,True
+aggregate header C_example_screen\split_reference_support.csv,True
+no response identifiers C_example_screen\split_reference_support.csv,True
+aggregate header C_example_screen\summary.csv,True
+no response identifiers C_example_screen\summary.csv,True
+aggregate header C_example_screen\task_progression.csv,True
+no response identifiers C_example_screen\task_progression.csv,True
+aggregate header C_example_screen\tercile_descriptives.csv,True
+no response identifiers C_example_screen\tercile_descriptives.csv,True
+aggregate header C_example_screen\timing_slope.csv,True
+no response identifiers C_example_screen\timing_slope.csv,True
+aggregate header C_full8\academic_categories.csv,True
+no response identifiers C_full8\academic_categories.csv,True
+aggregate header C_full8\academic_interactions.csv,True
+no response identifiers C_full8\academic_interactions.csv,True
+aggregate header C_full8\assigned_stored_inclusion.csv,True
+no response identifiers C_full8\assigned_stored_inclusion.csv,True
+aggregate header C_full8\attributes.csv,True
+no response identifiers C_full8\attributes.csv,True
+aggregate header C_full8\attributes_by_tercile.csv,True
+no response identifiers C_full8\attributes_by_tercile.csv,True
+aggregate header C_full8\attributes_control.csv,True
+no response identifiers C_full8\attributes_control.csv,True
+aggregate header C_full8\attribute_support.csv,True
+no response identifiers C_full8\attribute_support.csv,True
+aggregate header C_full8\belief_selection.csv,True
+no response identifiers C_full8\belief_selection.csv,True
+aggregate header C_full8\card_disagreement.csv,True
+no response identifiers C_full8\card_disagreement.csv,True
+aggregate header C_full8\characterization.csv,True
+no response identifiers C_full8\characterization.csv,True
+aggregate header C_full8\characterization_bootstrap.csv,True
+no response identifiers C_full8\characterization_bootstrap.csv,True
+aggregate header C_full8\coefficient_bootstrap_status.csv,True
+no response identifiers C_full8\coefficient_bootstrap_status.csv,True
+aggregate header C_full8\composition_categories.csv,True
+no response identifiers C_full8\composition_categories.csv,True
+aggregate header C_full8\covariate_availability.csv,True
+no response identifiers C_full8\covariate_availability.csv,True
+aggregate header C_full8\decomposition_covariance.csv,True
+no response identifiers C_full8\decomposition_covariance.csv,True
+aggregate header C_full8\decomposition_fixed_effects.csv,True
+no response identifiers C_full8\decomposition_fixed_effects.csv,True
+aggregate header C_full8\decomposition_point.csv,True
+no response identifiers C_full8\decomposition_point.csv,True
+aggregate header C_full8\decomposition_unnormalized.csv,True
+no response identifiers C_full8\decomposition_unnormalized.csv,True
+aggregate header C_full8\four_outcomes.csv,True
+no response identifiers C_full8\four_outcomes.csv,True
+aggregate header C_full8\harshness_distribution.csv,True
+no response identifiers C_full8\harshness_distribution.csv,True
+aggregate header C_full8\observation_changes_vs_A.csv,True
+no response identifiers C_full8\observation_changes_vs_A.csv,True
+aggregate header C_full8\population_comparison.csv,True
+no response identifiers C_full8\population_comparison.csv,True
+aggregate header C_full8\profile_support.csv,True
+no response identifiers C_full8\profile_support.csv,True
+aggregate header C_full8\response_counts.csv,True
+no response identifiers C_full8\response_counts.csv,True
+aggregate header C_full8\sequence_summary.csv,True
+no response identifiers C_full8\sequence_summary.csv,True
+aggregate header C_full8\split_half_partitions.csv,True
+no response identifiers C_full8\split_half_partitions.csv,True
+aggregate header C_full8\split_half_summary.csv,True
+no response identifiers C_full8\split_half_summary.csv,True
+aggregate header C_full8\split_reference_support.csv,True
+no response identifiers C_full8\split_reference_support.csv,True
+aggregate header C_full8\summary.csv,True
+no response identifiers C_full8\summary.csv,True
+aggregate header C_full8\task_progression.csv,True
+no response identifiers C_full8\task_progression.csv,True
+aggregate header C_full8\tercile_descriptives.csv,True
+no response identifiers C_full8\tercile_descriptives.csv,True
+aggregate header C_full8\timing_slope.csv,True
+no response identifiers C_full8\timing_slope.csv,True
+aggregate header C_inclusive\academic_categories.csv,True
+no response identifiers C_inclusive\academic_categories.csv,True
+aggregate header C_inclusive\academic_interactions.csv,True
+no response identifiers C_inclusive\academic_interactions.csv,True
+aggregate header C_inclusive\assigned_stored_inclusion.csv,True
+no response identifiers C_inclusive\assigned_stored_inclusion.csv,True
+aggregate header C_inclusive\attributes.csv,True
+no response identifiers C_inclusive\attributes.csv,True
+aggregate header C_inclusive\attributes_by_tercile.csv,True
+no response identifiers C_inclusive\attributes_by_tercile.csv,True
+aggregate header C_inclusive\attributes_control.csv,True
+no response identifiers C_inclusive\attributes_control.csv,True
+aggregate header C_inclusive\attribute_support.csv,True
+no response identifiers C_inclusive\attribute_support.csv,True
+aggregate header C_inclusive\belief_selection.csv,True
+no response identifiers C_inclusive\belief_selection.csv,True
+aggregate header C_inclusive\card_disagreement.csv,True
+no response identifiers C_inclusive\card_disagreement.csv,True
+aggregate header C_inclusive\characterization.csv,True
+no response identifiers C_inclusive\characterization.csv,True
+aggregate header C_inclusive\characterization_bootstrap.csv,True
+no response identifiers C_inclusive\characterization_bootstrap.csv,True
+aggregate header C_inclusive\coefficient_bootstrap_status.csv,True
+no response identifiers C_inclusive\coefficient_bootstrap_status.csv,True
+aggregate header C_inclusive\composition_categories.csv,True
+no response identifiers C_inclusive\composition_categories.csv,True
+aggregate header C_inclusive\covariate_availability.csv,True
+no response identifiers C_inclusive\covariate_availability.csv,True
+aggregate header C_inclusive\decomposition_covariance.csv,True
+no response identifiers C_inclusive\decomposition_covariance.csv,True
+aggregate header C_inclusive\decomposition_fixed_effects.csv,True
+no response identifiers C_inclusive\decomposition_fixed_effects.csv,True
+aggregate header C_inclusive\decomposition_point.csv,True
+no response identifiers C_inclusive\decomposition_point.csv,True
+aggregate header C_inclusive\decomposition_unnormalized.csv,True
+no response identifiers C_inclusive\decomposition_unnormalized.csv,True
+aggregate header C_inclusive\four_outcomes.csv,True
+no response identifiers C_inclusive\four_outcomes.csv,True
+aggregate header C_inclusive\harshness_distribution.csv,True
+no response identifiers C_inclusive\harshness_distribution.csv,True
+aggregate header C_inclusive\observation_changes_vs_A.csv,True
+no response identifiers C_inclusive\observation_changes_vs_A.csv,True
+aggregate header C_inclusive\population_comparison.csv,True
+no response identifiers C_inclusive\population_comparison.csv,True
+aggregate header C_inclusive\profile_support.csv,True
+no response identifiers C_inclusive\profile_support.csv,True
+aggregate header C_inclusive\response_counts.csv,True
+no response identifiers C_inclusive\response_counts.csv,True
+aggregate header C_inclusive\sequence_summary.csv,True
+no response identifiers C_inclusive\sequence_summary.csv,True
+aggregate header C_inclusive\split_half_partitions.csv,True
+no response identifiers C_inclusive\split_half_partitions.csv,True
+aggregate header C_inclusive\split_half_summary.csv,True
+no response identifiers C_inclusive\split_half_summary.csv,True
+aggregate header C_inclusive\split_reference_support.csv,True
+no response identifiers C_inclusive\split_reference_support.csv,True
+aggregate header C_inclusive\summary.csv,True
+no response identifiers C_inclusive\summary.csv,True
+aggregate header C_inclusive\task_progression.csv,True
+no response identifiers C_inclusive\task_progression.csv,True
+aggregate header C_inclusive\tercile_descriptives.csv,True
+no response identifiers C_inclusive\tercile_descriptives.csv,True
+aggregate header C_inclusive\timing_slope.csv,True
+no response identifiers C_inclusive\timing_slope.csv,True
+aggregate header D\academic_categories.csv,True
+no response identifiers D\academic_categories.csv,True
+aggregate header D\academic_interactions.csv,True
+no response identifiers D\academic_interactions.csv,True
+aggregate header D\assigned_stored_inclusion.csv,True
+no response identifiers D\assigned_stored_inclusion.csv,True
+aggregate header D\attributes.csv,True
+no response identifiers D\attributes.csv,True
+aggregate header D\attributes_by_tercile.csv,True
+no response identifiers D\attributes_by_tercile.csv,True
+aggregate header D\attributes_control.csv,True
+no response identifiers D\attributes_control.csv,True
+aggregate header D\attribute_support.csv,True
+no response identifiers D\attribute_support.csv,True
+aggregate header D\belief_selection.csv,True
+no response identifiers D\belief_selection.csv,True
+aggregate header D\card_disagreement.csv,True
+no response identifiers D\card_disagreement.csv,True
+aggregate header D\characterization.csv,True
+no response identifiers D\characterization.csv,True
+aggregate header D\characterization_bootstrap.csv,True
+no response identifiers D\characterization_bootstrap.csv,True
+aggregate header D\coefficient_bootstrap_status.csv,True
+no response identifiers D\coefficient_bootstrap_status.csv,True
+aggregate header D\composition_categories.csv,True
+no response identifiers D\composition_categories.csv,True
+aggregate header D\covariate_availability.csv,True
+no response identifiers D\covariate_availability.csv,True
+aggregate header D\decomposition.csv,True
+no response identifiers D\decomposition.csv,True
+aggregate header D\decomposition_bootstrap_draws.csv,True
+no response identifiers D\decomposition_bootstrap_draws.csv,True
+aggregate header D\decomposition_covariance.csv,True
+no response identifiers D\decomposition_covariance.csv,True
+aggregate header D\decomposition_fixed_effects.csv,True
+no response identifiers D\decomposition_fixed_effects.csv,True
+aggregate header D\decomposition_point.csv,True
+no response identifiers D\decomposition_point.csv,True
+aggregate header D\decomposition_unnormalized.csv,True
+no response identifiers D\decomposition_unnormalized.csv,True
+aggregate header D\four_outcomes.csv,True
+no response identifiers D\four_outcomes.csv,True
+aggregate header D\harshness_distribution.csv,True
+no response identifiers D\harshness_distribution.csv,True
+aggregate header D\observation_changes_vs_A.csv,True
+no response identifiers D\observation_changes_vs_A.csv,True
+aggregate header D\population_comparison.csv,True
+no response identifiers D\population_comparison.csv,True
+aggregate header D\profile_support.csv,True
+no response identifiers D\profile_support.csv,True
+aggregate header D\response_counts.csv,True
+no response identifiers D\response_counts.csv,True
+aggregate header D\sequence_summary.csv,True
+no response identifiers D\sequence_summary.csv,True
+aggregate header D\split_half_partitions.csv,True
+no response identifiers D\split_half_partitions.csv,True
+aggregate header D\split_half_summary.csv,True
+no response identifiers D\split_half_summary.csv,True
+aggregate header D\split_reference_support.csv,True
+no response identifiers D\split_reference_support.csv,True
+aggregate header D\summary.csv,True
+no response identifiers D\summary.csv,True
+aggregate header D\task_progression.csv,True
+no response identifiers D\task_progression.csv,True
+aggregate header D\tercile_descriptives.csv,True
+no response identifiers D\tercile_descriptives.csv,True
+aggregate header D\timing_slope.csv,True
+no response identifiers D\timing_slope.csv,True
+aggregate header tables\audit_counts.csv,True
+no response identifiers tables\audit_counts.csv,True
+aggregate header tables\bootstrap_start_audit.csv,True
+no response identifiers tables\bootstrap_start_audit.csv,True
+aggregate header tables\bridge_A_attributes.csv,True
+no response identifiers tables\bridge_A_attributes.csv,True
+aggregate header tables\bridge_B_attributes.csv,True
+no response identifiers tables\bridge_B_attributes.csv,True
+aggregate header tables\B_point_start_audit.csv,True
+no response identifiers tables\B_point_start_audit.csv,True
+aggregate header tables\card_mapping.csv,True
+no response identifiers tables\card_mapping.csv,True
+aggregate header tables\coded_profile_support.csv,True
+no response identifiers tables\coded_profile_support.csv,True
+aggregate header tables\collision_evidence.csv,True
+no response identifiers tables\collision_evidence.csv,True
+aggregate header tables\covariate_replication.csv,True
+no response identifiers tables\covariate_replication.csv,True
+aggregate header tables\derivative_flag_audit.csv,True
+no response identifiers tables\derivative_flag_audit.csv,True
+aggregate header tables\fallback_speed_audit.csv,True
+no response identifiers tables\fallback_speed_audit.csv,True
+aggregate header tables\legacy_raw_progression_reproduced.csv,True
+no response identifiers tables\legacy_raw_progression_reproduced.csv,True
+aggregate header tables\optimizer_control_audit.csv,True
+no response identifiers tables\optimizer_control_audit.csv,True
+aggregate header tables\order_diagnostics.csv,True
+no response identifiers tables\order_diagnostics.csv,True
+aggregate header tables\outside_order_by_example.csv,True
+no response identifiers tables\outside_order_by_example.csv,True
+aggregate header tables\paired_bootstrap_draws.csv,True
+no response identifiers tables\paired_bootstrap_draws.csv,True
+aggregate header tables\paired_bootstrap_status.csv,True
+no response identifiers tables\paired_bootstrap_status.csv,True
+aggregate header tables\paired_differences.csv,True
+no response identifiers tables\paired_differences.csv,True
+aggregate header tables\paired_point_metrics.csv,True
+no response identifiers tables\paired_point_metrics.csv,True
+aggregate header tables\participation_comparison.csv,True
+no response identifiers tables\participation_comparison.csv,True
+aggregate header tables\raw_collision_counts.csv,True
+no response identifiers tables\raw_collision_counts.csv,True
+aggregate header tables\score_changes_vs_A.csv,True
+no response identifiers tables\score_changes_vs_A.csv,True
+aggregate header tables\screening_counts.csv,True
+no response identifiers tables\screening_counts.csv,True
+aggregate header tables\screening_fields.csv,True
+no response identifiers tables\screening_fields.csv,True
+aggregate header tables\screening_rule_comparison.csv,True
+no response identifiers tables\screening_rule_comparison.csv,True
+aggregate header tables\shared_teacher_attributes.csv,True
+no response identifiers tables\shared_teacher_attributes.csv,True
+aggregate header tables\shared_teacher_summaries.csv,True
+no response identifiers tables\shared_teacher_summaries.csv,True
+aggregate header tables\stored_vs_completion.csv,True
+no response identifiers tables\stored_vs_completion.csv,True
+aggregate header tables\tercile_transitions.csv,True
+no response identifiers tables\tercile_transitions.csv,True
+aggregate header tables\verification_checks.csv,True
+no response identifiers tables\verification_checks.csv,True
+aggregate header B\numerical_audit_v1\decomposition.csv,True
+no response identifiers B\numerical_audit_v1\decomposition.csv,True
+aggregate header B\numerical_audit_v1\decomposition_bootstrap_draws.csv,True
+no response identifiers B\numerical_audit_v1\decomposition_bootstrap_draws.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\academic_categories.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\academic_categories.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\academic_interactions.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\academic_interactions.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\attributes.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\attributes.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\attributes_by_tercile.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\attributes_by_tercile.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\belief_selection.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\belief_selection.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\card_disagreement.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\card_disagreement.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\characterization.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\characterization.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\characterization_bootstrap.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\characterization_bootstrap.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\covariate_availability.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\covariate_availability.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\final_decomposition.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\final_decomposition.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\final_decomposition_bootstrap.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\final_decomposition_bootstrap.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\four_outcomes.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\four_outcomes.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\logit_observed_variance.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\logit_observed_variance.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\module_availability.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\module_availability.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\nested_permutation_importance.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\nested_permutation_importance.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\nested_prediction_repeats.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\nested_prediction_repeats.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\nested_prediction_summary.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\nested_prediction_summary.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\nested_shap.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\nested_shap.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\nested_tuning.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\nested_tuning.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\prediction_paired_corrected.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\prediction_paired_corrected.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\progression_support.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\progression_support.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\response_counts.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\response_counts.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\sample_flow.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\sample_flow.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\sequence_lag_permutation.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\sequence_lag_permutation.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\sequence_summary.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\sequence_summary.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\split_half_partitions.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\split_half_partitions.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\split_half_summary.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\split_half_summary.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\split_reference_support.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\split_reference_support.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\task_progression.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\task_progression.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\tercile_descriptives.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\tercile_descriptives.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\timing_slope.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\timing_slope.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\variance_bootstrap_draws.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\variance_bootstrap_draws.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\variance_bootstrap_status.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\variance_bootstrap_status.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\variance_diagnostics.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\variance_diagnostics.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\variance_partition.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\variance_partition.csv,True
+aggregate header baseline_snapshot\3. Output\paper_A\tables\variance_sensitivity.csv,True
+no response identifiers baseline_snapshot\3. Output\paper_A\tables\variance_sensitivity.csv,True
+aggregate header C\numerical_audit_v1\decomposition_bootstrap_draws.csv,True
+no response identifiers C\numerical_audit_v1\decomposition_bootstrap_draws.csv,True
+aggregate header D\numerical_audit_v1\decomposition_bootstrap_draws.csv,True
+no response identifiers D\numerical_audit_v1\decomposition_bootstrap_draws.csv,True
+A distinct exact draws,True
+A acceptance,True
+A new uncertainty finite,True
+A normalized shares,True
+A matching accepted counts,True
+A recomputed SE Student,True
+A recomputed percentile Student,True
+A recomputed SE Professional,True
+A recomputed percentile Professional,True
+A recomputed SE Beliefs,True
+A recomputed percentile Beliefs,True
+A recomputed SE Harshness,True
+A recomputed percentile Harshness,True
+A recomputed SE Sensitivities,True
+A recomputed percentile Sensitivities,True
+A recomputed SE Residual,True
+A recomputed percentile Residual,True
+A common admission rule,True
+B distinct exact draws,True
+B acceptance,True
+B new uncertainty finite,True
+B normalized shares,True
+B matching accepted counts,True
+B recomputed SE Student,True
+B recomputed percentile Student,True
+B recomputed SE Professional,True
+B recomputed percentile Professional,True
+B recomputed SE Beliefs,True
+B recomputed percentile Beliefs,True
+B recomputed SE Harshness,True
+B recomputed percentile Harshness,True
+B recomputed SE Sensitivities,True
+B recomputed percentile Sensitivities,True
+B recomputed SE Residual,True
+B recomputed percentile Residual,True
+B excludes trapped warm-start replicas,True
+B common admission rule,True
+B v2 admitted numerical diagnostics,True
+B fallback objective 1,True
+B fallback objective 2,True
+B fallback objective 3,True
+B fallback objective 4,True
+B fallback objective 5,True
+B fallback objective 6,True
+B fallback objective 7,True
+B fallback objective 8,True
+B fallback objective 9,True
+B fallback objective 10,True
+B fallback objective 11,True
+B fallback objective 12,True
+B fallback objective 13,True
+B fallback objective 14,True
+B fallback objective 29,True
+B fallback objective 30,True
+B fallback objective 31,True
+B fallback objective 32,True
+B fallback objective 33,True
+B fallback objective 48,True
+B fallback objective 49,True
+B fallback objective 50,True
+B fallback objective 51,True
+B fallback objective 52,True
+B fallback objective 67,True
+B fallback objective 68,True
+B fallback objective 69,True
+B fallback objective 70,True
+B fallback objective 71,True
+B fallback objective 86,True
+B fallback objective 87,True
+B fallback objective 88,True
+B fallback objective 89,True
+B fallback objective 90,True
+C distinct exact draws,True
+C acceptance,True
+C new uncertainty finite,True
+C normalized shares,True
+C matching accepted counts,True
+C recomputed SE Student,True
+C recomputed percentile Student,True
+C recomputed SE Professional,True
+C recomputed percentile Professional,True
+C recomputed SE Beliefs,True
+C recomputed percentile Beliefs,True
+C recomputed SE Harshness,True
+C recomputed percentile Harshness,True
+C recomputed SE Sensitivities,True
+C recomputed percentile Sensitivities,True
+C recomputed SE Residual,True
+C recomputed percentile Residual,True
+C common admission rule,True
+C v2 admitted numerical diagnostics,True
+C fallback objective 45,True
+C fallback objective 46,True
+C fallback objective 47,True
+C fallback objective 48,True
+C fallback objective 49,True
+C fallback objective 50,True
+C fallback objective 51,True
+C fallback objective 52,True
+C fallback objective 53,True
+C fallback objective 54,True
+C fallback objective 55,True
+C fallback objective 56,True
+C fallback objective 57,True
+C fallback objective 58,True
+C fallback objective 59,True
+C fallback objective 60,True
+C fallback objective 61,True
+C fallback objective 62,True
+C fallback objective 75,True
+C fallback objective 76,True
+C fallback objective 77,True
+C fallback objective 78,True
+C fallback objective 79,True
+C fallback objective 80,True
+C fallback objective 81,True
+C fallback objective 82,True
+C fallback objective 93,True
+C fallback objective 94,True
+C fallback objective 95,True
+C fallback objective 96,True
+C fallback objective 97,True
+C fallback objective 98,True
+C fallback objective 111,True
+C fallback objective 112,True
+C fallback objective 113,True
+C fallback objective 114,True
+C fallback objective 115,True
+C fallback objective 116,True
+C fallback objective 117,True
+D distinct exact draws,True
+D acceptance,True
+D new uncertainty finite,True
+D normalized shares,True
+D matching accepted counts,True
+D recomputed SE Student,True
+D recomputed percentile Student,True
+D recomputed SE Professional,True
+D recomputed percentile Professional,True
+D recomputed SE Beliefs,True
+D recomputed percentile Beliefs,True
+D recomputed SE Harshness,True
+D recomputed percentile Harshness,True
+D recomputed SE Sensitivities,True
+D recomputed percentile Sensitivities,True
+D recomputed SE Residual,True
+D recomputed percentile Residual,True
+D common admission rule,True
+D v2 admitted numerical diagnostics,True
+D fallback objective 97,True
+D fallback objective 98,True
+D fallback objective 99,True
+D fallback objective 100,True
+D fallback objective 101,True
+D fallback objective 102,True
+D fallback objective 103,True
+D fallback objective 104,True
+D fallback objective 105,True
+D fallback objective 106,True
+D fallback objective 107,True
+D fallback objective 108,True
+D fallback objective 109,True
+D fallback objective 110,True
+D fallback objective 111,True
+D fallback objective 112,True
+D fallback objective 113,True
+D fallback objective 114,True
+D fallback objective 115,True
+D fallback objective 116,True
+D fallback objective 117,True
+D fallback objective 118,True
+D fallback objective 119,True
+D fallback objective 120,True
+D fallback objective 121,True
+D fallback objective 122,True
+D fallback objective 129,True
+D fallback objective 130,True
+D fallback objective 131,True
+D fallback objective 132,True
+D fallback objective 133,True
+D fallback objective 134,True
+D fallback objective 135,True
+D fallback objective 136,True
+D fallback objective 143,True
+D fallback objective 144,True
+D fallback objective 145,True
+D fallback objective 146,True
+D fallback objective 147,True
+D fallback objective 148,True
+D fallback objective 149,True
+all predefined numerical audit cases,True
+default and tight objectives agree,True
+derivative flag audit complete,True
+post-fit derivative flag leaves optimization unchanged,True
+B point no materially better automatic objective,True
+protected files unchanged,True
+numerical invariants passed,True
+paired uncertainties complete,True
