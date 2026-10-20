@@ -1,4 +1,4 @@
-# Generate the report's five PNGs from aggregate CSV files only.
+# Generate the visual report's PNGs from aggregate CSV files only.
 # Run after appendix outputs and histogram aggregates exist:
 # Rscript --vanilla "2. Code/paper_A_reconstruction/figures.R"
 options(stringsAsFactors=FALSE)
@@ -121,4 +121,5 @@ p<-ggplot(progress_data,aes(x=position,y=value,colour=scenario,linetype=scenario
  scale_x_continuous(breaks=1:8)+guides(colour=guide_legend(nrow=1),linetype=guide_legend(nrow=1))+
  labs(x='Posición asignada',y=NULL,colour=NULL,linetype=NULL)
 save_png(p,'progression_comparison',11,4.3)
-message('Five aggregate figures saved under ',figdir)
+source(file.path(root,'2. Code/paper_A_reconstruction/visual_comparisons.R'))
+message('Visual comparison figures saved under ',figdir)
