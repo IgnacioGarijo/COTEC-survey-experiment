@@ -1,0 +1,14 @@
+{
+  "reason": "Replace small synchronized batches with load-balanced pending queue; preserve completed individual-draw aggregate fragments. No change to per-draw numerical estimation. Existing rows must pass final objective/gradient/summary checks.",
+  "accepted_previous_commit": "a8660e2",
+  "workers_after_restart": {
+    "B": 5,
+    "C": 4,
+    "D": 3
+  },
+  "retained_fragments": {
+    "B": 9,
+    "C": 12,
+    "D": 18
+  }
+}

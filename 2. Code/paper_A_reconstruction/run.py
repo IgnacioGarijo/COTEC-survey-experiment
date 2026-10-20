@@ -52,7 +52,9 @@ def main():
         manifest.parent.mkdir(parents=True, exist_ok=True)
         manifest.write_text(json.dumps({'sha256': signatures(), 'scope': 'Numerical code used for the accepted isolated reconstruction. Check before resuming caches; no changed estimators may be mixed.'}, indent=2), encoding='utf-8')
         return
-    if manifest.exists() and json.loads(manifest.read_text())['sha256'] != signatures():
+    if not manifest.exists():
+        raise SystemExit('Capture the reviewed numerical source first with --record-source-manifest.')
+    if json.loads(manifest.read_text())['sha256'] != signatures():
         raise SystemExit('Numerical source changed: review caches before resuming.')
     def r(name, *rest):
         call(args.rscript, '--vanilla', CODE/name, *rest)
@@ -81,7 +83,8 @@ def main():
     for s in MAIN:
         state_path = OUT/s/'bootstrap_status.json'
         st = json.loads(state_path.read_text()) if state_path.exists() else {}
-        if st.get('attempted') != 199 or st.get('accepted', 0) < 190:
+        compatible = s != 'B' or st.get('configuration_counts', {}).get('v2-automatic-full-derivatives') == 199
+        if st.get('attempted') != 199 or st.get('accepted', 0) < 190 or not compatible:
             if s == 'A':
                 r('reconstruct.R', 'bootstrap', s, 199, args.workers)
             else:

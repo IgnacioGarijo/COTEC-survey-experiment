@@ -1,0 +1,14 @@
+{
+  "sha256": {
+    "reconstruct.R": "11cbb0174b742f44755d19a530b4c6370641f806a0edb9211669f158fcd34f25",
+    "supplement.R": "0935b762d6353f6f447ccb1a80e4e316e74723919d9e50610ac984de4f14891a",
+    "paired.R": "3a20319c821adf799ccb769482e93d8e4ac55493be20fd3dda7868816eca6ab8",
+    "verify.R": "44a325d5ca09ff73b80e68cab33405510b2f0c2f49d6499ee05902332937aab4",
+    "bridges.R": "ac40fc9a17a3491afb88291d8b25195542524b6648d72e3095dede41286834be",
+    "bootstrap_start_audit.R": "a1dd1cd9197d02ba7e92c11310d7afc4a3657593e5fde1efb28f2f6fb06864a1",
+    "optimizer_audit.R": "d46dfd745b5a16a99f34413b8aff7e04fa2956905aecbbeec50b80eac40c6e53",
+    "bootstrap_v2.R": "6e8ef004e877e8aa0104293046c32c9d95dc578993ee503720819bbc9750e6b1",
+    "point_start_audit.R": "a0cebb1051a51a54be7d750677eeea7a30d042217b7c2957ab3c9700d09850ed"
+  },
+  "scope": "Reviewed queue-only optimization; identical per-draw RNG, clone construction and estimator. Added final summary stats::sd qualification and fallback objective protection, also checked retrospectively on saved v2 draws. Fragment CSV reload explicitly normalizes diagnostic text columns and validates draw/configuration keys; statistical draws preserved."
+}

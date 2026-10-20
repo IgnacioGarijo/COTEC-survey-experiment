@@ -1,6 +1,6 @@
 """Validate aggregate deliverables and prevent committing individual survey data."""
 from pathlib import Path
-import csv, json, re
+import csv, json, re, math
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -28,13 +28,22 @@ def main():
         check(s+' distinct exact draws', len(d)==199 and set(d.draw)==set(range(1,200)))
         check(s+' acceptance', state['accepted']>=190 and state['attempted']==199)
         pp = pd.read_csv(OUT/s/'decomposition.csv')
-        check(s+' new uncertainty finite', pp[['share','se','lo_percentile','hi_percentile']].notna().all().all())
+        check(s+' new uncertainty finite', pp[['share','se','lo_percentile','hi_percentile']].map(math.isfinite).all().all())
         check(s+' normalized shares', abs(pp.share.sum()-1)<1e-10)
+        admitted = d[d.accepted]
+        check(s+' matching accepted counts', len(admitted)==state['accepted'] and pp.successful.eq(len(admitted)).all())
+        for r in pp.itertuples():
+            x = admitted[r.component]
+            check(s+' recomputed SE '+r.component, abs(x.std(ddof=1)-r.se)<1e-10)
+            check(s+' recomputed percentile '+r.component, abs(x.quantile(.025)-r.lo_percentile)<1e-10 and abs(x.quantile(.975)-r.hi_percentile)<1e-10)
         if s=='B':
             check('B excludes trapped warm-start replicas', d.configuration.eq('v2-automatic-full-derivatives').all())
         if 'derivatives_checked' in d:
             v2 = d[d.configuration.eq('v2-automatic-full-derivatives') & d.accepted]
             check(s+' v2 admitted numerical diagnostics', (v2.gradient.lt(.002) & v2.min_hessian.gt(0) & v2.optimizer.eq(0)).all())
+            for r in v2.itertuples():
+                best = max(float(x) for x in str(r.attempt_logLik).split(' | '))
+                check(s+' fallback objective '+str(r.draw), r.logLik>=best-.0005)
     audit = pd.read_csv(OUT/'tables/optimizer_control_audit.csv')
     check('all predefined numerical audit cases', len(audit)==9 and audit.groupby('scenario').draw.apply(set).map(lambda x:x=={1,50,199}).all())
     check('default and tight objectives agree', audit.delta_vs_tight_automatic.abs().max()<.0005)
