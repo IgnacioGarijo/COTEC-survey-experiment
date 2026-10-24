@@ -21,16 +21,15 @@
 \setlength{\@fpsep}{18pt}
 \setlength{\@fpbot}{0pt plus 1fil}
 \makeatother
-\definecolor{reused}{HTML}{1755A0}
-\definecolor{revised}{HTML}{B85A00}
-\definecolor{added}{HTML}{B02228}
+\definecolor{reused}{HTML}{000000}
+\definecolor{revised}{HTML}{000000}
+\definecolor{added}{HTML}{000000}
 \newcommand{\old}[1]{{\color{reused}#1}}
 \newcommand{\rev}[1]{{\color{revised}#1}}
 \newcommand{\new}[1]{{\color{added}#1}}
 \newenvironment{addition}{\begingroup\color{added}}{\endgroup}
 \newcommand{\pp}{percentage points}
 \newcommand{\figroot}{../../3. Output/paper_A/figures/}
-\newcommand{\draftlegend}{\begin{center}\small\color{black}Coauthor working draft --- 4 October 2026\\Reference: author-edited manuscript saved in commit 4458742.\\\old{Blue: retained from that version.}\quad\rev{Orange: revised material.}\\\new{Red: additions in this iteration.} Frames and captions mark revised figures; plotted colors do not.\end{center}}
 \newenvironment{revision}{\begingroup\color{revised}}{\endgroup}
 \newcommand{\authors}{\old{Ignacio Garijo-Campos} \and \old{Antonio Alfonso} \and \old{Pablo Bra\~nas-Garza} \and \old{Diego Jorrat} \and \old{Angel Sanchez}}
 \newcommand{\plot}[4]{\begin{figure}[!htbp]\centering\begingroup\color{#1}\setlength{\fboxsep}{2pt}\fbox{\includegraphics[width=.94\linewidth]{\figroot#2.png}}\caption{\textcolor{#1}{#3}}\label{#4}\endgroup\end{figure}}
