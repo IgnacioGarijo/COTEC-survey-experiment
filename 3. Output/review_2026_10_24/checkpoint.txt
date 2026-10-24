@@ -1,0 +1,6 @@
+24 October 2026. Scope: recommendations only, no reestimation/manuscript edits.
+Primary deliverable: propuesta_revision.txt.
+Agents: reconstruction_review and coauthor_review, gpt-6.1-sol/high, completed assigned reports. Fresh final_critical_review, same requested model/effort, completed and accepted final proposal after clarification of post-decision beliefs, profile-level disagreement and covariance rank.
+Verified: all 64 Excel design cells match reconstruction card_mapping.csv; 56 unique profiles. Existing model outputs read without reruns. Questionnaire p7 and all four DOCX figures visually inspected. Third email is empty. Registry website blocked; Crossref metadata saved, version chronology explicitly unresolved.
+Author TEX/PDF/preamble modifications present before review preserved. Coauthor source folder remains untracked. No private individual data saved in this review folder.
+Final status: complete recommendations; unresolved empirical choices are future implementation, not omitted review work. No agent commands pending.

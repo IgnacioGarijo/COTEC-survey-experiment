@@ -1,0 +1,29 @@
+REVISIÓN CRÍTICA FINAL INDEPENDIENTE — 24/10/2026
+
+Alcance y restricciones
+Leído y aceptado run_constraints.md. Revisados propuesta_revision.txt, reconstruction_review.txt y coauthor_review.txt; contrastados código de reconstrucción, salidas agregadas seleccionadas de B, diagnósticos y texto/imagen originales del DOCX. Sin reestimación, datos individuales, cambios a originales ni delegación. Solo se escribe este informe. Esta revisión comprueba coherencia y proporcionalidad de la recomendación; no certifica el texto efectivamente administrado ni el registro histórico.
+
+Dictamen
+APROBACIÓN CON LÍMITES EXPLÍCITOS. B es una base principal defendible si se adopta expresamente la utilizabilidad del valor compartido entre ejemplo y tarea. No es una solución identificada sin supuestos ni una muestra de exactamente ocho decisiones. C como sensibilidad central, B_full8 para completitud y D para composición forman una recomendación coherente. El cribado y la referencia por identificador/perfil siguen siendo decisiones separadas que pueden exigir actualizar resultados en una futura implementación. La propuesta distingue correctamente esos trabajos pendientes de las comparaciones A–D ya guardadas.
+
+Comprobaciones sustantivas
+1. Las cifras centrales de B coinciden con las salidas: 2.594 registros, 20.388 decisiones; FE 2.579/20.373; 2.157 casos completos y 17.256 decisiones; tasa 41,7500 %, R² 4,7128 %. Los coeficientes, IC de género y cuotas de descomposición citados se redondean correctamente. La sensibilidad a disciplina y a cribado se describe con prudencia. La disminución de dispersión entre muestras nativas no se atribuye indebidamente solo a retirar ejemplos.
+
+2. La interpretación de conjuntos prefijados, soporte incompleto, contrastes ajustados y límites del AMCE factorial es proporcionada. No se elimina toda interpretación experimental ni se prometen efectos universales. El texto mantiene pendientes esenciales: migración/contexto social, programación efectiva, control y fechas/versiones del registro. Es acertado no convertir metadatos de creación del Excel o del PDF en prueba de implementación prospectiva.
+
+3. Figura image2.png: inspeccionada a resolución original dentro de results_section_with_figures.docx. Los segmentos unen cero con el punto; no muestran IC. El pie de la Figura 3 sí afirma que las tasas incluyen error bars de IC95 % agrupados por profesor. La crítica es correcta. Al rehacerla, añadir incertidumbre verdadera a las tasas o corregir el pie; no reutilizar los segmentos como si fueran intervalos. El pie reconoce correctamente que las otras características no están estandarizadas.
+
+4. Descomposición: el código usa seis pendientes correlacionadas, sin intercepto aleatorio, con 21 parámetros de covarianza. B tiene solución singular aceptada en frontera y 148/199 remuestras singulares. La versión revisada de la propuesta ya habla de falta de rango completo y dimensiones no degeneradas: queda corregida la confusión con independencia. Covarianza diagonal o reducción de estructura son sensibilidades propuestas, no consecuencias obligatorias de la singularidad. La estabilidad de cuotas agregadas no demostraría identificación de cada dimensión ni cobertura nominal. No hay motivo para anular automáticamente la descomposición descriptiva.
+
+Ajustes breves identificados y aceptados
+A. Incorporar una frase explícita de caracterización: «Las creencias se midieron después de las decisiones; sus asociaciones con harshness son descriptivas y no identifican efectos causales». Esta cautela importante del DOCX/coauthor_review queda menos visible que otras en la propuesta.
+B. Afinar «esa misma división»: el desacuerdo no aporta una medición independiente de polarización o tipos estables, pero tampoco es una transformación exacta de la tasa agregada de una categoría. Se calcula dentro de identificador y después se pondera. La proximidad al máximo informa sobre división dentro de esas referencias; no identifica siempre a los mismos profesores en cada bando.
+C. Al actualizar diagnósticos del apéndice, sustituir el 25,5 % antiguo de valores ajustados fuera de [0,1] por el 27,67 % guardado para B. Esto refuerza el carácter de modelo lineal descriptivo y no probabilidades individuales válidas. No requiere nuevos modelos.
+
+El agente principal comunica que ha incorporado A–B y la cifra de C a propuesta_revision.txt. Se cierra la revisión como aceptada, sin correcciones pendientes de redacción identificadas por esta revisión. Los cambios futuros al manuscrito y sus análisis conservan los límites señalados.
+
+Cobertura editorial
+No detecto una propuesta importante de coautores omitida que cambie la decisión principal: literatura integrada, cuatro preguntas en tres contribuciones, orden narrativo del DOCX, terciles descriptivos, marco 4.1, registro y límites de harshness están tratados. La verificación bibliográfica sigue siendo selectiva y no permite presentar las once referencias sugeridas como validadas. La conservación de la tabla de terciles respeta la preferencia previa del autor; no se confunde su omisión del DOCX con una refutación.
+
+Conclusión operativa
+No queda una corrección numérica bloqueante detectada. Entregar la recomendación española con los matices incorporados y mantener la actualización de diagnósticos en la futura implementación. No convertir esta aprobación de la propuesta en aprobación de una versión definitiva del paper o de reestimaciones todavía no realizadas.

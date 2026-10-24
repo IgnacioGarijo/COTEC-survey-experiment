@@ -1,0 +1,57 @@
+REVISIÓN INDEPENDIENTE DE LA RECONSTRUCCIÓN — 24/10/2026
+
+Alcance: lectura del informe HTML, CSV agregados, diagnósticos y código aislado. No se han reestimado modelos ni leído/exportado registros individuales. Las cifras siguientes son resultados guardados verificados, no una nueva validación de los datos originales.
+
+1. Decisión sobre B: defendible como análisis principal condicionado, pero no por «exactamente ocho respuestas».
+
+B conserva los valores guardados de las ocho tarjetas asignadas por una secuencia FL válida, incluidos campos compartidos con ejemplos. No exige ocho resultados: son 2.594 registros y 20.388 decisiones; 2.511 registros tienen ocho y 83 tienen entre una y siete (300 decisiones). B_full8 sí exige ocho valores guardados: 2.511 registros y 20.088 decisiones. La distinción está comprobada en B/response_counts.csv, B_full8/response_counts.csv y reconstruct.R:95–96.
+
+La defensa sustantiva de B puede ser que la elección de esas tarjetas extremas sea invariante entre ejemplo y tarea. Bajo ese supuesto, el valor compartido es utilizable y conservarlo evita eliminar selectivamente perfiles. Sin embargo, el export inspeccionado no acredita una segunda contestación ni la invariancia contrafactual. Los 706 campos compartidos brutos tienen valor, tiempo y clics positivos; los ejemplos fuera del orden también pueden tenerlos. Asignación, almacenamiento y recontestación son hechos diferentes. B_full8 tampoco resuelve esa ambigüedad.
+
+Propuesta: si los autores adoptan y explican expresamente el supuesto de invariancia, B es una opción principal razonable y C una sensibilidad obligatoria. Si se prioriza que cada valor tenga procedencia experimental inequívoca, C es la referencia conservadora provisional. No hay base para proclamar una de ellas identificada sin supuestos. La elección debe anteceder a mirar porcentajes o significación. B_full8 es sensibilidad de completitud, no sustituto automático de B.
+
+2. Comparación comprobada de resultados.
+
+Escenario | Registros | Decisiones | X3 completo | Repetición por decisión | SD Hb (pp) | R² X3 (%)
+A         | 2.705     | 22.124     | 2.157       | 47,6225 %               | 20,9694    | 4,8221
+B         | 2.594     | 20.388     | 2.157       | 41,7500 %               | 18,9742    | 4,7128
+C         | 2.587     | 19.732     | 2.157       | 41,7241 %               | 19,2747    | 4,6966
+D         | 2.101     | 16.562     | 1.750       | 43,0866 %               | 19,4476    | 4,8715
+
+Son registros ResponseId únicos; no está demostrada la deduplicación entre personas. Las tasas describen tarjetas conservadas, no tasas poblacionales de repetición. Fuentes: A–D/summary.csv.
+
+Coeficientes aditivos con efectos fijos docentes, en pp (A / B / C / D): suspensos 54,6241 / 54,8141 / 54,9526 / 54,3810; carencias competenciales 27,0742 / 27,2167 / 27,3957 / 28,1862; absentismo 6,3659 / 6,8135 / 7,1501 / 6,7400; disciplina 4,5594 / 4,8562 / 5,1356 / 4,7178. Se mantiene el predominio académico. Contexto complejo: −1,8811 / −1,6580 / −1,4055 / −2,0854. No detectar efecto medio de género no demuestra ausencia de sesgos. Fuentes: */attributes.csv.
+
+La interacción suspensos×disciplina pasa de 0,3842 pp en A a 1,9563 en B, 2,4003 en C y 2,9717 en D; p Holm = 0,6833 / 0,06695 / 0,02177 / 0,006405. No argumentar cambios por «significativo frente a no significativo»: el bootstrap emparejado C−B estima +0,4441 pp, rango 0,1343–0,7649, y C−A +2,0161 pp, rango 1,4318–2,6192. La diferencia de tasas C−B es apenas −0,02595 pp, rango −0,12450 a +0,07509. Fuentes: */academic_interactions.csv y tables/paired_differences.csv (999 sorteos).
+
+3. C y D también cambian soporte y ponderación.
+
+C elimina 656 decisiones de B; siete registros quedan sin resultado. No elimina uniformemente perfiles: «pocos suspensos/competencias adecuadas» pasa de 6.378 a 6.042 decisiones (−336), «muchos suspensos/carencias» de 6.366 a 6.046 (−320); los grupos discordantes siguen en 3.830 y 3.814. Sobreviven los 56 perfiles codificados, pero cambian sus pesos y el soporte dentro de docente. Por ello eliminar ambigüedad no garantiza automáticamente mayor validez para un promedio sobre el diseño original. Fuentes: B,C/academic_categories.csv y attribute_support.csv.
+
+D elimina registros completos con cualquier coincidencia asignación/ejemplo. Respecto a C pierde otros 486 registros y 3.170 decisiones, incluidas respuestas no ambiguas. La intersección C–D tiene exactamente los mismos 2.101 registros/16.562 decisiones y resultados en ambas fuentes: D es sensibilidad de composición. La SD Hb A→C baja en muestras nativas, pero sube de 18,9656 a 19,2747 pp al reconstruir ambas fuentes en los mismos 2.587 registros: no atribuir toda la caída nativa a retirar ejemplos. Fuente: tables/shared_teacher_summaries.csv.
+
+4. El cribado es otro problema y puede seleccionar por el resultado.
+
+A–D conservan el filtro vigente: excluir si se recomienda repetir en cualquiera de cuatro campos favorables. En 4.942 registros brutos excluye 389; el filtro del ejemplo favorable específico excluye 379. Los campos Grupo 5.1_1 y Grupo 8.1_1 no son ejemplos en esta auditoría y excluyen 9 y 12 respuestas de repetición respectivamente; también hay respuestas asignadas no ejemplares en los otros campos. No describir sin más los 389 como fallos demostrados de atención.
+
+C_example_screen recupera 10 registros/79 decisiones respecto a C; C_inclusive alcanza 2.950/22.505, tasa 43,5414 %, R² 3,9423 %. Sin filtro, las cuotas de atributos e interacciones y de Hb son 44,3597 % y 15,2029 %, frente a 47,7256 % y 13,1768 % en C. Propuesta: justificar el cribado con el protocolo original y presentar la sensibilidad sin decisiones como filtro; no resolverlo por conveniencia estadística. Fuentes: tables/screening_fields.csv, screening_rule_comparison.csv y resúmenes/descomposiciones de sensibilidades.
+
+5. Los «64 perfiles» y la referencia de Hb necesitan una decisión explícita.
+
+La reconstrucción ya reconoce 64 identificadores y 56 combinaciones distintas de seis atributos; coded_profile_support.csv enumera ocho parejas duplicadas. Por ejemplo, alumno_1_1 y alumno_8_1 comparten 000000. No es un factorial completo de 64 combinaciones según esta codificación. No he verificado el Excel original: su contraste corresponde a otra revisión.
+
+Hb y desacuerdo se calculan por identificador de tarjeta, no agrupando combinaciones idénticas (reconstruct.R:24 y :120). Así, dos tarjetas codificadas igual tienen referencias separadas y pueden incorporar diferencias de bloque, texto o exposición. Esto es una definición del estimando, no prueba automática de error. Antes de agrupar, comprobar igualdad del texto y diseño; si se confirma identidad sustantiva, proponer sensibilidad de referencias agrupadas y actualizar Hb, terciles y análisis dependientes. No está hecha en esta reconstrucción.
+
+6. Descomposición: mantenerla como descriptiva, con singularidad visible.
+
+Se conserva el mismo modelo: seis pendientes aleatorias correlacionadas (21 parámetros de covarianza), sin intercepto aleatorio, seis atributos y 15 interacciones, X1, creencias y Hb observado; REML y reparto Shapley del predictor fijo. Cuotas % A / B / C / D: atributos 48,6295 / 48,7368 / 47,7256 / 48,0446; Hb 12,6999 / 12,7593 / 13,1768 / 13,3498; pendientes 17,0990 / 18,8259 / 19,2171 / 19,1443. Las cuotas de características profesionales y creencias son pequeñas en todos ellos.
+
+A es no singular; B/C/D son soluciones aceptadas en la frontera, con código de optimizador cero y diagnósticos puntuales aceptables. B termina con BOBYQA; su JSON conserva un aviso del intento anterior, por lo que ese aviso no debe confundirse con el diagnóstico final. Singularidad no equivale a fracaso del optimizador, pero tampoco permite afirmar seis dimensiones aleatorias no degeneradas. No seleccionar una especificación porque reproduzca porcentajes deseados.
+
+Hay 199 remuestras aceptadas por escenario, sin fallos finales; son singulares 1 / 148 / 153 / 167. Los rangos percentiles describen dispersión condicionada al estimador y no garantizan cobertura nominal en la frontera. No se verificó Hessiana en todas las réplicas. Hb está construido con las mismas respuestas: las cuotas no son causalidad, calidad docente, estabilidad temporal ni predicción externa. Fuentes: */decomposition.csv, decomposition_diagnostics.json, bootstrap_status.json; reconstruct.R:150–175 y README.txt.
+
+7. Cambios propuestos y límites pendientes.
+
+Actualizar flujo muestral, tasas, Hb, terciles y apéndices con el escenario finalmente elegido; separar resultados descriptivos, efectos dentro de docente y descomposición. Mantener las conclusiones sólidas sobre el peso académico y bajo R²; moderar inferencias sobre arbitrariedad, persistencia o mecanismos de creencias posteriores a las decisiones. Presentar B/C juntos y D, completitud y cribado como sensibilidades con denominadores propios. No reutilizar incertidumbre antigua para puntos nuevos.
+
+Quedan sin resolver la procedencia de campos compartidos y el supuesto de invariancia, la justificación del cribado, la correspondencia textual de tarjetas duplicadas y el estimando por tarjeta frente a perfil. Los 103 checks numéricos/procedencia y los 868 checks finales guardados figuran todos aprobados; comprueban coherencia interna, no eliminan esos problemas de identificación. Evidencia suficiente para esta recomendación; no se han lanzado nuevos modelos.
