@@ -1,0 +1,4 @@
+"model","columns","rank","scaled_condition","minimum_scaled_singular"
+"full",22,22,3.83543838023394,0.447422699287954
+"domains",10,10,3.65334770000334,0.460432727209876
+"diagonal",7,7,3.46509849057074,0.476255573924406

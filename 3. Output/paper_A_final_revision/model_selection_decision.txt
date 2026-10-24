@@ -1,0 +1,6 @@
+Selected diagonal: sole stable interior candidate under recorded selection rule.
+Full and domain covariance fits agree across optimizers but lie at or near the boundary.
+Their better REML AIC is disclosed; diagonal zero correlations are a working restriction, not an empirical claim.
+All covariance bases including residual are full rank; all six slope blocks are included in the allocation.
+Centering is recomputed over each scenario complete-case decisions and in each bootstrap replicate, matching the full estimator.
+The primary bootstrap uses 199 draws for standard-error estimation, not percentile confidence limits.

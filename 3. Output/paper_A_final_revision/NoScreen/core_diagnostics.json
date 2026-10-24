@@ -1,0 +1,16 @@
+{
+  "attribute_rank": 7,
+  "attribute_columns": 7,
+  "characterization_rank": 12,
+  "characterization_columns": 12,
+  "fe_removed_singletons": 16,
+  "fe_collinear": {},
+  "interaction_collinear": {},
+  "alternative_logit": {
+    "hc_converged": true,
+    "hd_converged": true,
+    "hc_rank": 7,
+    "hd_rank": 10
+  },
+  "warnings": "GLM warnings retained in execution log; estimability documented here."
+}

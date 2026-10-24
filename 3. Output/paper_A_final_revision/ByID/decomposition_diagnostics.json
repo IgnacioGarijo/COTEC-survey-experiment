@@ -1,0 +1,18 @@
+{
+  "scenario": "ByID",
+  "model": "diagonal",
+  "n": 17312,
+  "teachers": 2164,
+  "fixed_rank": 34,
+  "covariance_parameters": 6,
+  "diagnostics": {
+    "singular": 0,
+    "gradient": 0.0003,
+    "min_hessian": 419.488,
+    "optimizer": 0,
+    "min_covariance": 0.0021
+  },
+  "outside01": 0.2923,
+  "hb": 0.9652,
+  "optimizer": "nloptwrap"
+}

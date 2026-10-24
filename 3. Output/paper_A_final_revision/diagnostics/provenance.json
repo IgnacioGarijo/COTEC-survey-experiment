@@ -1,0 +1,10 @@
+{
+  "baseline": "09f9cd4",
+  "scenario": "B",
+  "screen": "favorable example for own Ejemplo variant",
+  "reference": "six binary attribute profile",
+  "confirmed_wording": "complex social background",
+  "raw_md5": "67ea18340c9b182d5d4755db5724215a",
+  "R": "R version 4.4.0 (2024-04-24 ucrt)",
+  "lme4": "1.1.35.3"
+}
