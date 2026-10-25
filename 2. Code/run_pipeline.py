@@ -24,15 +24,17 @@ def run(cmd,cwd=ROOT):
 def py(name):run([sys.executable,ROOT/'2. Code'/name])
 if a.analysis:
  rs=program('Rscript')
- for name in ['9. two_papers_analysis.R','11. two_papers_sensitivity.R','15. deepen_two_papers.R','27. revise_A_analysis.R','28. revised_A_prediction.R','29. A_variance_decomposition.R','30. A_participation.R','31. A_population_aggregates.R','36. A_logit_observed_variance.R','49. A_final_decomposition.R']:
-  run([rs,'--vanilla',ROOT/'2. Code'/name])
-py('48. A_survey_exit_audit.py')
-for name in ['population_reference.py','32. A_revision_figures.py','33. A_revision_tables.py','build_B_tables.py','34. finalize_A_sources.py']:py(name)
+ if not (ROOT/'3. Output/paper_A_reconstruction/local/provenance.rds').exists():
+  run([rs,'--vanilla',ROOT/'2. Code/paper_A_reconstruction/reconstruct.R','prepare'])
+ for name,args in [('prepare.R',[]),('models.R',['candidates']),('models.R',['points','diagonal']),('audit_models.R',[]),('models.R',['bootstrap','B','199','4'])]:
+  run([rs,'--vanilla',ROOT/'2. Code/paper_A_final_revision'/name,*args])
+py('paper_A_final_revision/build.py')
+py('build_B_tables.py')
 if not a.no_pdf:
  tex=program('pdflatex')
- for folder,source in [('paper_A','paper_A_teacher_decisions.tex'),('paper_B','paper_B_policy_scenarios.tex'),('paper_A','supporting_analyses.tex')]:
+ for folder,source in [('paper_A','paper_A_teacher_decisions.tex'),('paper_B','paper_B_policy_scenarios.tex')]:
   for _ in range(2):run([tex,'-interaction=nonstopmode','-halt-on-error',source],ROOT/'4. Latex'/folder)
- py('35. audit_A_revision.py')
+ py('paper_A_final_revision/audit.py')
 if a.presentations:
  quarto=program('quarto')
  for folder,source in [('COTEC','ppt_total.qmd'),('Prelim results','ppt.qmd')]:

@@ -57,7 +57,11 @@ if(phase=='bootstrap'){
    p<-allocate(m,z);data.frame(draw=b,as.list(p),as.list(dg),opt_used=opt,accepted=all(is.finite(p))&&dg['optimizer']==0&&dg['gradient']<.002&&dg['min_hessian']>0,error='')
   },error=function(e)data.frame(draw=b,accepted=FALSE,error=conditionMessage(e)))
  }
- path<-file.path(out,s,'decomposition_bootstrap_draws.csv');prior<-if(file.exists(path))read.csv(path)else data.frame(draw=integer());todo<-setdiff(seq_len(B),prior$draw)
+ path<-file.path(out,s,'decomposition_bootstrap_draws.csv')
+ fingerprint<-list(scenario_md5=point$fingerprint,model=point$kind,method='clone-LOO-all-six-blocks-full-derivatives-recenter-v1',seed='2410000 + draw',lme4=as.character(packageVersion('lme4')))
+ fingerprint_path<-file.path(out,s,'bootstrap_fingerprint.json')
+ if(file.exists(fingerprint_path))stopifnot(identical(read_json(fingerprint_path,simplifyVector=TRUE),fingerprint))else write_json(fingerprint,fingerprint_path,pretty=TRUE,auto_unbox=TRUE)
+ prior<-if(file.exists(path))read.csv(path)else data.frame(draw=integer());stopifnot(!anyDuplicated(prior$draw));todo<-setdiff(seq_len(B),prior$draw)
  cl<-parallel::makeCluster(workers,rscript_args='--vanilla');parallel::clusterCall(cl,function(p).libPaths(p),.libPaths());env<-parallel::clusterEvalQ(cl,{suppressPackageStartupMessages({library(dplyr);library(lme4)});as.character(packageVersion('lme4'))});stopifnot(all(unlist(env)==as.character(packageVersion('lme4'))))
  parallel::clusterExport(cl,c('t','l','idx','cidx','by_teacher','attrs','x3','blocks','form','prepare_model','allocate','variance_random','diagnose','run_one'),envir=environment())
  for(first in seq.int(1,max(1,length(todo)),by=workers*2)){if(!length(todo))break;ids<-todo[first:min(first+workers*2-1,length(todo))];prior<-bind_rows(prior,bind_rows(parallel::parLapply(cl,ids,run_one)));write.csv(prior,path,row.names=FALSE,na='');message('Bootstrap ',s,' ',nrow(prior),'/',B)}

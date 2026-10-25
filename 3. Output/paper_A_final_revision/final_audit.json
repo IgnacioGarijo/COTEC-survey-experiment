@@ -1,0 +1,11 @@
+{
+  "pages": 21,
+  "teachers": 2604,
+  "decisions": 20467,
+  "bootstrap_accepted": 199,
+  "bootstrap_boundary": 17,
+  "tables": 11,
+  "figures": 6,
+  "citations": 16,
+  "checks": "passed; visual QA recorded separately"
+}
