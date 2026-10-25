@@ -1,0 +1,14 @@
+REVISIÓN EDITORIAL Y COMPARACIÓN ACUMULADA
+
+Referencia: commit 09f9cd4, manuscrito anterior a las revisiones de coautores.
+El PDF principal incluye tanto las revisiones anteriores de reconstrucción B como esta revisión editorial; no compara únicamente con la versión inmediatamente anterior.
+
+Convención: conservado negro; añadido azul; eliminado rojo tachado. Las tablas eliminadas se conservan completas en rojo; las figuras eliminadas conservan su imagen original dentro de un marco rojo. Todas llevan la etiqueta Deleted / superseded y el número de la versión anterior. No cuentan en la numeración actual. Los movimientos de texto pueden aparecer como eliminación y adición.
+
+Cambios editoriales: motivación y literatura integradas en la introducción; cinco referencias incorporadas selectivamente; gráficos de coeficientes y categorías académicas en el cuerpo; sus tablas numéricas y la de interacciones pasan al apéndice B existente; explicación del desacuerdo dentro de perfiles, de los contrastes académicos y del R² descriptivo; simplificación de la explicación sobre selección de covarianzas. Se mantienen modelo teórico, tres bloques de resultados, harshness, terciles, caracterización y descomposición. No se reestimaron resultados en esta edición.
+
+Verificación: 23 páginas aceptadas y 32 de comparación; ninguna referencia sin resolver, ningún desbordamiento de texto ni destino duplicado. Revisión visual de todas las páginas mediante hojas de contacto. Las siete tablas anteriores permanecen completas, las cinco imágenes anteriores son idénticas byte a byte y la cronología no modificada aparece una sola vez. La reversión de latexdiff recupera íntegramente el texto aceptado y el anterior (ignorando espacios y, en el anterior, una instrucción auxiliar de numeración de sección que no contiene texto). Revisión independiente en independent_review.txt. Conteos y compilación en final_audit.json.
+
+Fuente editable: 4. Latex/paper_A/paper_A_content.tex.
+Fuente principal de comparación generada: paper_A_teacher_decisions.tex.
+No editar esta última: regenerar con redline.py y compile.py tras cambiar la fuente aceptada. Las imágenes comparison_baseline se conservan exclusivamente para esta comparación solicitada. El PDF sin marcas se compila en tmp para control de coherencia y no se añade como otra versión al repositorio.

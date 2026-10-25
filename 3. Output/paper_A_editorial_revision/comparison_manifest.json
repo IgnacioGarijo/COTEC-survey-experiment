@@ -1,0 +1,236 @@
+{
+  "baseline": "09f9cd4",
+  "source": "paper_A_content.tex",
+  "counts": {
+    "old": 13,
+    "new": 19
+  },
+  "exhibits": [
+    {
+      "side": "old",
+      "token": "COTECEXHIBITC9A81FA2ECDDE48FEND",
+      "kind": "inline",
+      "name": "timeline",
+      "label": null
+    },
+    {
+      "side": "old",
+      "token": "COTECEXHIBITE79BE9DD6E75AB90END",
+      "kind": "table",
+      "name": "attributes",
+      "label": "tab:attr"
+    },
+    {
+      "side": "old",
+      "token": "COTECEXHIBIT14B50CD5FA93EA60END",
+      "kind": "table",
+      "name": "interactions",
+      "label": "tab:interactions"
+    },
+    {
+      "side": "old",
+      "token": "COTECEXHIBIT274757F9D4819634END",
+      "kind": "figure",
+      "name": "harshness_distribution",
+      "label": "fig:harshness"
+    },
+    {
+      "side": "old",
+      "token": "COTECEXHIBIT800B0BBAAC526EC9END",
+      "kind": "table",
+      "name": "academic",
+      "label": "tab:academic"
+    },
+    {
+      "side": "old",
+      "token": "COTECEXHIBIT608A5C938B3A1118END",
+      "kind": "table",
+      "name": "tercile_summary",
+      "label": "tab:tercsummary"
+    },
+    {
+      "side": "old",
+      "token": "COTECEXHIBITEE31F9184EA89EC0END",
+      "kind": "table",
+      "name": "tercile_slopes",
+      "label": "tab:tercslopes"
+    },
+    {
+      "side": "old",
+      "token": "COTECEXHIBIT7B94B8A4A9D776B1END",
+      "kind": "table",
+      "name": "characterization",
+      "label": "tab:char"
+    },
+    {
+      "side": "old",
+      "token": "COTECEXHIBITE63DDD9AE9815C32END",
+      "kind": "figure",
+      "name": "variance_partition",
+      "label": "fig:variance"
+    },
+    {
+      "side": "old",
+      "token": "COTECEXHIBITA852DAA2680C3ACDEND",
+      "kind": "figure",
+      "name": "sample_flow",
+      "label": "fig:flow"
+    },
+    {
+      "side": "old",
+      "token": "COTECEXHIBIT4018C2180303759CEND",
+      "kind": "figure",
+      "name": "task_progression",
+      "label": "fig:progression"
+    },
+    {
+      "side": "old",
+      "token": "COTECEXHIBIT9A543200EBCFA6C4END",
+      "kind": "figure",
+      "name": "population_grid",
+      "label": "fig:population"
+    },
+    {
+      "side": "old",
+      "token": "COTECEXHIBIT7FE78340D302C9EEEND",
+      "kind": "table",
+      "name": "alternatives",
+      "label": "tab:alternatives"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBITC9A81FA2ECDDE48FEND",
+      "kind": "inline",
+      "name": "timeline",
+      "label": null
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBIT958C8D790E6C44DAEND",
+      "kind": "figure",
+      "name": "attribute_coefficients",
+      "label": "fig:attributes"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBIT8B88D6C3E6FEBB5AEND",
+      "kind": "figure",
+      "name": "harshness_distribution",
+      "label": "fig:harshness"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBIT73D2EB8639D4501DEND",
+      "kind": "figure",
+      "name": "academic_profiles",
+      "label": "fig:academic"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBITBB7F8E75ACBFDA64END",
+      "kind": "table",
+      "name": "tercile_summary",
+      "label": "tab:tercsummary"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBIT1C4F355B179098ABEND",
+      "kind": "table",
+      "name": "tercile_slopes",
+      "label": "tab:tercslopes"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBITD5CB3A66771E93D4END",
+      "kind": "table",
+      "name": "characterization",
+      "label": "tab:char"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBITF3373E11CE1B57B3END",
+      "kind": "figure",
+      "name": "variance_partition",
+      "label": "fig:variance"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBIT8B0BD814C4D5A47CEND",
+      "kind": "figure",
+      "name": "sample_flow",
+      "label": "fig:flow"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBIT9B8337539B285781END",
+      "kind": "table",
+      "name": "design_sets",
+      "label": "tab:sets"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBITAEF6452B7B028E62END",
+      "kind": "table",
+      "name": "reconstruction_sensitivity",
+      "label": "tab:reconstruction"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBIT6CE150AC2EC0BB0FEND",
+      "kind": "table",
+      "name": "context_comparison",
+      "label": "tab:context"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBITC0D2388EFD84B87DEND",
+      "kind": "figure",
+      "name": "task_progression",
+      "label": "fig:progression"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBITC3C1D478C31ED5B4END",
+      "kind": "figure",
+      "name": "population_grid",
+      "label": "fig:population"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBIT0D6D8CFEA95F976BEND",
+      "kind": "table",
+      "name": "attributes",
+      "label": "tab:attr"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBITA5CE9C7B23F7775FEND",
+      "kind": "table",
+      "name": "interactions",
+      "label": "tab:interactions"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBIT6C076B239474C893END",
+      "kind": "table",
+      "name": "academic",
+      "label": "tab:academic"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBIT27C1120E0AFBA44AEND",
+      "kind": "table",
+      "name": "alternatives",
+      "label": "tab:alternatives"
+    },
+    {
+      "side": "new",
+      "token": "COTECEXHIBIT363BDA39FA86973BEND",
+      "kind": "table",
+      "name": "covariance_audit",
+      "label": "tab:covariance"
+    }
+  ],
+  "old_figures_preserved": 5,
+  "old_tables_preserved": 7
+}

@@ -1,0 +1,29 @@
+INDEPENDENT EDITORIAL AND SOURCE REVIEW — 25 October 2026
+
+Scope and constraints
+Read run_constraints.md first and acknowledged to the coordinator. Read-only review of accepted paper_A_content.tex, references_A.tex, generated paper_A_teacher_decisions.tex, the two new PNGs and their aggregate-only generator, approved informe_editorial.txt and bibliografia_verificada.txt, and author baseline 09f9cd4. Wrote only this report. No reestimation, microdata access/upload, canonical edits, or commits. This review does not certify final PDF pagination or completed compilation.
+
+Verdict
+The accepted text implements the approved substantive editorial plan coherently. No unresolved substantive error found in the reviewed changes. One wording issue was reported and the coordinator has corrected it: line 148 now says the figure “shows the most divided academic category”, replacing “locates the principal boundary”, which could imply an estimated threshold.
+
+Scientific and editorial checks
+- The q/g/c framework is retained, including the explicit statement that its three components are not separately identified. It is consistent with the discussion of educational difficulty versus the suitability of repetition.
+- The four research questions remain within the introduction and map to the same three results blocks. The detailed Klapproth–Beyte contrast and attribute-specific design literature remain.
+- Current reconstruction B counts, teacher-clustered decision-model SE, HC3 characterization SE, harshness definition, same-profile grouping, six random sensitivities and model-based allocation remain. The shortened covariance-selection paragraph refers readers to the existing diagnostics appendix rather than suppressing the better fit of richer covariance structures.
+- The competence contrast is correctly stated as 21.45 versus 32.52 points, with 11.07-point interaction; the 2.18-point discipline interaction survives Holm; attendance remains imprecise. No invented SE for the sum appears.
+- The academic figure/text distinguish category recommendation rates from disagreement calculated within six-attribute profiles. They retain the lack of standardization of other attributes and acknowledge why an aggregate 50% rate alone is insufficient. The figure includes 24.33% disagreement when both academic difficulties are present, so it does not suggest conflict occurs only with discordant signals.
+- Exactly three numerical tables remain in the accepted main text: tercile characteristics, tercile slopes and characterization. Attributes, interactions and academic categories appear once in a compact existing appendix. Harshness histogram and decomposition remain. Characterization headings are descriptive, and its prose gives 2.58%, 2.88% and 4.68% R-squared on the same 2,164 teachers, with age conditional on experience and the five-point resources interpretation preserved.
+
+Figures and citations
+- Visually inspected attribute_coefficients.png and academic_profiles.png. Numerical labels agree with the current aggregate tables. The coefficient plot uses one common scale and a visible zero; the academic plot shades discordant categories and distinguishes units/panels. Actual bars are ±1 SE for coefficients and category recommendation rates; disagreement has no uncertainty bars. No zero-to-point segments are mislabeled as intervals.
+- All five selected citations are integrated with the approved limitations: Ferman–Fontes motivates behavior/promotion; Doyle concerns identical work and SES rather than retention decisions; Valbuena supports contingent effects; Brañas–Jorrat is described as a matching-based association rather than causal longitudinal persistence; Terrier is a discussion comparison rather than a refutation by the average gender coefficient. The six unselected references were not inserted.
+- Keys and available verified metadata match. Brañas–Jorrat Spanish pagination 28–58 was independently unresolved in the earlier bibliography report. Coordinator supplied newer evidence from an indexed footer of the primary Spanish PDF (https://recyt.fecyt.es/index.php/Redu/article/download/113904/84006/493552) explicitly stating 28–58, distinguishing it from English pagination 27–57. This supports the current Spanish-title entry; it is limited footer verification, not full-text review by this reviewer.
+
+Cumulative comparison and source checks
+- Editable accepted content is distinct from the generated comparison; redline.py reads accepted content and compares it with git baseline 09f9cd4.
+- Generated text has all seven deleted/superseded baseline table captions and five deleted/superseded baseline figure captions. All seven baseline table bodies occur verbatim after removing legacy color commands. All five comparison_baseline image copies are byte-identical to git 09f9cd4. The timeline label occurs once. Manifest counts are 13 baseline exhibits (7 tables, 5 raster figures, timeline) and 19 current exhibits.
+- Asset substitution before latexdiff avoids striking out floats as ordinary prose. Deleted tables are retained in red and explicitly labeled; deleted figures are retained with red frames/captions; new captions are blue. Deleted asset labels do not create duplicate current references.
+- Automated source checks found no unresolved references after accounting for plot/inputtab label arguments, no duplicate real labels in generated TEX, and no unknown citation keys. The deleted Related literature heading is starred, preserving current section numbering.
+
+Remaining closure check
+Final compile completion and visual PDF QA remain the coordinator/visual reviewer's responsibility. Re-run the generator after any accepted-source correction and verify the resulting PDF; do not edit the generated comparison directly.

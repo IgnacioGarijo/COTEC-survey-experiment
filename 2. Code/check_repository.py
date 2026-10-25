@@ -18,7 +18,8 @@ for letter,filename in [('A','paper_A_teacher_decisions'),('B','paper_B_policy_s
  text=need(doc/f'{filename}.tex').read_text(encoding='utf-8-sig')
  for name in re.findall(r'\\inputtab\{[^}]+\}\{([^}]+)\}',text):need(doc/'tables'/f'{name}.tex')
  for name in re.findall(r'\\plot\{[^}]+\}\{([^}]+)\}',text):need(ROOT/f'3. Output/paper_{letter}/figures/{name}.png')
- for name in re.findall(r'\\input\{([^}]+)\}',text):need(doc/(name+'.tex'))
+ for name in re.findall(r'\\input\{([^}]+)\}',text):
+  if '#' not in name:need(doc/(name if name.endswith('.tex') else name+'.tex'))
  need(doc/f'{filename}.pdf')
  if letter=='A':assert 'castilla' not in text.lower() and 'mancha' not in text.lower()
 for folder,filename in [('COTEC','ppt_total.qmd'),('Prelim results','ppt.qmd')]:

@@ -29,12 +29,15 @@ if a.analysis:
  for name,args in [('prepare.R',[]),('models.R',['candidates']),('models.R',['points','diagonal']),('audit_models.R',[]),('models.R',['bootstrap','B','199','4'])]:
   run([rs,'--vanilla',ROOT/'2. Code/paper_A_final_revision'/name,*args])
 py('paper_A_final_revision/build.py')
+py('paper_A_editorial_revision/figures.py')
+py('paper_A_editorial_revision/redline.py')
 py('build_B_tables.py')
 if not a.no_pdf:
+ py('paper_A_editorial_revision/compile.py')
  tex=program('pdflatex')
- for folder,source in [('paper_A','paper_A_teacher_decisions.tex'),('paper_B','paper_B_policy_scenarios.tex')]:
+ for folder,source in [('paper_B','paper_B_policy_scenarios.tex')]:
   for _ in range(2):run([tex,'-interaction=nonstopmode','-halt-on-error',source],ROOT/'4. Latex'/folder)
- py('paper_A_final_revision/audit.py')
+ py('paper_A_editorial_revision/audit.py')
 if a.presentations:
  quarto=program('quarto')
  for folder,source in [('COTEC','ppt_total.qmd'),('Prelim results','ppt.qmd')]:
