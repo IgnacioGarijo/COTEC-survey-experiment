@@ -1,0 +1,110 @@
+VERIFICACIÓN INDEPENDIENTE DE LAS ONCE REFERENCIAS PROPUESTAS
+Fecha: 25-10-2026. Base de comparación: introducción y referencias_A.tex del manuscrito actual (baseline comunicado 8c07f4c), más ambos correos. Restricciones leídas y respetadas: solo se escribe este informe; sin reestimación, cambios del artículo ni carga de microdatos.
+
+ALCANCE Y DECISIÓN EDITORIAL
+Se ha comprobado la identidad de las once publicaciones mediante revista, institución/autores y/o metadatos depositados por el editor en Crossref. Esto no equivale a haber leído once textos completos. Se declara abajo el acceso efectivo. No se han reutilizado las conclusiones de la revisión anterior como evidencia independiente.
+
+La ampliación más rentable es Ferman–Fontes y Doyle, porque conectan directamente conducta/contexto con evaluación docente. Valbuena añade una síntesis centrada en identificación causal al párrafo ya existente sobre consecuencias contingentes. Estas tres incorporaciones son recomendables, sin obligación de aceptar la introducción completa de Pablo. Una referencia general sobre precisión docente (Südkamp o Urhahne) puede ayudar, pero ambas juntas son prescindibles. Los ejemplos de consecuencias de repetir son opcionales: bastan uno o dos si se decide ampliar la motivación. No se recomienda introducir las once ni desplazar el foco hacia una revisión de los efectos de la repetición. Kornfeld–Ochsen puede omitirse por encaje indirecto, no por falta de calidad.
+
+La introducción actual ya contiene Allen y Goos sobre consecuencias, Tomchin y Bonvin sobre decisiones, Pajares sobre creencias y una comparación explícita y equilibrada con Klapproth–Beyte. El diseño ya cita evidencia específica para las seis dimensiones (incluidos Santos–Monteiro, Mattison y González-Betancor–López-Puig). Por tanto, añadir contexto general tiene utilidad marginal, mientras que Ferman y Doyle sí cubren un puente actualmente menos desarrollado. Conviene RETENER esos antecedentes y la comparación precisa con Klapproth, en vez de sustituirlos por un catálogo amplio de sesgos docentes.
+
+1. BRAÑAS-GARZA Y JORRAT (2025)
+Identidad: Repetition undermines social inclusion at school / La repetición perjudica la inclusión social en la escuela, Revista de Educación 409. DOI confirmado en la revista y en Loyola:
+https://doi.org/10.4438/1988-592X-RE-2025-409-685
+Fuente primaria consultada: https://www.educacionfpydeportes.gob.es/revista-de-educacion/en/numeros-revista-educacion/numeros-anteriores/2025/409/409-3.html
+https://www.uloyola.es/en/research-transfer/publications/repetition-undermines-social-inclusion-at-school-article
+Acceso: abstract editorial/institucional; PDF editorial localizado pero devolvió 503. Evidencia: compara repetidores y similares mediante propensity-score matching; para persistencia compara repetidores actuales y antiguos. Reporta menor popularidad, menos buenos amigos y más vínculos hostiles.
+Límite: matching requiere ausencia de confusión no observada; comparar actuales/antiguos no es por sí solo seguimiento causal de una misma persona. Pablo usa prudentemente «appear to persist»; conviene mantener esa cautela y presentar asociación ajustada, no prueba causal definitiva. «Prominent positions» es más fuerte que la mayor presencia en redes hostiles indicada en el resumen.
+Recomendación: ADAPTAR/OPCIONAL, una frase sobre dimensión social en España. No indispensable para justificar el experimento. No certificar pp.41–80 del correo: la página del autor enumera 27–57 y el catálogo Agora 28–58; el PDF deberá resolverlo antes de incorporar. Fuente del autor: https://sites.google.com/site/pablobranasgarza/publications/published-papers
+
+2. DOYLE, EASTERBROOK Y HARRIS (2023)
+Identidad: British Journal of Educational Psychology 93(1), 91–112; DOI 10.1111/bjep.12541. Publicación online en 2022 y volumen de 2023: el año del correo es apropiado para la versión final.
+Fuente primaria: https://bpspsychub.onlinelibrary.wiley.com/doi/10.1111/bjep.12541
+Acceso: TEXTO COMPLETO HTML (métodos, resultados y discusión comprobados). Experimento preregistrado: 416 docentes, 88% en ejercicio, califican el mismo trabajo escrito bajo contexto SES y etnia manipulados. El bajo SES reduce valoraciones de calidad, nivel y agrupación por capacidad; no aparece efecto principal significativo de etnia.
+Límite: tarea de escritura de un alumno de 10–11 años y muestra británica con exclusiones; no observa recomendaciones de repetir. Los vínculos de creencias con prácticas son correlacionales y la moderación de calificaciones es limitada/inconcluyente.
+Recomendación: ADOPTAR ADAPTADO. La frase de Pablo sobre trabajo idéntico y SES es correcta. Aporta antecedente experimental útil para contexto social, dejando claro que calificar, asignar nivel y recomendar repetición son decisiones diferentes. No lo usaría para concluir discriminación étnica general ni causalidad de las creencias.
+
+3. FERMAN Y FONTES (2022)
+Identidad: Assessing knowledge or classroom behavior? Evidence of teachers’ grading bias, Journal of Public Economics 216, 104773. Metadatos coinciden con correo.
+Fuente primaria: https://www.sciencedirect.com/science/article/pii/S004727272200175X
+https://www.sciencedirect.com/science/article/abs/pii/S004727272200175X
+DOI: https://doi.org/10.1016/j.jpubeco.2022.104773
+Acceso: abstract, introducción y fragmentos de secciones del editor; no texto completo. También abstract de versión de autores en https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3797725 .
+Evidencia: compara pruebas calificadas por docentes y a ciegas en escuelas privadas brasileñas. La conducta se incorpora a notas y promoción incluso condicionando el rendimiento. El cambio en probabilidades de repetición se estudia además mediante simulaciones contrafactuales.
+Límite: no es asignación aleatoria de conducta; depende de comparabilidad de exámenes, medición y supuestos de identificación. El sector y país limitan extrapolación. No atribuir todo el efecto de la repetición a una manipulación aleatoria.
+Recomendación: ADOPTAR ADAPTADO, máxima prioridad. La caracterización de Pablo es sustancialmente correcta; para precisión, distinguir resultados sobre calificación/promoción de las simulaciones de repetición. Conecta directamente notas, conducta y decisión de progresión.
+
+4. GARCÍA-PÉREZ, HIDALGO-HIDALGO Y ROBLES-ZURITA (2014)
+Identidad: Does grade retention affect students’ achievement? Some evidence from Spain, Applied Economics 46(12), 1373–1392; comprobada en Crossref y sumario editorial.
+DOI/fuente editorial: https://doi.org/10.1080/00036846.2013.872761
+https://www.tandfonline.com/doi/full/10.1080/00036846.2013.872761
+Acceso: abstract y fragmentos editoriales indexados; no texto completo de la versión final. El texto primario disponible en vista de ResearchGate describe switching regression y trimestre de nacimiento como instrumento: https://www.researchgate.net/publication/279016229_Does_grade_retention_affect_students%27_achievement_Some_evidence_from_Spain_vol_46_pg_1373_2014 .
+Evidencia: datos PISA españoles, estimaciones negativas de rendimiento con corrección de selección endógena. Límite: interpretación causal depende de especificación y restricciones instrumentales; no equivale a aleatorización ni discontinuidad de política. El trimestre de nacimiento puede afectar rendimiento mediante mecanismos distintos de repetir; esto es una condición de identificación que debe argumentarse, no un defecto aquí demostrado.
+Recomendación: ADAPTAR/OPCIONAL si se quiere un ejemplo español. «Evidence suggests» en Pablo es aceptable; preferible «estimates negative achievement effects under an endogenous-selection model». No permite afirmar daño causal universal ni aporta evidencia sobre desacuerdo docente.
+
+5. JACOB Y LEFGREN (2009)
+Identidad: The Effect of Grade Retention on High School Completion, AEJ: Applied Economics 1(3), 33–58.
+Fuente primaria consultada: https://www.aeaweb.org/articles?id=10.1257/app.1.3.33
+DOI: https://doi.org/10.1257/app.1.3.33
+Acceso: abstract editorial final; enlace de PDF requiere acceso. Se localizó además el working paper primario NBER: https://www.nber.org/system/files/working_papers/w13514/w13514.pdf (no se utiliza como si fuera idéntico a la publicación final).
+Evidencia: variación de retención inducida por política de promoción basada en pruebas. Efecto nulo sobre finalización entre más jóvenes; aumento de abandono al retener estudiantes de bajo rendimiento de octavo.
+Límite: efectos locales en alumnos y régimen de promoción específicos; no identifica daño uniforme de repetir a cualquier edad.
+Recomendación: ADAPTAR/OPCIONAL, ejemplo particularmente útil de heterogeneidad. Pablo acota «in some settings» y «later educational stages», correctamente. Si se incluye, añadir explícitamente el resultado nulo entre jóvenes, que apoya mejor el marco contingente actual y evita escoger solo resultados negativos.
+
+6. KORNFELD Y OCHSEN (2017)
+Identidad: Student assessment and grade retention: evidence from a natural experiment, Education Economics 25(2), 127–141; online en 2016, volumen en 2017.
+Fuente editorial primaria: https://www.tandfonline.com/doi/abs/10.1080/09645292.2016.1199660
+DOI: https://doi.org/10.1080/09645292.2016.1199660
+Acceso: abstract editorial y TEXTO COMPLETO publicado depositado por Carsten Ochsen: https://www.researchgate.net/publication/305309270_Student_assessment_and_grade_retention_evidence_from_a_natural_experiment .
+Evidencia: diferencias en diferencias sobre reforma NRW; recomendación de itinerario vinculante sustituye libertad parental y reduce repetición posterior, especialmente en distritos favorecidos. Tratados: sexto; control: octavo; datos de escuelas públicas y pocos años alrededor de reforma.
+Límite: depende de tendencias paralelas/comparabilidad de cohortes; la decisión estudiada es elección de itinerario, no juicio individual de repetir. No demuestra que docentes apliquen criterios de repetición sesgados.
+Recomendación: RECHAZAR SU INCLUSIÓN EN ESTA INTRODUCCIÓN / OMITIR por bajo encaje marginal. La frase literal de Pablo es correcta, pero como eslabón en una enumeración de sesgos confunde mecanismos. Su omisión mejora foco; no implica rechazar el estudio.
+
+7. MANACORDA (2012)
+Identidad: The Cost of Grade Retention, Review of Economics and Statistics 94(2), 596–606.
+Fuente primaria institucional de versión final: https://cep.lse.ac.uk/_NEW/PUBLICATIONS/abstract.asp?index=12450
+DOI: https://doi.org/10.1162/REST_a_00165
+Acceso: abstract institucional final y metadatos editoriales Crossref; PDF final no accesible. Evidencia: longitudinal administrativo de secundaria inferior uruguaya; discontinuidad por regla de más de tres materias suspendidas; más abandono y menor nivel alcanzado cuatro/cinco años después.
+Límite: estimación local a la regla y contexto; no identifica proceso de decisión docente ni costes sociales españoles. Atención a versiones: circula un borrador de 2007 con umbral de ausencias; no mezclar ese diseño con el abstract publicado, que refiere materias suspendidas.
+Recomendación: ADAPTAR/OPCIONAL. Correcta la frase de Pablo sobre consecuencias persistentes en ciertos contextos. Puede acompañar a Jacob en una única frase, pero ambos son prescindibles si se mantiene breve la introducción. No usar el título «cost» como estimación monetaria de coste-beneficio.
+
+8. SÜDKAMP, KAISER Y MÖLLER (2012)
+Identidad: Accuracy of teachers’ judgments of students’ academic achievement: A meta-analysis, Journal of Educational Psychology 104(3), 743–762; Crossref y suplemento APA confirman.
+DOI: https://doi.org/10.1037/a0027627
+Fuente primaria APA: https://supp.apa.org/psycarticles/supplemental/a0027627/a0027627_supp.html
+Vista previa proporcionada por APA: https://www.researchgate.net/publication/232516015_Accuracy_of_Teachers%27_Judgments_of_Students%27_Academic_Achievement_A_Meta-Analysis
+Acceso: abstract y primera página original; no métodos/resultados completos. Confirma 75 estudios y efecto medio .63; mayor correspondencia cuando docentes disponen de información relevante para la prueba.
+Límite decisivo: correspondencia juicio–prueba mide validez/precisión relativa; no es concordancia entre docentes evaluando el mismo perfil. Por tanto, «considerable unexplained disagreement» en Pablo mezcla constructos. Un test tampoco agota toda información educativa relevante. El abstract no permite certificar todas las decisiones de agregación/escala; no calcular varianza «inexplicada» a partir de .63.
+Recomendación: ADAPTAR/OPCIONAL. Útil para «informative but imperfect»; retirar la inferencia directa a desacuerdo. Puede elegirse esta o Urhahne, sin necesidad de ambas.
+
+9. TERRIER (2020)
+Identidad: Boys lag behind: How teachers’ gender biases affect student achievement, Economics of Education Review 77, 101981. Crossref confirma volumen 77: la ficha IZA dice 71, una discrepancia secundaria que no debe copiarse.
+DOI: https://doi.org/10.1016/j.econedurev.2020.101981
+Fuente primaria de autores/institución: https://www.iza.org/en/publications/dp/10343/boys-lag-behind-how-teachers-gender-biases-affect-student-achievement
+Acceso: TEXTO COMPLETO del working paper IZA 10343 (2016), no texto final 2020: https://docs.iza.org/dp10343.pdf . Métodos/datos comprobados: 35 colegios franceses, 191 clases y 4.490 alumnos; compara calificación ciega/no ciega y relaciona diferencias por docente con progreso posterior.
+Límite: supuesto de asignación de estudiantes/docentes y medición de sesgo; contexto, materias y resultados concretos; no es experimento de género en recomendaciones de repetición. No presentar el WP como cotejo íntegro de la versión final.
+Recomendación: ADAPTAR/OPCIONAL, preferentemente discusión del resultado de género. La frase general de Pablo es prudente, pero el resultado no contradice un coeficiente experimental medio de género cercano a cero condicionado a conducta y rendimiento.
+
+10. URHAHNE Y WIJNIA (2021)
+Identidad: A review on the accuracy of teacher judgments, Educational Research Review 32, 100374; DOI, volumen y año confirmados en repositorios de las instituciones y Crossref.
+DOI: https://doi.org/10.1016/j.edurev.2020.100374
+Fuentes primarias institucionales: https://research.ou.nl/en/publications/a-review-on-the-accuracy-of-teacher-judgments/
+https://repub.eur.nl/pub/132647
+Acceso: abstract institucional; archivos adicionales de Erasmus requieren identificación; no texto completo. Evidencia: síntesis de cuatro décadas, definiciones de precisión, métodos, moderadores y tendencia a sobrestimar rendimiento en pruebas.
+Límite: revisión de precisión del juicio en diversos dominios; no estima desacuerdo experimental en decisiones de retención. El abstract acredita amplitud/metodología, pero no permite verificar cada moderador concreto que Pablo enumera.
+Recomendación: ADAPTAR/OPCIONAL como referencia general moderna, alternativa a Südkamp. Citar para distinción entre precisión y decisión educativa, sin atribuirle mediciones que no aporta. No esencial cuando el texto ya pasa directamente de creencias a antecedentes de retención.
+
+11. VALBUENA, MEDIAVILLA, CHOI Y GIL (2021)
+Identidad: Effects of grade retention policies: A literature review of empirical studies applying causal inference, Journal of Economic Surveys 35(2), 408–451. Online diciembre 2020; volumen abril 2021, por lo que año del correo correcto.
+Fuente primaria: https://onlinelibrary.wiley.com/doi/10.1111/joes.12406
+DOI: https://doi.org/10.1111/joes.12406
+Acceso: abstract editorial y referencias; TEXTO COMPLETO NO comprobado. Manuscrito institucional UAM localizado pero descarga devuelve 403: https://repositorio.uam.es/bitstreams/446e3f62-f7f1-443f-9b32-e2577845181f/download .
+Evidencia: revisión sistemática de trabajos que buscan inferencia causal; enfatiza variación por momento, grupo comparador, duración y sistema institucional. Concluye que los costes probablemente superan beneficios débiles; esta conclusión no es una estimación común causal de todas las políticas.
+Recomendación: ADOPTAR ADAPTADO, prioridad media-alta. Encaja como complemento de Allen/Goos en párrafo contingente ya presente. Pablo lo usa correctamente para heterogeneidad; no se necesita nuevo párrafo extenso ni afirmar que toda repetición es perjudicial.
+
+NOTAS DE VERIFICACIÓN Y LÍMITES PARA EL COORDINADOR
+Metadatos editoriales de diez DOI se verificaron directamente con https://api.crossref.org/works/DOI (consulta individual de cada DOI); Brañas–Jorrat dio 404 en Crossref, pero su identidad y DOI están corroborados por editor e institución. Un 404 de esa agencia no demuestra DOI inexistente. Los años online difieren de los años de volumen en Doyle, Kornfeld y Valbuena; no son errores del correo. No se han comprobado errores/correcciones editoriales mediante revisión exhaustiva.
+
+Balance: ADOPTAR ADAPTADAS Ferman, Doyle y Valbuena; OPCIONALES seis ejemplos o apoyos generales (Brañas–Jorrat, García-Pérez, Jacob–Lefgren, Manacorda, Südkamp, Terrier) y Urhahne como alternativa a Südkamp; OMITIR Kornfeld–Ochsen de la introducción. No forzar decisiones de coautoría. La selección final depende del espacio: la evidencia no exige las once. Retener como eje el problema de juicio/desacuerdo y los antecedentes de retención específicos ya disponibles.
+
+Correcciones editoriales más relevantes: (a) precisión frente a prueba no es desacuerdo entre docentes; (b) separar evidencia causal local, ajuste observacional y simulación; (c) contextualizar el nulo de Jacob en jóvenes; (d) no convertir resultados de notas/itinerarios en resultados de repetición; (e) no dar por confirmada paginación de Brañas–Jorrat; (f) cotejar, si se adopta lenguaje muy concreto, el texto final de las fuentes que aquí solo tuvieron acceso parcial. Estas son limitaciones declaradas, no resultados pendientes de reestimar.

@@ -1,0 +1,118 @@
+REVISIÓN EDITORIAL INDEPENDIENTE DE LOS DOS CORREOS Y EL DOCX DE PABLO
+Fecha: 25 de octubre de 2026. Manuscrito de referencia: paper_A_teacher_decisions.tex, baseline indicado por el coordinador 8c07f4c.
+
+ALCANCE Y COMPROBACIONES
+
+He leído y aceptado run_constraints.md. Esta revisión no modifica manuscrito, datos, código, figuras ni análisis existentes; no reestima resultados ni carga microdatos. El único archivo que escribo es este informe. No delego tareas. La comprobación bibliográfica externa corresponde a otro revisor; aquí no presento como verificadas las afirmaciones sobre artículos que solo aparecen en los correos.
+
+Fuentes primarias internas leídas: 4. Latex/paper_A/paper_A_teacher_decisions.tex; preamble.tex; tables/attributes.tex, interactions.tex, academic.tex y characterization.tex; review coautores/primer_correo.txt y segundo_correo.txt; texto DOCX verificado en 3. Output/review_pablo/docx_texto_verificado.txt y extracción completa de tablas en 3. Output/review_2026_10_24/results_docx.txt. He inspeccionado las cuatro imágenes extraídas del DOCX en tmp/pablo_review/image1.png a image4.png y las figuras actuales harshness_distribution.png y variance_partition.png. He leído también la conversación de contexto; no la trato como prueba de que sus propuestas previas deban adoptarse. El tercer correo está indicado como vacío y no aporta una tercera propuesta.
+
+DICTAMEN
+
+La mayor aportación de Pablo es narrativa: hace visible una secuencia de preguntas y distingue criterios medios, casos controvertidos y diferencias entre docentes. Recomiendo adaptar esa claridad, conservar la arquitectura conceptual y la reconstrucción analítica actuales, y seleccionar dos cambios visuales con mérito propio: un gráfico de coeficientes de los seis atributos y un gráfico académico de dos paneles. No recomiendo incorporar el DOCX en bloque. Contiene números de otra muestra, una conclusión sobre la interacción con disciplina incompatible con la tabla actual y un pie de figura que promete intervalos que la imagen no dibuja.
+
+La ventaja de estas dos figuras no implica que todas las tablas sean inferiores: la tabla de caracterización permite comparar especificaciones y errores estándar con mucha más economía que una figura de numerosos coeficientes. Los terciles mantienen una función descriptiva distinta y una preferencia previa explícita del usuario; su permanencia en el cuerpo es defendible, siempre con la advertencia de que se construyen con las mismas respuestas. El histograma y la figura de varianza actuales ya hacen bien su trabajo y no necesitan el formato de diapositiva del DOCX.
+
+1. COMPARACIÓN DE LOS DOS CORREOS CON LA INTRODUCCIÓN ACTUAL
+
+1.1 Qué cambia realmente entre los correos
+
+El primer correo propone una introducción ampliada con literatura y tres preguntas integradas en un párrafo; al final enumera once referencias que habría que añadir. El segundo conserva gran parte de esa introducción, elimina el párrafo de las tres preguntas y añade una sección independiente con cuatro RQ. RQ1 se refiere a los atributos; RQ2 separa su combinación e interacciones; RQ3 aborda desacuerdo y severidad; RQ4 conecta características docentes y componentes de variación. No hay contradicción sustantiva necesaria entre tres patrones narrativos, cuatro preguntas y tres subsecciones empíricas: son niveles de organización distintos.
+
+La versión actual ya incorpora cuatro preguntas en el párrafo de contribución y enlaza las dos primeras con los resultados dentro de docentes, la tercera con el análisis entre docentes y la cuarta con caracterización y descomposición. Por ello no debe presentarse una nueva sección RQ como una innovación indispensable ausente en el manuscrito.
+
+1.2 Adoptar / adaptar / mantener / rechazar
+
+ADAPTAR el arranque de importancia educativa. La introducción de Pablo explica más claramente por qué la decisión importa antes de entrar en el método. Puede añadirse un párrafo breve sobre consecuencias y heterogeneidad de efectos, sujeto a la verificación de cada fuente. Su apertura extensa corre el riesgo de convertir la motivación en una revisión sobre las consecuencias de repetir, una pregunta que este estudio no identifica. La introducción actual, en cambio, llega pronto a la contribución de medición. La mejor combinación conserva ese foco y añade importancia sustantiva sin trasladar todos los antecedentes.
+
+ADAPTAR la distinción entre diagnóstico y respuesta. Ambos correos la expresan con claridad: identificar dificultades no implica creer que repetir sea la mejor intervención. La versión actual ya la desarrolla y la vincula al marco q/g/c. Conviene conservar esa continuidad, evitando presentar la formulación de Pablo como sustitución necesaria de la teoría.
+
+MANTENER la comparación actual con Klapproth y Beyte. El manuscrito especifica 146 participantes, 108 en formación y 38 en ejercicio, explica los atributos y reconoce que su cuestionario mide actitudes sobre repetición con más intensidad. Esa comparación es más equilibrada que limitarse a destacar mayor tamaño y docentes en ejercicio. La exactitud bibliográfica y muestral final necesita la verificación externa asignada a otro agente.
+
+ADAPTAR las cuatro RQ del segundo correo a un párrafo o una lista muy breve dentro de la introducción. Una sección nueva es defendible si una revista la favorece, pero no mejora por sí misma la identificación ni exige cinco subsecciones de resultados. Mi preferencia editorial aquí es mantener la integración actual, afinando el lenguaje.
+
+RECHAZAR el uso sin matices de «causal effect of each experimentally varied student attribute» en RQ1. El diseño actual describe conjuntos prefijados, 56 perfiles y atributos que no son sorteos factoriales independientes; los coeficientes son contrastes condicionales sobre el soporte implementado y bajo la especificación adoptada. La asignación aleatoria de conjuntos ayuda, pero no convierte automáticamente cada coeficiente aditivo en un efecto marginal general de un factorial completo. La redacción actual sobre «conditional contrasts» es más precisa y debe gobernar también introducción, títulos de figura y preguntas.
+
+RECHAZAR el traslado de «what explains variation» a una lectura causal. Las características docentes no se asignan al azar, las creencias se preguntan después y harshness procede de las mismas respuestas. Puede hablarse de asociaciones y estructura representada. El texto actual documenta estas limitaciones mejor que un resumen introductorio aislado.
+
+ADAPTAR el bloque sobre precisión de juicios docentes. Una correlación entre valoraciones docentes y pruebas estandarizadas no equivale al desacuerdo entre docentes ante un mismo perfil ni demuestra que una recomendación de repetición sea errónea. Si se incorpora esa literatura, debe explicarse que motiva el interés en el juicio, sin confundir precisión frente a un criterio externo, diferencias en calificaciones y desacuerdo experimental sobre una intervención. La verificación del valor .63 y de sus condiciones queda para el informe bibliográfico.
+
+MANTENER el límite actual frente a brechas poblacionales. Un coeficiente pequeño de género y negativo de contexto complejo sobre perfiles comparables no descarta sesgo en otros procesos ni demuestra de dónde proceden las brechas reales. La formulación de Pablo «our results do not imply ... aggregate disparities are absent» mejora la claridad y puede adaptarse, pero ninguna de las dos versiones identifica una mediación de las brechas.
+
+2. COMPARACIÓN DETALLADA DEL DOCX CON LOS RESULTADOS ACTUALES
+
+2.1 Párrafo de apertura
+
+ADOPTAR la función de un párrafo de tres patrones al inicio de resultados, adaptando su grado de certeza. Orienta al lector antes de las cifras y conecta secciones. Cambiaría «a broadly shared hierarchy» o «common decision rule» por «the average recommendations show a clear hierarchy»: los coeficientes medios no prueban que cada docente use esa jerarquía, y precisamente existen sensibilidades heterogéneas. No hace falta atribuir un mecanismo común individual para describir una regularidad media.
+
+2.2 DOCX 5.1: jerarquía de atributos
+
+ADAPTAR el gráfico de coeficientes como visual principal de este bloque. El lector ve inmediatamente la diferencia entre efectos académicos, conductuales y sociodemográficos. La imagen original (image1; Figura 2 en el DOCX) sí tiene puntos y barras cortas de intervalo, y organiza bien la comparación de magnitudes. Debe producirse con los resultados actuales, sin copiar cifras antiguas y sin el gran título interno pensado para una presentación. El pie debe identificar modelo aditivo, unidades, referencia de los atributos y EE agrupados por docente. Mantener la tabla completa con EE y estrellas en un apéndice conserva precisión y trazabilidad.
+
+No considero que el cambio sea obligatorio. La Tabla 1 actual tiene solo seis filas y es legible; puede retenerse si el espacio o el estilo de revista favorecen tablas. La ganancia del gráfico consiste en comunicar jerarquía y distancia de cero, no en corregir una deficiencia estadística de la tabla. No duplicaría ambas versiones completas en el cuerpo.
+
+MANTENER visible el análisis de interacciones. El DOCX lo relega al final de 5.1 y remite la tabla completa al apéndice. La versión actual concede una tabla principal porque las interacciones responden a una de las cuatro preguntas y conectan con señales en conflicto. Esa función científica justifica mantenerla; si hubiera una restricción fuerte de espacio, un resumen preciso en el cuerpo y tabla apéndice sería una alternativa, no la opción automática.
+
+RECHAZAR la frase del DOCX «the interactions ... with absence and disciplinary problems are small and imprecisely estimated» para la muestra actual: failures × discipline = 2.18 pp (EE 0.92), con estrella basada en Holm según interactions.tex. El manuscrito actual dice correctamente que sobrevive el ajuste. La interacción académica pasa de 10.56 en el DOCX a 11.07 pp; el efecto simple de competencias en la categoría con varios suspensos sería la suma de términos de la tabla actual, no 32.22 copiado del DOCX. Son cambios de resultados, no elecciones de estilo.
+
+2.3 DOCX 5.2: dónde se debilita el consenso
+
+ADAPTAR el formato de dos paneles para sustituir como visual principal la tabla académica actual: un panel de tasa de recomendación y otro de desacuerdo, mismas cuatro filas y etiquetas académicas explícitas. Es una mejora sustantiva porque facilita reconocer la asimetría entre las dos categorías de señales discordantes. La tabla con tasas, EE y desacuerdo puede conservarse en el apéndice. Si se prefiere compactar, la tabla actual también es científicamente válida; no debe descartarse por ser tabla.
+
+CORRECCIÓN INDISPENSABLE si se usa la propuesta gráfica: en image2 (Figura 3 del DOCX), las líneas horizontales parten de cero y terminan en los puntos. Son segmentos de un gráfico tipo lollipop, no intervalos de confianza. El pie, sin embargo, dice que las tasas tienen IC95% basados en EE agrupados. Es una discordancia comprobada visualmente. En el panel de tasas deben mostrarse verdaderos intervalos derivados de los resultados disponibles o retirarse la promesa de intervalos; no presentar el tramo cero-punto como incertidumbre. El panel de desacuerdo no tiene EE documentados en la tabla académica actual: no debe inventarse una precisión para ese panel. No he calculado intervalos ni estimaciones nuevas.
+
+MANTENER dos advertencias del DOCX: otras características no están estandarizadas entre las cuatro categorías; desacuerdo no es evidencia independiente de polarización. Afinar la segunda: el desacuerdo se calcula dentro del perfil completo y se promedia por frecuencia dentro de cada categoría académica. Por eso la media de desacuerdo no es, en general, 2 por la tasa de retención agregada por (1 menos esa tasa). Para pares distintos dentro de un perfil se usa la correspondiente corrección de población finita. No convertir el gráfico en una nueva prueba separada de polarización o de mecanismos.
+
+RECHAZAR «virtually no shared recommendation». Un desacuerdo de 49.1% significa que aproximadamente la mitad de los pares discrepa y la otra mitad coincide. Lo defendible es «no clear majority for either recommendation» o «teachers are almost evenly divided in this category». Tampoco afirmaría que el estudiante «has failed the formal academic requirement»: ≥3 asignaturas suspensas es información del perfil, no una regla jurídica o institucional de promoción probada en esta revisión.
+
+ADAPTAR «disagreement emerges primarily when ... conflict». El patrón es gradual: la categoría con ambas dificultades conserva alrededor de 24% de desacuerdo. El contraste con el máximo de casi 49% es importante, pero no equivale a ausencia de discrepancias cuando las señales coinciden. Además, el máximo académico describe cuatro categorías observadas; llamarlo «the central source of disagreement» no demuestra una descomposición causal de todos los orígenes del desacuerdo.
+
+2.4 DOCX 5.3: distribución de harshness
+
+MANTENER la figura actual de barras sólidas con bins centrados en cero. La distribución es legible, incluye eje X con unidades y el pie explicita 2,604 docentes, igual peso y el ancho de 12.5 pp. La imagen del DOCX tiene un encabezado y subtítulo muy grandes, amplio espacio en blanco y un marco de gráfico incrustado; no gana información analítica. La preferencia previa por esta figura actual se sostiene también por estos méritos, no solo por precedencia.
+
+ADAPTAR las cautelas del DOCX sobre respuestas finitas, tipos no inmutables y ausencia de valoración de corrección educativa. La versión actual ya evita equiparar la cola izquierda con oposición general a la repetición. Hay que distinguir dispersión observada de evidencia de rasgos psicológicos permanentes: con hasta ocho respuestas no se separan completamente señal y variabilidad de medición. «Consistently» o «persistent» pueden exagerar estabilidad si no se limita expresamente al patrón de la muestra.
+
+MANTENER los terciles en el cuerpo, según la preferencia explícita previa del usuario y su función: resumen de características y variación de pendientes, distinta del histograma. El DOCX los reduce a una frase de medias y pierde el contraste de criterios que la versión actual exhibe. No recomendarlos como identificación de tipos ni como comprobación independiente de heterogeneidad: las agrupaciones proceden del mismo resultado. El texto actual contiene esa cautela y debe mantenerse. Si la extensión exigiera recortar, podría evaluarse mover solo el cuadro demográfico al apéndice antes de eliminar automáticamente el análisis de pendientes; esta es una opción editorial, no una instrucción de traslado.
+
+2.5 DOCX 5.4: características y creencias
+
+MANTENER la tabla de tres especificaciones en el cuerpo. Comparar columnas, constancia de muestra y R² es el objetivo de este bloque; un gráfico de numerosos coeficientes de variables con escalas distintas complicaría esa lectura. ADAPTAR las etiquetas más descriptivas del DOCX para las columnas en lugar de depender solo de X1–X3; cabe conservar las siglas con explicación breve.
+
+ADOPTAR o hacer más visible la observación del DOCX de que las creencias se preguntaron después de decidir. Ya está en el diseño y puede reiterarse una sola vez junto a las asociaciones. Su utilidad es prevenir una lectura causal, no desacreditar asociaciones descriptivas válidas.
+
+RECHAZAR las cifras antiguas de R² 2.70/3.03/4.82 y N=2,157 como actualización del manuscrito. La tabla actual da 2.58/2.88/4.68 y N=2,164. El coeficiente de etapa en X3 pasa de 3.33 a 3.43; edad pasa de -0.30 a -0.27. El coeficiente de recursos permanece 0.88 y la comparación de cinco puntos sigue siendo aproximadamente 4.4 pp. Esta última ilustra la escala sin cambiar el análisis.
+
+2.6 DOCX 5.5: estructura de variación
+
+MANTENER la figura actual de varianza. Ya combina la barra de composición y los puntos con un EE bootstrap, informa seis componentes y conserva la lectura conjunta. El estilo del DOCX es más propio de una diapositiva, pero no introduce un estadístico o interpretación superior. Pueden adaptarse detalles menores de espaciado o rótulos si una revisión de maqueta real lo justifica; no hay motivo científico para rediseñarla de nuevo.
+
+ADOPTAR la advertencia explícita del DOCX sobre harshness construida a partir de las mismas decisiones. El manuscrito actual ya la explica en método, pie, resultados y apéndice; no es una corrección pendiente de principio, aunque conviene preservar su visibilidad. «In-sample» es esencial. Evitar interpretar 12.78% como efecto causal de una característica medida antes de la tarea, o 79.88% como exactitud predictiva.
+
+RECHAZAR los valores DOCX 48.63/0.18/0.17/12.70/17.10/21.22 para reemplazar los actuales 47.93/0.18/0.18/12.78/18.80/20.12. Las dos figuras tienen diseño parecido y cuentas de modelos distintos; su similitud visual no autoriza intercambiar resultados. El DOCX habla de información «persistent»: preferir «structure in the recorded responses» para no inferir persistencia temporal ni validación fuera de muestra.
+
+3. TRES O CINCO SUBSECCIONES DE RESULTADOS
+
+MANTENER tres bloques como recomendación principal: (1) respuesta a atributos e interacciones dentro de docente; (2) diferencias entre docentes, empezando por harshness, después casos controvertidos y terciles; (3) caracterización y descomposición. La secuencia respeta la preferencia previa de introducir harshness primero dentro del bloque entre docentes, define la magnitud antes de usarla y evita cinco unidades relativamente cortas con rupturas de flotantes. El preámbulo actual fuerza barrera de flotantes en cada subsección, por lo que aumentar a cinco también puede aumentar espacios y saltos; es una consideración de maquetación, no una razón científica decisiva.
+
+ADAPTAR las frases de transición y el resumen inicial del DOCX. Así se conserva su ventaja de lectura sin imponer su división. Si se valoraran cinco subsecciones por una exigencia externa, todas son defendibles, pero habría que invertir 5.2 y 5.3 para mantener harshness primero, o explicar por qué se revisa esa preferencia. No hay obligación de que el número de RQ coincida con el número de subsecciones: RQ1 y RQ2 comparten estimación y RQ4 agrupa dos escalas de análisis.
+
+4. RETENCIÓN DEL MARCO TEÓRICO
+
+MANTENER el marco breve q(x)g(x)>c(x). Su función es diferenciar diagnóstico, beneficio de repetir y coste de repetir, e interpretar por qué la misma señal podría producir recomendaciones distintas. Los correos nuevos presentan preguntas, pero no aportan una identificación alternativa ni una razón demostrada para suprimir el marco. Tampoco consta en esos dos textos una instrucción explícita de eliminarlo; no atribuir esa exigencia a Pablo por el mero hecho de proponer una sección RQ.
+
+ADAPTAR su extensión si interesa aligerar: conservar regla, significado y tres implicaciones, evitando repetir toda la motivación de la introducción. Debe permanecer la frase actual que reconoce que los datos no identifican q, g y c separadamente. RECHAZAR cualquier lectura según la cual la interacción académica prueba un cálculo coste-beneficio específico, el coeficiente de contexto identifica empatía o harshness identifica un umbral estructural estable. Son interpretaciones compatibles, no mecanismos demostrados.
+
+5. PRIORIZACIÓN PARA UNA DECISIÓN COLECTIVA
+
+Prioridad 1, necesaria: conservar el baseline reconstruido y corregir la incompatibilidad de la interacción con disciplina si se reutiliza prosa del DOCX; evitar cifras antiguas; corregir la falsa representación de IC en Figura 3 si se usa. Estas son cuestiones de coherencia y precisión.
+
+Prioridad 2, recomendada: adaptar el párrafo guía de tres resultados, un gráfico de coeficientes con seis atributos y un gráfico académico de dos paneles con incertidumbre correctamente rotulada. Mantener tablas completas de respaldo en apéndice si se seleccionan los gráficos. Se puede aceptar uno sin aceptar el otro.
+
+Prioridad 3, mantener: teoría breve, tres bloques, harshness primero en el bloque entre docentes, terciles principales con cautela, tabla de caracterización, histograma actual y figura de varianza actual. El mérito de estos elementos se ha reconsiderado; no se conservan por inercia.
+
+Prioridad 4, opcional y condicionada a la verificación bibliográfica: ampliar moderadamente la motivación y seleccionar antecedentes de juicio docente que expliquen exactamente la contribución. Once referencias nuevas no significan once incorporaciones obligatorias. El otro informe debe decidir qué afirmaciones apoyan directamente y con qué límites.
+
+LÍMITES DE ESTA REVISIÓN
+
+He verificado diferencias de texto, cifras presentes en los archivos y propiedades visibles de las imágenes. No he reproducido estimaciones ni validado el contenido causal de artículos externos, ni comprobado fuentes legales sobre promoción. Las diferencias numéricas describen los documentos; no prueban que el DOCX fuese erróneo para su muestra anterior. La recomendación se refiere al manuscrito actual. Esta revisión proporciona decisiones argumentadas para el coordinador; no adopta cambios por cuenta de los autores.

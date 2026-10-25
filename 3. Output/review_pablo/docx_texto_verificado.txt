@@ -1,0 +1,91 @@
+Results Section for Why Me Understanding Teachers Grade Retention Decisions
+
+5 Results
+
+The results reveal three main patterns. First, teachers rely on a broadly shared hierarchy of student information, dominated by failed subjects and basic competences. Second, this common decision rule does not always produce consensus: disagreement becomes particularly pronounced when formal academic performance and demonstrated competences point in different directions. Third, teachers differ substantially in their overall propensity to recommend retention, but their observed professional characteristics and reported beliefs explain little of that variation.
+
+5.1 A common hierarchy of student information
+
+Figure 2 reports the within-teacher estimates. Because the models include teacher fixed effects, the coefficients compare recommendations made by the same teacher across student profiles with different characteristics.
+
+Academic information dominates the decision. A student with three or more failed subjects is 54.62 percentage points more likely to be recommended for retention than an otherwise comparable student with fewer failures. Low basic competences increase this probability by a further 27.07 percentage points. The magnitude of these coefficients indicates that teachers distinguish between two related but conceptually different signals: whether the student has formally passed the required subjects and whether the student appears to possess the competences needed to progress.
+
+Attendance and conduct also enter the decision, although their associations are considerably smaller. Frequent unjustified absence increases the probability of a retention recommendation by 6.37 percentage points, while serious disciplinary problems increase it by 4.56 points. Teachers therefore consider information beyond narrowly defined academic performance, but these additional dimensions do not approach the importance of failures and competences.
+
+By contrast, student gender has essentially no association with the recommendation. The coefficient for a male student is 0.26 percentage points and is not statistically distinguishable from zero. A complex social background reduces the probability of a retention recommendation by 1.88 percentage points. This small negative association is consistent with teachers responding somewhat more leniently when academic difficulties occur in adverse social circumstances.
+
+This result should not be interpreted as evidence that social background is unimportant in actual retention outcomes. The experiment isolates teachers' direct response to the information stated in the profile, holding the remaining attributes constant. It does not capture the many pathways through which social disadvantage may affect attendance, competences, academic performance and ultimately grade retention.
+
+
+
+Figure 2. Within-teacher associations between student attributes and retention recommendations. Coefficients are percentage-point changes from an additive linear probability model with teacher fixed effects. Bars report 95% confidence intervals based on standard errors clustered at the teacher level. The analysis contains 22,006 decisions from 2,587 teachers.
+
+The interaction specification provides an important qualification to these additive results. Failed subjects and low competences reinforce one another. When the student has fewer than three failed subjects, low competences increase the probability of retention by 21.66 percentage points. When the student has three or more failures, the corresponding increase is approximately 32.22 points. The interaction between the two academic indicators is 10.56 percentage points and remains statistically significant after adjusting for the three interaction tests.
+
+By contrast, the interactions of failed subjects with absence and disciplinary problems are small and imprecisely estimated. The principal regularity is therefore not simply that academic information matters. Teachers respond especially strongly when formal performance and basic competences provide mutually reinforcing evidence that the student may not be ready to progress. The complete additive and interaction specifications are reported in Appendix Table A1.
+
+5.2 When does the common rule cease to produce consensus
+
+Large average coefficients need not imply that teachers agree on individual cases. To locate the boundary between consensus and disagreement, Figure 3 reports the observed retention rate and the probability of disagreement between two teachers evaluating the same recorded profile, separately for the four combinations of failed subjects and basic competences.
+
+When neither academic problem is present, recommendations are nearly unanimous: only 3.04 percent of decisions favor retention, and two teachers evaluating the same profile disagree in 5.81 percent of comparisons. When both problems are present, 85.54 percent recommend retention. Disagreement rises to 24.67 percent, but there remains a clear majority in favor of repetition.
+
+The two conflicting-signal conditions produce a markedly different pattern. When a student has low competences but fewer than three failed subjects, 23.79 percent of teachers recommend retention and pairwise disagreement reaches 35.60 percent. When a student has three or more failed subjects but adequate competences, the retention rate is 51.52 percent and disagreement reaches 49.11 percent.
+
+
+
+Figure 3. Retention recommendations and same-profile disagreement across the four combinations of failed subjects and basic competences. Retention rates are observed category means; error bars report 95% confidence intervals based on teacher-clustered standard errors. Disagreement is the probability that two distinct teachers evaluating the same recorded profile provide different recommendations. The remaining student attributes are not standardized across the four categories.
+
+The combination of failed subjects and adequate competences constitutes the clearest decision boundary in the experiment. The student has failed the formal academic requirement but appears to possess the competences needed to progress. Teachers divide almost evenly over whether repetition is the appropriate response.
+
+The 49.11 percent disagreement rate should be interpreted carefully. Pairwise disagreement is mechanically maximized when the proportion recommending retention is close to one half. It is therefore not an additional, independent measure of polarization. Rather, it provides an intuitive representation of the substantive result: for this particular configuration, the available information generates virtually no shared recommendation among teachers.
+
+Across all recorded profiles, the frequency-weighted probability of same-profile disagreement is 25.89 percent. This aggregate figure nevertheless conceals substantial variation. Teachers largely agree when the two academic signals point in the same direction; disagreement emerges primarily when formal performance and competences conflict.
+
+5.3 Teachers differ in their general propensity to recommend retention
+
+Disagreement on a particular profile does not necessarily imply that some teachers are systematically more inclined to recommend retention than others. We therefore examine teachers' general propensity to recommend retention using the same-profile-adjusted harshness measure defined in Section 4.
+
+Figure 4 shows substantial dispersion around zero. Some teachers recommend retention considerably less often than other teachers evaluating the same profiles, while others consistently recommend it more often. For descriptive purposes, mean harshness is -22.95 percentage points in the lower third of the distribution and 18.77 points in the upper third.
+
+
+
+Figure 4. Distribution of same-profile-adjusted harshness among 2,705 teachers. Negative values indicate fewer retention recommendations than those made by other teachers evaluating the same recorded profiles; positive values indicate more. Each teacher receives equal weight.
+
+These differences should not be interpreted as immutable teacher types. Each teacher evaluates only a limited number of profiles, so the measure necessarily contains sampling variability. Moreover, harshness denotes a relative tendency to recommend retention and does not imply that a recommendation is educationally incorrect. Nevertheless, the distribution indicates that comparable student information does not fully determine the recommendation: teachers also differ in the threshold at which they consider repetition appropriate.
+
+Overall harshness and attribute-specific sensitivity are conceptually distinct. Two teachers may recommend retention equally often while responding differently to failed subjects, absence or disciplinary problems. Conversely, two teachers may place similar relative weight on the student attributes but use different overall thresholds. A complete account of teacher heterogeneity must therefore allow for both possibilities.
+
+5.4 Can observed teacher characteristics explain these differences
+
+Table 1 examines whether teachers' professional characteristics, demographics and reported beliefs predict their relative propensity to recommend retention. The principal result is the limited explanatory power of the observed variables.
+
+Professional and demographic characteristics account for 2.70 percent of the variation in harshness. Adding perceived teacher impact, empathy and beliefs about the role of effort increases the R² only to 3.03 percent. The full specification, which also includes beliefs about the resources allocated to repeating students, explains 4.82 percent.
+
+
+
+Table 1. Observed characteristics associated with teacher harshness. Coefficients are percentage points; HC3 robust standard errors are in parentheses. All specifications use the same 2,157 complete cases and include a constant. Age and experience enter jointly. * p < .05, ** p < .01, *** p < .001.
+
+A small number of associations are precisely estimated. In the full specification, secondary-school teachers score 3.33 percentage points higher on harshness than primary-school teachers. Conditional on teaching experience and the remaining covariates, an additional year of age is associated with a reduction of 0.30 percentage points. Teaching experience itself has a small and statistically uncertain coefficient.
+
+The clearest belief correlate is agreement with the statement that too many resources are allocated to students who repeat. A one-point increase on the 0-10 scale is associated with an increase of 0.88 percentage points in harshness. Thus, a five-point difference in this belief corresponds to approximately 4.4 percentage points in the relative probability of recommending retention.
+
+The association with effort attribution becomes smaller and statistically uncertain once beliefs about resources are included. Perceived teacher impact and empathy contribute little, as do teacher gender, school ownership, permanent employment status and number of teaching groups.
+
+These coefficients are descriptive rather than causal. Teacher characteristics were not experimentally assigned, and the belief questions were answered after the profile decisions. More importantly, the overall R² shows that even the complete set of observed characteristics provides little information about which teachers will be relatively more likely to recommend retention.
+
+5.5 Common information and teacher-specific judgment
+
+The final analysis summarizes how the observed variation in recommendations is distributed between student information, measured teacher characteristics and teacher-specific patterns of judgment.
+
+Student attributes and their pairwise interactions account for 48.63 percent of model-implied variation. Professional and demographic characteristics account for 0.18 percent, while reported beliefs account for 0.17 percent. Differences in teachers' responses to particular student attributes account for a further 17.10 percent, and 21.22 percent remains as decision-level variation.
+
+The current specification also assigns 12.70 percent to observed harshness. This component requires a particularly cautious interpretation because harshness is constructed from the same recommendations being decomposed. It therefore represents persistent in-sample information contained in teachers' answers, not an independently measured characteristic or a demonstrated predictor of how a new teacher would decide.
+
+
+
+Figure 5. Descriptive allocation of model-implied variation in recorded recommendations. Points report estimated shares and bars report one teacher-bootstrap standard error based on 199 resamples. The shares sum to 100 percent. Because observed harshness is constructed from the same recommendations, its contribution describes in-sample structure and should not be interpreted as independent predictive power.
+
+Taken together, the results distinguish three elements of the decision. Student attributes generate a strong common structure, particularly through failed subjects and basic competences. Teachers nevertheless differ both in their overall willingness to recommend retention and in the weight they attach to particular attributes. The professional characteristics and beliefs measured in the survey explain very little of these teacher-level differences.
+
+The central source of disagreement is therefore not whether academic information matters. Teachers overwhelmingly respond to failures and competences. What differs is how they resolve cases in which those signals conflict and where they place the threshold at which repetition becomes the preferred educational response.

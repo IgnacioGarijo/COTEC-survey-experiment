@@ -1,0 +1,120 @@
+RELECTURA DE LAS PROPUESTAS DE PABLO FRENTE AL MANUSCRITO ACTUAL
+25 de octubre de 2026
+
+Alcance: decisión editorial y científica, sin modificar el manuscrito ni reestimar. Comparación con la versión 8c07f4c, los dos correos y el DOCX results_section_with_figures.docx, incluido su contenido gráfico original. El tercer correo está vacío. Se distinguen propuestas nuevas, elementos ya presentes y afirmaciones que necesitan corrección. La bibliografía se evalúa por su contribución al argumento, no por añadir citas.
+
+1. DICTAMEN
+
+Pablo mejora sobre todo dos cosas: la motivación inicial —por qué importa estudiar esta decisión— y la presentación visual de los resultados centrales. Nuestro manuscrito es más completo en diseño, reconstrucción, marco conceptual y diagnóstico econométrico, y conserva análisis de terciles que el DOCX omite. Recomiendo combinar esas ventajas: adoptar selectivamente la motivación y literatura de los correos y dos recursos gráficos del DOCX, sin sustituir su texto completo ni reabrir el modelo estadístico por una propuesta de redacción.
+
+La revisión anterior fue demasiado conservadora al descartar de hecho la nueva literatura y mantener automáticamente las tablas. No obstante, incorporar el DOCX literalmente empeoraría algunas interpretaciones y reintroduciría cifras de una muestra antigua. El objetivo no debe ser aumentar la cantidad de cambios, sino hacer más visibles las contribuciones que los datos permiten defender.
+
+2. INTRODUCCIÓN: QUÉ CAMBIARÍA Y QUÉ CONSERVARÍA
+
+A. Cambiaría el arranque. Actualmente empieza clasificando las fuentes de la recomendación; Pablo empieza por la relevancia de decidir quién repite. Su orden es más eficaz para un lector nuevo. Propongo un párrafo breve: repetir modifica la trayectoria educativa y puede tener consecuencias académicas y sociales; sus efectos varían; por eso importa entender cómo se llega a recomendarlo. Evitaría una lista larga de daños y no convertiría evidencia de contextos concretos en una condena general de la repetición.
+
+B. Añadiría el eslabón bibliográfico que falta: los docentes no solo evalúan rendimiento; interpretan información académica, conducta y contexto. Los antecedentes sobre evaluación y promoción permiten explicar mejor por qué nuestras seis dimensiones y la separación entre suspensos y competencias son relevantes. Este es el aporte más valioso de la nueva bibliografía. No basta con añadirla a una enumeración de referencias: cada cita debe preparar un resultado o una interpretación posterior.
+
+C. Conservaría el contraste detallado con Klapproth y Beyte. Nuestro texto explica con más precisión que el correo las diferencias en participantes, atributos y creencias. No lo reduciría a «muestra más grande»: la contribución sustantiva es estudiar señales académicas que pueden divergir, conducta y contexto, y conectar esos perfiles con diferencias entre profesores.
+
+D. Mantendría la literatura integrada en la introducción y revisaría transiciones heredadas de una sección separada, como el actual «a second foundation», solo cuando ya no ayuden. No es un error conceptual: es una elección estilística opcional. La estructura sería: relevancia de la decisión; juicios docentes y antecedente cercano; qué permite nuestro diseño; cuatro preguntas en un párrafo; principales hallazgos y contribución. No copiaría los numerosos párrafos de resultados de los correos: anticipar todas las cifras en la introducción resta fuerza a la sección de resultados.
+
+E. Mantendría las cuatro preguntas dentro de la introducción. Separar la importancia de atributos de la combinación de señales mejora el mapa del artículo; crear una sección adicional con cuatro explicaciones extensas repite lo que ya harán los métodos y resultados. Las cuatro preguntas caben en nuestros tres bloques: las dos primeras pertenecen al análisis dentro de profesor.
+
+F. Mantendría el modelo q(x,z,eta)g(x,z,eta)>c(x,z,eta), actualmente en 3.1, página 5. El DOCX solo reescribe resultados y no propone un sustituto teórico. La distinción de Pablo entre estar preparado para progresar y que repetir sea una respuesta apropiada encaja con nuestro modelo y ya está recogida. No añade una nueva estructura identificada. El marco debe seguir interpretando las señales, sin presentar q, g y c como mecanismos estimados.
+
+3. COMPARACIÓN DETALLADA CON EL DOCX FINAL
+
+5.1 DE PABLO: JERARQUÍA DE ATRIBUTOS E INTERACCIONES
+Equivalente actual: 4.1, tablas 1 y 2.
+Coincidencia: ambas versiones distinguen suspensos de competencias, reconocen conducta y asistencia, y contrastan género/contexto con diferencias poblacionales. La mayor parte de la interpretación ya existe; copiar párrafos no añade contenido.
+Mejora que adoptaría: sustituir la tabla aditiva del cuerpo por un gráfico horizontal de los seis coeficientes, con cero visible, nombres comprensibles y estimaciones numéricas. Muestra inmediatamente la jerarquía y el signo del contexto. Usaría un eje común: como los dos efectos académicos dominan la escala, las etiquetas numéricas deben permitir leer los efectos pequeños sin un recorte que exagere sus tamaños. La tabla exacta con SE y estrellas pasaría al anexo. También trasladaría allí la tabla completa de interacciones, conservando en el texto su resultado principal y el efecto condicional de competencias.
+No copiaría: cifras antiguas, la afirmación de que las dos interacciones conductuales son imprecisas, ni tratar «tres suspensos» como incumplir automáticamente un requisito legal de promoción. Con B, la interacción suspensos–competencias es 11,07 puntos; suspensos–disciplina es 2,18 y supera Holm. La contribución condicional de competencias pasa aproximadamente de 21,45 a 32,52 puntos: esta explicación es más intuitiva que dejar solo el término de interacción. La precisión de una suma de coeficientes requeriría su covarianza si se quisiera acompañarla de un error estándar propio; no sumaría los SE.
+
+5.2 DE PABLO: CASOS EN QUE DISMINUYE EL CONSENSO
+Equivalente actual: parte de 4.2 y tabla 3.
+Mejora que adoptaría: gráfico de dos paneles con las cuatro combinaciones académicas, mostrando recomendación y desacuerdo sobre el mismo perfil. Las filas sombreadas para señales discordantes ayudan a entender la contribución. Sustituiría la tabla en el cuerpo y conservaría sus cifras y SE en el anexo, sin duplicar ambos formatos en el cuerpo. Las escalas y las unidades de cada panel deben ser explícitas; ambos muestran porcentajes, pero son magnitudes distintas. Mantendría la nota de que los restantes atributos no están estandarizados entre categorías: este gráfico descriptivo no sustituye a los coeficientes ajustados del primer bloque.
+Corrección visual necesaria: en la imagen original del DOCX los segmentos van desde cero hasta el punto. Son elementos de un gráfico tipo lollipop, no intervalos de confianza. El pie promete IC95% para las tasas. Hay que reconstruirlo con las cifras B y una leyenda que corresponda a lo dibujado; no reutilizar esa imagen.
+Corrección sustantiva: recomendar repetición en torno al 50% de las observaciones de una categoría no prueba por sí solo desacuerdo ante cada perfil. Una categoría podría combinar perfiles con consenso opuesto. Nuestro desacuerdo se calcula dentro de cada perfil de seis atributos y después se promedia. Por eso aporta información respecto de la tasa agregada de la categoría. No adoptaría literalmente la frase de Pablo que lo presenta como una medida enteramente redundante.
+La relación mecánica sí existe dentro de un perfil: si p es su tasa, el desacuerdo entre dos personas distintas es 2p(1-p)n/(n-1). Al agregar perfiles, no equivale en general a aplicar esa fórmula a la tasa agregada. Basta una frase clara en el paper; esta fórmula no necesita un nuevo apéndice.
+Tampoco escribiría «virtually no shared recommendation», «la frontera» como si fuese un umbral estimado, o que el desacuerdo solo emerge con señales conflictivas. Con ambos problemas académicos todavía hay 24,33% de desacuerdo; con suspensos y competencias adecuadas alcanza 49,12%. Son casos especialmente divididos, no ausencia de criterios comunes ni demostración de polarización en tipos docentes.
+
+5.3 DE PABLO: HARSHNESS
+Equivalente actual: comienzo de 4.2, figura 2 y tablas 4–5.
+Mantendría nuestro histograma de barras sólidas y anchas. El suyo representa esencialmente lo mismo y no justifica sustituir una elección ya legible. Actualizar estética no añade evidencia. La explicación de medida relativa y ruido por pocas respuestas ya está en nuestro texto; mantendría esa explicación una vez.
+El DOCX omite las tablas de terciles. No adoptaría esa omisión automáticamente: la tabla de pendientes por tercil muestra de forma accesible que la jerarquía media no agota las diferencias observadas y responde a una preferencia sustantiva expresa del autor. La mantendría en el cuerpo, con la precisión ya existente de que los grupos se forman con las mismas respuestas y son descriptivos. La tabla de características de terciles también puede mantenerse: no es equivalente a las regresiones condicionales. Si fuera necesario reducir extensión, esta última sería candidata secundaria para el anexo antes que la de pendientes; no recomiendo retirarla como parte imprescindible de esta revisión.
+No trasladaría harshness detrás de todo el análisis de desacuerdo solo para imitar el DOCX. La secuencia actual —harshness y distribución, casos divididos, terciles— es coherente y fue una decisión explícita del autor. El gráfico académico puede introducirse inmediatamente después del histograma sin crear dos nuevas subsecciones.
+
+5.4 DE PABLO: CARACTERÍSTICAS DOCENTES
+Equivalente actual: primera parte de 4.3 y tabla 6.
+Mantendría la tabla: tres especificaciones, covariables y precisión se comparan mejor así que en un gráfico con muchos puntos. No hace falta añadir gráficos de edad, experiencia, recursos y esfuerzo que repitan coeficientes.
+Adoptaría encabezados descriptivos en lugar de solo X1/X2/X3: características profesionales y demográficas; + creencias generales; + recursos. La última no debe llamarse «creencias sobre repetición» en plural como si incluyera una batería nueva: añade un ítem concreto.
+Añadiría una frase con el aumento de R²: 2,58%, 2,88% y 4,68% en los mismos 2.164 casos. Ilustra cuánto añade cada bloque sin otra figura. Mantendría la interpretación en cinco puntos de la escala de recursos y edad condicionada a experiencia. No copiaría «provides little information about which teachers will...» como validación predictiva: esas regresiones describen ajuste dentro de muestra, no predicción fuera de muestra.
+
+5.5 DE PABLO: DESCOMPOSICIÓN
+Equivalente actual: segunda parte de 4.3 y figura 3; método en 3.5 y anexo C.
+Mantendría el análisis y gráfico actuales. La imagen de Pablo usa la misma barra apilada y puntos con SE, con cifras anteriores; no añade una alternativa metodológica. Se pueden homogeneizar tipografía y colores con las figuras nuevas sin cambiar su contenido.
+Mantendría la separación entre harshness y sensibilidades, ya explicada en nuestro texto. No usaría «persistent in-sample information»: una sola encuesta no demuestra persistencia. Tampoco presentaría las cuotas como fuentes independientes identificadas de la variación empírica: son una asignación del denominador del modelo con harshness construido de la respuesta.
+La conclusión del DOCX («teachers overwhelmingly respond», «the central source of disagreement») atribuye a cada profesor lo observado en coeficientes medios o jerarquiza causas no identificadas. Preferiría: los coeficientes medios muestran una jerarquía clara, pero perfiles comparables siguen suscitando respuestas distintas, especialmente cuando suspensos y competencias divergen.
+
+4. DECISIÓN GLOBAL SOBRE FIGURAS, TABLAS Y ORGANIZACIÓN
+
+Recomiendo dos sustituciones reales, no añadir figuras encima de las tablas:
+- Tabla 1 del cuerpo -> gráfico de coeficientes; tabla completa al anexo.
+- Tabla 3 del cuerpo -> gráfico de las cuatro categorías y desacuerdo; tabla completa al anexo.
+- Tabla 2 de interacciones -> anexo, con resultados condicionales y las interacciones relevantes explicados en 4.1.
+- Mantener histograma, tablas de terciles, tabla de características y figura de descomposición.
+
+Así el cuerpo pasaría de seis a tres tablas y de dos a cuatro figuras de resultados. El número total de elementos de resultados bajaría de ocho a siete; no se añade una colección de gráficos redundantes. La figura de cronología no entra en ese recuento. Las tablas trasladadas se integrarían en un bloque compacto del anexo existente, sin abrir un apéndice para cada tabla.
+
+Incertidumbre: preservar SE y estrellas en las tablas. Para respetar la preferencia actual, los gráficos nuevos pueden mostrar puntos y ±1 SE, rotulados expresamente; esas barras no son una prueba al 5%. Los IC95% de un gráfico de coeficientes son una alternativa convencional y válida, pero no una condición para adoptar la mejora visual ni una razón para cambiar silenciosamente el formato acordado. En el panel de desacuerdo no dibujaría barras de incertidumbre inexistentes: se puede presentar el valor descriptivo. Los segmentos desde cero no deben confundirse con errores.
+
+No dividiría resultados en cinco subsecciones. La organización de Pablo sirve como secuencia mental, pero el mapa de tres contribuciones sigue siendo más compacto y mantiene el nexo de harshness. No eliminaría el marco teórico ni cambiaría otra vez la reconstrucción o la covarianza a partir de estos documentos: los correos y el DOCX no aportan nueva evidencia para ello.
+
+5. PRIORIDAD Y CRITERIO DE CIERRE
+
+Primero: reforzar la motivación y la conexión con juicios docentes mediante bibliografía pertinente y verificada. Segundo: sustituir las dos tablas cuya forma gráfica mejora la lectura y trasladar la tabla técnica de interacciones. Tercero: ajustar transiciones y conclusiones al alcance de las medidas, sin reescritura integral. El resto —otra estructura de secciones, más gráficos de características, cambios estéticos del histograma, más literatura general de costes— no es necesario por sí mismo.
+
+La diferencia entre un paper mejor y uno más largo está en que el lector vea: qué información organiza las recomendaciones; dónde persiste desacuerdo entre docentes ante lo mismo; y cuánto captan las características medidas frente a los patrones observados de respuesta. Las propuestas de Pablo ayudan a hacerlo visible, pero no sustituyen la identificación, las definiciones y las comprobaciones ya realizadas.
+
+El traslado de la tabla de interacciones es una preferencia editorial para compactar, no una corrección científica obligatoria. La revisión independiente señala con razón que mantenerla en el cuerpo también es defendible porque responde directamente a la segunda pregunta. Mi recomendación sigue siendo trasladarla si la prosa conserva el contraste 21,45–32,52, la interacción de disciplina y la incertidumbre de asistencia. Si esa reducción dificulta seguir RQ2, conservar la tabla sería mejor que sacrificar claridad por una página menos.
+
+También aligeraría el párrafo metodológico del cuerpo que relata la selección entre estructuras de covarianza: una explicación breve de la diagonal y una remisión al anexo bastan. Mantendría en el cuerpo la definición del modelo y cómo se calculan las cuotas, como pidió el autor. Los pormenores de optimizadores, frontera y selección son importantes para verificar el análisis, pero no deben interrumpir la explicación de su aportación. Esto no cambia resultados ni oculta el mejor ajuste de las alternativas, que seguiría expuesto en el anexo.
+
+6. LAS ONCE REFERENCIAS: SELECCIÓN CONCRETA
+
+La verificación independiente completa está en bibliografia_verificada.txt. Se consultaron fuentes editoriales/institucionales y metadatos; no se obtuvo el texto completo de las once. El complemento distingue abstract, fragmentos, texto completo y working paper. Las recomendaciones siguientes se limitan a afirmaciones respaldadas por el material accesible.
+
+INCORPORARÍA:
+
+1) Ferman y Fontes (2022), máxima prioridad. Conecta conducta, calificación y promoción en Brasil mediante comparación de evaluaciones docentes y ciegas. Es un antecedente directo para interpretar que disciplina y asistencia añaden información más allá de competencias/suspensos. No es una manipulación aleatoria de conducta y deben distinguirse resultados observados de simulaciones contrafactuales de repetición. Una frase en introducción y una conexión breve en discusión bastan. Fuente editorial (abstract y fragmentos consultados): https://doi.org/10.1016/j.jpubeco.2022.104773
+
+2) Doyle, Easterbrook y Harris (2023), máxima prioridad. En un experimento británico, el mismo trabajo recibe valoraciones distintas según SES atribuido. Aporta un antecedente experimental concreto para nuestro resultado de contexto social y para creencias docentes. No contradice automáticamente nuestro signo: calificar calidad y decidir si repetir son decisiones diferentes, y complex social background no es la misma manipulación que su SES. Esta distinción fortalece el interés del paper. No usaría el estudio para atribuir causalidad a sus asociaciones de creencias. Texto completo editorial consultado: https://doi.org/10.1111/bjep.12541
+
+3) Valbuena et al. (2021), incorporación breve. Su revisión centrada en estudios de inferencia causal complementa Allen y Goos en la motivación sobre efectos heterogéneos. No requiere otro párrafo ni enumerar toda la literatura de consecuencias. No la presentaría como prueba de que repetir perjudica siempre. Abstract editorial verificado; sin lectura completa: https://doi.org/10.1111/joes.12406
+
+4) Brañas-Garza y Jorrat (2025), una frase de motivación social. Añade una dimensión distinta de notas y abandono, en España. La incluiría por esa contribución, no por coautoría. El contraste ajustado mediante matching y las comparaciones entre repetidores actuales/anteriores permiten hablar de asociaciones con integración social; no de seguimiento causal demostrado de los mismos alumnos ni de persistencia identificada. La paginación 41–80 del correo no está confirmada y discrepa de otras fichas: debe resolverse antes de cerrar la referencia, no copiarse. Abstract editorial/institucional consultado: https://doi.org/10.4438/1988-592X-RE-2025-409-685
+
+5) Terrier (2020), preferentemente en discusión, no otra expansión de la introducción. Ayuda a situar el resultado de género: evidencia de diferencias en calificación y trayectorias puede coexistir con una respuesta media pequeña al género en nuestras recomendaciones condicionadas a la información mostrada. No afirmaría que nuestro resultado refuta el suyo ni que identifica qué mecanismo produce las brechas poblacionales. Se comprobó el working paper de autor y la identidad de la publicación final, no el texto final completo: https://doi.org/10.1016/j.econedurev.2020.101981 ; https://docs.iza.org/dp10343.pdf
+
+NO AÑADIRÍA EN ESTA VERSIÓN:
+
+6) García-Pérez et al. (2014). Es un ejemplo español pertinente de efectos sobre rendimiento, pero su aportación marginal al argumento sería reducida tras las revisiones y el ejemplo social. No es un mal estudio ni se descarta por un defecto demostrado; priorizo la literatura de decisión docente. Si se incorpora posteriormente, describir estimación con selección endógena, no un experimento aleatorio. Acceso parcial: https://doi.org/10.1080/00036846.2013.872761
+
+7) Jacob y Lefgren (2009). Buen ejemplo de efectos heterogéneos por edad/etapa; el resumen editorial incluye efecto nulo entre más jóvenes y mayor abandono en determinados alumnos de octavo. Lo reservaría como alternativa si se decide ampliar la motivación sobre consecuencias, no como adición necesaria a Valbuena/Goos. No escogería solo el resultado negativo. Abstract final: https://doi.org/10.1257/app.1.3.33
+
+8) Manacorda (2012). Evidencia relevante y local sobre retención, abandono y nivel alcanzado en Uruguay, pero otra ilustración de consecuencias desplazaría el foco. Reservaría la cita para una discusión de políticas de repetición, no imprescindible aquí. No confundir el diseño final basado en materias suspendidas con un borrador anterior basado en ausencias. Abstract institucional de la versión final: https://cep.lse.ac.uk/_NEW/PUBLICATIONS/abstract.asp?index=12450 ; DOI https://doi.org/10.1162/REST_a_00165
+
+9) Südkamp et al. (2012). La precisión de juicios respecto de pruebas es otra pregunta. La cifra .63 no puede convertirse en porcentaje de desacuerdo entre docentes ni de variación inexplicada de nuestras decisiones. Podría citarse para una frase general sobre juicios informativos pero imperfectos, pero no creo que esa frase sea necesaria cuando Ferman y Doyle ofrecen antecedentes más concretos. Identidad/abstract y vista previa original comprobados, no texto completo: https://doi.org/10.1037/a0027627
+
+10) Urhahne y Wijnia (2021). Alternativa moderna a Südkamp si se quiere una referencia general sobre precisión, no una segunda incorporación obligatoria. La omitiría en la propuesta compacta por la misma razón: no mide desacuerdo en recomendaciones de retención. Abstract institucional consultado: https://research.ou.nl/en/publications/a-review-on-the-accuracy-of-teacher-judgments/ ; DOI https://doi.org/10.1016/j.edurev.2020.100374
+
+11) Kornfeld y Ochsen (2017). Omitiría por distancia conceptual: estudia una reforma de asignación a itinerarios con consecuencias posteriores sobre repetición. La frase literal de Pablo sobre la reforma es razonable, pero situarla en una cadena de evidencia de sesgos en la decisión de repetir mezcla decisiones distintas. Texto publicado depositado por autor y abstract editorial consultados: https://doi.org/10.1080/09645292.2016.1199660
+
+Esta selección no exige cinco nuevos párrafos: cuatro referencias se integrarían en dos pasajes breves de motivación/antecedentes, y Terrier en una frase de discusión. Las referencias descartadas se conservan en el informe bibliográfico como alternativas documentadas, no como publicaciones refutadas. La revisión independiente prioriza Ferman, Doyle y Valbuena y considera las demás opcionales; mi selección adicional de Brañas–Jorrat y Terrier responde a su utilidad concreta para costes sociales y contraste de género, no a una obligación de adoptar el correo.
+
+7. QUÉ NO CAMBIARÍA
+
+Reconstrucción B, cribado específico, agrupación por perfil, las seis dimensiones y su texto confirmado, errores agrupados en decisiones y HC3 en caracterización, definición de harshness, tres bloques de resultados, marco q/g/c, seis sensibilidades y la comparación de estructuras de covarianza. Los documentos de Pablo no aportan una razón nueva para modificarlos. Tampoco introduciría lenguaje de causalidad por atributo más fuerte que el diseño implementado permite, ni atribuiría a nuestros coeficientes la demostración de mecanismos psicológicos. Todo cambio bibliográfico o visual debe usar las cifras actuales y preservar esas distinciones.
+
+Este documento contiene recomendaciones, no cambios ya aplicados al manuscrito. Se ha contrastado con una revisión editorial independiente y una verificación bibliográfica independiente; sus discrepancias y límites de acceso se declaran arriba. No se ha reestimado ni editado el paper.
