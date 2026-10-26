@@ -1,0 +1,23 @@
+{
+  "raw_n": 4942,
+  "known_example": 3274,
+  "adverse_available": 3087,
+  "full8": 2520,
+  "main_promote": 348,
+  "main_repeat": 2172,
+  "shared_adverse": 300,
+  "shared_promote": 33,
+  "clean_other_decisions": 19217,
+  "clean_other_teachers": 2520,
+  "common": 2164,
+  "input_md5": {
+    "1. Data/raw data/df_named.parquet": "67ea18340c9b182d5d4755db5724215a",
+    "3. Output/paper_A_final_revision/local/scenario_B_full8.rds": "4b7a6267e55fbd95e9b9e3e6ea67b456",
+    "3. Output/paper_A_final_revision/local/scenario_B.rds": "9efedc40da4dc2ee7e35a00bf6cb2abd",
+    "3. Output/paper_A_final_revision/local/provenance.rds": "e1eaca6ec03e445b19165a67659b06d0",
+    "3. Output/paper_A_reconstruction/tables/card_mapping.csv": "bbb93530c530192f504e4fa12430401b"
+  },
+  "script_md5": "0996990215a63da8f4149e9383741563",
+  "group_definition": "Own adverse example response: pasa vs repite; shared fields ambiguous example/task, retained under reconstruction assumption; unshared sensitivity.",
+  "independence": "Other-decision outcomes exclude all shared example fields and all adverse profiles; descriptive within-survey association, not external prediction."
+}

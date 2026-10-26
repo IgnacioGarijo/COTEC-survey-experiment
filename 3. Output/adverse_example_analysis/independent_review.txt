@@ -1,0 +1,32 @@
+Revisión independiente del análisis del ejemplo desfavorable
+Fecha: 2026-10-26
+
+result
+APROBADO EN CONTENIDO Y CÁLCULOS, con los límites exploratorios expresos del informe. No encuentro un defecto sustantivo que impida entregar este análisis separado. La contribución más clara es la asociación con otras decisiones depuradas; la explicación por características observadas es modesta. No hay base para diagnosticar inatención, oposición categórica a repetir, un tipo estable de profesor o efectos causales.
+
+constraints_acknowledged
+Leí run_constraints.md antes de otros insumos y comuniqué mi acuerdo al coordinador. Revisión de solo lectura; solo escribo este archivo. No reestimé modelos del manuscrito, no modifiqué sus fuentes ni sus salidas y no generé salidas individuales.
+
+evidence
+- Código revisado: 2. Code/adverse_example_analysis/analyze.R. Informe sustantivo revisado: informe.qmd. Contrasté los CSV agregados y audit.json con los objetos privados existentes, el código de reconstrucción y el mapa de atributos.
+- La definición consulta el campo del ejemplo propio: Ejemplo 1/2 -> Grupo 3.8_1; 3/4 -> Grupo 2.8_1. Coincide con la reconstrucción documentada. Las dos tarjetas tienen los cinco atributos adversos codificados y difieren en género. La disponibilidad bruta de los campos por variante respalda la correspondencia; no identifica dos respuestas distintas cuando hay colisión.
+- Unión por claves únicas sin pérdidas: 2.520 profesores, 20.160 decisiones originales, ocho por profesor, después del cribado favorable existente. Grupos: 348 progresan y 2.172 repiten; 13,8095 %. Hay 300 colisiones del campo adverso, 33 del grupo progresa. Al retirarlas: 2.220 profesores y 315 progresan.
+- El resultado de otras decisiones retira 618 campos compartidos con cualquiera de los ejemplos y otros 325 registros de perfiles adversos no compartidos: quedan 19.217 decisiones, entre seis y ocho por cada uno de los 2.520 profesores. Se excluyen ambos perfiles adversos para todos; la respuesta definitoria no entra en este resultado.
+- Reproduje medias de repetición: 24,66646 % frente a 43,23204 %; harshness depurado: -15,99278 frente a 2,57762 pp. Reproduje la diferencia ajustada por perfil/conjunto/contexto/género: -18,565683 pp, SE agrupado por profesor 1,330513; sin colisiones adversas: -17,931471, SE 1,422173.
+- El modelo conjunto usa 2.164 casos completos y 301 eventos. Reproduje de forma independiente sus coeficientes y SE HC3: discrepancias máximas 3,1e-14 y 4,5e-15 pp. R²=0,0202268357. Ninguna de sus once asociaciones de interés tiene p BH<0,05 en la muestra principal.
+- Verifiqué aritméticamente los ajustes BH de las familias descriptivas de características y creencias y de los coeficientes de interés por modelo/escenario. El informe explica ese alcance y no presenta el análisis como confirmatorio. Los p y p BH de ambos resultados de otras decisiones se dejan vacíos: la inferencia de ese bloque procede de la regresión ajustada con SE agrupados por profesor, evitando tratar como fijas las referencias estimadas compartidas del harshness.
+- 220/348 (63,2 %) recomiendan repetición al menos una vez en otras tarjetas; 128 no lo hacen en las seis a ocho observadas. El informe utiliza correctamente este resultado para evitar una interpretación de oposición absoluta y no extrapola a decisiones reales o estabilidad temporal.
+- El informe distingue progresión/repetición de suspender asignaturas, informa la ambigüedad de campos compartidos y el supuesto de invariancia, reconoce el filtro basado en respuestas, las restricciones por completitud y la selección voluntaria, distingue medias por profesor de regresión por decisión y mantiene fijas las referencias principales en la sensibilidad descriptiva.
+
+verification
+Comprobaciones independientes de solo lectura mediante Rscript 4.4.0 --vanilla, alimentado por stdin, sin guardar registros individuales. Verificados claves, unión, pertenencia muestral, completitud de ocho tarjetas, grupos/colisiones, soporte y exclusiones, medias depuradas, regresiones auxiliares del propio informe, SE HC3 y BH. Los resultados numéricos coinciden con los agregados. No ejecuté el script canónico con escritura ni el pipeline del manuscrito.
+
+unresolved_issues
+No hay bloqueo sustantivo. Límites que deben permanecer visibles: una sola respuesta define cada grupo; hay selección por filtro y completitud; las creencias no se interpretan como antecedentes causales; las referencias de harshness se estiman con las mismas decisiones depuradas. La objeción a los p convencionales de harshness quedó resuelta retirando esas pruebas y apoyando la inferencia del bloque en la regresión ajustada por perfil con SE agrupados por profesor. Verifiqué las cinco huellas de insumos y la del código contra los ficheros actuales; todas coinciden. La verificación visual final del renderizado corresponde al coordinador.
+
+files_changed
+Únicamente 3. Output/adverse_example_analysis/independent_review.txt.
+
+commit_or_checkpoint
+Revisión independiente terminada sobre los cálculos y el QMD disponibles; sin commit propio. La integración en el manuscrito requiere una decisión posterior del autor.
+

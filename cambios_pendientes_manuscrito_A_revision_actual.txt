@@ -77,5 +77,11 @@ Estado: aprobado por el autor; pendiente de aplicación conjunta.
 - Revisar de forma coherente resumen, introducción, métodos, tablas y figuras, texto de resultados, conclusiones, flujo muestral, disponibilidad de covariables, comparación poblacional y sensibilidades. El flujo debe distinguir participantes elegibles y muestra principal con ocho tarjetas, sin presentar respuestas parciales como cribado por respuesta incorrecta.
 - Explicar de forma breve las dos muestras y su razón: ocho decisiones para comparaciones homogéneas entre profesores; covariables completas únicamente para modelos que las utilizan. Mantener los análisis de progresión/agotamiento sobre el universo apropiado, sin restringirlos a quienes completaron ocho tarjetas y ocultar así el abandono.
 
+9. HACER MÁS DIRECTA LA PRESENTACIÓN DE LA CONTRIBUCIÓN
+Estado: aprobado por el autor; pendiente de aplicación.
+- Sustituir “Understanding these recommendations requires separating student circumstances from teacher judgment.” por “We show that understanding grade-retention recommendations requires separating student circumstances from teacher judgment.”
+- Mantener la continuación del párrafo que explica diferencias de alumnado y diferencias de juicio ante casos comparables. La frase se refiere a recomendaciones de repetición, que es el objeto observado.
+
 REGISTRO DE APLICACIÓN
-Sin aplicar. En esta fecha solo se han registrado los acuerdos; no se han reestimado modelos ni modificado el manuscrito.
+Acuerdos 1–9 sin aplicar: no se han reestimado los modelos del manuscrito ni modificado su texto.
+Por petición separada del autor, se ha realizado un análisis complementario de quienes recomiendan progresar ante su propio ejemplo desfavorable, conservado en 3. Output/adverse_example_analysis/informe.qmd y su HTML. Su realización no implica aprobación para incorporarlo al paper ni para modificar el filtro de exclusión.

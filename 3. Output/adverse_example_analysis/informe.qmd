@@ -1,0 +1,205 @@
+---
+title: "¿Quién recomienda progresar ante el ejemplo más desfavorable?"
+subtitle: "Análisis complementario exploratorio · Paper A"
+date: "2026-10-26"
+lang: es
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 2
+    embed-resources: true
+    code-fold: true
+    smooth-scroll: true
+    page-layout: full
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(ggplot2)
+library(knitr)
+read <- function(n) read.csv(paste0(n,'.csv'),check.names=FALSE,stringsAsFactors=FALSE)
+f <- function(x,d=2) formatC(x,format='f',digits=d,decimal.mark=',')
+pval <- function(x) ifelse(is.na(x),'—',ifelse(x<.001,'<0,001',f(x,3)))
+tbl <- function(d) kable(d,format='html',escape=TRUE,row.names=FALSE,table.attr='class="table table-sm"')
+a <- jsonlite::read_json('audit.json',simplifyVector=TRUE)
+flow <- read('sample_flow'); ds <- read('group_comparisons'); main <- subset(ds,scenario=='Main'); unshared <- subset(ds,scenario=='Unshared')
+gc <- read('group_counts'); adj <- read('adjusted_models'); diag <- read('model_diagnostics'); other <- read('other_decisions_adjusted')
+labels <- setNames(main$label,main$variable)
+cols <- c('Progresa en el extremo'='#007C91','Repite en el extremo'='#A45A32')
+theme_set(theme_minimal(base_size=12)+theme(panel.grid.minor=element_blank(),plot.title=element_text(face='bold'),legend.position='bottom'))
+```
+
+<style>
+#quarto-content {max-width: 1450px; margin: auto;} .content {max-width: 1080px;}
+.summarybox {border-left:5px solid #007c91;background:#f0f7f8;padding:1rem 1.3rem;margin:1.1rem 0;}
+table {font-size:.9rem;} th {vertical-align:bottom;} .cell-output-display {overflow-x:auto;}
+</style>
+
+::: {.summarybox}
+**Resultado principal.** `r a$main_promote` de los `r a$full8` profesores con ocho tarjetas (**`r f(100*a$main_promote/a$full8,1)` %**) recomiendan progresar incluso ante el ejemplo desfavorable. En las otras tarjetas recomiendan repetición en el **`r f(main$mean_promote[main$variable=='clean_repeat'],1)` %** de sus decisiones, frente al **`r f(main$mean_repeat[main$variable=='clean_repeat'],1)` %** del resto. Esta diferencia se mantiene al retirar los casos cuyo campo del ejemplo se comparte con la tarea.
+
+Sus características observadas los distinguen bastante menos: son algo mayores y tienen más experiencia, pero las creencias presentan diferencias pequeñas. El modelo conjunto de características, creencias y controles de contexto explica aproximadamente el **`r f(100*diag$r2[diag$scenario=='Main'&diag$model=='Full'],1)` %** de la variación del indicador. Ninguna de las once asociaciones de interés del modelo completo alcanza un valor p ajustado por comparaciones múltiples inferior a 0,05.
+:::
+
+## 1. Qué pregunta responde este análisis
+
+Buscamos si los profesores que **no recomiendan repetir al alumno del ejemplo desfavorable** presentan un perfil diferente. No observamos si «lo suspenden» en una asignatura: la respuesta disponible es **pasa / repite**, es decir, una recomendación de progresión o repetición.
+
+La comparación principal utiliza la muestra acordada para la siguiente revisión: **2.520 profesores que responden las ocho tarjetas**, después del cribado por el ejemplo favorable. El grupo de comparación son los **2.172 que recomiendan repetir en su propio ejemplo desfavorable**. La muestra no incluye como controles a quienes carecen de esa respuesta o han sido excluidos por el filtro favorable.
+
+Este informe es independiente: **no se ha incorporado nada al manuscrito ni se han cambiado sus resultados**.
+
+## 2. Cómo se identifica el ejemplo y qué ambigüedad queda
+
+La variante asignada en el campo `Ejemplo` determina qué respuesta hay que consultar. No buscamos simplemente una respuesta extrema en cualquier campo.
+
+```{r}
+tbl(data.frame(`Variante Ejemplo`=c('1 o 2','3 o 4'),`Tarjeta extrema correspondiente`=c('alumno_3_8','alumno_2_8'),`Campo guardado`=c('Grupo 3.8_1','Grupo 2.8_1'),`Género del alumno`=c('Chico','Chica'),check.names=FALSE))
+```
+
+En el mapa de atributos utilizado para la reconstrucción, ambas tarjetas tienen **contexto social complejo, varios suspensos, bajas competencias, absentismo y problemas de disciplina**. Difieren en el género. «Desfavorable» designa esa combinación; no presupone que todos los atributos aumenten la conveniencia de repetir: en particular, el efecto medio estimado del contexto social va en dirección contraria.
+
+**Campos compartidos.** En `r a$shared_adverse` profesores, el ejemplo desfavorable también aparece en su secuencia experimental y ambas presentaciones comparten campo. No podemos recuperar dos respuestas separadas ni garantizar que el valor almacenado sea el de la primera presentación. El análisis principal usa el valor disponible, de acuerdo con el supuesto de invariancia de la reconstrucción B. La sensibilidad más estricta excluye esos `r a$shared_adverse` profesores: quedan **2.220**, de los cuales **315 (`r f(100*315/2220,1)` %)** recomiendan progresar. En ellos, la clasificación no depende de un campo también utilizado por una tarjeta experimental.
+
+```{r}
+z<-flow;names(z)<-c('Universo','Profesores','Progresa','Repite','Progresa (%)');z[[5]]<-f(z[[5]],2);tbl(z)
+```
+
+La primera fila es solo contexto del archivo original: incluye registros sin ocho decisiones y sin aplicar todas las condiciones analíticas, por lo que no es una estimación alternativa de la misma población. Las filas posteriores son restricciones diferentes y no deben restarse como si todas fueran pasos sucesivos de un único flujo.
+
+## 3. ¿Cómo son sus características y creencias?
+
+### Comparaciones descriptivas
+
+Las tablas comparan medias o porcentajes, según la variable, utilizando las respuestas disponibles en cada una. **Diferencia = progresa en el extremo − repite en el extremo.** La diferencia estandarizada divide esa diferencia por la desviación típica agrupada dentro de los dos grupos; sirve para apreciar magnitudes en escalas diferentes. No es el coeficiente de una regresión ni un porcentaje de varianza explicada.
+
+Las pruebas son Welch para variables continuas y Fisher para binarias. El ajuste Benjamini–Hochberg (BH) se aplica por separado a las siete características profesionales/demográficas y a las cuatro creencias. Se muestran tamaños y magnitudes para evitar seleccionar únicamente resultados con p pequeño.
+
+```{r}
+show_desc <- function(family){z<-main[main$family==family,];tbl(data.frame(Variable=z$label,`N progresa / repite`=paste(z$n_promote,z$n_repeat,sep=' / '),Progresa=f(z$mean_promote),Repite=f(z$mean_repeat),Diferencia=f(z$difference),`Dif. estandarizada`=f(z$smd),`p BH`=pval(z$p_bh),check.names=FALSE))}
+show_desc('Professional')
+```
+
+En términos brutos, quienes dejan progresar al alumno extremo tienen **`r f(main$difference[main$variable=='edad'])` años más de edad** y **`r f(main$difference[main$variable=='experiencia'])` años más de experiencia**. También declaran con mayor frecuencia un nombramiento público permanente. Son diferencias modestas; edad, experiencia y situación laboral se relacionan entre sí y no equivalen a tres explicaciones independientes.
+
+```{r}
+show_desc('Beliefs')
+```
+
+La diferencia en acuerdo con «demasiados recursos para repetidores» es de **`r f(main$difference[main$variable=='resources_excess'])` puntos** en la escala 0–10. Va en una dirección compatible con menor severidad, pero es pequeña. Ninguna de las cuatro comparaciones de creencias supera el criterio BH de 0,05. Esto no demuestra igualdad exacta entre grupos; limita la fuerza con la que podemos atribuirles un perfil actitudinal diferenciado.
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5.5
+#| fig-cap: "Diferencias descriptivas estandarizadas. Valores positivos: mayor media o proporción entre quienes recomiendan progresar ante el extremo. Magnitudes sin ajuste por otras características; no son efectos causales."
+p<-main[main$family!='Other decisions',];p$label<-factor(p$label,levels=rev(p$label));ggplot(p,aes(smd,label,color=family))+geom_vline(xintercept=0,color='grey65')+geom_segment(aes(x=0,xend=smd,yend=label),linewidth=.6)+geom_point(size=2.7)+scale_color_manual(values=c(Professional='#007C91',Beliefs='#A45A32'),labels=c(Beliefs='Creencias',Professional='Profesionales / demográficas'))+labs(x='Diferencia / desviación típica agrupada',y=NULL,color=NULL)+theme(legend.position='bottom')
+```
+
+### Cuando se consideran conjuntamente
+
+Estimamos modelos lineales de probabilidad cuyo resultado es **recomendar progresar en el ejemplo desfavorable**. Las dos especificaciones usan los mismos **2.164 casos completos** (301 del grupo progresa y 1.863 del grupo repite). Ambas controlan por contexto de políticas y género del ejemplo. La primera incorpora características profesionales/demográficas; la segunda añade las cuatro creencias.
+
+Los coeficientes se expresan en **puntos porcentuales** de probabilidad: las continuas se escalan por **una desviación típica de la muestra común de 2.164**, y las binarias representan el contraste 0→1. Los SE son HC3, que permiten distinta variabilidad residual entre profesores. El ajuste BH de cada modelo incluye sus coeficientes profesionales y de creencias, excluyendo intercepto y controles de contexto. Este modelo caracteriza asociaciones; no establece que cambiar una creencia cambie la decisión.
+
+```{r}
+a1<-subset(adj,scenario=='Main'&model=='Professional');a2<-subset(adj,scenario=='Main'&model=='Full');z<-main[main$family!='Other decisions',];i<-match(z$variable,a1$term);j<-match(z$variable,a2$term)
+fmtcoef<-function(b,se) ifelse(is.na(b),'—',paste0(f(b),' (',f(se),')'))
+tbl(data.frame(Variable=z$label,`(1) Profesional: coef. (SE)`=fmtcoef(a1$estimate[i],a1$se[i]),`(2) + Creencias: coef. (SE)`=fmtcoef(a2$estimate[j],a2$se[j]),`p BH modelo (2)`=pval(a2$p_bh[j]),check.names=FALSE))
+z<-subset(diag,scenario=='Main');tbl(data.frame(Modelo=c('(1) Profesional','(2) + Creencias'),N=z$n,`R² (%)`=f(100*z$r2),check.names=FALSE))
+```
+
+La edad conserva una asociación positiva con progresar (**`r f(a2$estimate[a2$term=='edad'])` puntos porcentuales por `r f(read('scales')$sd[read('scales')$variable=='edad'])` años**), mientras que el coeficiente de experiencia se aproxima a cero una vez considerada la edad. Impacto percibido y acuerdo sobre recursos tienen asociaciones negativas. Sin embargo, **ninguna de las once asociaciones del modelo completo alcanza p BH < 0,05**. No hay una separación fuerte o bien explicada por estas medidas. El pequeño R² es descriptivo dentro de muestra, no una evaluación predictiva fuera de muestra.
+
+El modelo lineal produce cinco probabilidades ajustadas inferiores a cero en la muestra principal, ninguna superior a uno. Aquí se usa para describir diferencias medias con una escala clara; no se propone como clasificador individual.
+
+## 4. ¿También deciden de otra manera en las tarjetas restantes?
+
+Esta es la diferencia más marcada y la comprobación con mayor interés sustantivo. **No utilizamos el harshness original sin modificar**, porque podría incorporar precisamente la decisión con la que se define el grupo.
+
+Para cada profesor:
+
+1. Retiramos todas las respuestas cuyo campo se comparte con cualquiera de sus ejemplos.
+2. Retiramos, además, los dos perfiles extremos desfavorables —chico y chica— para todos los profesores, aunque no fueran su propio ejemplo.
+3. Con las **19.217 decisiones restantes**, calculamos su tasa media de repetición y una medida complementaria de harshness: media de la diferencia entre su decisión y la de los demás profesores ante el mismo perfil. Las referencias excluyen al propio profesor y se calculan sobre esta muestra de decisiones depurada.
+
+Todos los 2.520 profesores conservan entre seis y ocho decisiones para esta comprobación. Las medias de grupo dan igual peso a cada profesor. La medida complementaria se expresa en puntos porcentuales y sirve exclusivamente para este informe; **no sustituye la medida del manuscrito**.
+
+```{r}
+z<-main[main$family=='Other decisions',];tbl(data.frame(Resultado=z$label,Progresa=f(z$mean_promote),Repite=f(z$mean_repeat),Diferencia=f(z$difference),`Dif. estandarizada`=f(z$smd),check.names=FALSE))
+```
+
+La diferencia de harshness es de **`r f(main$difference[main$variable=='clean_hb'],1)` puntos**, incluso después de retirar el valor que define el grupo y de comparar perfiles equivalentes. Existe, por tanto, una asociación entre esta respuesta extrema y la severidad en otras decisiones de la misma encuesta.
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.5
+#| fig-cap: "Harshness calculado únicamente en las otras tarjetas: porcentaje de profesores de cada grupo en intervalos de 10 puntos. Se retiran campos compartidos y ambos perfiles desfavorables. Cada distribución suma 100 %."
+hh<-read('harshness_histogram');hh$group<-factor(ifelse(hh$promote==1,'Progresa en el extremo','Repite en el extremo'),levels=names(cols));ggplot(hh,aes(mid,percent,fill=group))+geom_col(position='identity',alpha=.6,width=9.5)+geom_vline(xintercept=0,color='grey35',linetype=2)+scale_fill_manual(values=cols)+labs(x='Harshness en otras tarjetas (puntos porcentuales)',y='Profesores del grupo (%)',fill=NULL)
+```
+
+Pero **no forman un grupo de oposición absoluta a repetir**: `r gc$any_other_repeat[gc$promote==1]` de los 348 (**`r f(100*gc$any_other_repeat[gc$promote==1]/348,1)` %**) recomiendan repetición al menos una vez en las tarjetas restantes. Solo `r gc$zero_other_repeat[gc$promote==1]` no la recomiendan en ninguna de esas otras decisiones. La respuesta extrema es informativa de una tendencia, no define por sí sola un tipo homogéneo de profesor ni demuestra falta de atención.
+
+Como comprobación adicional, una regresión de las otras decisiones con controles por perfil, conjunto de tarjetas, contexto de políticas y género del ejemplo estima una diferencia de **`r f(other$estimate[other$scenario=='Main'],1)` puntos porcentuales**, SE agrupado por profesor **`r f(other$se[other$scenario=='Main'])`**. Es una comparación descriptiva entre grupos. Se ponderan decisiones, mientras que las medias anteriores ponderan profesores; la cercanía de las cifras no es una identidad impuesta.
+
+## 5. ¿Depende de los campos compartidos o de la variante?
+
+### Sensibilidad sin campos extremos compartidos
+
+La restricción elimina a 300 profesores, entre ellos 33 del grupo progresa. Mantiene los resultados centrales:
+
+```{r}
+z<-merge(main[,c('variable','label','difference','smd')],unshared[,c('variable','difference','smd')],by='variable',suffixes=c('_main','_unshared'),sort=FALSE);z<-z[match(main$variable,z$variable),];tbl(data.frame(Variable=z$label,`Diferencia principal`=f(z$difference_main),`Sin campo extremo compartido`=f(z$difference_unshared),check.names=FALSE))
+```
+
+La diferencia ajustada en las otras decisiones es **`r f(other$estimate[other$scenario=='Unshared'],1)` puntos**, SE **`r f(other$se[other$scenario=='Unshared'])`**, entre 2.220 profesores. Para la comparación descriptiva de harshness conservamos las referencias de la muestra depurada principal de 2.520 y restringimos los profesores comparados, sin redefinir simultáneamente la escala. La regresión ajustada de otras decisiones se reestima en la submuestra. El modelo completo de características usa 1.894 casos completos y tiene un R² de **`r f(100*diag$r2[diag$scenario=='Unshared'&diag$model=='Full'])` %**. Las tablas técnicas siguientes muestran todos los coeficientes, también cuando los indicios cambian al restringir la muestra.
+
+### Frecuencias por variante y contexto
+
+```{r}
+z<-read('context_rates');z$variable<-c(example='Variante del ejemplo',adverse_gender='Género del ejemplo desfavorable',arm='Contexto de políticas')[z$variable];z$category[z$category=='Boy']<-'Chico';z$category[z$category=='Girl']<-'Chica';tbl(data.frame(Dimensión=z$variable,Categoría=z$category,N=z$n,Progresa=z$promote,`Progresa (%)`=f(z$pct),check.names=FALSE))
+```
+
+Las proporciones por contexto van aproximadamente del 13 al 14 %; por género del ejemplo son 14,9 % para chico y 12,6 % para chica. Estas cifras describen la muestra seleccionada. No se usan para establecer efectos experimentales de los contextos ni del género. Los modelos conjuntos incorporan contexto y género para que las comparaciones de características no dependan únicamente de esas composiciones.
+
+## 6. Valor que podría aportar al artículo
+
+**Mi valoración:** es un análisis complementario potencialmente útil, sobre todo para interpretar el harshness. Una decisión sencilla ante un caso extremo identifica un grupo que también recomienda menos repetición ante otros perfiles. El resultado no depende de introducir la propia respuesta extrema en el indicador.
+
+Su aportación a la explicación mediante características observadas es más limitada: hay diferencias demográficas modestas y diferencias pequeñas en las creencias. El modelo conjunto sigue explicando muy poco. No lo presentaría como el descubrimiento de un tipo de profesor definido por edad o actitudes.
+
+Si se decidiera incorporarlo, preferiría **un párrafo breve y una tabla compacta en material complementario existente**, evitando abrir una contribución paralela que compita con los tres bloques principales. Una asociación dentro de la misma encuesta no demuestra estabilidad en el tiempo ni permite saber qué decisiones adoptarían en el aula real. Tampoco sería motivo por sí solo para ampliar el filtro de exclusión: el criterio vigente es el ejemplo favorable, y este análisis no establece que progresar ante el desfavorable sea una respuesta inválida.
+
+**Límite de selección:** los resultados se refieren a quienes completaron ocho tarjetas y superaron el filtro favorable. No describen a quienes abandonaron antes ni a quienes fueron excluidos. En el modelo conjunto se añade la selección de covariables completas. Las creencias se describen tal como fueron medidas; no se asume que precedieran causalmente a las decisiones.
+
+## 7. Detalle técnico y reproducción
+
+::: {.callout-note collapse="true"}
+## Coeficientes completos, escalas y pruebas
+
+```{r}
+#| results: asis
+for(sc in c('Main','Unshared')){
+ cat('\n\n**',if(sc=='Main')'Principal: 2.164 casos completos'else'Sin extremo compartido: 1.894 casos completos','**\n\n',sep='')
+ z<-subset(adj,scenario==sc&model=='Full');print(tbl(data.frame(Término=z$term,Coeficiente=f(z$estimate),`SE HC3`=f(z$se),`p sin ajustar`=pval(z$p),`p BH (11 características)`=pval(z$p_bh),check.names=FALSE)))
+}
+z<-read('scales');z$variable<-labels[z$variable];names(z)<-c('Variable continua','Una desviación típica, unidades originales');z[[2]]<-f(z[[2]]);tbl(z)
+z<-main;tbl(data.frame(Variable=z$label,`p sin ajustar`=pval(z$p),`p BH de su familia`=pval(z$p_bh),check.names=FALSE))
+```
+
+Los valores p evalúan diferencias dentro de la muestra bajo los supuestos de las pruebas. No corrigen la selección voluntaria de participantes. BH se utiliza para reducir la selección de hallazgos entre múltiples comparaciones exploratorias; no convierte el análisis en confirmatorio. No reportamos pruebas de medias para los dos resultados de otras decisiones: las referencias estimadas del harshness se comparten entre profesores, y una prueba Welch convencional no recoge esa dependencia. La comprobación inferencial de las otras decisiones se apoya en la regresión con controles por perfil y SE agrupados por profesor. La sensibilidad utiliza las mismas escalas continuas del modelo principal para mantener comparables sus coeficientes.
+:::
+
+Los ficheros `.csv` de esta carpeta contienen únicamente resultados agregados. No se exportan identificadores ni registros individuales. La identificación utiliza el campo `Ejemplo`, los campos de respuesta y la secuencia ordenada recuperada; se validan claves únicas, ocho tarjetas por profesor, ausencia de pérdidas en las uniones, soporte de perfiles y exclusión de las respuestas que podrían producir circularidad. Los modelos ajustados tienen rango completo y SE finitos.
+
+Para recalcular desde la raíz del repositorio:
+
+```powershell
+Rscript --vanilla "2. Code/adverse_example_analysis/analyze.R"
+quarto render "3. Output/adverse_example_analysis/informe.qmd"
+```
+
+El HTML es autónomo e incorpora sus figuras y estilos. El QMD lee solo los agregados de su carpeta; la estimación requiere los datos privados y los objetos locales de reconstrucción existentes. `audit.json` conserva tamaños y huellas de los ficheros de entrada; `R_session.txt` documenta el entorno. La revisión independiente se conserva en `independent_review.txt`.
