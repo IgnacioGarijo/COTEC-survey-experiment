@@ -89,6 +89,17 @@ Estado: aprobado por el autor; pendiente de aplicación.
 - Mantener en la sección de diseño la explicación de los conjuntos prefijados y de los 56 perfiles representados entre los 64 posibles, de acuerdo con el punto 5. Evitar repetir aquí expresiones técnicas como conditional contrasts o full factorial sin necesidad.
 - La simplificación no debe presentar la regresión como si cada comparación observara siempre dos perfiles idénticos salvo en un atributo, ni implicar aleatorización independiente de todos los atributos. Coordinar con la presentación conjunta del modelo aditivo y el de interacciones: el significado de un efecto principal en este último depende de los valores de los atributos con los que interactúa.
 
+11. EXPLICAR CON CLARIDAD LA DEFINICIÓN Y EL CÁLCULO DE HARSHNESS EN 3.3
+Estado: aprobado por el autor; pendiente de aplicación.
+- Reescribir los dos primeros párrafos de 3.3 con el texto siguiente, conservando la fórmula de la medida entre ambos:
+  “We define harshness as a teacher’s average deviation from other teachers’ retention recommendations for the same student profiles. For each card, we subtract the proportion of other teachers recommending retention for that profile from the teacher’s own decision, coded as one for retention and zero for progression. We then average these differences across the teacher’s eight cards:”
+  [Fórmula vigente, con referencia que excluye al propio profesor.]
+  “A harshness score of 0.10 means that the teacher recommends retention ten percentage points more often, on average, than other teachers evaluating the same profiles. Negative scores indicate fewer retention recommendations, while zero indicates no average difference from peers. Comparing each decision with recommendations for the same profile accounts for differences in the students assigned to each teacher.”
+- Usar same, no similar: la referencia corresponde a perfiles idénticos en los seis atributos.
+- Por decisión expresa del autor, NO añadir la frase final propuesta “Harshness therefore measures relative severity; it does not assess whether a recommendation is educationally appropriate.” Se considera obvia e innecesaria. No reintroducir una advertencia equivalente en estos párrafos.
+- Coordinar con la muestra principal de ocho tarjetas acordada en el punto 8. Tras recalcular las referencias en los 2.520 profesores, actualizar la explicación posterior: en esa muestra principal la media de harshness entre profesores es cero por construcción (salvo redondeo), pues todos aportan ocho respuestas. Esta propiedad no se afirma automáticamente para el subconjunto de 2.164 que conserva las referencias principales.
+- Situar la explicación breve del ruido por disponer de pocas respuestas cuando se presenta la distribución y los terciles, sin interrumpir la definición inicial ni reiterar advertencias.
+
 REGISTRO DE APLICACIÓN
-Acuerdos 1–10 sin aplicar: no se han reestimado los modelos del manuscrito ni modificado su texto.
+Acuerdos 1–11 sin aplicar: no se han reestimado los modelos del manuscrito ni modificado su texto.
 Por petición separada del autor, se ha realizado un análisis complementario de quienes recomiendan progresar ante su propio ejemplo desfavorable, conservado en 3. Output/adverse_example_analysis/informe.qmd y su HTML. DECISIÓN POSTERIOR DEL AUTOR: no incorporar nada de este análisis al manuscrito ni a sus apéndices, porque sus conclusiones no se consideran relevantes para el paper. Conservarlo únicamente como análisis interno descartado; no modifica el filtro de exclusión.
