@@ -29,5 +29,38 @@ Estado: aprobado; cálculos pendientes para la implementación conjunta.
 - La propuesta de dos desviaciones típicas de Gelman se discutió como alternativa para comparar continuas con binarias, pero NO es la opción aprobada: se acordaron contrastes seleccionados de una desviación típica conservando los coeficientes originales.
 - Referencia metodológica consultada: Gelman (2008), Scaling regression inputs by dividing by two standard deviations, Statistics in Medicine, 27, 2865–2873. DOI: 10.1002/sim.3107. Valorar su cita solo si la explicación final la necesita; no atribuirle la elección de una desviación típica.
 
+3. DESARROLLAR EL CONTRASTE EN LA LITERATURA SOBRE CONSECUENCIAS DE REPETIR
+Estado: solicitado por el autor; pendiente de aplicación.
+- Ampliar en un par de frases el pasaje de la introducción que empieza “Its consequences are not uniform: reviews document variation across settings, research designs and comparison groups” (Allen et al., 2009; Goos et al., 2021; Valbuena et al., 2021).
+- Mostrar concretamente en qué consiste el contraste de resultados, en lugar de limitarse a afirmar que hay heterogeneidad. Al implementar, comprobar los hallazgos de las revisiones citadas y explicar con precisión las diferencias relevantes entre resultados, diseños o grupos de comparación. No inventar una oposición entre estudios ni atribuirles conclusiones no verificadas.
+- Mantener una extensión breve y conectarla con la motivación del artículo.
+
+4. EXPLICAR MEJOR LAS CUATRO PREGUNTAS DE INVESTIGACIÓN
+Estado: solicitado por el autor; pendiente de aplicación.
+- Desarrollar el párrafo “Four questions organize the contribution...” para que cada pregunta resulte comprensible, en lugar de enumerarlas de forma telegráfica.
+- Explicar qué se pregunta sobre los atributos dentro de profesor; qué añade estudiar la combinación de señales; qué significa discrepar ante un mismo perfil entre profesores; y qué se busca explicar con características observadas, harshness y sensibilidades.
+- Mantener la conexión con los tres bloques de resultados sin duplicar métodos ni anticipar toda la evidencia.
+
+5. SIMPLIFICAR LA DESCRIPCIÓN DEL SOPORTE DE PERFILES
+Estado: solicitado por el autor; pendiente de aplicación.
+- En lugar de destacar “64 tarjetas de 56 perfiles”, indicar sencillamente que el diseño representa 56 de los 64 perfiles posibles de seis atributos binarios.
+- Mantener la explicación necesaria de los ocho conjuntos prefijados de ocho tarjetas y su asignación. No confundir los 64 perfiles posibles con las 64 posiciones del diseño ni presentar los 56 perfiles como si cada profesor los evaluara todos.
+- Revisar las menciones del cuerpo y del apéndice para evitar explicaciones repetidas o confusas. La simplificación de redacción no cambia la agrupación por perfil utilizada en los análisis.
+
+6. RECUPERAR TABLAS EN LUGAR DE LOS DOS GRÁFICOS NUEVOS
+Estado: solicitado por el autor; pendiente de aplicación.
+- Retirar de la presentación vigente los gráficos de coeficientes de atributos y de categorías académicas (figuras actuales 2 y 4 de la copia de revisión).
+- Recuperar en el cuerpo las tablas correspondientes a las tablas tachadas 1, 2 y 3 de la versión de referencia: atributos, modelo con interacciones y categorías académicas/desacuerdo.
+- Combinar las tablas de efectos principales e interacciones en una sola tabla con columnas por especificación: una columna para el modelo aditivo y otra para el modelo ampliado con interacciones. Mostrar los coeficientes de cada modelo, incluidas las diferencias de sus efectos principales; no tratar las interacciones como simples filas añadidas con coeficientes principales idénticos.
+- Recuperar el formato tabular, usando siempre las cifras vigentes de la reconstrucción B, SE y estrellas; no restaurar los números antiguos tachados.
+- Ajustar párrafos, llamadas, numeración y apéndice B: evitar duplicar sin necesidad las tablas que vuelvan al cuerpo. Conservar la explicación sustantiva de las interacciones y del desacuerdo dentro de perfil.
+- Aplicar la convención de comparación acumulada vigente: los gráficos retirados dejarán de ser resultados actuales, aunque el material que corresponda conservar en la copia con cambios siga mostrándose identificado como retirado.
+
+7. ENCABEZADOS CONVENCIONALES EN LA TABLA DE CARACTERIZACIÓN
+Estado: solicitado por el autor; pendiente de aplicación.
+- En la tabla actual 3, “Observed characteristics associated with harshness”, sustituir los encabezados descriptivos extensos por (1), (2) y (3), o Model I, Model II y Model III si resulta más legible. Preferencia de implementación: (1), (2), (3).
+- Explicar en la nota o el texto inmediato la progresión: características profesionales/demográficas; adición de creencias generales; adición de acuerdo sobre recursos excesivos. Mantener visible qué incluye cada especificación.
+- Coordinar con el punto 2: coeficientes en unidades originales y contrastes seleccionados en el texto.
+
 REGISTRO DE APLICACIÓN
 Sin aplicar. En esta fecha solo se han registrado los acuerdos; no se han reestimado modelos ni modificado el manuscrito.
