@@ -1,0 +1,33 @@
+CAMBIOS PENDIENTES — MANUSCRITO A — REVISIÓN ACTUAL
+Creado: 26 de octubre de 2026
+
+ESTADO Y FORMA DE TRABAJO
+Pendiente de aplicación. El autor irá planteando preguntas y se añadirán aquí los acuerdos. Aplicarlos conjuntamente solo cuando lo indique expresamente.
+No modificar todavía el manuscrito, las tablas, las figuras ni el PDF por estos acuerdos.
+Referencia al abrir esta lista: commit 8c48aab. Esta lista es nueva; no reactiva las instrucciones históricas del archivo cambios_pendientes_manuscrito_A_siguiente_iteracion.txt, ya aplicadas.
+Fuente editable vigente: 4. Latex/paper_A/paper_A_content.tex. La comparación acumulada se genera aparte; al implementar, respetar la convención de cambios que esté acordada con el autor.
+
+1. PRECISAR LA DENOMINACIÓN DEL EXPERIMENTO
+Estado: aprobado; pendiente de aplicación.
+- Sustituir la denominación genérica survey experiment por vignette experiment en el título y en las descripciones de la tarea de tarjetas cuando corresponda.
+- Título propuesto y aprobado como orientación: “Why Me?”: Understanding Teachers’ Grade-Retention Decisions through a Vignette Experiment.
+- En métodos describir la tarea como un single-profile vignette experiment: se muestra un alumno hipotético cada vez y se solicita una recomendación binaria de repetición.
+- Mantener explícita la asignación aleatoria a conjuntos prefijados de tarjetas y el orden de presentación aleatorio. La nueva denominación no implica aleatorización independiente de cada atributo.
+- No adoptar automáticamente discrete choice experiment como etiqueta principal. Survey experiment no es incorrecto como categoría amplia, pero vignette experiment describe con mayor precisión esta tarea.
+- Revisar coherentemente título, resumen y otras menciones; no cambiar títulos de fuentes citadas ni la denominación histórica del registro.
+- Apoyo metodológico: Hainmueller, Hangartner y Yamamoto (2015), Validating vignette and conjoint survey experiments against real-world behavior, PNAS, 112(8), 2395–2400. DOI: 10.1073/pnas.1416587112. Ya forma parte de la bibliografía del artículo; no duplicar la entrada.
+
+2. FACILITAR LA COMPARACIÓN DE MAGNITUDES EN LAS REGRESIONES DOCENTES
+Estado: aprobado; cálculos pendientes para la implementación conjunta.
+- Conservar la tabla principal de caracterización en las unidades originales de las covariables y el harshness en puntos porcentuales.
+- Conservar los seis atributos binarios del alumno en 0/1. No estandarizar automáticamente todas las regresiones.
+- Complementar el texto con unos pocos contrastes de una desviación típica para las asociaciones que se discuten, especialmente edad, atribución al esfuerzo y acuerdo sobre recursos excesivos. Traducir siempre esa desviación típica a las unidades originales para facilitar su interpretación.
+- Calcular las desviaciones típicas sobre la misma muestra de 2.164 casos completos usada en las tres especificaciones actuales, salvo que la muestra vigente haya cambiado antes de implementar. Comparar magnitudes dentro de una misma especificación y usar como referencia principal el modelo completo; no escoger coeficientes por significación entre columnas.
+- Para un predictor continuo en estas regresiones lineales aditivas, el contraste de una desviación típica es beta * SD(X). Si se informa su SE, multiplicar también el SE HC3 por SD(X), tratada como escala descriptiva de la muestra. No sumar errores estándar ni presentar una nueva estimación como si hubiera cambiado el modelo.
+- Explicar que se trata de asociaciones condicionales para diferencias comparables en la distribución de cada variable. No interpretarlas como aportaciones independientes a la varianza explicada ni como un ranking universal de importancia.
+- No añadir por este acuerdo una nueva tabla, figura o apéndice. Integrar los contrastes seleccionados en el texto existente cuando aporten interpretación.
+- La propuesta de dos desviaciones típicas de Gelman se discutió como alternativa para comparar continuas con binarias, pero NO es la opción aprobada: se acordaron contrastes seleccionados de una desviación típica conservando los coeficientes originales.
+- Referencia metodológica consultada: Gelman (2008), Scaling regression inputs by dividing by two standard deviations, Statistics in Medicine, 27, 2865–2873. DOI: 10.1002/sim.3107. Valorar su cita solo si la explicación final la necesita; no atribuirle la elección de una desviación típica.
+
+REGISTRO DE APLICACIÓN
+Sin aplicar. En esta fecha solo se han registrado los acuerdos; no se han reestimado modelos ni modificado el manuscrito.
