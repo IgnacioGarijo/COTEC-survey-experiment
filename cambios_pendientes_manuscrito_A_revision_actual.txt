@@ -82,6 +82,13 @@ Estado: aprobado por el autor; pendiente de aplicación.
 - Sustituir “Understanding these recommendations requires separating student circumstances from teacher judgment.” por “We show that understanding grade-retention recommendations requires separating student circumstances from teacher judgment.”
 - Mantener la continuación del párrafo que explica diferencias de alumnado y diferencias de juicio ante casos comparables. La frase se refiere a recomendaciones de repetición, que es el objeto observado.
 
+10. ACLARAR LA INTERPRETACIÓN DE LOS COEFICIENTES DE ATRIBUTOS
+Estado: aprobado por el autor; pendiente de aplicación.
+- Sustituir “Attribute coefficients summarize conditional contrasts across the implemented profiles, rather than averages over independently randomized attributes in the full factorial.” por:
+  “The coefficients describe how recommendations change with each student attribute, adjusting for the other attributes and teacher fixed effects, within the combinations represented in our design.”
+- Mantener en la sección de diseño la explicación de los conjuntos prefijados y de los 56 perfiles representados entre los 64 posibles, de acuerdo con el punto 5. Evitar repetir aquí expresiones técnicas como conditional contrasts o full factorial sin necesidad.
+- La simplificación no debe presentar la regresión como si cada comparación observara siempre dos perfiles idénticos salvo en un atributo, ni implicar aleatorización independiente de todos los atributos. Coordinar con la presentación conjunta del modelo aditivo y el de interacciones: el significado de un efecto principal en este último depende de los valores de los atributos con los que interactúa.
+
 REGISTRO DE APLICACIÓN
-Acuerdos 1–9 sin aplicar: no se han reestimado los modelos del manuscrito ni modificado su texto.
+Acuerdos 1–10 sin aplicar: no se han reestimado los modelos del manuscrito ni modificado su texto.
 Por petición separada del autor, se ha realizado un análisis complementario de quienes recomiendan progresar ante su propio ejemplo desfavorable, conservado en 3. Output/adverse_example_analysis/informe.qmd y su HTML. DECISIÓN POSTERIOR DEL AUTOR: no incorporar nada de este análisis al manuscrito ni a sus apéndices, porque sus conclusiones no se consideran relevantes para el paper. Conservarlo únicamente como análisis interno descartado; no modifica el filtro de exclusión.
