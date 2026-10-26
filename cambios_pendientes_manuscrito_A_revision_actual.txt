@@ -62,5 +62,20 @@ Estado: solicitado por el autor; pendiente de aplicación.
 - Explicar en la nota o el texto inmediato la progresión: características profesionales/demográficas; adición de creencias generales; adición de acuerdo sobre recursos excesivos. Mantener visible qué incluye cada especificación.
 - Coordinar con el punto 2: coeficientes en unidades originales y contrastes seleccionados en el texto.
 
+8. HOMOGENEIZAR LAS DECISIONES A OCHO TARJETAS SIN EXIGIR COVARIABLES INNECESARIAS
+Estado: aprobado por el autor; pendiente de aplicación conjunta.
+- Muestra principal para atributos, interacciones, categorías académicas, desacuerdo, distribución de harshness y terciles: 2.520 profesores con ocho decisiones experimentales recuperadas, 20.160 decisiones. Sustituye en esos análisis a los 2.604 profesores / 20.467 decisiones que incluyen respuestas parciales.
+- Caracterización docente y descomposición: mantener los 2.164 profesores con todas las covariables, 17.312 decisiones; todos tienen ocho tarjetas. Mantener idéntica muestra en las especificaciones comparadas de caracterización.
+- No restringir automáticamente todos los análisis a 2.164: los otros 356 profesores con ocho tarjetas tienen información válida para estudiar las decisiones aunque les falte alguna covariable docente. La uniformidad de N por sí sola no justifica excluirlos.
+- Calcular las referencias por perfil y harshness respecto a la nueva muestra principal de 2.520, excluyendo al propio profesor como en la definición vigente. Llevar esa misma medida al subconjunto de 2.164; no redefinir silenciosamente el grupo de referencia en cada tabla. Documentar asimismo el universo de referencia al efectuar la comprobación de muestra común.
+- Actualizar terciles y sus tablas utilizando la muestra principal y su harshness recalculado. En la comprobación sobre 2.164, distinguir entre restringir los grupos principales y recalcular cortes si fuera necesario; no confundir ambas operaciones.
+- Añadir una comprobación compacta de los resultados centrales de decisiones restringidos a los mismos 2.164 profesores. Su finalidad es distinguir cambios de composición de diferencias entre los análisis. Aprovechar el anexo existente, sin crear otro apéndice por defecto.
+- Conservar como sensibilidad en el anexo existente la inclusión de los 84 profesores con respuestas parciales (307 decisiones adicionales). No describir la mera desigualdad del número de respuestas como prueba de inestabilidad o invalidez.
+- La sensibilidad B_full8 ya calculada respalda cambios pequeños frente a B: suspensos 54,70 a 54,93 pp; competencias 27,11 a 27,19; absentismo 6,72 a 6,81; SD de harshness 19,00 a 18,54 pp; desacuerdo 25,22 a 25,06 %. Son antecedentes para verificar la implementación, no cifras para copiar sin comprobar salidas finales.
+- La comparación anterior NO equivale a haber comprobado todavía todos los resultados restringidos a 2.164. Ejecutar y evaluar esa comprobación al implementar.
+- Aunque los profesores de la descomposición no cambien, el recálculo de referencias puede modificar su harshness: regenerar los modelos, la descomposición y su incertidumbre que dependan de la medida, o verificar reproduciblemente la equivalencia de las salidas B_full8 existentes. No conservar automáticamente las cifras o SE de B.
+- Revisar de forma coherente resumen, introducción, métodos, tablas y figuras, texto de resultados, conclusiones, flujo muestral, disponibilidad de covariables, comparación poblacional y sensibilidades. El flujo debe distinguir participantes elegibles y muestra principal con ocho tarjetas, sin presentar respuestas parciales como cribado por respuesta incorrecta.
+- Explicar de forma breve las dos muestras y su razón: ocho decisiones para comparaciones homogéneas entre profesores; covariables completas únicamente para modelos que las utilizan. Mantener los análisis de progresión/agotamiento sobre el universo apropiado, sin restringirlos a quienes completaron ocho tarjetas y ocultar así el abandono.
+
 REGISTRO DE APLICACIÓN
 Sin aplicar. En esta fecha solo se han registrado los acuerdos; no se han reestimado modelos ni modificado el manuscrito.
