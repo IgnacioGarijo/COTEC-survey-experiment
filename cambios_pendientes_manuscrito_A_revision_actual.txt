@@ -100,6 +100,15 @@ Estado: aprobado por el autor; pendiente de aplicación.
 - Coordinar con la muestra principal de ocho tarjetas acordada en el punto 8. Tras recalcular las referencias en los 2.520 profesores, actualizar la explicación posterior: en esa muestra principal la media de harshness entre profesores es cero por construcción (salvo redondeo), pues todos aportan ocho respuestas. Esta propiedad no se afirma automáticamente para el subconjunto de 2.164 que conserva las referencias principales.
 - Situar la explicación breve del ruido por disponer de pocas respuestas cuando se presenta la distribución y los terciles, sin interrumpir la definición inicial ni reiterar advertencias.
 
+12. DISTINGUIR CON CLARIDAD DISAGREEMENT DE HARSHNESS EN 3.3
+Estado: aprobado por el autor; pendiente de aplicación.
+- Reescribir el párrafo de desacuerdo para que quede explícito que es un concepto diferente: harshness resume la severidad media relativa de un profesor; disagreement mide si profesores ante el mismo perfil coinciden o dan recomendaciones distintas. No presentarlo como otra denominación o una variante poco clara del harshness.
+- Texto aprobado como referencia:
+  “Teachers with similar average harshness may nevertheless disagree about which students should repeat. We measure this disagreement by calculating, for each student profile, the proportion of teacher pairs giving different recommendations. We then summarize disagreement across profiles, giving greater weight to those evaluated more frequently. We report this measure both overall and for the four combinations of failed subjects and competences.”
+- Las parejas son de profesores distintos que evalúan un perfil idéntico en los seis atributos. Mantener esa precisión al coordinar la definición con resultados y notas de tablas, sin complicar la explicación inicial.
+- Separar de este párrafo el detalle de los identificadores: tarjetas con idénticos seis atributos se agrupan como un mismo perfil aunque tengan códigos o conjuntos diferentes. Situarlo junto a la construcción de perfiles y referencias; mantener allí o en el anexo la comprobación de referencias por identificador, evitando repeticiones.
+- Revisar la legibilidad del párrafo en la copia acumulada con cambios: las eliminaciones y adiciones no deben interpretarse como una única frase con expresiones como “identifier sixattribute” o “studentsThus”. La versión aceptada debe leerse de forma continua y distinguir claramente las dos medidas.
+
 REGISTRO DE APLICACIÓN
-Acuerdos 1–11 sin aplicar: no se han reestimado los modelos del manuscrito ni modificado su texto.
+Acuerdos 1–12 sin aplicar: no se han reestimado los modelos del manuscrito ni modificado su texto.
 Por petición separada del autor, se ha realizado un análisis complementario de quienes recomiendan progresar ante su propio ejemplo desfavorable, conservado en 3. Output/adverse_example_analysis/informe.qmd y su HTML. DECISIÓN POSTERIOR DEL AUTOR: no incorporar nada de este análisis al manuscrito ni a sus apéndices, porque sus conclusiones no se consideran relevantes para el paper. Conservarlo únicamente como análisis interno descartado; no modifica el filtro de exclusión.
