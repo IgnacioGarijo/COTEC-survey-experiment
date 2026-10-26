@@ -84,4 +84,4 @@ Estado: aprobado por el autor; pendiente de aplicación.
 
 REGISTRO DE APLICACIÓN
 Acuerdos 1–9 sin aplicar: no se han reestimado los modelos del manuscrito ni modificado su texto.
-Por petición separada del autor, se ha realizado un análisis complementario de quienes recomiendan progresar ante su propio ejemplo desfavorable, conservado en 3. Output/adverse_example_analysis/informe.qmd y su HTML. Su realización no implica aprobación para incorporarlo al paper ni para modificar el filtro de exclusión.
+Por petición separada del autor, se ha realizado un análisis complementario de quienes recomiendan progresar ante su propio ejemplo desfavorable, conservado en 3. Output/adverse_example_analysis/informe.qmd y su HTML. DECISIÓN POSTERIOR DEL AUTOR: no incorporar nada de este análisis al manuscrito ni a sus apéndices, porque sus conclusiones no se consideran relevantes para el paper. Conservarlo únicamente como análisis interno descartado; no modifica el filtro de exclusión.
