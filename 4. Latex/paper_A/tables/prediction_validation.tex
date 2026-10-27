@@ -1,0 +1,12 @@
+\begin{tabular}{p{4.3cm}rrrrr}
+\toprule
+Comparison & Teachers & \shortstack{Brier\\baseline} & \shortstack{Brier\\+ history} & \shortstack{Brier\\reduction} & \shortstack{Log-loss\\reduction} \\
+\midrule
+Four random / four reserved & 2520 & 0.12514 & 0.10950 & \shortstack{0.01565\\{\scriptsize (0.00141)}} & \shortstack{0.04092\\{\scriptsize (0.00372)}} \\
+First four / last four & 2520 & 0.11863 & 0.10589 & \shortstack{0.01273\\{\scriptsize (0.00124)}} & \shortstack{0.03533\\{\scriptsize (0.00334)}} \\
+No shared fields & 2557 & 0.12785 & 0.11524 & \shortstack{0.01261\\{\scriptsize (0.00126)}} & \shortstack{0.03536\\{\scriptsize (0.00332)}} \\
+No favorable-example screen & 2853 & 0.13439 & 0.11659 & \shortstack{0.01780\\{\scriptsize (0.00137)}} & \shortstack{0.04869\\{\scriptsize (0.00374)}} \\
+Full observed teacher information & 2164 & 0.12356 & 0.10946 & \shortstack{0.01409\\{\scriptsize (0.00137)}} & \shortstack{0.03830\\{\scriptsize (0.00364)}} \\
+\bottomrule
+\end{tabular}
+\tabnote{Paired five-fold teacher-level validation. Both predictors include the same profile-frequency offset and treatment/set/stage controls; the last row additionally includes all observed teacher covariates in both predictors. History uses four cards in complete-eight rows; no shared fields uses floor(n/2) histories among records with at least four nonshared responses. Teacher-bootstrap SE for reductions in parentheses, 399 full pipeline refits; folds and partitions held fixed.}

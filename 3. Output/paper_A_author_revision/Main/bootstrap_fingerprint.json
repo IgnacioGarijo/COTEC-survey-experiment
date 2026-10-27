@@ -1,0 +1,7 @@
+{
+  "scenario_md5": "c6a7820e958d904b5b7d6d4a41733e15",
+  "model": "diagonal",
+  "method": "clone-LOO-all-six-blocks-full-derivatives-recenter-v1",
+  "seed": "2410000 + draw",
+  "lme4": "1.1.35.3"
+}

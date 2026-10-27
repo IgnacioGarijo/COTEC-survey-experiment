@@ -1,0 +1,42 @@
+EDITORIAL CLOSURE REVIEW — Paper A author revision
+Date: 27 October 2026
+Result: PASS for canonical-source editorial closure after corrections verified.
+
+SCOPE / PROTECTION
+Read run_constraints.md first and acknowledged all protections to the coordinator. Reviewed canonical Paper A source, relevant table TEX and references against approved points 1–17 and the frozen 8306e22 source/bibliography exposed at tmp/paper_A_author_revision/baseline/. Sole writable output is this memo. No canonical edits, Git, model fitting, raw-record output, package installation, uploads or subordinate agents were used. Numerical reconstruction and PDF/redline visual QA are separately assigned; this memo certifies source editorial content.
+
+CORRECTIONS REQUESTED AND VERIFIED
+1. The design now explicitly describes a “single-profile vignette experiment” with a binary progress/repeat recommendation. The existing sentence was adjusted locally, including six-attribute punctuation.
+2. Hainmueller, Hangartner and Yamamoto (2015), DOI 10.1073/pnas.1416587112, is now cited and appears exactly once in references_A.tex. Frozen 8306e22 itself lacked this entry: the approved note's “already present” premise was inaccurate. The distinct 2014 Hainmueller/Hopkins/Yamamoto source is retained.
+3. The preregistration paragraph now identifies reconstruction, covariance comparisons, held-out prediction and standardized academic comparisons as developed retrospectively for the present analysis.
+4. The favorable-example screen's operative criterion had disappeared during simplification. The final source again states that records recommending repetition for the assigned favorable example are excluded.
+All four source changes were inspected after application; no unresolved material editorial issue remains.
+
+APPROVED-POINT COVERAGE
+1. Vignette terminology is coherent in title/abstract/task; methods now use single-profile. Random assignment to eight predefined sets and random order are explicit. Historical registry title is preserved.
+2. Main characterization table retains original covariate units and percentage-point harshness. Selected resource, age and effort SD contrasts appear in prose using the full specification and original-unit SDs.
+3. Opening synthesis contains the three brief, differentiated review findings verified in literature_memo.txt. Surrounding author prose is preserved.
+4. Four readable research questions connect to the three results blocks without expanding the central narrative.
+5. Design states 56 of 64 possible profiles; eight assigned eight-card sets are explicit.
+6. Merged additive/interaction and academic rates/disagreement tables are restored in the main text. Interaction-column main coefficients differ appropriately. Coefficient/academic figures are absent from accepted-source presentation; Appendix B contains no duplicate main attributes/interactions/academic tables.
+7. Characterization headings are (1), (2), (3), with specification progression stated.
+8. Main sample is consistently 2,520 teachers / 20,160 decisions; characterization/decomposition use 2,164 / 17,312 and retain main-sample harshness references. Remaining 2,604 / 20,467 mentions appropriately describe flow or partial-response sensitivity. Appendix A includes compact common-sample comparison, reconstruction sensitivities and eligible-sequence progression. Counts dependent on data are independently reviewed elsewhere.
+9. Approved direct contribution sentence is present and its continuation preserved.
+10. Approved plain-language coefficient interpretation is present; interaction interpretation explains main-effect dependence on the failed-subject indicator.
+11. Approved harshness definition and interpretation surround the equation; same-profile references, eight-card averaging and main-sample zero mean are explicit. Short-response context is placed with distribution/terciles. Removed redundant appropriateness/opposition caveats are absent.
+12. Disagreement is explicitly distinct from average harshness, uses distinct teachers within identical profiles, and frequency weights are stated. Identifier pooling is explained in Appendix A.
+13. Compact held-out prediction appears in the second results block with main random split, ordered first-four/last-four check and matched full-covariate result. Teacher-fold separation and conditional bootstrap/partition uncertainty are documented; changed sensitivity populations/history lengths are explicit. Decomposition remains complete and separate.
+14. Academic composition robustness is a compact body statement with definitions/estimates in existing Appendix B: twelve uniform combinations, 48 profiles, excluded absence-plus-discipline combinations and three simultaneous contrasts. Main table retains observed category distributions.
+15. Full decomposition method/justification and substantive wrap-up remain in the body. Appendix C explains variances versus covariances and diagonal/three-pair/unrestricted structures. Table states 6/9/21 parameters. Better correlated-model REML AIC and covariance boundaries are disclosed honestly; diagonal is the simple primary interior approximation, with aggregate-share stability reported.
+16. Existing tercile tables introduce differences in criterion weights, particularly failures versus competences, and connect to final sensitivities. No new per-attribute SD table or substantive covariance/correlation matrix appears.
+17. Technical reconstruction sits in Appendix A; introduction ends with a brief roadmap. Redundant label/left-tail warnings are removed. Baseline metadata and comparison manifest use 8306e22 and preserve retired exhibits. Redline PDF appearance remains within the separate visual review.
+
+PRESERVATION / COHERENCE CHECKS
+- Read current paper_A_content.tex in full, all main tables, standardized tables, common/reconstruction sensitivities, covariance audit, prediction table, alternatives and references.
+- Compared frozen source with current source using a read-only text diff. Original theoretical framework is unchanged after whitespace normalization. Other changes follow authorized sample updates, local terminology/explanation, table restoration, robustness additions and redundant-clarification removal. Discussion and conclusion receive only local consequential adjustments.
+- Source check finds exactly three results subsections, no missing citation keys and no unresolved source reference labels. Current new citation appears once.
+- No adverse-example analysis result is incorporated. Mentioning the adverse hypothetical example when describing the original task preserves necessary task context.
+- Added prose states the measured quantities and observed findings affirmatively. Retained methodological distinctions serve interpretation or preserve author prose; no new generic caution was recommended.
+
+LIMITS
+This source editorial pass does not independently recalculate estimates, certify data reconstruction, audit model caches or replace accepted/redline PDF visual QA. The scientific reviewer and coordinator own those checks.

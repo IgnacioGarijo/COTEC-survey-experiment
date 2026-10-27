@@ -1,0 +1,2 @@
+"scenario","partition","seed","brier_base","brier_history","log_base","log_history","brier_gain","log_gain","rank_drop"
+"B_ordered",1,261026,0.118625067754737,0.105892428223789,0.376295954101811,0.340966632524235,0.0127326395309486,0.0353293215775762,0

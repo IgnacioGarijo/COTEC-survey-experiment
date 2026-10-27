@@ -1,0 +1,14 @@
+{
+  "label": "B_ordered",
+  "teachers": 2520,
+  "history": 10080,
+  "test": 10080,
+  "folds": 5,
+  "bootstrap": 399,
+  "rank_drop": 0,
+  "bootstrap_rank_drops": 0,
+  "other_warnings": 0,
+  "extended": false,
+  "transformations": "Extended continuous inputs centered/scaled within training fold and bootstrap fit",
+  "interpretation": "within-encounter masked-card or ordered-card prediction; fixed folds/partition for bootstrap"
+}

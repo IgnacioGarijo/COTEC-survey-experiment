@@ -1,0 +1,14 @@
+{
+  "n": 19496,
+  "teachers": 2437,
+  "kind": "diagonal",
+  "diagnostics": {
+    "singular": 0,
+    "gradient": 0.0005,
+    "min_hessian": 574.5357,
+    "optimizer": 0,
+    "min_covariance": 0.0028
+  },
+  "outside01": 0.2921,
+  "hb": 0.9689
+}

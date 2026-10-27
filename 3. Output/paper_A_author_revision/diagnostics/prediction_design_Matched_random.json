@@ -1,0 +1,14 @@
+{
+  "label": "Matched_random",
+  "teachers": 2164,
+  "history": 8656,
+  "test": 8656,
+  "folds": 5,
+  "bootstrap": 399,
+  "rank_drop": 0,
+  "bootstrap_rank_drops": 0,
+  "other_warnings": 0,
+  "extended": true,
+  "transformations": "Extended continuous inputs centered/scaled within training fold and bootstrap fit",
+  "interpretation": "within-encounter masked-card or ordered-card prediction; fixed folds/partition for bootstrap"
+}

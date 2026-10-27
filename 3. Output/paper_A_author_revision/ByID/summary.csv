@@ -1,0 +1,2 @@
+"scenario","teachers","decisions","fe_teachers","fe_decisions","common_teachers","common_decisions","identifiers","coded_profiles","mean_repeat","mean_teacher_repeat","mean_hb","sd_hb","q10","q90","tercile_low","tercile_high","disagreement","r2_full","belief_complete"
+"ByID",2520,20160,2520,20160,2164,17312,64,56,0.41889880952381,0.41889880952381,2.28499910240893e-19,0.185438593406738,-0.239182692307692,0.254365079365079,-0.0973926380368098,0.128968253968254,0.250678919463454,0.0467473334114474,2210

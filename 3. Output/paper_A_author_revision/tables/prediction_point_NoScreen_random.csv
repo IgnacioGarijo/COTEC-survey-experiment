@@ -1,0 +1,7 @@
+"scenario","metric","estimate","teachers","history_decisions","test_decisions"
+"NoScreen_random","brier_base",0.134387720956417,2853,11412,11412
+"NoScreen_random","brier_history",0.116586309330205,2853,11412,11412
+"NoScreen_random","log_base",0.424563608585899,2853,11412,11412
+"NoScreen_random","log_history",0.375870188179565,2853,11412,11412
+"NoScreen_random","brier_gain",0.0178014116262128,2853,11412,11412
+"NoScreen_random","log_gain",0.0486934204063343,2853,11412,11412

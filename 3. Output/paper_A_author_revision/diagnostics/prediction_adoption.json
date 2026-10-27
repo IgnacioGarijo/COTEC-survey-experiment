@@ -1,0 +1,54 @@
+{
+  "B_random": {
+    "max_point_error": 0,
+    "teachers": 2520,
+    "source_fingerprint": {
+      "estimator": "paper-C-v1-fixed-design-context-history",
+      "code_md5": "6505880e3ea3409ef8cf023d4ef93446",
+      "data_md5": "9efedc40da4dc2ee7e35a00bf6cb2abd",
+      "assignment_md5": "67ea18340c9b182d5d4755db5724215a",
+      "plan_md5": "8728c0dfcef5478f408e678d00ebe86f",
+      "label": "B_random"
+    },
+    "review": "3. Output/paper_C/independent_review.txt"
+  },
+  "B_ordered": {
+    "max_point_error": 0,
+    "teachers": 2520,
+    "source_fingerprint": {
+      "estimator": "paper-C-v1-fixed-design-context-history",
+      "code_md5": "6505880e3ea3409ef8cf023d4ef93446",
+      "data_md5": "9efedc40da4dc2ee7e35a00bf6cb2abd",
+      "assignment_md5": "67ea18340c9b182d5d4755db5724215a",
+      "plan_md5": "8728c0dfcef5478f408e678d00ebe86f",
+      "label": "B_ordered"
+    },
+    "review": "3. Output/paper_C/independent_review.txt"
+  },
+  "C_random": {
+    "max_point_error": 0,
+    "teachers": 2557,
+    "source_fingerprint": {
+      "estimator": "paper-C-v1-fixed-design-context-history",
+      "code_md5": "6505880e3ea3409ef8cf023d4ef93446",
+      "data_md5": "e83b62a1594ba1586709316c51c7c888",
+      "assignment_md5": "67ea18340c9b182d5d4755db5724215a",
+      "plan_md5": "8728c0dfcef5478f408e678d00ebe86f",
+      "label": "C_random"
+    },
+    "review": "3. Output/paper_C/independent_review.txt"
+  },
+  "NoScreen_random": {
+    "max_point_error": 0,
+    "teachers": 2853,
+    "source_fingerprint": {
+      "estimator": "paper-C-v1-fixed-design-context-history",
+      "code_md5": "6505880e3ea3409ef8cf023d4ef93446",
+      "data_md5": "14e565988d0e9979ec3341f1ce61cfe8",
+      "assignment_md5": "67ea18340c9b182d5d4755db5724215a",
+      "plan_md5": "8728c0dfcef5478f408e678d00ebe86f",
+      "label": "NoScreen_random"
+    },
+    "review": "3. Output/paper_C/independent_review.txt"
+  }
+}

@@ -24,20 +24,17 @@ def run(cmd,cwd=ROOT):
 def py(name):run([sys.executable,ROOT/'2. Code'/name])
 if a.analysis:
  rs=program('Rscript')
- if not (ROOT/'3. Output/paper_A_reconstruction/local/provenance.rds').exists():
-  run([rs,'--vanilla',ROOT/'2. Code/paper_A_reconstruction/reconstruct.R','prepare'])
- for name,args in [('prepare.R',[]),('models.R',['candidates']),('models.R',['points','diagonal']),('audit_models.R',[]),('models.R',['bootstrap','B','199','4'])]:
-  run([rs,'--vanilla',ROOT/'2. Code/paper_A_final_revision'/name,*args])
-py('paper_A_final_revision/build.py')
-py('paper_A_editorial_revision/figures.py')
-py('paper_A_editorial_revision/redline.py')
+ for name,args in [('analysis.R',['prepare']),('analysis.R',['models']),('analysis.R',['bootstrap']),('standardize.R',[]),('prediction.R',['recompute']),('prediction.R',['matched']),('audit_partitions.R',[])]:
+  run([rs,'--vanilla',ROOT/'2. Code/paper_A_author_revision'/name,*args])
+py('paper_A_author_revision/build.py')
+py('paper_A_author_revision/redline.py')
 py('build_B_tables.py')
 if not a.no_pdf:
- py('paper_A_editorial_revision/compile.py')
+ py('paper_A_author_revision/compile.py')
  tex=program('pdflatex')
  for folder,source in [('paper_B','paper_B_policy_scenarios.tex')]:
   for _ in range(2):run([tex,'-interaction=nonstopmode','-halt-on-error',source],ROOT/'4. Latex'/folder)
- py('paper_A_editorial_revision/audit.py')
+ py('paper_A_author_revision/audit.py')
 if a.presentations:
  quarto=program('quarto')
  for folder,source in [('COTEC','ppt_total.qmd'),('Prelim results','ppt.qmd')]:

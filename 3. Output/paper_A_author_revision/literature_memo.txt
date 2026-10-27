@@ -1,0 +1,43 @@
+LITERATURE MEMO — Paper A author revision
+Date: 27 October 2026
+Scope acknowledged: all run_constraints.md requirements accepted. This memo is the sole owned output. No canonical files, data, models, protected papers, bibliography or Git state were changed. Academic-orchestration and citation-management skills guided this bounded verification.
+
+RESULT
+Replace the introductory generic statement about varying effects with the three sentences below. They identify substantive differences in estimated effects and make the reviews' distinct conclusions clear. Preserve the author's surrounding prose, including the sentence introducing retention and the Spain/social-network discussion.
+
+PROPOSED ENGLISH TEXT (under 100 words; existing keys)
+Studies with stronger controls for pre-retention differences produce less negative achievement estimates, while initial advantages over younger same-grade peers diminish with time \citep{allen}. A later meta-analysis finds an average effect around zero, with more favorable results in the short run and in same-grade comparisons, and less favorable results against same-age promoted peers \citep{goos}. Reviewing studies that apply causal-inference methods, \citet{valbuena} conclude that potential benefits are generally weak relative to retention's costs, with effects depending on policy timing and institutional setting.
+
+EVIDENCE AND BIBLIOGRAPHIC CHECK
+1. Allen, C. S., Chen, Q., Willson, V. L., & Hughes, J. N. (2009). Quality of research design moderates effects of grade retention on achievement: A meta-analytic, multilevel analysis. Educational Evaluation and Policy Analysis, 31(4), 480–499. DOI: 10.3102/0162373709352239. Existing key: allen.
+Publisher: https://journals.sagepub.com/doi/10.3102/0162373709352239
+Author manuscript: https://pmc.ncbi.nlm.nih.gov/articles/PMC2921809/
+Exact locators: Abstract; Results, Effect Size-Level Analyses / Median year post retention; Discussion. The abstract reports 207 effects from 22 studies, less negative estimates under better designs, and declining effects with years after retention. The manuscript's Discussion interprets the same-grade pattern as an initial boost that dissipates; decline per additional year is 0.11 for grade comparisons versus 0.04 for age comparisons. This supports the first sentence without treating all retention estimates as negative.
+
+2. Goos, M., Pipa, J., & Peixoto, F. (2021). Effectiveness of grade retention: A systematic review and meta-analysis. Educational Research Review, 34, Article 100401. DOI: 10.1016/j.edurev.2021.100401. Existing key: goos.
+Publisher: https://www.sciencedirect.com/science/article/pii/S1747938X21000245
+Exact locators: Abstract; Introduction, paragraph beginning Fourth, previous meta-analyses. The abstract reports 84 methodologically sound studies, an overall average zero effect, more favorable short-run and younger-grade-mate comparisons, and less favorable same-age comparisons. The Introduction explains that grade comparisons assess development after an extra educational year against younger students, whereas age comparisons follow promoted contemporaries. The overall mean spans developmental outcomes; retain the broad wording average effect rather than relabeling it an achievement-only estimate. Comparison approach changes the question answered, alongside time since retention.
+
+3. Valbuena, J., Mediavilla, M., Choi, Á., & Gil, M. (2021). Effects of grade retention policies: A literature review of empirical studies applying causal inference. Journal of Economic Surveys, 35(2), 408–451. DOI: 10.1111/joes.12406. Existing key: valbuena.
+Publisher: https://onlinelibrary.wiley.com/doi/10.1111/joes.12406
+Author-deposited publisher PDF: https://zaguan.unizar.es/record/109026/files/texto_completo.pdf
+Exact locator supporting proposed sentence: Abstract, final two substantive sentences. This review explicitly concentrates on causal-inference studies, identifies timing, comparison group, follow-up and institutional setting as dimensions of effects, and concludes that policy costs can outweigh weak potential benefits. The publisher verifies 35(2), pp.408–451; first-online date 15 December 2020 is compatible with the existing 2021 issue year.
+All three existing references match verified author order, title, journal, year, volume and locator. No bibliography changes are needed for this insertion.
+
+INTRODUCTION ROADMAPS
+A brief final introduction paragraph mapping sections is an established convention illustrated in top-five economics journals. These examples establish acceptability, rather than a measured prevalence claim. Retain a compact roadmap if it helps readers follow the experimental design, decomposition and prediction analyses; one or two sentences are sufficient for this paper.
+
+Example 1 — Brian McCaig and Nina Pavcnik (2018), Export Markets and Labor Allocation in a Low-Income Country, American Economic Review 108(7), 1899–1941, DOI 10.1257/aer.20141096.
+Author-hosted published article: https://bpb-us-e1.wpmucdn.com/sites.dartmouth.edu/dist/4/2002/files/2018/08/McCaig_Pavcnik_AER-1au0mqs.pdf
+Exact location: journal p.1904, PDF page 6 of 43, final introductory paragraph, immediately before I. A Conceptual Framework.
+Short identifying quotation (10 words): "The rest of the paper is organized as follows."
+The paragraph maps Sections I–VI, including framework, agreement/data, methods/results, productivity and conclusion.
+
+Example 2 — Susan Athey, Raj Chetty, Guido W. Imbens and Hyunseung Kang (2026), The Surrogate Index: Combining Short-Term Proxies to Estimate Long-Term Treatment Effects More Rapidly and Precisely, Review of Economic Studies 93(4), 2284–2312, DOI 10.1093/restud/rdaf087. Published online 30 September 2025; issue July 2026.
+Publisher full text: https://academic.oup.com/restud/article/93/4/2284/8268796
+Exact location: Section 1 INTRODUCTION, final paragraph, immediately before 2 SETUP AND NOTATION; HTML begins "The paper is organized as follows."
+Short identifying quotation (7 words): "The paper is organized as follows."
+The paragraph maps Sections 2–8, including assumptions, identification, bias, estimation, application and conclusion.
+
+VERIFICATION / LIMITS / CHECKPOINT
+Verified primary publisher or author-deposited text and publication metadata using bounded web searches on 27 October 2026. Read the current introductory paragraph and references_A.tex. Proposed wording deliberately links design quality to the Allen synthesis, comparison/follow-up to Goos, and economic costs to Valbuena. Full-text retrieval of the Zaragoza PDF timed out; Valbuena's proposed claim is directly supported by the accessible publisher Abstract. No extensive additional search or empirical work was undertaken. Memo is ready for coordinator integration; no unresolved blocker and no Git changes.

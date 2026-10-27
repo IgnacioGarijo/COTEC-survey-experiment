@@ -1,0 +1,12 @@
+{
+  "main_teachers": 2520,
+  "supported_teachers": 2520,
+  "decisions": 17636,
+  "support_cells": 12,
+  "profiles": 48,
+  "seed": 2611001,
+  "draws": 1999,
+  "critical": 2.3174,
+  "missing_combinations": "absent=disruptive=1",
+  "input_md5": "c6a7820e958d904b5b7d6d4a41733e15"
+}
