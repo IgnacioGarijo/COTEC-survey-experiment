@@ -154,8 +154,22 @@ Fecha del acuerdo: 27 de octubre de 2026. Estado: aprobado por el autor; pendien
 - Revisar también el apéndice C: distinguir varianzas de las sensibilidades (dispersión entre profesores) de covarianzas (relación entre esas diferencias); explicar las tres estructuras diagonal, tres parejas y libre, con seis, nueve y veintiún parámetros respectivamente en esta parte del modelo.
 - Aclarar que las alternativas flexibles convergen, concuerdan entre optimizadores y ajustan mejor según REML AIC, pero alcanzan una frontera de la matriz de covarianzas. No equiparar singularidad con fracaso del programa o invalidez automática, ni proclamar que la diagonal es globalmente mejor. Presentarla como aproximación principal sencilla e interior bajo la regla adoptada; explicar la estabilidad de las cuotas agregadas entre alternativas.
 - Simplificar la descripción de diagnósticos y bootstrap: propósito de cada comprobación, qué permite concluir y qué no. Actualizar muestras, referencias, cifras y número de remuestras al ejecutar la revisión; no copiar números previos sin verificar.
-- Los otros tres puntos discutidos (presentación de diferencias de criterio con terciles; tabla de dispersión de seis sensibilidades; posible interpretación de covarianzas) están EN INVESTIGACIÓN y requieren propuesta y aprobación final separada. Este acuerdo no autoriza incorporarlos al manuscrito.
+- Decisión posterior del autor, recogida en el punto 16: introducir las diferencias de criterio con la tabla por terciles existente; descartar la tabla de dispersiones y la interpretación sustantiva de covarianzas.
+
+16. PRESENTAR LAS DIFERENCIAS DE CRITERIO CON LOS TERCILES EXISTENTES
+Estado: aprobado por el autor; aplicar en esta revisión conjunta.
+- Introducir explícitamente, después del desacuerdo por perfil, que los profesores pueden diferir tanto en severidad general como en el peso dado a los atributos. Aprovechar la tabla existente de coeficientes por terciles para describir el patrón: el peso de los suspensos cambia mucho más entre grupos que el de competencias.
+- Conectar ese resultado descriptivo con la descomposición final, que incorpora severidad global y sensibilidades específicas. Mantener el carácter descriptivo de los grupos formados con las respuestas.
+- Descartar la nueva tabla de desviaciones típicas por atributo y la matriz/interpretación sustantiva de correlaciones entre sensibilidades. Las estructuras de covarianza se conservan únicamente como diagnóstico de robustez en el apéndice C.
+
+17. ELIMINAR ACLARACIONES REDUNDANTES Y REINICIAR LA COMPARACIÓN
+Estado: aprobado por el autor; aplicar ahora todos los acuerdos acumulados.
+- Retirar el párrafo de reconstrucción que empieza “We reconstruct experimental responses from each record’s eight-position presentation sequence...” de su posición actual como cierre de exposición. Conservar de forma concisa la información necesaria de construcción de muestra y campos compartidos en el lugar metodológico/apéndice apropiado, sin terminar la introducción con detalles de limpieza de datos. Valorar un breve mapa de secciones como cierre de la introducción.
+- Eliminar “The label does not imply that recommending repetition is wrong.” y la frase de la cola izquierda que termina “it does not, by itself, establish general opposition to repetition.” No sustituirlas por advertencias equivalentes redundantes.
+- Preferencia persistente: evitar en documentos finales descripciones basadas en lo que algo no es, salvo distinciones metodológicas necesarias. Registrada en AGENTS.md.
+- Reiniciar los colores desde la versión vigente aceptada antes de esta ejecución, conservada en Git: contenido de origen negro, nuevas adiciones azules, eliminaciones rojas tachadas; conservar tablas/figuras retiradas claramente identificadas. No arrastrar como eliminaciones nuevas los pasajes históricos ya retirados en la comparación anterior.
+- Aplicar todos los puntos autorizados y revisar conjuntamente muestras, texto, tablas, figuras, anexos, referencias cruzadas y conclusiones. Preservar el resto de la redacción del autor.
 
 REGISTRO DE APLICACIÓN
-Acuerdos 1–15 sin aplicar: no se han reestimado los modelos del manuscrito ni modificado su texto.
+Ejecución conjunta de los acuerdos 1–17 autorizada por el autor el 27 de octubre de 2026; en curso. Registrar aquí la verificación final al terminar.
 Por petición separada del autor, se ha realizado un análisis complementario de quienes recomiendan progresar ante su propio ejemplo desfavorable, conservado en 3. Output/adverse_example_analysis/informe.qmd y su HTML. DECISIÓN POSTERIOR DEL AUTOR: no incorporar nada de este análisis al manuscrito ni a sus apéndices, porque sus conclusiones no se consideran relevantes para el paper. Conservarlo únicamente como análisis interno descartado; no modifica el filtro de exclusión.

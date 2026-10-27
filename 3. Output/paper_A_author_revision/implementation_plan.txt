@@ -1,0 +1,8 @@
+Implementation plan (27 Oct2026):
+1 Freeze scientific baseline and writing preference; record scope and new approvals.
+2 Prepare Main2520/Common2164 and controlled sensitivities, extract consistent covariates/flow, fit same covariance candidates and bootstrap updated decomposition.
+3 Recalculate common-support descriptions/bootstrap; verify/reuse reviewed C prediction outputs for unchanged algorithms and estimate matched full-covariate extension.
+4 Restore/merge tables, conventional headings, update histogram/flow/population; no new dispersion/correlation or adverse-example content.
+5 Make only authorized prose changes: substantive literature contrast, four questions, vignette terminology, clear measures/criteria/decomposition and appendix C, concise roadmap/data construction.
+6 Reset cumulative markup to accepted baseline, retain retired exhibits, regenerate pipeline/audit and check baseline recovery.
+7 Compile both views, inspect all pages, independent numerical/editorial closure, commit final outputs and mark notes applied.
