@@ -1,0 +1,18 @@
+{
+  "input_hashes": {
+    "3. Output/paper_A_final_revision/local/candidate_B_diagonal_bobyqa.rds": "ba1da1dc73481498625766951f571da1",
+    "3. Output/paper_A_final_revision/local/candidate_B_domains_bobyqa.rds": "0933dff61ebc3ee804dac0d34b7bddb8",
+    "3. Output/paper_A_final_revision/local/candidate_B_full_bobyqa.rds": "4ab566ac2c34b5e02acc41924d930f13",
+    "3. Output/paper_A_final_revision/local/candidate_B_full8_diagonal_nloptwrap.rds": "f7757bbc0d331eed9f50127ee0b65e7d",
+    "3. Output/paper_A_final_revision/local/candidate_C_diagonal_nloptwrap.rds": "33f48309d2a5e9e391b43c517ea5329a",
+    "3. Output/paper_A_final_revision/local/candidate_NoScreen_diagonal_nloptwrap.rds": "69223d92295e84f7033821fb57376553",
+    "3. Output/paper_A_final_revision/local/candidate_ByID_diagonal_nloptwrap.rds": "fd025615599fe4f2e7314bf458530426",
+    "3. Output/paper_A_final_revision/B_full8/attributes_by_tercile.csv": "fb1c4dd9b5202409b5013bdd3e58d920",
+    "3. Output/paper_A_final_revision/B/decomposition_bootstrap_draws.csv": "2b76fd10988c803539bc66691393be87"
+  },
+  "script_md5": "9ed0d10853107343d7d295a2989a1084",
+  "fits_reestimated": false,
+  "SD_unit": "percentage-point change in sensitivity to a 0/1 student attribute; latent model-implied dispersion, not SE or raw teacher-estimate SD",
+  "uncertainty": "Not estimated here. Existing bootstrap saves aggregate shares only; cannot reuse their SE as SD uncertainty.",
+  "comparison_scope": "B full/pairs/diagonal on same17312 decisions; Eight is updated reference sensitivity on same2164 complete teachers; all subject to response-derived harshness working model."
+}

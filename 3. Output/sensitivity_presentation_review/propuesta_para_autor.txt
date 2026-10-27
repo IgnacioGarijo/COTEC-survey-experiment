@@ -1,0 +1,46 @@
+PROPUESTA PARA EL AUTOR: PRESENTACIÓN DE DIFERENCIAS DE CRITERIO Y SENSIBILIDADES
+27 de octubre de 2026
+
+ESTADO
+Solo está aprobado registrar para la próxima iteración la aclaración del apartado 5.3 y el apéndice C (punto 15 de cambios pendientes; commit 924d994). Los tres desarrollos siguientes son propuestas pendientes del OK final. No se ha modificado el manuscrito ni reestimado ningún modelo. Se han extraído y contrastado estimaciones de los ajustes ya guardados. La tabla por terciles B_full8 procede de la sensibilidad de ocho respuestas ya calculada; no se sustituye silenciosamente la tabla vigente B.
+
+1. DAR SENTIDO EXPLÍCITO A LA TABLA DE COEFICIENTES POR TERCILES
+Recomendación: sí, con un cambio local de presentación, sin añadir una regresión o figura nueva.
+Secuencia: distribución de harshness -> desacuerdo ante perfiles/categorías académicas -> diferencias en los criterios de los grupos de severidad -> posterior descomposición global. Conservar las tablas de terciles acordadas por el autor, introduciendo explícitamente qué pregunta responde cada una.
+Transición sugerida en español: El desacuerdo identifica los casos que dividen a los profesores. A continuación preguntamos si los profesores difieren solo en su severidad general o también en la importancia que dan a cada característica del alumno.
+Texto inglés orientativo para la tabla de pendientes: “Teachers may differ not only in their overall harshness but also in how strongly their recommendations respond to particular student attributes. To describe these differences, we compare within-teacher attribute coefficients across the observed harshness terciles.”
+Ejemplo comprobado en la sensibilidad de ocho respuestas: suspensos 31,93 / 66,08 / 66,28 pp en terciles inferior/medio/superior; competencias 27,33 / 28,05 / 26,58. La versión vigente B contiene 31,57 / 65,05 / 66,95 y 27,16 / 28,56 / 25,94, respectivamente. Usar la versión pertinente al ejecutar la revisión. El contraste sustantivo: los grupos no son una simple multiplicación uniforme de todos los coeficientes. No convertir la clasificación basada en las propias respuestas en tres tipos estables ni en una prueba independiente de la varianza individual de sensibilidades. Los grupos full8 tienen 840/795/885 docentes por empates en los cortes; no afirmar tamaños idénticos.
+Valor añadido: hace visible y comprensible un resultado que ya está, por lo que es la mejora de mayor rendimiento y menor coste de espacio.
+
+2. MOSTRAR QUÉ ATRIBUTOS CONTIENEN MAYOR DISPERSIÓN DE SENSIBILIDADES
+Recomendación: sí a preparar una tabla principal pequeña de seis filas si se completa su incertidumbre en la revisión; es una descripción del modelo, no un descriptivo bruto.
+Estadístico: 100 * raíz de la varianza del desvío docente para cada atributo, extraída de VarCorr. Las seis covariables son binarias 0/1, por lo que la unidad comparable es puntos porcentuales de diferencia en la respuesta al atributo. Se trata de desviaciones respecto al patrón común del modelo, que ya incluye interacciones, covariables y harshness. No es SD de los BLUPs, error estándar del efecto medio ni cuota de la descomposición.
+Tabla provisional, modelo diagonal vigente B:
+- Suspensos: 26,99 pp.
+- Competencias bajas: 25,67 pp.
+- Disciplina: 16,14 pp.
+- Contexto social complejo: 10,55 pp.
+- Absentismo: 8,35 pp.
+- Género: 4,56 pp.
+La sensibilidad B_full8 con referencias en 2.520 es prácticamente idéntica: 26,99 / 25,67 / 16,14 / 10,55 / 8,36 / 4,55. En los modelos correlacionados B, suspensos 28,37/28,32, competencias27,11/27,55, disciplina15,12/15,71, contexto9,95/11,06, absentismo8,01/8,18 y género6,48/7,33 (parejas/libre). El orden amplio es estable, pero el tamaño de la heterogeneidad de género es más sensible en términos relativos. No derivar de un valor puntual positivo evidencia concluyente de heterogeneidad de género o discriminación.
+Formato recomendado: tabla de dos columnas (atributo; dispersión estimada en pp), con incertidumbre apropiada al actualizar cálculos. Comparación de las tres estructuras en un panel del anexo C, no tres columnas técnicas en el cuerpo. No mezclarla con las cuatro categorías académicas ni con los coeficientes y SE de la tabla por terciles: son niveles y estadísticas diferentes. Ubicación: al final del desarrollo de diferencias de criterio, después de la tabla por terciles y antes del cierre global. Indicar que procede del modelo conjunto definido en métodos.
+Incertidumbre pendiente: los 199 bootstraps actuales guardan cuotas agregadas y diagnósticos, no las seis varianzas. No reutilizar los SE de las cuotas. Al recalcular el bootstrap por la nueva muestra, guardar también las seis SD en cada remuestra y su frecuencia en la frontera; esto no requiere otra especificación ni buscar significación. Reportar dispersión bootstrap descriptiva y soluciones cero, sin IC Wald ni estrellas para varianzas. No generar límites o significación no calculados. Si la incertidumbre o dependencia de la especificación impide una interpretación informativa, mover la tabla al anexo y conservar una síntesis cualitativa en el cuerpo.
+Valor añadido: la cuota final conjunta de sensibilidades no dice qué atributos concentran esas diferencias. La tabla lo hace comprensible. No constituye otra validación independiente del modelo.
+
+3. COVARIANZAS: POR AHORA DIAGNÓSTICO, NO NUEVO RESULTADO PSICOLÓGICO
+Recomendación: mantenerlas en el anexo C, explicadas con lenguaje claro; no promover al cuerpo una matriz de quince correlaciones.
+Resultados verificados en dos modelos B sobre los mismos datos:
+- Correlación de desvíos en suspensos y competencias: -0,625 en parejas, -0,616 en libre.
+- Correlación de desvíos en absentismo y disciplina: -1,000 en parejas, -0,922 en libre.
+El modelo diagonal fija estas correlaciones en cero por construcción; cero no es un resultado sobre cómo piensan los profesores. Las correlaciones alternativas proceden de matrices en frontera; el signo estable de un par no garantiza precisión o validez sustantiva. Están condicionadas a las variables incluidas y a un harshness construido con las mismas respuestas. No inferir que preferencias o mecanismos psicológicos se sustituyen de forma exacta. Tampoco correlacionar pendientes individuales predichas y tratar esa correlación como parámetro poblacional: su contracción y precisión afectan el resultado.
+Los modelos correlacionados ajustan sustancialmente mejor sobre los mismos datos y parte fija: REML AIC 5.787,63 en diagonal, 5.066,51 en parejas y 4.990,23 en libre. La diagonal se conserva como aproximación principal sencilla con solución interior bajo la regla adoptada, pese al mejor ajuste de las alternativas de frontera; no es globalmente superior por el hecho de no ser singular. La etiqueta isSingular de parejas cambia con optimizador/tolerancia, pero ambos ajustes están muy cerca de la frontera.
+La correlación académica negativa es la candidata más interpretable para una investigación posterior, porque el signo y magnitud concuerdan entre dos estructuras, pero hoy falta incertidumbre específica, sensibilidad en referencias de ocho tarjetas y separación de la relación inducida por condicionar en harshness/diseño. La correlación conductual extrema no merece promocionarse como hallazgo sustantivo.
+Si el autor desea investigarla más: fijar antes de calcular solo las dos parejas teóricas académica y conductual, estimar con referencias de la nueva muestra, evaluar remuestreo y fronteras, y comprobar dependencia de la inclusión/construcción del harshness. Esa comparación cambia el condicionamiento y no identifica automáticamente un mecanismo. Solo un resultado robusto, interpretable y no redundante justificaría una frase del cuerpo. No se ha aprobado ni ejecutado esta extensión.
+Valor actual: demostrar que liberar relaciones cambia poco las cuotas finales y explicar la elección del modelo; no abrir otra historia de mecanismos docentes.
+
+COHERENCIA DEL CIERRE
+La secuencia deja preparados los dos conceptos que usa la descomposición: severidad global (harshness) y diferencias en el peso de los atributos (terciles y, si se aprueba, dispersión individual estimada). El cierre reúne su contribución a la variación modelizada, sin introducir allí por primera vez qué son las sensibilidades. Evitar repetir todos los números de las tablas en el cierre.
+
+EVIDENCIA Y REPRODUCCIÓN
+2. Code/sensitivity_presentation_review/extract.R solo lee ajustes existentes y exporta agregados. sensitivity_sds.csv, sensitivity_correlations.csv, fit_diagnostics.csv, tercile_coefficients_full8.csv y audit.json documentan cálculos y huellas. Un revisor independiente evalúa interpretación y extracción en independent_review.txt. Los datos individuales y modelos originales permanecen sin cambios.
+Referencia metodológica consultada: documentación oficial lme4, confint.merMod (https://lme4.github.io/lme4/reference/confint.merMod.html), que diferencia inferencia sobre coeficientes fijos y parámetros de varianza/covarianza; ranef (https://lme4.github.io/lme4/reference/ranef.html), sobre efectos predichos condicionales. No se han calculado intervalos o bootstrap nuevos en esta investigación.
