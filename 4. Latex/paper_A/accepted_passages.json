@@ -1,0 +1,12 @@
+{
+  "baseline": "8306e22",
+  "passages": [
+    {
+      "id": "introduction-retention-literature",
+      "accepted_on": "2026-10-29",
+      "old_text": "Grade retention changes a student's educational trajectory and the peer group in which schooling continues. Its consequences are not uniform: reviews document variation across settings, research designs and comparison groups \\citep{allen,goos,valbuena}.",
+      "accepted_text": "Grade retention changes a student's educational trajectory and the peer group in which schooling continues. Its consequences are not uniform: reviews document contrasting findings across settings, research designs and comparison groups. Some studies find lower subsequent achievement among retained students than among peers who progress to the next grade \\citep{allen,goos}. Others identify short-term academic gains, particularly relative to younger classmates in the repeated grade, although these advantages tend to fade \\citep{allen,goos}. Across these different comparisons, the average effect is close to zero \\citep{goos}.",
+      "instruction": "Display as accepted black text, without bold or deleted predecessor; preserve other review marks."
+    }
+  ]
+}

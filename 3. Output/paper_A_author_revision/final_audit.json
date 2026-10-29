@@ -45,9 +45,9 @@
     "paper_A_teacher_decisions: readable PDF",
     "Published PDF matches compiled review"
   ],
-  "accepted_pages": 24,
+  "accepted_pages": 25,
   "review_pages": 35,
-  "source_sha256": "d4c860739d75ea57bf8054a4ad3aff1ef3915918178b8f5ea6643304103cfd2a",
-  "pdf_sha256": "816e0e409be96baf0fcc82960e40e533084534810327ebb5b3fbe6b4e9f93e99",
+  "source_sha256": "477a8f02a0d41ddec666544b4bf6d2f4a49a9ab72583053419e7589cacaeb275",
+  "pdf_sha256": "b4dca81d09f686401ece05b96be9aaa824675b1ccb25a63ab39f2a19a09c9a6f",
   "scope": "Programmatic closure; independent methods/editorial memos and visual QA are separate evidence."
 }

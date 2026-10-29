@@ -59,7 +59,15 @@ def prepare(source,side):
  refs=git('4. Latex/paper_A/references_A.tex').decode('utf8').replace('\r\n','\n') if side=='old' else (D/'references_A.tex').read_text(encoding='utf8')
  source=source.replace('\\input{references_A}',uncolor(refs))
  return source
-old=prepare(git('4. Latex/paper_A/paper_A_content.tex').decode('utf8'),'old')
+baseline_source=git('4. Latex/paper_A/paper_A_content.tex').decode('utf8').replace('\r\n','\n')
+# Author-accepted passages become part of the effective review origin individually.
+acceptances_path=D/'accepted_passages.json'
+acceptances=json.loads(acceptances_path.read_text(encoding='utf8')) if acceptances_path.exists() else {'baseline':BASE,'passages':[]}
+assert acceptances['baseline']==BASE
+for passage in acceptances['passages']:
+ assert baseline_source.count(passage['old_text'])==1
+ baseline_source=baseline_source.replace(passage['old_text'],passage['accepted_text'],1)
+old=prepare(baseline_source,'old')
 new=prepare((D/'paper_A_content.tex').read_text(encoding='utf8'),'new')
 pre=(D/'preamble_content.tex').read_text(encoding='utf8')
 for name,body in [('old',old),('new',new)]: (T/(name+'.tex')).write_text(pre+'\n'+body,encoding='utf8')
@@ -121,11 +129,11 @@ result=re.sub(r'\\section\{(\\DIFdel\{[^{}]*\})\}',r'\\section*{\1}',result)
 result=result.replace(r'\addtocounter{section}{-1}%DIFAUXCMD','')
 legend=r'''
 \begin{center}\fbox{\begin{minipage}{.94\linewidth}\footnotesize
-\textbf{Cumulative review copy.} Compared with the accepted author version immediately before the present revision (8306e22). Earlier historical deletions have been reset. Unchanged text is black; \textcolor{addedreview}{additions are blue}; \textcolor{deletedreview}{\sout{deleted text is struck out in red}}. Deleted or superseded exhibits remain visible in red and are explicitly labelled; they are not current results. Moved passages may appear as a deletion at their original location and an addition at their new location.
+\textbf{Cumulative review copy.} Compared with the accepted author version immediately before the present revision (8306e22), incorporating passages subsequently accepted by the author. Earlier historical deletions have been reset. Unchanged and accepted text is black; \textcolor{addedreview}{additions are blue}; \textcolor{deletedreview}{\sout{deleted text is struck out in red}}. Deleted or superseded exhibits remain visible in red and are explicitly labelled; they are not current results. Moved passages may appear as a deletion at their original location and an addition at their new location.
 \end{minipage}}\end{center}
 '''
 result=result.replace('\\maketitle','\\maketitle\n'+legend,1)
 result='\n'.join(line.rstrip() for line in result.replace('\r','').split('\n')).rstrip()+'\n'
 (D/'paper_A_teacher_decisions.tex').write_text(result,encoding='utf8',newline='\n')
-(O/'comparison_manifest.json').write_text(json.dumps({'baseline':BASE,'source':'paper_A_content.tex','counts':counts,'exhibits':manifest,'old_figures_preserved':sum(a['side']=='old' and a['kind']=='figure' for a in manifest),'old_tables_preserved':sum(a['side']=='old' and a['kind']=='table' for a in manifest)},indent=2),encoding='utf8')
+(O/'comparison_manifest.json').write_text(json.dumps({'baseline':BASE,'source':'paper_A_content.tex','accepted_passages':[a['id'] for a in acceptances['passages']],'counts':counts,'exhibits':manifest,'old_figures_preserved':sum(a['side']=='old' and a['kind']=='figure' for a in manifest),'old_tables_preserved':sum(a['side']=='old' and a['kind']=='table' for a in manifest)},indent=2),encoding='utf8')
 print('Redline generated; exhibits:',counts)
