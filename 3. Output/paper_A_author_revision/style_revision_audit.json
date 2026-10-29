@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "date": "2026-10-29",
+  "scope": "Style and preservation checks; scientific analyses not reestimated. Existing numerical closure is recorded separately in final_audit.json.",
+  "checks": {
+    "scientific_numeric_tokens_unchanged": true,
+    "citation_commands_unchanged": true,
+    "display_equations_unchanged": true,
+    "figures_tables_captions_unchanged": true,
+    "labels_unchanged": true,
+    "preserved_Grade retention changes a student's": true,
+    "preserved_We show that understanding": true,
+    "preserved_Klapproth and Beyte": true,
+    "preserved_The six vignette attributes": true,
+    "preserved_The final questionnaire asks": true,
+    "preserved_Before the task, teachers are shown": true,
+    "preserved_We define \\textit{harshness}": true,
+    "preserved_Teachers with similar average harshn": true,
+    "preserved_All three specifications use the sam": true,
+    "author_roadmap_removal_preserved": true,
+    "models_exhibits_references_acceptances_unchanged": true,
+    "writing_samples_unchanged": true,
+    "comparison_origin_8306e22": true
+  },
+  "preflight": {
+    "source_samples": {
+      "main.tex": "d3fc03fc56ce31ed18190dabc8a3219fc64da6ccbd9374f38dbfcffb4631268c",
+      "main (1).tex": "140e7d1fe516e9bc47169ffd8db7f3970296de2de67c69eb35232a613775905f"
+    },
+    "baseline": "8306e22",
+    "accepted_passages_retained": true,
+    "direct_author_edits_preserved": 8,
+    "minor_grammar_fixes": [
+      "information and beliefs allow",
+      "space after example comma"
+    ],
+    "original_review_sha256": "e96f81c9f521c6d0ca543a82157d4c936de77c93cdbd8205ec103b6258214ab6"
+  },
+  "source_sha256": "991ba64ee62ea8f23c9c208122cde41a6187a6af5c737889cc8b64e160310a52",
+  "source_before_commit": "72006a6",
+  "changes_record": "style_revision_changes.json",
+  "visual_review": "Accepted and cumulative-review PDFs inspected; no new data, models, sources or exhibits."
+}

@@ -46,8 +46,8 @@
     "Published PDF matches compiled review"
   ],
   "accepted_pages": 25,
-  "review_pages": 35,
-  "source_sha256": "477a8f02a0d41ddec666544b4bf6d2f4a49a9ab72583053419e7589cacaeb275",
-  "pdf_sha256": "b4dca81d09f686401ece05b96be9aaa824675b1ccb25a63ab39f2a19a09c9a6f",
+  "review_pages": 37,
+  "source_sha256": "991ba64ee62ea8f23c9c208122cde41a6187a6af5c737889cc8b64e160310a52",
+  "pdf_sha256": "394c47175eed62b9381d75d0b5008ab3d667fe6a8edb5c93285edb4b517719e6",
   "scope": "Programmatic closure; independent methods/editorial memos and visual QA are separate evidence."
 }

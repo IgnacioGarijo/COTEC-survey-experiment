@@ -1,6 +1,9 @@
 {
   "baseline": "8306e22",
   "source": "paper_A_content.tex",
+  "accepted_passages": [
+    "introduction-retention-literature"
+  ],
   "counts": {
     "old": 19,
     "new": 20
@@ -281,8 +284,5 @@
     }
   ],
   "old_figures_preserved": 7,
-  "old_tables_preserved": 11,
-  "accepted_passages": [
-    "introduction-retention-literature"
-  ]
+  "old_tables_preserved": 11
 }

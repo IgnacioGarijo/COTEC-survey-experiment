@@ -1,0 +1,232 @@
+{
+  "date": "2026-10-29",
+  "origin_commit": "72006a6",
+  "comparison_baseline": "8306e22",
+  "source_before_sha256": "5e545978c71db01e5d9511717587fa89555b0dd3ccd125a3d412b92fc65c2057",
+  "source_after_sha256": "1a2ca85f5c75976ab8e8b7ae28ce5f99096c6e1cc8ba7ad638e6895ccd68cb87",
+  "edits": [
+    {
+      "starts": "The findings distinguish common criteria, disagreement on comparable cases and differences in how teachers apply those criteria.",
+      "reason": "Close abstract with the concrete finding rather than an abstract list."
+    },
+    {
+      "starts": "Because the educational case for repetition is contingent,",
+      "reason": "State the intuition before naming the conceptual distinction.",
+      "old_sha256": "0c8a836272bdff0978c083bfe2a2916e94f218f327c97f04005ea12909ce251d",
+      "new_sha256": "62ba6ae1746f56983337f3fa7315c70777d5029d4770c8eae2b7686a8a5eb4fa"
+    },
+    {
+      "starts": "Teachers' judgments can incorporate information beyond",
+      "reason": "Connect the cited findings directly to the information studied.",
+      "old_sha256": "b45be6b459f4316f7c386c69e45d08562473bc6ca6477bff6b5a6a023bfa1f9d",
+      "new_sha256": "4fe41fc348a7792fd4c670d88cd926e1a1697fcb1c7647203cd16bdb22cc03e7"
+    },
+    {
+      "starts": "Research on retention beliefs provides a complementary foundation.",
+      "reason": "Replace generic literature framing with the question the measures answer.",
+      "old_sha256": "55eef36caab9fc3aee109acc4948194c998ae9e71ae569cb009da2ae4c36aeed",
+      "new_sha256": "dfd5e1fca5fa315ac5de77d50397314bcf672d346a6b161a7a6918d8624ea4de"
+    },
+    {
+      "starts": "Multidimensional vignette designs allow researchers",
+      "reason": "Explain the comparisons in terms of teachers and profiles.",
+      "old_sha256": "cb4ea3117063ca0a3ae694f79f41dbf51f0abcc5322e55679c24635e42723f88",
+      "new_sha256": "6794458a48cc53584d2a1b143301c38865ce8a35fccbca2c001dd5c2720bc36d"
+    },
+    {
+      "starts": "We study 2,520 teachers evaluating eight profiles each,",
+      "reason": "Retain the developed questions, then explain the sequence of analysis directly.",
+      "old_sha256": "a463ee3e38b0d7a35c40235046b137a27b2a53baa213bad0674dadc1d25b51d4",
+      "new_sha256": "c53571b137e7b7efa9a74a7ac6ee2448fc53cf648d8dc4034ee05dc2daa208c0"
+    },
+    {
+      "starts": "Studying these questions together helps distinguish",
+      "reason": "Develop the reason for the comparisons without a generic contribution statement.",
+      "old_sha256": "a051bf8204741467bc86c2ebe2a5fd094ec0cbe64229599bd65249002be69382",
+      "new_sha256": "f5b5e9d6991ab0cb01c225b6337e72a6e18a87fe72995b2bb525c6d82a83a9b5"
+    },
+    {
+      "starts": "The results distinguish common criteria from their application.",
+      "reason": "Give the substantive result before reporting its magnitude; retain the author-edited remainder."
+    },
+    {
+      "starts": " The contribution is to connect common criteria, disagreement on comparable cases and differences in how those criteria are applied.",
+      "reason": "Remove a repeated abstract closing statement from the introduction."
+    },
+    {
+      "starts": "A recommendation to repeat can reflect both concern",
+      "reason": "Introduce the model through the educational decision, retaining all notation and the rule.",
+      "old_sha256": "7377640eef5e4b9f0d221aaea32ac1009359ac99e3d3f77e08aae6329b918cf7",
+      "new_sha256": "b4a6d5386f75e88c0903819768384e6566dc9585493f41e8877796d101b9dbd0"
+    },
+    {
+      "starts": "Here, $z_j$ collects the teacher characteristics",
+      "reason": "Keep the explanation of unobserved judgments concrete and retain the identification qualification.",
+      "old_sha256": "931d7c575a7ba3923723bcb0b894c2a0ef7b3de8626ba07165782501a8b4bdd7",
+      "new_sha256": "3af0acd5d8ada38895cb02142f877b74627084435a6f34f884c0581b7c8ae319"
+    },
+    {
+      "starts": "The distinction supplies three useful implications.",
+      "reason": "Explain the substantive implications affirmatively.",
+      "old_sha256": "68aa8ff09c0ad267e17691f6cbd82c283d97352a3a482d2e6b4760f26604ff8c",
+      "new_sha256": "7fb8032a82b15ce08a957faf89be229e75ad7d74fd06aba06e547edbfaeb05d5"
+    },
+    {
+      "starts": "We estimate linear probability models with teacher fixed effects",
+      "reason": "Explain the purpose of fixed effects alongside the estimator.",
+      "old_sha256": "9586c0fb92af287dcb02d4fd933b40f50e1eaaf59b54daec13baa587b2eea0cb",
+      "new_sha256": "8f0f8cc8451b0ce84bcd93a25eb3a7034044a2574c10e3dd3abaa81bc9c1154a"
+    },
+    {
+      "starts": "We check whether a summary of four responses contains",
+      "reason": "Separate the question, out-of-teacher evaluation and interpretation of the score.",
+      "old_sha256": "58ce7fd6423c651769f64aa37af258344d3a23e054233993b8b732b7eae1073c",
+      "new_sha256": "e4f193978df63cc170f800e5f03a6631bcca8ab1852682198ce6dfb609d227b3"
+    },
+    {
+      "starts": "The final analysis asks how much variation in recorded",
+      "reason": "Explain why the final model contains both overall severity and attribute sensitivities.",
+      "old_sha256": "a9c2ce63dafa954c088e7ee99f7bc2279ef848a317e62afa2a936de65d98c238",
+      "new_sha256": "991cde49eb9c51da2fb1de700d29d36dea9613d2809d983a9e5526b65d76c481"
+    },
+    {
+      "starts": "This diagonal specification provides a simple interior approximation",
+      "reason": "State what the diagonal assumption does before discussing alternatives.",
+      "old_sha256": "9d073f3827c265c5ec74f03f6d8502701e9185737b2bea78aba192b0252c3534",
+      "new_sha256": "38c52137e5a86ff5035c55fde1ffab43b910e990dc97d161f7f597b6defb2e00"
+    },
+    {
+      "starts": "The second term measures the joint contribution of attribute sensitivities",
+      "reason": "Explain the three terms of the unchanged formula in their displayed order.",
+      "old_sha256": "58358c297844da29b32b53366e6d1129c2a84bd93107da7de5732c14a40eec64",
+      "new_sha256": "dc3d074fa0ce62635cbefb7cccf44252d18847ff8f1c12825b85857c96d35bbe"
+    },
+    {
+      "starts": "Student attributes, professional characteristics, beliefs and harshness share information.",
+      "reason": "Motivate the order averaging before explaining the existing projection procedure.",
+      "old_sha256": "7c018ae5fc354899291495cdc841d0c4d5399aad0a2c18b99dc3fa7032627db8",
+      "new_sha256": "4eb8921b917c374cb3fccdfec301a7b662f8f090d3bd76795aa5afac2feed732"
+    },
+    {
+      "starts": "The within-teacher coefficients in Table~",
+      "reason": "Lead with the result and explain the distinction between its two indicators.",
+      "old_sha256": "115cc5db9016607d5fb49f146f4eb2a47bd44df7eb4685107e97a9bc6d8e8ae4",
+      "new_sha256": "5b0d01f3c8d157617bf6d2572b831835ffb17f32a718a59371a80b6db787fb29"
+    },
+    {
+      "starts": "Same-profile disagreement shows where judgments diverge.",
+      "reason": "Explain the pairwise percentage and then interpret the conflicting academic categories.",
+      "old_sha256": "c0e8541bac84810657e7d8d22f083617cd870375dd650ed8613976c1f30b737f",
+      "new_sha256": "a7bc53312b8942d806ef3c8852511044da39fb2ea17cc3167a77d22daed463bf"
+    },
+    {
+      "starts": "Within a profile, pairwise disagreement is greatest",
+      "reason": "Develop the reason for the profile-level calculation in ordinary language.",
+      "old_sha256": "f93f8b48a8efc777cb67b2df8c59c41670e4f704bd8c94814d84b5ea88197738",
+      "new_sha256": "b85f0a04163014e75c8b90b09f55e5561922afbc9db53a43541b38e807d14dd5"
+    },
+    {
+      "starts": "The disagreement comparisons locate cases that divide teachers.",
+      "reason": "Introduce the terciles through the comparison they make possible.",
+      "old_sha256": "59af4612d3fd9913e9f8cd48e2d606e17d99d898450aa9510b3766f8a82634df",
+      "new_sha256": "6f15c60f56e7cffeb6b7953c02d6a69f584bf0113eb7ae3226b4a2389890bcbf"
+    },
+    {
+      "starts": "Teachers may differ in how strongly recommendations respond",
+      "reason": "Link the magnitudes to the different weights teachers give attributes; retain the descriptive grouping.",
+      "old_sha256": "03ba242ff857dec92462ec33b7204392b6b1215c31429e2bd5466de17aaea9e3",
+      "new_sha256": "020560ed2e331c8e0717ae67b3f98d4e7f750c9312ebaf99b4c90571427f6c3e"
+    },
+    {
+      "starts": "A held-out-card check asks whether the observed severity pattern",
+      "reason": "Start from what improves prediction and explain what the matched comparison adds.",
+      "old_sha256": "c9ba252e0dc61724a1ebe35460ebfb0070270660f31b7c69cbc195c4b793d88f",
+      "new_sha256": "9e7a27dac522251a2a33941922c2c4e77271b549b205ff1390650c3981ce80ab"
+    },
+    {
+      "starts": "These associations coexist with substantial overlap between groups and limited overall fit.",
+      "reason": "Interpret low fit in terms of the variation the regressions leave unexplained."
+    },
+    {
+      "starts": "The final decomposition in Figure~",
+      "reason": "Explain the allocation before listing unchanged shares.",
+      "old_sha256": "874d9cacfc89310e30e8f4edc5617fcd2676bcaf1cd85311365512601e7636eb",
+      "new_sha256": "ebc4521a8e0ae486b02c1146f5680c655f11fde90181e06981b5ea28d7e87e0f"
+    },
+    {
+      "starts": "The distinction between overall severity and criteria matters substantively.",
+      "reason": "Use a concrete comparison to interpret the existing sensitivity component.",
+      "old_sha256": "8232e9eed61fcc7789edca8b1574105f2003834814b4e4b6dc734e6a40e56b8f",
+      "new_sha256": "e3d36aad73a495f2095fc24eb647e2f416614e3419723da59b4cceab527afd3c"
+    },
+    {
+      "starts": "Together, measured information and teacher-specific response patterns represent",
+      "reason": "Explain the final total while retaining the distinction from held-out prediction.",
+      "old_sha256": "ecf1e03dd6873dcbbd0bc4528433c2729dae50555b00ecd6a7a94d6f1a0e08da",
+      "new_sha256": "a790aae76b4750dd341f1c66780bd3a7b078c0850b97ea2af8661642ef887525"
+    },
+    {
+      "starts": "The findings connect common criteria with different applications",
+      "reason": "Begin the discussion with the substantive finding and develop its interpretation.",
+      "old_sha256": "ce38de1e5619a1be56ff1ea5e1eaa15e15357668e28ad686a94fab0d06c1f812",
+      "new_sha256": "92ddd09bb56b566773234009e55cd2ddf73317b099b2f6f8f6cc06068d9a1668"
+    },
+    {
+      "starts": "Attendance, discipline and background extend this account beyond grades.",
+      "reason": "Relate the nonacademic attributes to the literature without repeated negative caveats.",
+      "old_sha256": "8f92531e03f3891aec6d19ac6b696cd3aa0b4bc174e702c3cba9cf7a0ebdea3c",
+      "new_sha256": "ec3fd50cb67af6d5a0c80b95c2852f74124497e1a71affd30451818c2ad18d2f"
+    },
+    {
+      "starts": "Harshness supplies a common measure for describing",
+      "reason": "Explain what the successive analyses establish using the author's comparative reasoning.",
+      "old_sha256": "7b208fbb4b2ddeb204f18c292d1902cd31f53eb6cd049747b8ba5a078be81212",
+      "new_sha256": "212c66c642438da5db2ff4a55031fd4676ae9b0604b3a3d01e8ee52baa9ad151"
+    },
+    {
+      "starts": "The results also delimit what can be inferred from observed",
+      "reason": "Connect the limited fit to its practical interpretation without asserting new policy effects.",
+      "old_sha256": "1b2242a8a27742193b1399505d69b9d8630c6099b2dec134eac5196545b638a8",
+      "new_sha256": "9733bafd2370803504b8a9aa37383f5736dd780cb8fd190d9fb28cedef7cbd9d"
+    },
+    {
+      "starts": "The design's main strength is the comparison",
+      "reason": "Describe the design advantage and the actual sample limitations directly.",
+      "old_sha256": "9aa9fb908daf16b0e2b846edb9df77d869f0c53dd8d6c42c3e0c8230033c5399",
+      "new_sha256": "7fc11442a4c7ae3c7d9f017798e349ee5987369d349d2fbdcbaa61d4c092e8d8"
+    },
+    {
+      "starts": "The substantive implication is that clarifying promotion",
+      "reason": "State the implication affirmatively and concretely.",
+      "old_sha256": "b67f37c3163b2084d3f05e70bbf6f6285ee929b4d284016c3391e2dc3a8e5ebb",
+      "new_sha256": "f214e75101dcf3c82bd5c2fe477280579bda0dc4b960db340fe70692edb2698d"
+    },
+    {
+      "starts": "Student information strongly organizes teachers' repetition recommendations.",
+      "reason": "Develop the conclusion in substantive steps, preserving its claims and scope.",
+      "old_sha256": "46deacec1c7df491b6420445d8551409d0b0e9f33b0737fcf31e621ce108a37c",
+      "new_sha256": "121e013374b2f65256d6a8793b44456b01632734233d74d55fd6180cfec6620c"
+    },
+    {
+      "starts": "These categories describe recorded progression, not respondents' reasons for stopping.",
+      "reason": "Use an affirmative description of the flow counts."
+    },
+    {
+      "starts": "The common-support comparison fixes the distribution",
+      "reason": "Explain the purpose and steps of the common-composition calculation.",
+      "old_sha256": "449240ebd1fb022515201106bbd7775d3aad523e905c730790882582a94e73a6",
+      "new_sha256": "87160c5994cb35cc620ad43cc08e44474e2cc686cc7186156eef1a03de457322"
+    },
+    {
+      "starts": "All three specifications use the same 17,312 decisions,",
+      "reason": "Separate comparability and optimization checks from the substantive meaning of the boundary.",
+      "old_sha256": "5a07508af5733684eefd56caad72756097e07f3ea75aff9f59b528e129c4aaf7",
+      "new_sha256": "567ee25f332f3a5afe5c14e3d70195d26d1e75ea6305f6650bae0fc703bcb84f"
+    },
+    {
+      "starts": "\\inputtab{reused}{prediction_validation}",
+      "reason": "Keep final prediction table with its appendix explanation after reflow."
+    }
+  ],
+  "scope": "Author-voice prose revision only; no new analyses, estimates, references or exhibits."
+}

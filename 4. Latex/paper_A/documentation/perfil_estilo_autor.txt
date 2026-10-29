@@ -1,0 +1,23 @@
+PERFIL DE ESCRITURA DEL AUTOR Y CRITERIO DE REVISIÓN
+29 de octubre de 2026
+
+Muestras: main.tex (reforma laboral española) y main (1).tex (diseño inicial del experimento docente). Se han examinado la introducción, las explicaciones de datos y métodos, la interpretación de resultados y las conclusiones del primer trabajo, y la motivación, el diseño y las explicaciones de medidas y análisis del segundo. Son referencias de redacción; sus cifras, hipótesis y métodos históricos no se trasladan al artículo actual.
+
+Rasgos compartidos:
+1. El argumento parte de un problema concreto y explica qué permite averiguar cada análisis. Son frecuentes construcciones como «This allows us to...», seguidas de su utilidad, y no solo del nombre del método.
+2. Las explicaciones siguen una secuencia: qué se compara, cómo se hace y qué significa el resultado. En métodos, la intuición suele preceder o acompañar la formulación técnica.
+3. Los resultados se describen con su magnitud, grupo de referencia y posible interpretación. El trabajo laboral desarrolla especialmente la diferencia entre un cambio agregado y las situaciones de los trabajadores que lo producen.
+4. Se utilizan ejemplos y comparaciones concretas para aclarar medidas. El diseño docente ilustra harshness mediante una decisión individual y una referencia de otros profesores.
+5. Los conectores hacen explícita la relación entre frases: «This is because», «Therefore», «However», «For instance», «As for...». La revisión conserva esa lógica sin repetir mecánicamente una fórmula.
+6. La voz combina «we» al explicar decisiones del investigador con «the results show/suggest» al interpretar evidencia. Los párrafos suelen desarrollar una cuestión, en vez de cerrar con una enumeración abstracta de contribuciones.
+
+Aplicación a Paper A:
+- Hacer más concretas frases sobre conectar, organizar o estructurar juicios; nombrar el profesor, la decisión y la comparación correspondiente.
+- Explicar para qué sirven la predicción y la descomposición antes de presentar sus detalles, conservando sus diferentes objetivos y denominadores.
+- Relacionar explícitamente estimaciones e interpretación, con párrafos que desarrollen el razonamiento y transiciones sencillas.
+- Conservar los pasajes ya revisados por el autor, especialmente el inicio de la introducción, la definición de harshness y la distinción frente al desacuerdo. Incorporar antes los cambios directos del autor en la copia con marcas, incluida la eliminación del mapa de secciones.
+- Mantener la terminología, APA, ecuaciones, cifras, tablas, figuras, muestras y métodos actuales. No introducir resultados ni literatura nuevos para imitar las muestras.
+- Corregir la gramática cuando sea necesario; no reproducir erratas, afirmaciones excesivas, repeticiones o formulaciones históricas ya descartadas.
+
+La revisión busca coherencia con la manera de argumentar del autor. No se ha utilizado ni optimizado ninguna puntuación de detección de IA.
+Comparación: se conserva 8306e22 como referencia, junto con el pasaje aceptado individualmente y registrado en accepted_passages.json.
