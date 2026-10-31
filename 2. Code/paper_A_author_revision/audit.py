@@ -91,7 +91,7 @@ for side, name in [('del', 'old'), ('add', 'new')]:
 accepted = (D / 'paper_A_content.tex').read_text(encoding='utf8')
 review = (D / 'paper_A_teacher_decisions.tex').read_text(encoding='utf8')
 ok('Redundant passages removed from accepted text', all(x not in accepted for x in ['The label does not imply', 'establish general opposition', 'We reconstruct experimental responses from each record']))
-ok('Theory retained', 'Diagnosing difficulty' in accepted and 'q(' in accepted and 'g(' in accepted)
+ok('Approved judgment framework retained', 'Student information and teacher judgment' in accepted and r'>\tau(z_j,a_j,u_j)' in accepted and r'\theta_{k\ell}' in accepted and r'\tau_0' not in accepted)
 ok('Retired headings do not increment current appendix letters', not re.search(r'\\section\{\\DIFdel\{', review))
 ok('No unresolved exhibit placeholders', 'COTECEXHIBIT' not in review)
 live_review = re.sub(r'(?<!\\)%[^\n]*', '', review)

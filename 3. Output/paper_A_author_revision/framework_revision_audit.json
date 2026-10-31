@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-31",
+  "status": "PASS",
+  "origin_commit": "728b1dbc6a8ff1862cdcdface231d8ed839032d5",
+  "comparison_baseline": "8306e22",
+  "scope": "Approved theoretical framework replacement; introductory and discussion bridges updated; no statistical reestimation.",
+  "notation": "i student; j teacher; z professional/demographic, a beliefs, as in existing decomposition; theta pairwise weights avoids collision with belief coefficients delta.",
+  "checks": {
+    "only_authorized_prose_and_framework_changed": true,
+    "citations_preserved": true,
+    "threshold_on_right": true,
+    "no_separate_tau_constant": true,
+    "old_qg_model_removed_from_accepted_text": true,
+    "no_linear_threshold_decomposition_imposed": true,
+    "comparison_baseline_retained": true,
+    "empirical_results_assets_acceptance_registry_unchanged": true
+  },
+  "source_sha256": "9498ab4e2159a3512e4c86949e1dd3094e197d8cb19f3ed163ec425d37eb69e8"
+}
