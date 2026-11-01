@@ -47,7 +47,7 @@
   ],
   "accepted_pages": 25,
   "review_pages": 38,
-  "source_sha256": "9498ab4e2159a3512e4c86949e1dd3094e197d8cb19f3ed163ec425d37eb69e8",
-  "pdf_sha256": "569417bf990dcb083afae69037672bc519a365fd906f5879967fdca5fbd6c325",
+  "source_sha256": "ddca690411ba57a2ed50bc02809a074f79cbc11c27a97f488e8cde5012b2aebb",
+  "pdf_sha256": "2cfbbf1fda3fd1e581a801d8e1906d82eb35c4ec3c5b0041b2d2a6ad6b5b53a5",
   "scope": "Programmatic closure; independent methods/editorial memos and visual QA are separate evidence."
 }
