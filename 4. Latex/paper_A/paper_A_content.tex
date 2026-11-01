@@ -179,9 +179,9 @@ Figure~\ref{fig:variance} shows how the variation in recommendations is divided 
 
 The sensitivity component helps explain how teachers can have similar overall harshness yet disagree on individual students. One teacher may respond more strongly to failed subjects, while another places more weight on absence or discipline. The model measures these differences jointly across all six attributes.
 \plot{reused}{variance_partition}{Model-based allocation of variation in recorded recommendations. Shares sum to 100 percent under the allocation defined in Equations~\ref{eq:decomposition}--\ref{eq:variance_total}. The lower panel reports estimates and one teacher-bootstrap standard error, based on 199 resamples. Harshness is constructed from the observed decisions; the total represented share of 79.87 percent describes within-sample structure.}{fig:variance}
-Together, measured information and teacher-specific response patterns represent 79.87 percent of model-implied variance. This gives a summary of how much variation the information assembled in the paper represents within the observed decisions. The predictive exercise answers the separate question of whether a short history helps anticipate reserved recommendations, which it does within the same survey encounter.
+Together, measured information and teacher-specific response patterns represent 79.87 percent of model-implied variance. This gives a summary of how much variation the information assembled in the paper represents within the observed decisions.
 
-The main allocation is similar when partial-task records are included, shared example fields are removed or references retain separate card identifiers (Table~\ref{tab:reconstruction}). The no-screen specification retains eight-card records before applying the favorable-example exclusion and shows a larger shift toward the harshness component. These comparisons document how the descriptive allocation changes with the analytical sample and reconstruction.
+The allocation is broadly similar across alternative reconstruction and reference choices, while omitting the favorable-example exclusion produces a larger shift toward harshness (Appendix~\ref{app:sample}, Table~\ref{tab:reconstruction}).
 
 \section{Discussion}\label{sec:discussion}
 Academic information has a large role in teachers' recommendations, but failed subjects and competences convey different information. Their joint presence strengthens the recommendation to repeat, while several failed subjects with adequate competences leave teachers especially divided. The decision framework helps interpret this result: teachers may give different weights to the two academic indicators or require different strengths of evidence before recommending repetition. Understanding their recommendations therefore requires considering both how they interpret the student's information and what they regard as sufficient grounds for another year in the same grade.
@@ -217,6 +217,8 @@ The implemented design covers 56 of the 64 possible six-attribute profiles. Tabl
 
 \inputtab{reused}{common_sample}{Decision results in the main and complete-covariate samples}{tab:common}
 \inputtab{reused}{design_sets}{Composition of the eight assigned sets}{tab:sets}
+The main allocation is similar when partial-task records are included, shared example fields are removed or references retain separate card identifiers (Table~\ref{tab:reconstruction}). The no-screen specification retains eight-card records before applying the favorable-example exclusion and shows a larger shift toward the harshness component.
+
 \inputtab{reused}{reconstruction_sensitivity}{Reconstruction, screening and reference sensitivities}{tab:reconstruction}
 \inputtab{reused}{context_comparison}{Attribute coefficients in pooled and control contexts}{tab:context}
 
