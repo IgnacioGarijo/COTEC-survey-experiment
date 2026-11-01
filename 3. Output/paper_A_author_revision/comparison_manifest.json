@@ -1,288 +1,92 @@
 {
-  "baseline": "8306e22",
+  "mode": "clean",
+  "accepted_on": "2026-11-01",
+  "accepted_from_commit": "af5251daca73e3744cabeda4ee4ba019c5153f67",
+  "historical_review_baseline": "8306e22",
   "source": "paper_A_content.tex",
-  "accepted_passages": [
-    "introduction-retention-literature"
-  ],
   "counts": {
-    "old": 19,
-    "new": 20
+    "current": 20
   },
   "exhibits": [
     {
-      "side": "old",
-      "token": "COTECEXHIBITC9A81FA2ECDDE48FEND",
+      "kind": "table",
+      "name": "attributes_merged"
+    },
+    {
+      "kind": "figure",
+      "name": "harshness_distribution"
+    },
+    {
+      "kind": "table",
+      "name": "academic"
+    },
+    {
+      "kind": "table",
+      "name": "tercile_summary"
+    },
+    {
+      "kind": "table",
+      "name": "tercile_slopes"
+    },
+    {
+      "kind": "table",
+      "name": "characterization"
+    },
+    {
+      "kind": "figure",
+      "name": "variance_partition"
+    },
+    {
+      "kind": "figure",
+      "name": "sample_flow"
+    },
+    {
+      "kind": "table",
+      "name": "common_sample"
+    },
+    {
+      "kind": "table",
+      "name": "design_sets"
+    },
+    {
+      "kind": "table",
+      "name": "reconstruction_sensitivity"
+    },
+    {
+      "kind": "table",
+      "name": "context_comparison"
+    },
+    {
+      "kind": "figure",
+      "name": "task_progression"
+    },
+    {
+      "kind": "figure",
+      "name": "population_grid"
+    },
+    {
+      "kind": "table",
+      "name": "standardized_academic"
+    },
+    {
+      "kind": "table",
+      "name": "standardized_contrasts"
+    },
+    {
+      "kind": "table",
+      "name": "alternatives"
+    },
+    {
+      "kind": "table",
+      "name": "covariance_audit"
+    },
+    {
+      "kind": "table",
+      "name": "prediction_validation"
+    },
+    {
       "kind": "inline",
-      "name": "timeline",
-      "label": null
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBITCBFFAC4A8DAA918FEND",
-      "kind": "figure",
-      "name": "attribute_coefficients",
-      "label": "fig:attributes"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBITB1A874134E30EB48END",
-      "kind": "figure",
-      "name": "harshness_distribution",
-      "label": "fig:harshness"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBITB6BDDA9FF820BC3CEND",
-      "kind": "figure",
-      "name": "academic_profiles",
-      "label": "fig:academic"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBITEF96E5E61841EACFEND",
-      "kind": "table",
-      "name": "tercile_summary",
-      "label": "tab:tercsummary"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBIT739B35E242405658END",
-      "kind": "table",
-      "name": "tercile_slopes",
-      "label": "tab:tercslopes"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBIT2BCF19C2490AA604END",
-      "kind": "table",
-      "name": "characterization",
-      "label": "tab:char"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBIT3CD9162BA64C55A7END",
-      "kind": "figure",
-      "name": "variance_partition",
-      "label": "fig:variance"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBIT5D9D60D462FFAFB2END",
-      "kind": "figure",
-      "name": "sample_flow",
-      "label": "fig:flow"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBITF2626BAAB8F73F70END",
-      "kind": "table",
-      "name": "design_sets",
-      "label": "tab:sets"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBIT6F5B389D2380970EEND",
-      "kind": "table",
-      "name": "reconstruction_sensitivity",
-      "label": "tab:reconstruction"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBITC93B0342429B9BBCEND",
-      "kind": "table",
-      "name": "context_comparison",
-      "label": "tab:context"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBIT246D11177E60A33FEND",
-      "kind": "figure",
-      "name": "task_progression",
-      "label": "fig:progression"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBITD5D98F492376491FEND",
-      "kind": "figure",
-      "name": "population_grid",
-      "label": "fig:population"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBIT6304E46DFB8DDD90END",
-      "kind": "table",
-      "name": "attributes",
-      "label": "tab:attr"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBITBC12C6A9A20FE8D9END",
-      "kind": "table",
-      "name": "interactions",
-      "label": "tab:interactions"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBIT720AAC8DD0B52CFEEND",
-      "kind": "table",
-      "name": "academic",
-      "label": "tab:academic"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBIT74C8271FE435ED3AEND",
-      "kind": "table",
-      "name": "alternatives",
-      "label": "tab:alternatives"
-    },
-    {
-      "side": "old",
-      "token": "COTECEXHIBIT9DDDF78B48C9911CEND",
-      "kind": "table",
-      "name": "covariance_audit",
-      "label": "tab:covariance"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBITC9A81FA2ECDDE48FEND",
-      "kind": "inline",
-      "name": "timeline",
-      "label": null
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT0AAAD6E658D789CAEND",
-      "kind": "table",
-      "name": "attributes_merged",
-      "label": "tab:attr"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBITD82437DE8731A4F8END",
-      "kind": "figure",
-      "name": "harshness_distribution",
-      "label": "fig:harshness"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT92F315481832A050END",
-      "kind": "table",
-      "name": "academic",
-      "label": "tab:academic"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT2FAF27A9C077AB89END",
-      "kind": "table",
-      "name": "tercile_summary",
-      "label": "tab:tercsummary"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBITB72EE739C51B9FADEND",
-      "kind": "table",
-      "name": "tercile_slopes",
-      "label": "tab:tercslopes"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBITCB6C54961546E239END",
-      "kind": "table",
-      "name": "characterization",
-      "label": "tab:char"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBITEEA2C7F761DB5147END",
-      "kind": "figure",
-      "name": "variance_partition",
-      "label": "fig:variance"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT40F72C59F73C451AEND",
-      "kind": "figure",
-      "name": "sample_flow",
-      "label": "fig:flow"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT81FD25D4E06EFBEAEND",
-      "kind": "table",
-      "name": "common_sample",
-      "label": "tab:common"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBITE0A6251AC341359BEND",
-      "kind": "table",
-      "name": "design_sets",
-      "label": "tab:sets"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT9D8F4F9AB2FA7A91END",
-      "kind": "table",
-      "name": "reconstruction_sensitivity",
-      "label": "tab:reconstruction"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT532D1F0C5490A9D5END",
-      "kind": "table",
-      "name": "context_comparison",
-      "label": "tab:context"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT246D11177E60A33FEND",
-      "kind": "figure",
-      "name": "task_progression",
-      "label": "fig:progression"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT3E7EDDB40745883DEND",
-      "kind": "figure",
-      "name": "population_grid",
-      "label": "fig:population"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT252C25A7626906B9END",
-      "kind": "table",
-      "name": "standardized_academic",
-      "label": "tab:standardized"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT634A4800AD9EBC3EEND",
-      "kind": "table",
-      "name": "standardized_contrasts",
-      "label": "tab:standardcontrasts"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBITC67BC475D3611600END",
-      "kind": "table",
-      "name": "alternatives",
-      "label": "tab:alternatives"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT94190D378C7EE5C7END",
-      "kind": "table",
-      "name": "covariance_audit",
-      "label": "tab:covariance"
-    },
-    {
-      "side": "new",
-      "token": "COTECEXHIBIT194A6329A367CD45END",
-      "kind": "table",
-      "name": "prediction_validation",
-      "label": "tab:prediction"
+      "name": "timeline"
     }
-  ],
-  "old_figures_preserved": 7,
-  "old_tables_preserved": 11
+  ]
 }

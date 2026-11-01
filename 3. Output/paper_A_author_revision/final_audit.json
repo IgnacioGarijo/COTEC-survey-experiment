@@ -1,6 +1,7 @@
 {
   "status": "PASS",
-  "baseline": "8306e22",
+  "mode": "clean",
+  "historical_review_baseline": "8306e22",
   "checks": [
     "Python source syntax",
     "Main and common samples",
@@ -23,16 +24,11 @@
     "Matched_random: expected weight warnings only",
     "Common-support standardization",
     "Analysis inputs unchanged",
-    "Reset comparison baseline and exhibit inventory",
-    "Preserved baseline figure: attribute_coefficients.png",
-    "Preserved baseline figure: harshness_distribution.png",
-    "Preserved baseline figure: academic_profiles.png",
-    "Preserved baseline figure: variance_partition.png",
-    "Preserved baseline figure: sample_flow.png",
-    "Preserved baseline figure: task_progression.png",
-    "Preserved baseline figure: population_grid.png",
-    "Raw redline recovers old text and exhibit tokens",
-    "Raw redline recovers new text and exhibit tokens",
+    "Current official exhibit inventory",
+    "All accepted content preserved in official source",
+    "No review marks, legend or retired exhibits in official source",
+    "All manuscript text color aliases black",
+    "Official references all cited and all citations resolved",
     "Redundant passages removed from accepted text",
     "Approved judgment framework retained",
     "Retired headings do not increment current appendix letters",
@@ -43,11 +39,11 @@
     "paper_A_content: readable PDF",
     "paper_A_teacher_decisions: clean compilation",
     "paper_A_teacher_decisions: readable PDF",
-    "Published PDF matches compiled review"
+    "Published PDF matches compiled main document"
   ],
   "accepted_pages": 25,
-  "review_pages": 38,
+  "main_pages": 25,
   "source_sha256": "9d075df21fd638f008bc15c64462dfa0fcf3adefb07abbac4cec6f3b98856f86",
-  "pdf_sha256": "e905c75a489ef6fb70912c0736d4618161c31d1f7e3c8a80eb05fb5a032baac6",
-  "scope": "Programmatic closure; independent methods/editorial memos and visual QA are separate evidence."
+  "pdf_sha256": "96d199a1a59ccd4e4b53935e2e3a9c56be2be5dd3923d5732b998e2f997fa7fa",
+  "scope": "Programmatic closure; scientific reviews from prior revisions and visual QA are separate evidence."
 }

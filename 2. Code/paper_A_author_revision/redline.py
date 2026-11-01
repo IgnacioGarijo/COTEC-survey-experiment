@@ -1,4 +1,4 @@
-"""Author revision review against accepted source at 8306e22: word changes plus intact deleted exhibits.
+"""Build the clean official source or historical review according to manuscript_state.json.
 
 Edit paper_A_content.tex, never the generated paper_A_teacher_decisions.tex.
 Exhibits are diffed as atoms so old tables/images stay legible and complete.
@@ -7,6 +7,17 @@ from pathlib import Path
 import subprocess,re,json,hashlib,os
 R=Path(__file__).resolve().parents[2];D=R/'4. Latex/paper_A';O=R/'3. Output/paper_A_author_revision';T=R/'tmp/paper_A_author_revision';T.mkdir(parents=True,exist_ok=True)
 BASE='8306e22';assets={};counts={};manifest=[]
+state_path=D/'manuscript_state.json'
+state=json.loads(state_path.read_text(encoding='utf8')) if state_path.exists() else {'mode':'review'}
+if state['mode']=='clean':
+ content=(D/'paper_A_content.tex').read_text(encoding='utf8')
+ assert not re.search(r'\\DIF|Deleted / superseded|Cumulative review copy',content)
+ (D/'paper_A_teacher_decisions.tex').write_text(content,encoding='utf8',newline='\n')
+ current=[{'kind':'figure' if cmd=='plot' else 'table','name':name} for cmd,name in re.findall(r'\\(plot|inputtab)\{[^}]*\}\{([^}]*)\}',content)]
+ current += [{'kind':'inline','name':'timeline'} for _ in re.findall(r'\\begin\{figure\}',content)]
+ (O/'comparison_manifest.json').write_text(json.dumps({'mode':'clean','accepted_on':state['accepted_on'],'accepted_from_commit':state['accepted_from_commit'],'historical_review_baseline':BASE,'source':'paper_A_content.tex','counts':{'current':len(current)},'exhibits':current},indent=2)+'\n',encoding='utf8')
+ print('Official clean source generated; current exhibits:',len(current))
+ raise SystemExit(0)
 def git(path):return subprocess.check_output(['git','show',BASE+':'+path],cwd=R)
 def uncolor(s):
  while (m:=re.search(r'\\(?:old|rev|new)\{',s)):

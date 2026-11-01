@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "accepted_on": "2026-11-01",
+  "official_tag": "paper-a-official-2026-11-01",
+  "previous_review_commit": "af5251daca73e3744cabeda4ee4ba019c5153f67",
+  "accepted_body_unchanged": true,
+  "review_marks_removed": true,
+  "retired_exhibits_removed_from_document": true,
+  "current_tables": 14,
+  "current_figures": 6,
+  "pages": 25,
+  "text_color_character_counts": {
+    "(0.0,)": 378,
+    "(0.0, 0.0, 0.0)": 59414
+  },
+  "bibliography_cleanup": "Removed uncited valbuena entry; all 22 cited references retained.",
+  "visual_check": "All 25 official pages rendered and inspected.",
+  "default_build": "Clean mode in manuscript_state.json; does not regenerate historical redline."
+}

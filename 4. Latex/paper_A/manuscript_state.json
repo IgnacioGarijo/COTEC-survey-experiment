@@ -1,0 +1,10 @@
+{
+  "mode": "clean",
+  "accepted_on": "2026-11-01",
+  "accepted_from_commit": "af5251daca73e3744cabeda4ee4ba019c5153f67",
+  "accepted_source": "paper_A_content.tex",
+  "accepted_content_sha256": "9d075df21fd638f008bc15c64462dfa0fcf3adefb07abbac4cec6f3b98856f86",
+  "historical_review_baseline": "8306e22",
+  "instruction": "All current changes accepted. Publish current content in black, without deleted passages, retired exhibits or review legend. Keep default builds clean.",
+  "official_tag": "paper-a-official-2026-11-01"
+}

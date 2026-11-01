@@ -1,4 +1,4 @@
-"""Read-only closure checks for the current accepted and reset-review Paper A."""
+"""Closure checks for current Paper A, in official clean or historical review mode."""
 from pathlib import Path
 import ast, csv, hashlib, json, math, os, re, statistics, subprocess
 from pypdf import PdfReader
@@ -43,11 +43,15 @@ ok('Common-support standardization', (std['main_teachers'], std['supported_teach
 provenance = json.loads((O / 'diagnostics/provenance.json').read_text())
 ok('Analysis inputs unchanged', all(hashlib.md5((R / p).read_bytes()).hexdigest() == v for p, v in provenance['input_md5'].items()))
 manifest = json.loads((O / 'comparison_manifest.json').read_text())
-ok('Reset comparison baseline and exhibit inventory', manifest['baseline'] == '8306e22' and manifest['counts'] == {'old': 19, 'new': 20} and manifest['old_figures_preserved'] == 7 and manifest['old_tables_preserved'] == 11)
-for asset in [x for x in manifest['exhibits'] if x['side'] == 'old' and x['kind'] == 'figure']:
-    name = asset['name'] + '.png'
-    baseline = subprocess.check_output(['git', 'show', '8306e22:3. Output/paper_A/figures/' + name], cwd=R)
-    ok('Preserved baseline figure: ' + name, (D / 'comparison_baseline' / name).read_bytes() == baseline)
+clean = manifest.get('mode') == 'clean'
+if clean:
+    ok('Current official exhibit inventory', manifest['counts'] == {'current': 20} and sum(x['kind'] == 'table' for x in manifest['exhibits']) == 14 and sum(x['kind'] in ('figure', 'inline') for x in manifest['exhibits']) == 6)
+else:
+    ok('Reset comparison baseline and exhibit inventory', manifest['baseline'] == '8306e22' and manifest['counts'] == {'old': 19, 'new': 20} and manifest['old_figures_preserved'] == 7 and manifest['old_tables_preserved'] == 11)
+    for asset in [x for x in manifest['exhibits'] if x['side'] == 'old' and x['kind'] == 'figure']:
+        name = asset['name'] + '.png'
+        baseline = subprocess.check_output(['git', 'show', '8306e22:3. Output/paper_A/figures/' + name], cwd=R)
+        ok('Preserved baseline figure: ' + name, (D / 'comparison_baseline' / name).read_bytes() == baseline)
 
 def normalized(s):
     s = s[s.index(r'\begin{document}'):]
@@ -84,18 +88,29 @@ def recover(raw, side):
         result = result[:m.start()] + result[brace + 1:k - 1] + result[k:]
     return result
 
-for side, name in [('del', 'old'), ('add', 'new')]:
-    recovered = recover((T / 'raw_diff.tex').read_text(encoding='utf8'), side)
-    ok('Raw redline recovers ' + name + ' text and exhibit tokens', normalized(recovered) == normalized((T / (name + '.tex')).read_text(encoding='utf8')))
+if not clean:
+    for side, name in [('del', 'old'), ('add', 'new')]:
+        recovered = recover((T / 'raw_diff.tex').read_text(encoding='utf8'), side)
+        ok('Raw redline recovers ' + name + ' text and exhibit tokens', normalized(recovered) == normalized((T / (name + '.tex')).read_text(encoding='utf8')))
 
 accepted = (D / 'paper_A_content.tex').read_text(encoding='utf8')
 review = (D / 'paper_A_teacher_decisions.tex').read_text(encoding='utf8')
+if clean:
+    state = json.loads((D / 'manuscript_state.json').read_text())
+    ok('All accepted content preserved in official source', accepted == review and hashlib.sha256((D / 'paper_A_content.tex').read_bytes()).hexdigest() == state['accepted_content_sha256'])
+    ok('No review marks, legend or retired exhibits in official source', not re.search(r'\\DIF|Deleted / superseded|Cumulative review copy|comparison_baseline', review))
+    preamble = (D / 'preamble_content.tex').read_text(encoding='utf8')
+    ok('All manuscript text color aliases black', all(r'\definecolor{' + c + '}{HTML}{000000}' in preamble for c in ['reused', 'revised', 'added']))
+    cited = {k for group in re.findall(r'\\(?:citep|citet|citeyearpar)\{([^}]+)\}', accepted) for k in group.split(',')}
+    bib = set(re.findall(r'\\bibitem(?:\[[^\]]*\])?\{([^}]+)\}', (D / 'references_A.tex').read_text(encoding='utf8')))
+    ok('Official references all cited and all citations resolved', cited == bib)
 ok('Redundant passages removed from accepted text', all(x not in accepted for x in ['The label does not imply', 'establish general opposition', 'We reconstruct experimental responses from each record']))
 ok('Approved judgment framework retained', 'Student information and teacher judgment' in accepted and r'>\tau(z_j,a_j,u_j)' in accepted and r'\theta_{k\ell}' in accepted and r'\tau_0' not in accepted)
 ok('Retired headings do not increment current appendix letters', not re.search(r'\\section\{\\DIFdel\{', review))
 ok('No unresolved exhibit placeholders', 'COTECEXHIBIT' not in review)
 live_review = re.sub(r'(?<!\\)%[^\n]*', '', review)
-labels = [x for x in re.findall(r'\\label\{([^}]+)\}', live_review) if '#' not in x]
+label_source = (T / 'paper_A_teacher_decisions/paper_A_teacher_decisions_authorbuild.aux').read_text(encoding='utf8') if clean else live_review
+labels = [x for x in re.findall(r'\\newlabel\{([^}]+)\}' if clean else r'\\label\{([^}]+)\}', label_source) if '#' not in x]
 ok('Unique review labels', len(labels) == len(set(labels)))
 ok('Review references resolve', set(re.findall(r'\\ref\{([^}]+)\}', live_review)) <= set(labels))
 for name in ['paper_A_content', 'paper_A_teacher_decisions']:
@@ -103,7 +118,7 @@ for name in ['paper_A_content', 'paper_A_teacher_decisions']:
     ok(name + ': clean compilation', not re.search(r'Overfull|undefined|multiply defined|destination with the same identifier', log, re.I))
     pdf = T / name / (name + '_authorbuild.pdf')
     ok(name + ': readable PDF', len(PdfReader(pdf).pages) >= 20)
-ok('Published PDF matches compiled review', (D / 'paper_A_teacher_decisions.pdf').read_bytes() == (T / 'paper_A_teacher_decisions/paper_A_teacher_decisions_authorbuild.pdf').read_bytes())
-result = {'status': 'PASS', 'baseline': '8306e22', 'checks': checks, 'accepted_pages': len(PdfReader(T / 'paper_A_content/paper_A_content_authorbuild.pdf').pages), 'review_pages': len(PdfReader(D / 'paper_A_teacher_decisions.pdf').pages), 'source_sha256': hashlib.sha256((D / 'paper_A_content.tex').read_bytes()).hexdigest(), 'pdf_sha256': hashlib.sha256((D / 'paper_A_teacher_decisions.pdf').read_bytes()).hexdigest(), 'scope': 'Programmatic closure; independent methods/editorial memos and visual QA are separate evidence.'}
+ok('Published PDF matches compiled main document', (D / 'paper_A_teacher_decisions.pdf').read_bytes() == (T / 'paper_A_teacher_decisions/paper_A_teacher_decisions_authorbuild.pdf').read_bytes())
+result = {'status': 'PASS', 'mode': 'clean' if clean else 'review', 'historical_review_baseline': '8306e22', 'checks': checks, 'accepted_pages': len(PdfReader(T / 'paper_A_content/paper_A_content_authorbuild.pdf').pages), 'main_pages': len(PdfReader(D / 'paper_A_teacher_decisions.pdf').pages), 'source_sha256': hashlib.sha256((D / 'paper_A_content.tex').read_bytes()).hexdigest(), 'pdf_sha256': hashlib.sha256((D / 'paper_A_teacher_decisions.pdf').read_bytes()).hexdigest(), 'scope': 'Programmatic closure; scientific reviews from prior revisions and visual QA are separate evidence.'}
 (O / 'final_audit.json').write_text(json.dumps(result, indent=2), encoding='utf8')
-print('PASS:', len(checks), 'checks; accepted/review pages:', result['accepted_pages'], result['review_pages'])
+print('PASS:', len(checks), 'checks; accepted/main pages:', result['accepted_pages'], result['main_pages'], '; mode:', result['mode'])

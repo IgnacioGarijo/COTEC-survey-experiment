@@ -1,4 +1,4 @@
-"""Compile both views in temporary folders; publish only the cumulative review PDF."""
+"""Compile editable and main sources in temporary folders; publish only the main PDF."""
 from pathlib import Path
 import subprocess,shutil,os,time
 R=Path(__file__).resolve().parents[2];D=R/'4. Latex/paper_A';T=R/'tmp/paper_A_author_revision'
